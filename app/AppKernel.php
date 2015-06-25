@@ -18,11 +18,12 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Redstar\SkeletonAppBundle\RedstarSkeletonAppBundle(),
+            //new Redstar\SkeletonAppBundle\RedstarSkeletonAppBundle(),
             new Redstar\SecurityBundle\RedstarSecurityBundle(),
             new Redstar\UserBundle\RedstarUserBundle(),
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
+            new Serlimar\SerlEdgeBundle\SerlimarSerlEdgeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

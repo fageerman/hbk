@@ -2260,6 +2260,12 @@ th {
   max-width: 100%;
   margin-bottom: 20px;
 }
+.table >thead{
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-bottom: 1px solid #ddd;
+}
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -2269,7 +2275,7 @@ th {
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -6581,3 +6587,4 @@ button.close {
     display: none !important;
   }
 }
+/*# sourceMappingURL=bootstrap.css.map */
