@@ -12,6 +12,8 @@ namespace Serlimar\SerlEdgeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Serlimar\SerlEdgeBundle\Entity\Payment;
+use Serlimar\SerlEdgeBundle\Form\PaymentType;
 
 class PaymentController extends Controller
 {
@@ -28,7 +30,8 @@ class PaymentController extends Controller
      *  Create a new payment registration record.
      */
     public function createAction()
-    {
+    {   
+        $form = $this->createForm(new PaymentType());
         return $this->render('SerlimarSerlEdgeBundle:Payment:create.html.twig');
     }
     

@@ -14,3 +14,8 @@ services:
         tags:
             - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
 
+
+    serlimar_user_provider:
+        class: Serlimar\SerlEdgeBundle\Provider\SerlimarUserProvider
+        arguments: 
+            entityManager: "@doctrine.orm.entity_manager"

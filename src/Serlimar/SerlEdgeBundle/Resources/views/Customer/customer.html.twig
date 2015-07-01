@@ -1,0 +1,21 @@
+{% extends "layout.html.twig" %}
+{% set subTitle = "Customer"%}
+{% block title %}{{ parent() }} - {{ subTitle }}{% endblock %}
+{% block subtitle %} {{ subTitle }} {% endblock%}
+{% block content %}
+    
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.date,"Date of birth") }}
+            {{ form_errors(form.date) }}
+            {{ form_widget(form.date, { 'attr': {'class': 'form-control', 'placeholder' : 'yyyy-mm-dd'} }) }}
+        </div>
+        <div>
+            {{ form_widget(form.submit, { 'attr': {'class': 'btn  btn-primary'}}) }}
+        </div>
+
+    {{ form_end(form) }}
+    
+{% endblock %}

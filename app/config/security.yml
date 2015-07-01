@@ -1,7 +1,7 @@
 security:
     encoders:
-        Redstar\UserBundle\Entity\User:
-            algorithm: bcrypt
+        Serlimar\SerlEdgeBundle\Entity\SerlimarUser: plaintext
+            #algorithm: false
 #            encode_as_base64: false
 #            iterations: 1
 #    encoders:
@@ -23,10 +23,12 @@ security:
 #                    admin:
 #                        password: kitten
 #                        roles: 'ROLE_ADMIN'
-            administrators:
-                entity:
-                    class: RedstarUserBundle:User
-                #    property: username 
+#            administrators:
+#                entity:
+#                    class: RedstarUserBundle:User
+            
+            serlimar:
+                id: serlimar_user_provider
                         
     firewalls:
                            

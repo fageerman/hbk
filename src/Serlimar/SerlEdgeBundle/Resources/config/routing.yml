@@ -1,15 +1,19 @@
-serlimar_serl_edge_payment:
+serlimar_serledge_payment:
     path:     /payment
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:index }
     
-serlimar_serl_edge_create_payment:
+serlimar_serledge_create_payment:
     path:     /payment/create
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:create }
 
-serlimar_serl_edge_update_payment:
+serlimar_serledge_update_payment:
     path:     /payment/update
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:update }
 
-serlimar_serl_delete_payment:
+serlimar_serledge_delete_payment:
     path:     /payment/delete
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:delete }
+    
+serlimar_serledge_customer:
+    path:     /customer
+    defaults: { _controller: SerlimarSerlEdgeBundle:Customer:index }
