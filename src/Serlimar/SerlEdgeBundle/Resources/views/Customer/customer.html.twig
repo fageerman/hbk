@@ -4,18 +4,48 @@
 {% block subtitle %} {{ subTitle }} {% endblock%}
 {% block content %}
     
+
+    {#We put the label for birthdate here, for styling purpose. #}
+    
+    
     {{ form_start(form) }}
         {{ form_errors(form) }}
-
-        <div class="form-group">
-            {{ form_label(form.date,"Date of birth") }}
-            {{ form_errors(form.date) }}
-            {{ form_widget(form.date, { 'attr': {'class': 'form-control', 'placeholder' : 'yyyy-mm-dd'} }) }}
+        
+        <div class="form-group col-sm-6">
+            {{ form_label(form.birthdate) }}
+            {{ form_errors(form.birthdate,{ 'attr': {'class': 'error' }}) }}
+            {{ form_widget(form.birthdate, { 'attr': {'class': 'form-control', 'placeholder' : 'dd-mm-yyyy'} }) }}
         </div>
-        <div>
-            {{ form_widget(form.submit, { 'attr': {'class': 'btn  btn-primary'}}) }}
+        <div class="form-group col-sm-10">
+            {{ form_widget(form.search, { 'attr': {'class': 'btn  btn-primary', 'required':'required'}} ) }}
         </div>
 
     {{ form_end(form) }}
+
+    <div class="clearfix"></div>
+    
+    {% if customers is defined and customers is not empty %} 
+        <div class="table-responsive col-sm-12">
+            <table class="table">
+                    <thead>
+                            <tr>	
+                                    <td>Name</td>
+                                    <td>Date of birth</td>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                            <tr>
+                                <td>{{ customer.firstName }} {{ customer.name }}</td> 
+                                <td>{{ customer.birthdate |date('d-m-Y') }}</td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+            </table>
+        </div>
+        
+    {% else %}
+        No customers found with the provided birthdate.    
+    {% endif %}
     
 {% endblock %}

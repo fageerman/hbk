@@ -16,8 +16,11 @@ class CustomerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
-            ->add('submit', 'submit');
+            ->add('birthdate','date',array(
+                'widget' => 'single_text',
+                'format' => 'dd-MM-yyyy',
+             ))
+            ->add('search', 'submit');
     }
 
     public function getName()
