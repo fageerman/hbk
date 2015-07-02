@@ -23,9 +23,10 @@
     {{ form_end(form) }}
 
     <div class="clearfix"></div>
-    
+    <div class="table-responsive col-sm-12">
+        
     {% if customers is defined and customers is not empty %} 
-        <div class="table-responsive col-sm-12">
+        
             <table class="table">
                     <thead>
                             <tr>	
@@ -42,10 +43,10 @@
                         {% endfor%}
                     </tbody>
             </table>
-        </div>
         
-    {% else %}
+        
+    {% elseif customers is defined and customers is empty %}
         No customers found with the provided birthdate.    
     {% endif %}
-    
+    </div>
 {% endblock %}
