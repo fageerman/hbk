@@ -1,0 +1,165 @@
+Serlimar\SerlEdgeBundle\Entity\Tblreceipts:
+    type: entity
+    table: tblreceipts
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        receiptnumber:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ReceiptNumber
+        customerguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: CustomerGUID
+        companyguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: CompanyGUID
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Email
+        date:
+            type: date
+            nullable: true
+            column: Date
+        paymentmethod:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: PaymentMethod
+        reference:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Reference
+        subtotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: SubTotal
+        bbo:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: BBO
+        bazv:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: BAZV
+        total:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Total
+        costs:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Costs
+        sysCreateddate:
+            type: datetime
+            nullable: true
+            column: sys_CreatedDate
+        note:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Note
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        userid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: UserID
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        version:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Version
+    lifecycleCallbacks: {  }

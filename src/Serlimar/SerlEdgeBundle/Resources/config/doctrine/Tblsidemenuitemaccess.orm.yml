@@ -1,0 +1,23 @@
+Serlimar\SerlEdgeBundle\Entity\Tblsidemenuitemaccess:
+    type: entity
+    table: tblsidemenuitemaccess
+    indexes:
+        AccessLevelID:
+            columns:
+                - AccessLevelID
+    id:
+        menuitemid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: MenuItemID
+        accesslevelid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: AccessLevelID
+    lifecycleCallbacks: {  }

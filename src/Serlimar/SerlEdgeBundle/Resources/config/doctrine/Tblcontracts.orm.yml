@@ -1,0 +1,175 @@
+Serlimar\SerlEdgeBundle\Entity\Tblcontracts:
+    type: entity
+    table: tblcontracts
+    indexes:
+        Address:
+            columns:
+                - Address
+        AddressID:
+            columns:
+                - AddressID
+        CustomerID:
+            columns:
+                - CustomerID
+    id:
+        contractid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ContractID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CustomerID
+        contractdate:
+            type: datetime
+            nullable: true
+            column: ContractDate
+        type:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Type
+        addressid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AddressID
+        address:
+            type: string
+            nullable: true
+            length: 75
+            options:
+                fixed: false
+            column: Address
+        printeddatetime:
+            type: datetime
+            nullable: true
+            column: PrintedDateTime
+        note:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Note
+        itemscount:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ItemsCount
+        itemsdisplay:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: ItemsDisplay
+        indate:
+            type: datetime
+            nullable: true
+            column: inDate
+        inuser:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: inUser
+        inuserid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: inUserID
+        lastchangeuser:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LastChangeUser
+        cancelleddate:
+            type: datetime
+            nullable: true
+            column: CancelledDate
+        cancelledby:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: CancelledBy
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: NotActive
+    lifecycleCallbacks: {  }

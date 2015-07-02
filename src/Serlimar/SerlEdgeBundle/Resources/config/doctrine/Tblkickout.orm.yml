@@ -1,0 +1,93 @@
+Serlimar\SerlEdgeBundle\Entity\Tblkickout:
+    type: entity
+    table: tblkickout
+    id:
+        kickoutid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: KickoutID
+            generator:
+                strategy: IDENTITY
+    fields:
+        kickout:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: Kickout
+        kickouttimeout:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: KickoutTimeOut
+        remark:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Remark
+        restartclient:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: RestartClient
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        timestamp:
+            type: datetime
+            nullable: true
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: NotActive
+    lifecycleCallbacks: {  }

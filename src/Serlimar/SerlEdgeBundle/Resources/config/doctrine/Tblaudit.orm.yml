@@ -1,0 +1,100 @@
+Serlimar\SerlEdgeBundle\Entity\Tblaudit:
+    type: entity
+    table: tblaudit
+    indexes:
+        UniqID:
+            columns:
+                - UniqID
+    id:
+        auditId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Audit_ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        user:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: User
+        computername:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: ComputerName
+        datetime:
+            type: datetime
+            nullable: true
+            column: DateTime
+        uniqidField:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: UniqID_Field
+        uniqid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: UniqID
+        form:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Form
+        field:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Field
+        prevValue:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Prev_Value
+        newValue:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: New_Value
+        action:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Action
+        reason:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Reason
+        delvalues:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: DelValues
+    lifecycleCallbacks: {  }

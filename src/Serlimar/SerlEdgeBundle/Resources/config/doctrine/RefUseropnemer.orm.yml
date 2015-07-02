@@ -1,0 +1,22 @@
+Serlimar\SerlEdgeBundle\Entity\RefUseropnemer:
+    type: entity
+    table: ref_useropnemer
+    id:
+        useropnemerid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: UserOpnemerID
+            generator:
+                strategy: IDENTITY
+    fields:
+        useropnemer:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: UserOpnemer
+    lifecycleCallbacks: {  }

@@ -1,0 +1,253 @@
+Serlimar\SerlEdgeBundle\Entity\Tblgroupdefaults:
+    type: entity
+    table: tblgroupdefaults
+    uniqueConstraints:
+        ID_UNIQUE:
+            columns:
+                - ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        groupalignment:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: GroupAlignment
+        groupfontname:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: GroupFontName
+        groupfontsize:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: GroupFontSize
+        groupfontbold:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: GroupFontBold
+        groupfontcolor:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: GroupFontColor
+        groupfontitalic:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: GroupFontItalic
+        groupfontunderline:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: GroupFontUnderLine
+        groupfontstrikethrough:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: GroupFontStrikethrough
+        buttonheight:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ButtonHeight
+        buttonwidth:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ButtonWidth
+        groupfilleffect:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: GroupFillEffect
+        filleffectcolor1:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FillEffectColor1
+        filleffectcolor2:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FillEffectColor2
+        filleffectcolor3:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FillEffectColor3
+        filleffectcolor4:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FillEffectColor4
+        filleffectdirection:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FillEffectDirection
+        filleffectextrawide:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FillEffectExtraWide
+        highlightcolor1:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HighlightColor1
+        highlightcolor2:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HighlightColor2
+        highlightcolor3:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HighlightColor3
+        highlightcolor4:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HighlightColor4
+        activecolor1:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ActiveColor1
+        activecolor2:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ActiveColor2
+        activecolor3:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ActiveColor3
+        activecolor4:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ActiveColor4
+        activehighlightcolor1:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ActiveHighlightColor1
+        activehighlightcolor2:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ActiveHighlightColor2
+        activehighlightcolor3:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ActiveHighlightColor3
+        activehighlightcolor4:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ActiveHighlightColor4
+        highlightsoftcolor:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HighlightSoftColor
+        highlightcolor:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HighlightColor
+        highlightbold:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HighlightBold
+        highlightunderline:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HighlightUnderline
+        default:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: Default
+        grouphandcursor:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: GroupHandCursor
+    lifecycleCallbacks: {  }

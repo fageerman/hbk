@@ -1,0 +1,123 @@
+Serlimar\SerlEdgeBundle\Entity\Tblminicontainer:
+    type: entity
+    table: tblminicontainer
+    indexes:
+        ContractID:
+            columns:
+                - ContractID
+        CustomerID:
+            columns:
+                - CustomerID
+        Minicontainer:
+            columns:
+                - Minicontainer
+    id:
+        minicointainerid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: MinicointainerID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CustomerID
+        contractid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ContractID
+        minicontainer:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: Minicontainer
+        billto:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: BillTo
+        sysUserintake:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: sys_UserIntake
+        sysIndate:
+            type: datetime
+            nullable: true
+            column: sys_InDate
+        sysInuser:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: sys_InUser
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: NotActive
+    lifecycleCallbacks: {  }

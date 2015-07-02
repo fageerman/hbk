@@ -1,0 +1,264 @@
+Serlimar\SerlEdgeBundle\Entity\Tblcompanies:
+    type: entity
+    table: tblcompanies
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        companyid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        externalcompanyid:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: ExternalCompanyID
+        companyshortname:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+        companyname:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        addressid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        addressguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: AddressGUID
+        address:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        source:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        sourceguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: SourceGUID
+        phone:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        fax:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: Fax
+        contact:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        defaultmaterialguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: DefaultMaterialGUID
+        externaldefaultmaterial:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: ExternalDefaultMaterial
+        terms:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        accountbalance:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        creditlimit:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        companytypeguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: CompanyTypeGUID
+        kvkno:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: KvkNo
+        persoonno:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: PersoonNo
+        companybankguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: CompanyBankGUID
+        companyaccount:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: CompanyAccount
+        pobox:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: POBOX
+        authorizedsalutationguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: AuthorizedSalutationGUID
+        authorizedname:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: AuthorizedName
+        identificationtypeguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: IdentificationTypeGUID
+        identification:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: false
+            column: Identification
+        auhtorizedfunctionguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: AuhtorizedFunctionGUID
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: NotActive
+    lifecycleCallbacks: {  }

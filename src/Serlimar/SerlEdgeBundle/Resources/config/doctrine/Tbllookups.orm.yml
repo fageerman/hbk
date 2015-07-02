@@ -1,0 +1,183 @@
+Serlimar\SerlEdgeBundle\Entity\Tbllookups:
+    type: entity
+    table: tbllookups
+    indexes:
+        Lookup:
+            columns:
+                - Lookup
+    id:
+        lookupid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: LookupID
+            generator:
+                strategy: IDENTITY
+    fields:
+        guid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: GUID
+        lookup:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Lookup
+        descriptioncode:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: DescriptionCode
+        sortorder:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: SortOrder
+        formscombo:
+            type: string
+            nullable: true
+            length: 120
+            options:
+                fixed: false
+            column: FormsCombo
+        formsname:
+            type: string
+            nullable: true
+            length: 120
+            options:
+                fixed: false
+            column: FormsName
+        normalrangelow:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: NormalRangeLow
+        normalvalue:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: NormalValue
+        normalrangeup:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: NormalRangeUp
+        related:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: Related
+        relationshipid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: RelationshipID
+        intprice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: IntPrice
+        tax:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Tax
+        otherpricecalc:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: OtherPriceCalc
+        totalprice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: TotalPrice
+        color:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Color
+        default:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: Default
+        indate:
+            type: datetime
+            nullable: true
+            column: inDate
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        timestamp:
+            type: datetime
+            nullable: true
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: NotActive
+    lifecycleCallbacks: {  }

@@ -1,0 +1,53 @@
+Serlimar\SerlEdgeBundle\Entity\RefTakencareby:
+    type: entity
+    table: ref_takencareby
+    id:
+        takecarebyid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: TakeCareByID
+            generator:
+                strategy: IDENTITY
+    fields:
+        takencareby:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: TakenCareBy
+        active:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: Active
+        note:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Note
+        inuser:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: InUser
+        indate:
+            type: datetime
+            nullable: true
+            column: InDate
+        ssmaTimestamp:
+            type: blob
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: SSMA_TimeStamp
+    lifecycleCallbacks: {  }

@@ -1,0 +1,122 @@
+Serlimar\SerlEdgeBundle\Entity\Tblsidemenuitem:
+    type: entity
+    table: tblsidemenuitem
+    indexes:
+        MenuItemID:
+            columns:
+                - MenuItemID
+    id:
+        menuitemid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: MenuItemID
+            generator:
+                strategy: IDENTITY
+    fields:
+        menuitemtext:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: MenuItemText
+        menuitemdescription:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: MenuItemDescription
+        menuitemparent:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: MenuItemParent
+        menuitemorder:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: MenuItemOrder
+        menuitemaction:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: MenuItemAction
+        menuitemtarget:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: MenuItemTarget
+        menuitemproc:
+            type: string
+            nullable: true
+            length: 75
+            options:
+                fixed: false
+            column: MenuItemProc
+        menuitemtargetmode:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: MenuItemTargetMode
+        menuitemarguments:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: MenuItemArguments
+        menuitemicon:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: MenuItemIcon
+        menuitemiconnumber:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: MenuItemIconNumber
+        menuitemaccess:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: MenuItemAccess
+        menuitemstatus:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: MenuItemStatus
+        active:
+            type: boolean
+            nullable: true
+            options:
+                default: '-1'
+            column: Active
+        menuitemwherecondition:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: MenuItemWhereCondition
+    lifecycleCallbacks: {  }

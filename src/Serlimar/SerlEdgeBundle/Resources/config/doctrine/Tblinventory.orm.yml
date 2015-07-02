@@ -1,0 +1,141 @@
+Serlimar\SerlEdgeBundle\Entity\Tblinventory:
+    type: entity
+    table: tblinventory
+    indexes:
+        InventoryNo:
+            columns:
+                - InventoryNo
+    id:
+        inventoryid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: InventoryID
+            generator:
+                strategy: IDENTITY
+    fields:
+        inventorytype:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: InventoryType
+        inventoryno:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: InventoryNo
+        status:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Status
+        note:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Note
+        inuser:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: InUser
+        indate:
+            type: datetime
+            nullable: true
+            column: InDate
+        latNonearth:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Lat_nonEarth
+        lonNonearth:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Lon_nonEarth
+        latWgs84:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Lat_WGS84
+        lonWgs84:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Lon_WGS84
+        isready:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: isReady
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: NotActive
+    lifecycleCallbacks: {  }

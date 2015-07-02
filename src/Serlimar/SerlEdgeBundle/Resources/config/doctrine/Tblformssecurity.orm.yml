@@ -1,0 +1,73 @@
+Serlimar\SerlEdgeBundle\Entity\Tblformssecurity:
+    type: entity
+    table: tblformssecurity
+    indexes:
+        $Form:
+            columns:
+                - Formsname
+        $Control:
+            columns:
+                - Controlename
+        $Username:
+            columns:
+                - Username
+        $Role:
+            columns:
+                - Role
+    uniqueConstraints:
+        ID_UNIQUE:
+            columns:
+                - ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        guid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: GUID
+        formsname:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Formsname
+        controlename:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Controlename
+        action:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Action
+        username:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Username
+        role:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Role
+    lifecycleCallbacks: {  }

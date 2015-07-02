@@ -1,0 +1,194 @@
+Serlimar\SerlEdgeBundle\Entity\Tblpayments:
+    type: entity
+    table: tblpayments
+    indexes:
+        $PaymentDate:
+            columns:
+                - PaymentDate
+        $CustomerGUID:
+            columns:
+                - CustomerGUID
+        $LoactionGUID:
+            columns:
+                - LocationGUID
+        $InsertUser:
+            columns:
+                - InsertUser
+        $PaymentID:
+            columns:
+                - PaymentsID
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        paymentsid:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: PaymentsID
+        customerguid:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: CustomerGUID
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Email
+        paymentdate:
+            type: datetime
+            nullable: true
+            column: PaymentDate
+        amount:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: Amount
+        applied:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: Applied
+        credit:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: Credit
+        paymentmethod:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: PaymentMethod
+        invoicenr:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: InvoiceNr
+        authnr:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AuthNr
+        reference:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: Reference
+        gl:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: GL
+        confirmed:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: Confirmed
+        note:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Note
+        locationguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: LocationGUID
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        loactionguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: LoactionGUID
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: NotActive
+    lifecycleCallbacks: {  }

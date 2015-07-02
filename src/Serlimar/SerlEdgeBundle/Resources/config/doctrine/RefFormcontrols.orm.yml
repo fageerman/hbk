@@ -1,0 +1,62 @@
+Serlimar\SerlEdgeBundle\Entity\RefFormcontrols:
+    type: entity
+    table: ref_formcontrols
+    id:
+        formcontrolsid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: FormControlsID
+            generator:
+                strategy: IDENTITY
+    fields:
+        formcontrol:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: FormControl
+        description:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Description
+        location:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Location
+        option:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: Option
+        type:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: Type
+        goupno:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: GoupNo
+        sortno:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: SortNo
+    lifecycleCallbacks: {  }

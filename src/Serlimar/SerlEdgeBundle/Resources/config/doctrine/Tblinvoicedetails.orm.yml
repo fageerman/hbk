@@ -1,0 +1,154 @@
+Serlimar\SerlEdgeBundle\Entity\Tblinvoicedetails:
+    type: entity
+    table: tblinvoicedetails
+    indexes:
+        InvoiceID:
+            columns:
+                - InvoiceID
+    id:
+        invoicedetailsid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: InvoiceDetailsID
+            generator:
+                strategy: IDENTITY
+    fields:
+        invoiceid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: InvoiceID
+        orderid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: OrderID
+        itemid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ItemID
+        description:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: Description
+        costs:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Costs
+        qty:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Qty
+        rate:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Rate
+        amount:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Amount
+        tax:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Tax
+        reference:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Reference
+        reference2:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Reference2
+        sysCreateddate:
+            type: datetime
+            nullable: true
+            column: sys_CreatedDate
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useraction:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: UserAction
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        userid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: UserID
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        version:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Version
+    lifecycleCallbacks: {  }

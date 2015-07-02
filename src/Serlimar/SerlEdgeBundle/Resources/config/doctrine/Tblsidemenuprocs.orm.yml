@@ -1,0 +1,42 @@
+Serlimar\SerlEdgeBundle\Entity\Tblsidemenuprocs:
+    type: entity
+    table: tblsidemenuprocs
+    id:
+        procid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ProcID
+            generator:
+                strategy: IDENTITY
+    fields:
+        procnamestr:
+            type: string
+            nullable: true
+            length: 75
+            options:
+                fixed: false
+            column: ProcNameStr
+        proctype:
+            type: string
+            nullable: true
+            length: 7
+            options:
+                fixed: false
+            column: ProcType
+        procarguments:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: ProcArguments
+        procargumentsnum:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ProcArgumentsNum
+    lifecycleCallbacks: {  }

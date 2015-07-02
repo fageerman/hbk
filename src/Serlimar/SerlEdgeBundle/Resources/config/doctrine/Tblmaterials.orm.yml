@@ -1,0 +1,193 @@
+Serlimar\SerlEdgeBundle\Entity\Tblmaterials:
+    type: entity
+    table: tblmaterials
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        materialid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: MaterialID
+        materialguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: MaterialGUID
+        productid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ProductID
+        productguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: ProductGUID
+        material:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: Material
+        inbound:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''1'''
+            column: Inbound
+        type:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''1'''
+            column: Type
+        description:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: Description
+        unit:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: Unit
+        chargeamount1:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: ChargeAmount1
+        chargeamount2:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: ChargeAmount2
+        chargeamount3:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: ChargeAmount3
+        chargeamount4:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: ChargeAmount4
+        cost:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: Cost
+        minimumcharge:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: MinimumCharge
+        location:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: Location
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: NotActive
+    lifecycleCallbacks: {  }

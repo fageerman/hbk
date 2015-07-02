@@ -1,0 +1,278 @@
+Serlimar\SerlEdgeBundle\Entity\Tblinvoices:
+    type: entity
+    table: tblinvoices
+    indexes:
+        InvoiceNumber:
+            columns:
+                - InvoiceNumber
+        $CustomerGUID:
+            columns:
+                - CustomerGUID
+        $Date:
+            columns:
+                - InvoiceDate
+        $DueDate:
+            columns:
+                - DueDate
+        $PaymentMethod:
+            columns:
+                - PaymentMethod
+        $Printed:
+            columns:
+                - Printed
+        $Period:
+            columns:
+                - Period
+        $ContractID:
+            columns:
+                - ContractID
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CustomerID
+        customerguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: CustomerGUID
+        companyid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CompanyID
+        companyguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: CompanyGUID
+        invoicenumber:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: InvoiceNumber
+        invoicedate:
+            type: date
+            nullable: true
+            column: InvoiceDate
+        invoiceclosed:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: InvoiceClosed
+        sendinvoice:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: SendInvoice
+        printedinvoice:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: PrintedInvoice
+        terms:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Terms
+        termsguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: TermsGUID
+        duedate:
+            type: date
+            nullable: true
+            column: DueDate
+        bbo:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: BBO
+        bazv:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: BAZV
+        period:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Period
+        paymentmethod:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: PaymentMethod
+        currency:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Currency
+        invoicetotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: InvoiceTotal
+        costs:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Costs
+        taxdescription:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: TaxDescription
+        tax:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Tax
+        balance:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Balance
+        invoicestatus:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: InvoiceStatus
+        reference:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Reference
+        reference2:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Reference2
+        sysCreateddate:
+            type: datetime
+            nullable: true
+            column: sys_CreatedDate
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        userid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: UserID
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        version:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Version
+        contractid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ContractID
+        subtotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: SubTotal
+        printed:
+            type: datetime
+            nullable: true
+            column: Printed
+        printcount:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: PrintCount
+    lifecycleCallbacks: {  }

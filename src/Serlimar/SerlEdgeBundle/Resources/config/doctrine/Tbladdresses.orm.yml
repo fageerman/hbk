@@ -1,0 +1,293 @@
+Serlimar\SerlEdgeBundle\Entity\Tbladdresses:
+    type: entity
+    table: tbladdresses
+    indexes:
+        $Address:
+            columns:
+                - Address
+        $StreetName:
+            columns:
+                - StreetName
+        $StreetNameID:
+            columns:
+                - StreetNameID
+        $ShortName:
+            columns:
+                - AddressShortName
+        $Clasification:
+            columns:
+                - Clasification
+        $AddressNr:
+            columns:
+                - AdressNR
+        $AddressLetter:
+            columns:
+                - AddressLetter
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            id: true
+            column: GUID
+        addressid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: AddressID
+    fields:
+        address:
+            type: string
+            nullable: true
+            length: 75
+            options:
+                fixed: false
+            column: Address
+        addressshortname:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: AddressShortName
+        streetnameid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: StreetNameID
+        streetname:
+            type: string
+            nullable: true
+            length: 75
+            options:
+                fixed: false
+            column: StreetName
+        gacname:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: GACName
+        lot:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: false
+            column: Lot
+        adressnr:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AdressNR
+        addressletter:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+            column: AddressLetter
+        apt:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: false
+            column: Apt
+        infoCbs:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Info_CBS
+        infoSerlimar:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Info_Serlimar
+        clasification:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: Clasification
+        periode:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Periode
+        latNonearth:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Lat_nonEarth
+        lonNonearth:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Lon_nonEarth
+        latWgs84:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Lat_WGS84
+        lonWgs84:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Lon_WGS84
+        addressLetterVoor:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: 'Address Letter Voor'
+        volledigeAdress:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: 'Volledige Adress'
+        servicedby:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ServicedBy
+        note:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Note
+        iscommercial:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: IsCommercial
+        isdomestic:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: IsDomestic
+        isorganization:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: IsOrganization
+        isnotavailable:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: IsNotAvailable
+        route:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: Route
+        routeinternal:
+            type: string
+            nullable: true
+            length: 7
+            options:
+                fixed: false
+            column: RouteInternal
+        isnotcompleted:
+            type: boolean
+            nullable: true
+            column: IsNotCompleted
+        source:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: Source
+        pickupday:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: false
+            column: PickupDay
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: NotActive
+    lifecycleCallbacks: {  }

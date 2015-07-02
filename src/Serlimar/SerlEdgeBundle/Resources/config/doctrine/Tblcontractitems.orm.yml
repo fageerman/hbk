@@ -1,0 +1,165 @@
+Serlimar\SerlEdgeBundle\Entity\Tblcontractitems:
+    type: entity
+    table: tblcontractitems
+    indexes:
+        ItemNo:
+            columns:
+                - ItemNo
+    id:
+        contractitemsid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ContractItemsID
+            generator:
+                strategy: IDENTITY
+    fields:
+        contractid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ContractID
+        linenumber:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: LineNumber
+        itemtype:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ItemType
+        itemstatus:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ItemStatus
+        itemno:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: ItemNo
+        billto:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: BillTo
+        latNonearth:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Lat_nonEarth
+        lonNonearth:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Lon_nonEarth
+        note:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Note
+        indate:
+            type: datetime
+            nullable: true
+            column: InDate
+        inuser:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: InUser
+        inuserid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: InUserID
+        lastchangeuser:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LastChangeUser
+        lastchangedate:
+            type: datetime
+            nullable: true
+            column: LastChangeDate
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: NotActive
+    lifecycleCallbacks: {  }

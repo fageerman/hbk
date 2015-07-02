@@ -1,0 +1,37 @@
+Serlimar\SerlEdgeBundle\Entity\Tblpaymentmethodsallowed:
+    type: entity
+    table: tblpaymentmethodsallowed
+    indexes:
+        $Paymentmethod:
+            columns:
+                - PaymentmethodGUID
+        $Role:
+            columns:
+                - RoleID
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        paymentmethodguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: PaymentmethodGUID
+        roleid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: RoleID
+    lifecycleCallbacks: {  }

@@ -1,0 +1,373 @@
+Serlimar\SerlEdgeBundle\Entity\Tbltickets:
+    type: entity
+    table: tbltickets
+    indexes:
+        $TicketDate:
+            columns:
+                - TicketDate
+        $Vehicle:
+            columns:
+                - VehicleID
+                - VehicleGUID
+        $Company:
+            columns:
+                - CompanyID
+                - CompanyGUID
+        $Material:
+            columns:
+                - MaterialID
+                - MaterialGUID
+        $Container:
+            columns:
+                - ContainerID
+                - ContainerGUID
+        $Source:
+            columns:
+                - SourceID
+                - SourceGUID
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''
+            id: true
+            column: GUID
+        ticketid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: TicketID
+    fields:
+        ticketdate:
+            type: datetime
+            nullable: true
+            column: TicketDate
+        timein:
+            type: time
+            nullable: true
+            column: TimeIN
+        timeout:
+            type: time
+            nullable: true
+            column: TimeOut
+        companyid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CompanyID
+        companyguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: CompanyGUID
+        vehicleid:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: VehicleID
+        vehicleguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: VehicleGUID
+        operator:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+            column: Operator
+        operatorid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: OperatorID
+        operatorguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: OperatorGUID
+        materialid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: MaterialID
+        materialguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: MaterialGUID
+        jobid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: JobID
+        containerid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ContainerID
+        containerguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: ContainerGUID
+        containerweight:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: ContainerWeight
+        manualcontainer:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: ManualContainer
+        grossweight:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: GrossWeight
+        tareweight:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: TareWeight
+        vehicleweight:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: VehicleWeight
+        netweight:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: NetWeight
+        unitprice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: UnitPrice
+        netprice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: NetPrice
+        localsalestax:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: LocalSalesTax
+        totalprice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: TotalPrice
+        invoiceid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: InvoiceID
+        invoicegiud:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: InvoiceGIUD
+        invoicenr:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: InvoiceNr
+        noweigh:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: NoWeigh
+        manualentry:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: ManualEntry
+        inspection:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: Inspection
+        inbound:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: Inbound
+        type:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: Type
+        chargeCash:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: Charge-Cash
+        fixedcharge:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: FixedCharge
+        units:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Units
+        unitname:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: UnitName
+        note:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Note
+        location:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: Location
+        sourceid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: SourceID
+        sourceguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: SourceGUID
+        category:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: Category
+        haulcharge:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Haulcharge
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        reprint:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+    lifecycleCallbacks: {  }

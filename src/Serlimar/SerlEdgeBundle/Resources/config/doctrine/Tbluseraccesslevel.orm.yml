@@ -1,0 +1,22 @@
+Serlimar\SerlEdgeBundle\Entity\Tbluseraccesslevel:
+    type: entity
+    table: tbluseraccesslevel
+    id:
+        accesslevelid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: AccessLevelID
+            generator:
+                strategy: IDENTITY
+    fields:
+        accesslevel:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: AccessLevel
+    lifecycleCallbacks: {  }

@@ -1,0 +1,385 @@
+Serlimar\SerlEdgeBundle\Entity\Tblcustomers:
+    type: entity
+    table: tblcustomers
+    indexes:
+        $Address:
+            columns:
+                - Address
+        $CustomerNo:
+            columns:
+                - CustomerNo
+        $FirstName:
+            columns:
+                - FirstName
+        $Name:
+            columns:
+                - Name
+        $StatusID:
+            columns:
+                - StatusID
+        $DOB:
+            columns:
+                - BirthDate
+        $CustomerGUID:
+            columns:
+                - GUID
+        $AddressID:
+            columns:
+                - AddressID
+    id:
+        customerid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: CustomerID
+            generator:
+                strategy: IDENTITY
+    fields:
+        guid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: GUID
+        customerno:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: CustomerNo
+        balance:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: Balance
+        name:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Name
+        prefix:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Prefix
+        firstname:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: FirstName
+        birthdate:
+            type: datetime
+            nullable: true
+            column: BirthDate
+        gender:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Gender
+        phone:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Phone
+        idnumber:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: false
+            column: IDNumber
+        identification:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: Identification
+        typeidentification:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: TypeIdentification
+        minicontainerno:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: MiniContainerNo
+        desiredcontainers:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: DesiredContainers
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        addressid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AddressID
+        address:
+            type: string
+            nullable: true
+            length: 75
+            options:
+                fixed: false
+            column: Address
+        addressshortname:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: AddressShortName
+        streetnameid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: StreetNameID
+        pobox:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: POBOX
+        lot:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: false
+            column: Lot
+        adressnr:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AdressNR
+        addressletter:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+            column: AddressLetter
+        apt:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: false
+            column: Apt
+        bcp:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: BCP
+        gakaddressOld:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: GAKAddress_old
+        streetnameidOld:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: StreetNameID_old
+        addressnumberOld:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AddressNumber_old
+        addressletterOld:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: AddressLetter_old
+        addressextrainfoOld:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: AddressExtraInfo_old
+        addresscodeOld:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: AddressCode_old
+        addressisuninhabited:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: AddressIsUninhabited
+        occupants:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Occupants
+        bussinessname:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: BussinessName
+        addresstype:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AddressType
+        addresssubtypeid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AddressSubTypeID
+        statusid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: StatusID
+        deceased:
+            type: boolean
+            nullable: true
+        postalcode:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: PostalCode
+        takencareby:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: TakenCareBy
+        sysUseropnemer:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: sys_UserOpnemer
+        sysIndate:
+            type: datetime
+            nullable: true
+            column: sys_InDate
+        sysInuser:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: sys_InUser
+        lastchangeuser:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LastChangeUser
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: NotActive
+    lifecycleCallbacks: {  }

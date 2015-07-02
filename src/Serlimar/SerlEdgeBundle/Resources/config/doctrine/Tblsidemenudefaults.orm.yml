@@ -1,0 +1,313 @@
+Serlimar\SerlEdgeBundle\Entity\Tblsidemenudefaults:
+    type: entity
+    table: tblsidemenudefaults
+    uniqueConstraints:
+        ID_UNIQUE:
+            columns:
+                - ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        showheader:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ShowHeader
+        headertext:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: HeaderText
+        headeralignment:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HeaderAlignment
+        headerfontname:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: HeaderFontName
+        headerfontsize:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HeaderFontSize
+        headerfontbold:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HeaderFontBold
+        headerfontcolor:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HeaderFontColor
+        headerfontitalic:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HeaderFontItalic
+        headerfontunderline:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HeaderFontUnderLine
+        headerfontstrikethrough:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HeaderFontStrikethrough
+        headerheight:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HeaderHeight
+        headerfilleffect:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: HeaderFillEffect
+        headerfilleffectcolor1:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HeaderFillEffectColor1
+        headerfilleffectcolor2:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HeaderFillEffectColor2
+        headerfilleffectcolor3:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HeaderFillEffectColor3
+        headerfilleffectcolor4:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HeaderFillEffectColor4
+        headerfilleffectdirection:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HeaderFillEffectDirection
+        headerfilleffectextrawide:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HeaderFillEffectExtraWide
+        headerhighlightsoftcolor:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HeaderHighlightSoftColor
+        headerhighlightcolor:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: HeaderHighlightColor
+        headerhighlightbold:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HeaderHighlightBold
+        headerhighlightunderline:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: HeaderHighlightUnderline
+        showquiticon:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ShowQuitIcon
+        showfooter:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ShowFooter
+        footertext:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: FooterText
+        footeralignment:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FooterAlignment
+        footerfontname:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: FooterFontName
+        footerfontsize:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FooterFontSize
+        footerfontbold:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FooterFontBold
+        footerfontcolor:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FooterFontColor
+        footerfontitalic:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FooterFontItalic
+        footerfontunderline:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FooterFontUnderLine
+        footerfontstrikethrough:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FooterFontStrikethrough
+        footerheight:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FooterHeight
+        footerfilleffect:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: FooterFillEffect
+        footerfilleffectcolor1:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FooterFillEffectColor1
+        footerfilleffectcolor2:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FooterFillEffectColor2
+        footerfilleffectcolor3:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FooterFillEffectColor3
+        footerfilleffectcolor4:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FooterFillEffectColor4
+        footerfilleffectdirection:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FooterFillEffectDirection
+        footerfilleffectextrawide:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FooterFillEffectExtraWide
+        footerhighlightsoftcolor:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FooterHighlightSoftColor
+        footerhighlightcolor:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: FooterHighlightColor
+        footerhighlightbold:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FooterHighlightBold
+        footerhighlightunderline:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FooterHighlightUnderline
+    lifecycleCallbacks: {  }

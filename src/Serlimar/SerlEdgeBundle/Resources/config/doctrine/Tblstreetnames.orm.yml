@@ -1,0 +1,190 @@
+Serlimar\SerlEdgeBundle\Entity\Tblstreetnames:
+    type: entity
+    table: tblstreetnames
+    indexes:
+        StreetName:
+            columns:
+                - StreetName
+        StreetNameCode:
+            columns:
+                - StreetNameCode
+        StreetName1:
+            columns:
+                - StreetName1
+        StreetName2:
+            columns:
+                - StreetName2
+        StreetName3:
+            columns:
+                - StreetName3
+        StreetName4:
+            columns:
+                - StreetName4
+    id:
+        streetnameid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: StreetNameID
+            generator:
+                strategy: IDENTITY
+    fields:
+        guid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: GUID
+        streetnameshortname:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+            column: StreetNameShortName
+        streetnamecode:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: StreetNameCode
+        streetname:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: StreetName
+        streetname1:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: StreetName1
+        streetname2:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: StreetName2
+        streetname3:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: StreetName3
+        streetname4:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: StreetName4
+        region:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Region
+        zone:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Zone
+        streetnameLinktext:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: StreetName_linkText
+        note:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Note
+        inuser:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: InUser
+        indate:
+            type: datetime
+            nullable: true
+            column: InDate
+        district:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: District
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: NotActive
+    lifecycleCallbacks: {  }

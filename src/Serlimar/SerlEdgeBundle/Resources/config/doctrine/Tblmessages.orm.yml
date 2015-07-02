@@ -1,0 +1,103 @@
+Serlimar\SerlEdgeBundle\Entity\Tblmessages:
+    type: entity
+    table: tblmessages
+    id:
+        messageid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: MessageID
+            generator:
+                strategy: IDENTITY
+    fields:
+        message:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Message
+        msgbegindate:
+            type: datetime
+            nullable: true
+            column: MsgBeginDate
+        msgenddate:
+            type: datetime
+            nullable: true
+            column: msgEndDate
+        msguser:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: msgUser
+        msgcolor:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: msgColor
+        postedby:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: PostedBy
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        timestamp:
+            type: datetime
+            nullable: true
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: NotActive
+    lifecycleCallbacks: {  }

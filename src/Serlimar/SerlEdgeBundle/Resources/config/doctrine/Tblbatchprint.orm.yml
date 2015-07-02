@@ -1,0 +1,74 @@
+Serlimar\SerlEdgeBundle\Entity\Tblbatchprint:
+    type: entity
+    table: tblbatchprint
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        period:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: Period
+        batch:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: Batch
+        select:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: Select
+        streetnameid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: StreetnameID
+        streetname:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Streetname
+        pages:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: Pages
+        executed:
+            type: datetime
+            nullable: true
+            column: Executed
+        completed:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: Completed
+        printer:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Printer
+    lifecycleCallbacks: {  }

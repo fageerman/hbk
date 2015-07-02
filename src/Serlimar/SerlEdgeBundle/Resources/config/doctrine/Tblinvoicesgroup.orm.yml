@@ -1,0 +1,116 @@
+Serlimar\SerlEdgeBundle\Entity\Tblinvoicesgroup:
+    type: entity
+    table: tblinvoicesgroup
+    id:
+        invoicegoupid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: InvoiceGoupID
+            generator:
+                strategy: IDENTITY
+    fields:
+        customerid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CustomerID
+        invoicenumber:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: InvoiceNumber
+        invoicemonth:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: InvoiceMonth
+        invoiceserviceid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: InvoiceServiceID
+        invoiceservicedescription:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: InvoiceServiceDescription
+        duedate:
+            type: datetime
+            nullable: true
+            column: DueDate
+        amount:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Amount
+        costs:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Costs
+        tax:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Tax
+        totalamount:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: TotalAmount
+        balance:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Balance
+        batchid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: BatchID
+        invoicestatusid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: InvoiceStatusID
+        sysCreateddate:
+            type: datetime
+            nullable: true
+            column: sys_CreatedDate
+        sysTrimester:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: sys_Trimester
+        sysTrimestersub:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: sys_TrimesterSub
+        sysYear:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: sys_Year
+    lifecycleCallbacks: {  }

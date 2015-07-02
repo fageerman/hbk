@@ -1,0 +1,29 @@
+Serlimar\SerlEdgeBundle\Entity\SysMonths:
+    type: entity
+    table: sys_months
+    id:
+        monthsid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: MonthsID
+            generator:
+                strategy: IDENTITY
+    fields:
+        monthEng:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Month_Eng
+        monthNed:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Month_Ned
+    lifecycleCallbacks: {  }

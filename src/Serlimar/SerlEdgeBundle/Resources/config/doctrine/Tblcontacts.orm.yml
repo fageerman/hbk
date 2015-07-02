@@ -1,0 +1,120 @@
+Serlimar\SerlEdgeBundle\Entity\Tblcontacts:
+    type: entity
+    table: tblcontacts
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        companyguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: CompanyGUID
+        salutationguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: SalutationGUID
+        contactname:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: ContactName
+        functionguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: FunctionGUID
+        phone:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Phone
+        email:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: Email
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: NotActive
+    lifecycleCallbacks: {  }

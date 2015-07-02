@@ -1,0 +1,49 @@
+Serlimar\SerlEdgeBundle\Entity\RefTranslationGokSerlimar:
+    type: entity
+    table: ref_translation_gok_serlimar
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        straatkodeGba:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: 'Straatkode Gba'
+        straatnaam:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Straatnaam
+        straatnaamLnk:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Straatnaam_lnk
+        straatnaamPost:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: StraatNaam_POST
+        ssmaTimestamp:
+            type: blob
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: SSMA_TimeStamp
+    lifecycleCallbacks: {  }

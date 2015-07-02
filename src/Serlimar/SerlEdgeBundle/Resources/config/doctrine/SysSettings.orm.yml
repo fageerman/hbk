@@ -1,0 +1,21 @@
+Serlimar\SerlEdgeBundle\Entity\SysSettings:
+    type: entity
+    table: sys_settings
+    id:
+        settingsid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: SettingsID
+            generator:
+                strategy: IDENTITY
+    fields:
+        invDueday:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: inv_DueDay
+    lifecycleCallbacks: {  }

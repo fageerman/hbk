@@ -1,0 +1,123 @@
+Serlimar\SerlEdgeBundle\Entity\RefLayout:
+    type: entity
+    table: ref_layout
+    id:
+        layoutid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: LayoutID
+            generator:
+                strategy: IDENTITY
+    fields:
+        grp:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Grp
+        id:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ID
+        value:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Value
+        description:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Description
+        sort:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Sort
+        form:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Form
+        report:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Report
+        control:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: Control
+        property:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Property
+        default:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Default
+        setup:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: Setup
+        option:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Option
+        xtraoption:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: XtraOption
+        xtraoption2:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: XtraOption2
+        language:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: Language
+        ssmaTimestamp:
+            type: blob
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: SSMA_TimeStamp
+    lifecycleCallbacks: {  }

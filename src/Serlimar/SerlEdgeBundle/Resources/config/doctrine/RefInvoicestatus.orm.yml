@@ -1,0 +1,22 @@
+Serlimar\SerlEdgeBundle\Entity\RefInvoicestatus:
+    type: entity
+    table: ref_invoicestatus
+    id:
+        invoicestatusid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: InvoiceStatusID
+            generator:
+                strategy: IDENTITY
+    fields:
+        status:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Status
+    lifecycleCallbacks: {  }

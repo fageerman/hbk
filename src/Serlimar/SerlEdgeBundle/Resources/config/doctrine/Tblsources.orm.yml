@@ -1,0 +1,119 @@
+Serlimar\SerlEdgeBundle\Entity\Tblsources:
+    type: entity
+    table: tblsources
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+                default: ''
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        sourceid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: SourceID
+        source:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: Source
+        description:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: Description
+        addressid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AddressID
+        addressguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: AddressGUID
+        address:
+            type: string
+            nullable: true
+            length: 75
+            options:
+                fixed: false
+            column: Address
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: NotActive
+    lifecycleCallbacks: {  }

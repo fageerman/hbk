@@ -1,0 +1,171 @@
+Serlimar\SerlEdgeBundle\Entity\Tblusers:
+    type: entity
+    table: tblusers
+    indexes:
+        FirstName:
+            columns:
+                - FirstName
+        LastName:
+            columns:
+                - LastName
+        Username:
+            columns:
+                - Username
+    id:
+        userid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: UserID
+            generator:
+                strategy: IDENTITY
+    fields:
+        firstname:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: FirstName
+        lastname:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: LastName
+        username:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: Username
+        password:
+            type: string
+            nullable: true
+            length: 254
+            options:
+                fixed: false
+            column: Password
+        salt:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+        useraccesslevel:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: userAccessLevel
+        shortname:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: Shortname
+        nota:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Nota
+        loggedin:
+            type: datetime
+            nullable: true
+            column: LoggedIN
+        computername:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: ComputerName
+        firma:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Firma
+        functie:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: Functie
+        kickout:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: Kickout
+        kickouttime:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: KickoutTime
+        kickoutmessage:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: KickoutMessage
+        memo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Memo
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: NotActive
+    lifecycleCallbacks: {  }

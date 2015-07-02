@@ -1,0 +1,168 @@
+Serlimar\SerlEdgeBundle\Entity\Tblitemdefaults:
+    type: entity
+    table: tblitemdefaults
+    indexes:
+        MenuItemID:
+            columns:
+                - MenuItemID
+    uniqueConstraints:
+        MenuItemID_UNIQUE:
+            columns:
+                - MenuItemID
+    id:
+        menuitemid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: MenuItemID
+            generator:
+                strategy: IDENTITY
+    fields:
+        default:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: Default
+        iteminterval:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '50'
+            column: ItemInterval
+        itemhighlightsoftcolor:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ItemHighlightSoftColor
+        itemhighlightcolor:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ItemHighlightColor
+        itemhighlightbold:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ItemHighlightBold
+        itemhighlightunderline:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ItemHighlightUnderline
+        itemalignment:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ItemAlignment
+        itemfontname:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+                default: Tahoma
+            column: ItemFontName
+        itemfontsize:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '8'
+            column: ItemFontSize
+        itemfontbold:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ItemFontBold
+        itemfontcolor:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: ItemFontColor
+        itemfontitalic:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ItemFontItalic
+        itemfontunderline:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ItemFontUnderLine
+        itemfontstrikethrough:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ItemFontStrikethrough
+        itempanefilleffect:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+                default: 'Solid Color'
+            column: ItemPaneFillEffect
+        filleffectcolor1:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '16777215'
+            column: FillEffectColor1
+        filleffectcolor2:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '16777215'
+            column: FillEffectColor2
+        filleffectcolor3:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '16777215'
+            column: FillEffectColor3
+        filleffectcolor4:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '16777215'
+            column: FillEffectColor4
+        filleffectdirection:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FillEffectDirection
+        filleffectextrawide:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: FillEffectExtraWide
+        itemhandcursor:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: ItemHandCursor
+    lifecycleCallbacks: {  }
