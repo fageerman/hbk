@@ -16,7 +16,7 @@ class MenuBuilder extends ContainerAware
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->addChild('Add payement', array('route' => 'serlimar_serledge_create_payment'));
+        $menu->addChild('Add Payment', array('route' => 'serlimar_serledge_create_payment'));
         $menu->addChild('Payment Overview', array('route' => 'serlimar_serledge_payment'));
         $menu->addChild('Customer', array('route' => 'serlimar_serledge_customer'));
 //        $menu->addChild('Customer', array('route' => 'serlimar_serl_edge_payment'));
