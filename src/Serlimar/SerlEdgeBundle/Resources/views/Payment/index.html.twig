@@ -3,5 +3,43 @@
 {% block title %}{{ parent() }} - {{ subTitle }}{% endblock %}
 {% block subtitle %} {{ subTitle }} {% endblock%}
 {% block content %}
-    the payment overview grid
+        
+    {% if payments is defined and payments is not empty %} 
+        <div class="table-responsive">
+            <div>
+                {{ pagination.getTotalItemCount }} results
+            </div>
+            <table class="table">
+                    <thead>
+                            <tr>	
+                                    <td>Payment Date</td>
+                                    <td>Payment Method</td>
+                                    <td>Amount (Afl)</td>
+                                    <td>Customer</td>
+                                    <td>Inserted By</td>
+                                    <td></td>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        {% for payment in payments %}
+                            <tr>
+                                <td>{{ payment.paymentdate| date('d-m-Y') }}</td> 
+                                <td>{{ payment.paymentmethod }}</td>
+                                <td>{{ payment.amount|number_format(2, '.', ',') }}</td>
+                                <td>{{ payment.firstname }} {{ payment.name }}</td>
+                                <td>{{ payment.insertuser }}</td>
+                                <td><span class="glyphicon glyphicon-print"></span></td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>  
+        </div>
+        
+    {% elseif customers is defined and customers is empty %}
+        No customers found with the provided birthdate.    
+    {% endif %}
+   {# </div>#}
 {% endblock %}
