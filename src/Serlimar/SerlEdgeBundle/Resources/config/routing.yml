@@ -1,3 +1,7 @@
+serlimar_serledge_home:
+    path:     /
+    defaults: { _controller: SerlimarSerlEdgeBundle:Default:index }
+
 serlimar_serledge_payment:
     path:     /payment
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:index }
@@ -7,12 +11,23 @@ serlimar_serledge_create_payment:
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:create }
 
 serlimar_serledge_update_payment:
-    path:     /payment/update
+    path:     /payment/{id}/update
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:update }
+    methods:  [GET,POST]
+    condition: "request.isXMLHttpRequest()"
 
 serlimar_serledge_delete_payment:
-    path:     /payment/delete
+    path:     /payment/{id}/delete
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:delete }
+
+serlimar_serledge_show_payment:
+    path:     /payment/{id}/show
+    defaults: { _controller: SerlimarSerlEdgeBundle:Payment:show }
+    methods:  [GET]
+    
+serlimar_serledge_receipt_payment:
+    path:     /payment/{id}/receipt
+    defaults: { _controller: SerlimarSerlEdgeBundle:Payment:receipt }
     
 serlimar_serledge_customer:
     path:     /customer
