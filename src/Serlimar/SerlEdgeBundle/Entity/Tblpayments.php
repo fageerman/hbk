@@ -3,22 +3,20 @@
 namespace Serlimar\SerlEdgeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
-/**
+
+/*
  * Tblpayments
- *
- * @ORM\Table(name="tblpayments", indexes={@ORM\Index(name="$PaymentDate", columns={"PaymentDate"}), @ORM\Index(name="$CustomerGUID", columns={"CustomerGUID"}), @ORM\Index(name="$LoactionGUID", columns={"LocationGUID"}), @ORM\Index(name="$InsertUser", columns={"InsertUser"}), @ORM\Index(name="$PaymentID", columns={"PaymentsID"})})
+ * @ORM\Table(name="tblpayments", indexes={@ORM\Index(name="$PaymentDate", columns={"PaymentDate"}), @ORM\Index(name="$CustomerGUID", columns={"CustomerGUID"}), @ORM\Index(name="$LocationGUID", columns={"LocationGUID"}), @ORM\Index(name="$InsertUser", columns={"InsertUser"}), @ORM\Index(name="$PaymentID", columns={"PaymentsID"})})
  * @ORM\Entity
  */
 class Tblpayments
 {
     /**
-     * @var string
-     *
-     * @ORM\Column(name="GUID", type="string", length=40)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
+    * @var string
+    * @ORM\Column(name="GUID", type="string")
+    */
     private $guid;
 
     /**
@@ -30,7 +28,9 @@ class Tblpayments
 
     /**
      * @var string
-     * @ManyToOne(targetEntity="Tblcustomers", inversedBy="guid")
+     * @Assert\NotBlank(
+     *      message="Enter a valid customer nr."
+     *      )
      * @ORM\Column(name="CustomerGUID", type="string", length=45, nullable=true)
      */
     private $customerguid;
@@ -51,10 +51,16 @@ class Tblpayments
 
     /**
      * @var float
-     *
-     * @ORM\Column(name="Amount", type="float", precision=10, scale=0, nullable=true)
+     * @Assert\NotNull(
+     *     message="Enter a valid amount."
+     * )
+     * @Assert\Regex(
+     *     pattern="/^\d+(\.([0-9]){1,2})?$/",
+     *     message="Enter a valid amount.."
+     * )
+     * @ORM\Column(name="Amount", type="float", precision=2, scale=0, nullable=true)
      */
-    private $amount = '0';
+    private $amount;
 
     /**
      * @var float
@@ -72,14 +78,18 @@ class Tblpayments
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(
+     *  message="Choose a payment method."
+     * )
      * @ORM\Column(name="PaymentMethod", type="string", length=40, nullable=true)
      */
     private $paymentmethod;
 
     /**
      * @var integer
-     *
+     * @Assert\NotNull(
+     *     message="Enter a valid invoice nr."
+     * )
      * @ORM\Column(name="InvoiceNr", type="integer", nullable=true)
      */
     private $invoicenr;
@@ -110,7 +120,7 @@ class Tblpayments
      *
      * @ORM\Column(name="Confirmed", type="boolean", nullable=true)
      */
-    private $confirmed = 'b\'0\'';
+    private $confirmed = 0;
 
     /**
      * @var string
@@ -122,9 +132,9 @@ class Tblpayments
     /**
      * @var string
      *
-     * @ORM\Column(name="LocationGUID", type="string", length=40, nullable=true)
+     * @ORM\Column(name="LoactionGUID", type="string", length=40, nullable=true)
      */
-    private $locationguid;
+    private $loactionguid;
 
     /**
      * @var string
@@ -138,7 +148,7 @@ class Tblpayments
      *
      * @ORM\Column(name="TimeStamp", type="datetime", nullable=true)
      */
-    private $timestamp = 'CURRENT_TIMESTAMP';
+    private $timestamp;
 
     /**
      * @var \DateTime
@@ -185,17 +195,25 @@ class Tblpayments
     /**
      * @var string
      *
-     * @ORM\Column(name="LoactionGUID", type="string", length=40, nullable=true)
+     * @ORM\Column(name="LocationGUID", type="string", length=40, nullable=true)
      */
-    private $loactionguid;
+    private $locationguid;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="NotActive", type="boolean", nullable=true)
      */
-    private $notactive = 'b\'0\'';
+    private $notactive = 0;
 
+
+    
+    
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+    
     
     public function getPaymentDate()
     {
@@ -205,6 +223,11 @@ class Tblpayments
     public function getPaymentMethod()
     {
         return $this->paymentmethod;
+    }
+    
+    public function getPaymentId()
+    {
+        return $this->paymentsid;
     }
     
     public function getAmount()
@@ -222,5 +245,79 @@ class Tblpayments
         return $this->insertuser;
     }
     
+    public function getInvoicenr()
+    {
+        return $this->invoicenr;
+    }
+    
+    public function getNote()
+    {
+        return $this->note;
+    }
+    
+    public function setPaymentDate($paymentdate)
+    {
+        $this->paymentdate = $paymentdate;
+    }
+    
+    public function setPaymentMethod($paymentmethod)
+    {
+        $this->paymentmethod = $paymentmethod;
+    }
+    
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+    }
+    
+    public function setCustomerGuid($customerguid)
+    {
+        $this->customerguid = $customerguid;
+    }
+    
+    public function setInsertUser($insertuser)
+    {
+        $this->insertuser = $insertuser;
+    }
+    
+    public function setInvoicenr($invoicenr)
+    {
+        $this->invoicenr = $invoicenr;
+    }
+    
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+    
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+    
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+    }
+    
+    public function setGuid($guid)
+    {
+        $this->guid = $guid;
+    }
+    
+    public function setPaymentsId($paymentsid)
+    {
+        $this->paymentsid = $paymentsid;
+    }
+    
+    public function setUserActionDate($actionDate)
+    {
+        $this->useractiondate = $actionDate;
+    }
+    
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
 }
 
