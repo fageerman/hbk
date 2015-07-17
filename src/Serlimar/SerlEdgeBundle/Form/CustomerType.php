@@ -19,8 +19,9 @@ class CustomerType extends AbstractType
             ->add('birthdate','date',array(
                 'widget' => 'single_text',
                 'format' => 'dd-MM-yyyy',
+                'attr' => array('placeholder' => 'dd-mm-yyyy')
              ))
-            ->add('search', 'submit');
+            ->add('search', 'submit', array('attr'=>array('class'=>'btn  btn-primary')));
     }
 
     public function getName()

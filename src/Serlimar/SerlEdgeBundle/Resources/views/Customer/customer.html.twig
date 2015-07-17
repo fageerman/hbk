@@ -1,29 +1,23 @@
 {% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
 {% set subTitle = "Customer"%}
 {% block title %}{{ parent() }} - {{ subTitle }}{% endblock %}
 {% block subtitle %} {{ subTitle }} {% endblock%}
 {% block content %}
     
-
-    {#We put the label for birthdate here, for styling purpose. #}
+<div class="col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-2 main">       
+   
     
+    <h2 class="sub-headsr">{{ subTitle }}</h2>
     
-    {{ form_start(form) }}
-        {{ form_errors(form) }}
-        
-        <div class="form-group col-sm-6">
-            {{ form_label(form.birthdate) }}
-            {{ form_errors(form.birthdate,{ 'attr': {'class': 'error' }}) }}
-            {{ form_widget(form.birthdate, { 'attr': {'class': 'form-control', 'placeholder' : 'dd-mm-yyyy'} }) }}
-        </div>
-        <div class="form-group col-sm-10">
-            {{ form_widget(form.search, { 'attr': {'class': 'btn  btn-primary', 'required':'required'}} ) }}
-        </div>
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+  
 
     {{ form_end(form) }}
 
     <div class="clearfix"></div>
-    <div class="table-responsive col-sm-12">
+    <div class="table-responsive">
         
     {% if customers is defined and customers is not empty %} 
         
@@ -49,4 +43,5 @@
         No customers found with the provided birthdate.    
     {% endif %}
     </div>
+</div>
 {% endblock %}

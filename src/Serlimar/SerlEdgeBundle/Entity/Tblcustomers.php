@@ -66,10 +66,13 @@ class Tblcustomers
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="BirthDate", type="datetime", nullable=true)
-     * @Assert\NotBlank()
-     * @Assert\Type("\DateTime")
+     * @Assert\NotNull(
+     *      message="Enter a valid date."
+     * )
+     * @Assert\DateTime(
+     *      message="Not a valid date."
+     * )
+     * @ORM\Column(name="BirthDate", type="datetime")
      */
     private $birthdate;
 
@@ -351,7 +354,7 @@ class Tblcustomers
      *
      * @ORM\Column(name="TimeStamp", type="datetime", nullable=true)
      */
-    private $timestamp = 'CURRENT_TIMESTAMP';
+    private $timestamp;
 
     /**
      * @var \DateTime
@@ -416,6 +419,11 @@ class Tblcustomers
     public function getName()
     {
         return $this->name;
+    }
+    
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
     }
     
 }

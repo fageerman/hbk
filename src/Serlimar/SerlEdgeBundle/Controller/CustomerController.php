@@ -13,7 +13,8 @@ namespace Serlimar\SerlEdgeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Serlimar\SerlEdgeBundle\Form\CustomerType;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\HttpFoundation\Request;
+use Serlimar\SerlEdgeBundle\Entity\Tblcustomers;
 
 class CustomerController extends Controller
 {
@@ -21,21 +22,17 @@ class CustomerController extends Controller
     /**
      *  Show the payment registration records.
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {   
-    
-        
-        $form = $this->createForm(new CustomerType());
-        
-        
-        $request = $this->get('request');
+        $customer = new Tblcustomers();
+        $form = $this->createForm(new CustomerType(),$customer);
         $form->handleRequest($request);
-        
+        //var_dump($form->getData());die;
         if($request->getMethod() == 'POST')
         {
             if($form->isValid())
             {
-                $birthdate = $form->getData()['birthdate'];
+                $birthdate = $form->getData()->getBirthdate();
                 //Search for customers with the provided birthdate.
 //                var_dump($birthdate);
 //                echo $birthdate->getDate(); die;
