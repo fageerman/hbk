@@ -1,7 +1,26 @@
 {% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
 {% set subTitle = "Create Payment"%}
-{% block title %}{{ parent() }} - {{ subTitle }}{% endblock %}
+
 {% block subtitle %} {{ subTitle }} {% endblock%}
 {% block content %}
-    the payment form
+<div class="col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-2 main">       
+    
+    <h2 class="sub-headsr">{{ subTitle }}</h2>
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-message alert alert-success">
+        {{ flashMessage }}
+    </div>
+     <script>
+         $('.flash-message').delay(5000).fadeOut();
+     </script>
+    {% endfor %}
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+  
+
+    
+    {{ form_end(form) }}
+</div>
 {% endblock %}
