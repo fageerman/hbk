@@ -27,7 +27,7 @@ Serlimar\SerlEdgeBundle\Entity\Tblpayments:
             id: true
             column: GUID
             generator:
-                strategy: IDENTITY
+                strategy: UUID
     fields:
         paymentsid:
             type: float
@@ -113,7 +113,7 @@ Serlimar\SerlEdgeBundle\Entity\Tblpayments:
             type: boolean
             nullable: true
             options:
-                default: 'b''0'''
+                default: true
             column: Confirmed
         note:
             type: text
@@ -189,6 +189,6 @@ Serlimar\SerlEdgeBundle\Entity\Tblpayments:
             type: boolean
             nullable: true
             options:
-                default: 'b''0'''
+                default: false
             column: NotActive
     lifecycleCallbacks: {  }
