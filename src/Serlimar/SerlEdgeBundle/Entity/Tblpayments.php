@@ -90,6 +90,12 @@ class Tblpayments
      * @Assert\NotNull(
      *     message="Enter a valid invoice nr."
      * )
+     * @Assert\Length(
+     *   min= 1,
+     *   max= 11,
+     *      minMessage="Enter a valid invoice nr.",
+     *      maxMessage="Enter a valid invoice nr."
+     * )    
      * @ORM\Column(name="InvoiceNr", type="integer", nullable=true)
      */
     private $invoicenr;
