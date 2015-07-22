@@ -31,8 +31,8 @@ class PaymentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('customerguid','text', array('label'=>'Customer Nr','attr'=>array('placeholder' => 'Scan barcode')))
-            ->add('invoicenr','integer', array('label'=>'Invoice Nr', 'attr'=>array('placeholder' => 'Scan barcode')))
+            ->add('customerguid','integer', array('label'=>'Customer Id','attr'=>array('placeholder' => 'Scan barcode')))
+            ->add('invoicenr','integer', array('label'=>'Invoice Nr', 'attr'=>array('type'=>'integer', 'placeholder' => 'Scan barcode')))
             ->add('paymentmethod', 'choice', array(
                     'label' => 'Payment method',
                     'placeholder' => 'Choose a method',
