@@ -28,14 +28,13 @@ class CustomerNrToGuidTransformer implements DataTransformerInterface
     public function transform($customerguid)
     {
         if (!$customerguid) {
-            return "";
+            return null;
         }
 
-        $customerguidResult = $this->em->createQuery('SELECT c.customerno FROM SerlimarSerlEdgeBundle:Tblcustomers c WHERE c.guid = :guid')
+        $customerguidResult = $this->em->createQuery('SELECT c.customerid FROM SerlimarSerlEdgeBundle:Tblcustomers c WHERE c.guid = :guid')
             ->setParameter('guid',$customerguid)->getResult();
-        $customerNr = (empty($customerguidResult))? "": $customerguidResult[0]['customerno'];
-       // echo $customerNr;
-        return $customerNr;
+        $customerId = (empty($customerguidResult))? null: $customerguidResult[0]['customerid'];
+        return $customerId;
     }
 
     /**
@@ -43,17 +42,16 @@ class CustomerNrToGuidTransformer implements DataTransformerInterface
      *
      * @param  string customernr
      * @return string
-     * @throws TransformationFailedException if object (issue) is not found.
      */
-    public function reverseTransform($customernr)
+    public function reverseTransform($customerid)
     {
        
-        if (null === $customernr) {
-            return "";
+        if (null === $customerid) {
+            return null;
         }
         
-        $customerguidResult = $this->em->createQuery('SELECT c.guid FROM SerlimarSerlEdgeBundle:Tblcustomers c WHERE c.customerno = :customerNo')
-                ->setParameter('customerNo',$customernr)->getResult();
+        $customerguidResult = $this->em->createQuery('SELECT c.guid FROM SerlimarSerlEdgeBundle:Tblcustomers c WHERE c.customerid = :customerid')
+                ->setParameter('customerid',$customerid)->getResult();
         $customerGuid = (empty($customerguidResult))? null: $customerguidResult[0]['guid'];
         return $customerGuid;
 
