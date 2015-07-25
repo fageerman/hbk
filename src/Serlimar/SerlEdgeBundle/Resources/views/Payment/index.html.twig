@@ -3,6 +3,12 @@
 {% block title %}{{ parent() }} - {{ subTitle }}{% endblock %}
 
 {% block content %}
+    
+    {% set currentPath = path(app.request.attributes.get('_route'),
+            app.request.attributes.get('_route_params')) 
+    %}
+
+
 <div class="col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2 main">       
     
     <h2 class="sub-headsr">{{ subTitle }}</h2>
@@ -11,9 +17,7 @@
     <div class="flash-message alert alert-success">
         {{ flashMessage }}
     </div>
-     <script>
-         $('.flash-message').delay(5000).fadeOut();
-     </script>
+   
     {% endfor %}
      
     {% if payments is defined and payments is not empty %} 
@@ -24,7 +28,7 @@
             <table class="table">
                     <thead>
                         <tr>	
-                            <td>Id</td>
+                            <td>ID</td>
                             <td>Date</td>
                             <td>Method</td>
                             <td>Amount (Afl)</td>
@@ -43,16 +47,20 @@
                                 <td>{{ payment.firstname }} {{ payment.name }}</td>
                                 <td>{{ payment.insertuser }}</td>
                                 <td>
-                                    <button onclick="getPayment(this.id);" id="{{ payment.paymentsid }}" type="button" class="btn btn-default" aria-label="Edit">
+                                    <a class="btn" aria-label="Print"
+                                       data-toggle="tooltip" data-placement="top" title="View">
+                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                    </a>
+                                    <a onclick="getPayment(this.id);" id="{{ payment.paymentsid }}"  class="btn" aria-label="Edit"
+                                       data-toggle="tooltip" data-placement="Edit" title="Edit">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                    </button>
-                                    <button onclick="confirmDelete('Delete payment {{ payment.paymentsid }}?' ,'{{ path('serlimar_serledge_delete_payment',{'id': payment.paymentsid })}}');" type="button" class="btn btn-default" aria-label="Delete">
+                                    </a>
+                                    <a onclick="return confirm('Delete payment {{ payment.paymentsid }}?');" aria-label="Delete"
+                                       data-toggle="tooltip" data-placement="top" title="Delete"
+                                       href="{{ path('serlimar_serledge_delete_payment',{'id': payment.paymentsid })}}"
+                                       >
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default" aria-label="Print">
-                                        <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
-                                    </button>
-                                    
+                                    </a>
                                 </td>
                             </tr>
                         {% endfor%}

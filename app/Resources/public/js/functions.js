@@ -56,10 +56,3 @@ $("form").submit(function(e)
  
 $("form").submit(); //Submit  the FORM
 }
-
-function confirmDelete(msg, url) {
-	var answer = confirm(msg);
-	if (answer){
-		window.location = url;
-	}
-}	

@@ -157,6 +157,8 @@ class PaymentController extends Controller
      */
     public function deleteAction(Request $request,$id)
     {
+        
+        $referer = $request->headers->get('referer');
 //        echo $request->getRequestUri() . "<br>";
 //        echo $request->getUri() . "<br>";die;
         $em = $this->getDoctrine()->getManager();
@@ -172,7 +174,7 @@ class PaymentController extends Controller
         }
             
         
-        return $this->redirectToRoute('serlimar_serledge_payment');
+        return $this->redirect($referer);
     }
     
     /*
