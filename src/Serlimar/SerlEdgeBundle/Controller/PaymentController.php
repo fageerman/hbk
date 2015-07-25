@@ -33,6 +33,7 @@ class PaymentController extends Controller
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
                 . ' WHERE p.insertuser = :insertuser'
+                . ' AND p.paymentsid is not null'
                 . ' ORDER BY p.timestamp DESC'
                 )->setParameter('insertuser', $this->getUser()->getUsername());
       
@@ -131,10 +132,11 @@ class PaymentController extends Controller
                 'form' => $form->createView()
                 )
         );
-        
     }
-    
-    public function getPaymentAction($id)
+    /*
+     * Show the payment with the requested id
+     */
+    public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $payment = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblpayments')->findBy(array('paymentsid'=> $id));
@@ -153,8 +155,10 @@ class PaymentController extends Controller
     /**
      *  Delete a payment registration record.
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request,$id)
     {
+//        echo $request->getRequestUri() . "<br>";
+//        echo $request->getUri() . "<br>";die;
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery(
                 'DELETE FROM SerlimarSerlEdgeBundle:Tblpayments p WHERE p.paymentsid = :paymentsid'
