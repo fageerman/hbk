@@ -17,9 +17,8 @@ class CustomerType extends AbstractType
     {
         $builder
             ->add('birthdate','date',array(
-                'widget' => 'single_text',
-                'format' => 'dd-MM-yyyy',
-                'attr' => array('placeholder' => 'dd-mm-yyyy')
+                'placeholder' => array('day' => 'Day','month' => 'Month', 'year' => 'Year' ),
+                'years'=> range(2000, 1900),
              ))
             ->add('search', 'submit', array('attr'=>array('class'=>'btn  btn-primary')));
     }
