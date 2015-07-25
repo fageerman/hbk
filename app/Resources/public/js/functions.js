@@ -32,18 +32,22 @@ $("form").submit(function(e)
         data : postData,
         success:function(data, textStatus, jqXHR) 
         {
+            //The payment is updated
             if('saved' === data)
             {
                  $('#myModal .modal-content').modal('hide');
                  location.reload();
-            }else{
+                 
+            }
+            //The form has errors and has to be shown with the errors.
+            else{
                   $('#myModal .modal-content').empty();
                   $('#myModal .modal-content').append(data);
             }
         },
         error: function(jqXHR, textStatus, errorThrown) 
         {
-            alert('fail');    
+            alert('Update has failed');    
         }
     });
     e.preventDefault(); //STOP default action
