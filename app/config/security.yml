@@ -1,6 +1,7 @@
 security:
     encoders:
-        Serlimar\SerlEdgeBundle\Entity\SerlimarUser: plaintext
+        Serlimar\SerlEdgeBundle\Entity\SerlimarUser: 
+            algorithm: bcrypt
             #algorithm: false
 #            encode_as_base64: false
 #            iterations: 1
