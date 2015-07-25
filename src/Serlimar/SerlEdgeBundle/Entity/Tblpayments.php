@@ -96,7 +96,7 @@ class Tblpayments
      *      minMessage="Enter a valid invoice nr.",
      *      maxMessage="Enter a valid invoice nr."
      * )    
-     * @ORM\Column(name="InvoiceNr", type="integer", nullable=true)
+     * @ORM\Column(name="InvoiceNr", type="integer")
      */
     private $invoicenr;
 

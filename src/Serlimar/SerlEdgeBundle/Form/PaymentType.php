@@ -12,6 +12,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\ORM\EntityManager;
 use Serlimar\SerlEdgeBundle\DataTransformer\CustomerNrToGuidTransformer;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+
 
 class PaymentType extends AbstractType
 {
@@ -49,6 +52,19 @@ class PaymentType extends AbstractType
         $builder->get('customerguid')
             ->addModelTransformer(new CustomerNrToGuidTransformer($this->em));
         
+        //Check if the provided invoice number is a valid invoice number.
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+            $data = $event->getData();
+            $form = $event->getForm();
+            $invoiceNr = $data['invoicenr'];
+                       
+            $invoiceResult = $this->em->createQuery('SELECT i.invoicenumber FROM SerlimarSerlEdgeBundle:Tblinvoices i WHERE i.invoicenumber = :invoicenumber and i.invoicenumber != 0')
+            ->setParameter('invoicenumber',$invoiceNr)->getResult();
+            
+            $invoiceNumber = (empty($invoiceResult))? "": $invoiceNr;
+            $data['invoicenr']=$invoiceNumber;
+            $event->setData($data);
+        });
     }
 
     public function getName()
