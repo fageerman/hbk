@@ -3,6 +3,7 @@
 {% block body %}
 
     {% block nav %}
+    <div class="non-printable">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -25,14 +26,17 @@
     {% endblock %}
      
     <div class="container-fluid">
-      <div class="row">  
-        <div class="col-sm-2 col-md-2 sidebar">
-           {{ knp_menu_render('main') }}
-        </div>
+        <div class="row">  
+            <div class="col-sm-2 col-md-2 sidebar">
+               {{ knp_menu_render('main') }}
+            </div>
             {% block content %}
 
             {% endblock %}
         </div>
 			
-      </div>
+    </div>
+    </div>
+    {% include '_modal.html.twig' %} 
+   
 {% endblock %}

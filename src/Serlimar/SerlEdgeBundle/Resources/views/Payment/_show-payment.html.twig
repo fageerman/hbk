@@ -1,0 +1,39 @@
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Payment {{ payment.paymentsid }}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="printable">
+                
+                <h4>Payment ID</h4>
+                {{ payment.paymentsid }}
+                <h4>Date</h4>
+                {{ payment.paymentdate|date('d-m-Y') }}
+                <h4>Payment Method</h4>
+                {{ payment.paymentmethod }}
+                <h4>Amount</h4>
+                {{ payment.amount }}
+                <h4>Customer</h4>
+                {{ payment.firstname }} {{payment.name }}
+
+                <h4>Payment ID</h4>
+                {{ payment.paymentsid }}
+                <h4>Date</h4>
+                {{ payment.paymentdate|date('d-m-Y') }}
+                <h4>Payment Method</h4>
+                {{ payment.paymentmethod }}
+                <h4>Amount</h4>
+                {{ payment.amount }}
+                <h4>Customer</h4>
+                {{ payment.firstname }} {{payment.name }}
+            
+            </div>
+            <div class="clearfix"></div>
+            <hr/>
+            <p>
+                <button type="button" class="btn btn-primary" onclick="printPayment();">Print</button>
+            </p>
+        </div>
+
+
+            

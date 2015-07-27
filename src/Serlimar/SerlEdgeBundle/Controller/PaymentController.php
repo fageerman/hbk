@@ -26,7 +26,6 @@ class PaymentController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $repo = $this->getDoctrine()->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblpayments');
 
         $query = $em->createQuery(
                 'Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser from SerlimarSerlEdgeBundle:Tblpayments p '
@@ -139,14 +138,16 @@ class PaymentController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $payment = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblpayments')->findBy(array('paymentsid'=> $id));
-        $form = $this->createForm(new UpdatePaymentType($em), $payment[0], array(
-            'action' => $this->generateUrl('serlimar_serledge_update_payment', array('id'=>$id))
-            )); 
+        $query = $em->createQuery('Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser from SerlimarSerlEdgeBundle:Tblpayments p '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
+                . ' WHERE p.paymentsid = :paymentsid'
+               )->setParameter('paymentsid', $id);
+        $payment = $query->getResult();
+        
         return $this->render(
-            'SerlimarSerlEdgeBundle:Payment:_edit-payment-form.html.twig', array(
+            'SerlimarSerlEdgeBundle:Payment:_show-payment.html.twig', array(
                 'payment' => $payment[0],
-                'form' => $form->createView()
                 )
         );
     }

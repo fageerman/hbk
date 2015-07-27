@@ -47,7 +47,7 @@
                                 <td>{{ payment.firstname }} {{ payment.name }}</td>
                                 <td>{{ payment.insertuser }}</td>
                                 <td>
-                                    <a class="btn" aria-label="Print"
+                                    <a onclick="showPayment({{ payment.paymentsid }});" class="btn" aria-label="Print"
                                        data-toggle="tooltip" data-placement="top" title="View">
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                     </a>
@@ -81,7 +81,7 @@
       data-toggle="modal" data-target="#myModal" attr in the grid buttons, so it has to be present
       somewhere viewable by this template. (TODO: find out a better way to inherit it)
    #} 
-   {% include '_modal.html.twig' %} 
+  
    
  
 

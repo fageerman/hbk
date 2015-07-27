@@ -6,6 +6,20 @@
 //    $(this).removeData('bs.modal');
 //});
 
+
+function showPayment(id)
+{
+    $.ajax({
+        url: "http://dev.serlimar/payment/" + id + "/show",
+        context: document.body
+    }).done(function(data) {
+    
+        $('#myModal .modal-content').empty();
+        $('#myModal .modal-content').append(data);
+        $('#myModal').modal('show');
+    });
+    
+}
 function getPayment(id)
 {
     //alert(id);
@@ -19,6 +33,7 @@ function getPayment(id)
         $('#myModal').modal('show');
     });
 }
+
 function updatePayment(id){
 
 $("form").submit(function(e)
@@ -55,4 +70,10 @@ $("form").submit(function(e)
 });
  
 $("form").submit(); //Submit  the FORM
+}
+
+
+function printPayment()
+{
+    window.print();
 }
