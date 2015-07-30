@@ -83,7 +83,7 @@ class UserController extends Controller
                 $em->flush();
 
                 $this->addFlash(
-                    'notice',
+                    'error',
                     'Your changes were saved!'
                 );
                 return new Response('saved',200);
@@ -102,6 +102,14 @@ class UserController extends Controller
         //To go back where you were.
         $referer = $request->headers->get('referer');
         
+        if($this->getUser()->getId() === $id)
+        {
+            $this->addFlash(
+                    'warning',
+                    'You can not delete your user account with id:' . $id . '!'
+            );
+            return $this->redirect($referer);
+        }
         $em = $this->getDoctrine()->getManager();
         
         $query = $em->createQuery(

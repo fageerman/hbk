@@ -29,7 +29,7 @@ class SerlimarUserProvider extends ContainerAware implements UserProviderInterfa
     public function loadUserByUsername($username) 
     {
         //Retrieve user from database with an mysql query.
-        $query = $this->em->getConnection()->prepare('select Username, Password from tblusers where Username=' . "'$username'");
+        $query = $this->em->getConnection()->prepare('select id, Username, Password from tblusers where Username=' . "'$username'");
         $query->execute();
         $result = $query->fetch();
         
@@ -41,7 +41,7 @@ class SerlimarUserProvider extends ContainerAware implements UserProviderInterfa
         }
         //Return a new SerlimarUser Object with the right credentials. This is going to be compared
         //with the user provided credentials.
-        return new SerlimarUser($result['Username'], $result['Password'], array('ROLE_ADMIN'));
+        return new SerlimarUser($result['id'], $result['Username'], $result['Password'], array('ROLE_ADMIN'));
       
     }
     

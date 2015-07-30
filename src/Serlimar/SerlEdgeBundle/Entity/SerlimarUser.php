@@ -29,8 +29,9 @@ class SerlimarUser implements AdvancedUserInterface, \Serializable
     
     private $roles;
     
-    public function __construct($username, $password, array $roles)
+    public function __construct($id, $username, $password, array $roles)
     {
+        $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->isActive = true;

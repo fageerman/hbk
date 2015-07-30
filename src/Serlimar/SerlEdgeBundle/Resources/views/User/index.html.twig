@@ -19,6 +19,12 @@
     </div>
    
     {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('warning') %}
+    <div class="flash-message alert alert-danger">
+        {{ flashMessage }}
+    </div>
+   
+    {% endfor %}
      
     {% if users is defined and users is not empty %} 
         <div class="table-responsive">
