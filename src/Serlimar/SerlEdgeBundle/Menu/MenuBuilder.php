@@ -19,7 +19,7 @@ class MenuBuilder extends ContainerAware
         $menu->addChild('Add Payment', array('route' => 'serlimar_serledge_create_payment'));
         $menu->addChild('Payment Overview', array('route' => 'serlimar_serledge_payment'));
         $menu->addChild('Customer', array('route' => 'serlimar_serledge_customer'));
-//        $menu->addChild('Customer', array('route' => 'serlimar_serl_edge_payment'));
+        $menu->addChild('User overview', array('route' => 'serlimar_serledge_user'));
 //        $menu->addChild('User Management', array('route' => 'serlimar_serl_edge_payment'));
 
         return $menu;

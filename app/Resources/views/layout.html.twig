@@ -37,6 +37,12 @@
 			
     </div>
     </div>
+       
+   {# Include the modal container divs for the modal popups. This is triggered by
+      data-toggle="modal" data-target="#myModal" attr in the grid buttons, so it has to be present
+      somewhere viewable by this template. (TODO: find out a better way to inherit it)
+   #} 
+  
     {% include '_modal.html.twig' %} 
    
 {% endblock %}

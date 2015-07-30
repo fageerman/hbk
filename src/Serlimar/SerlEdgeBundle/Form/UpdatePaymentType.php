@@ -36,7 +36,7 @@ class UpdatePaymentType extends PaymentType
 
     public function getName()
     {
-        return 'payment';
+        return 'updatepayment';
     }
     
     public function configureOptions(OptionsResolver $resolver)

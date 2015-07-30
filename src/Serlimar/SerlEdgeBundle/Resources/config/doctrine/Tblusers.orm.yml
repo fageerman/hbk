@@ -12,13 +12,13 @@ Serlimar\SerlEdgeBundle\Entity\Tblusers:
             columns:
                 - Username
     id:
-        userid:
+        id:
             type: integer
             nullable: false
             options:
                 unsigned: false
             id: true
-            column: UserID
+            column: ID
             generator:
                 strategy: IDENTITY
     fields:

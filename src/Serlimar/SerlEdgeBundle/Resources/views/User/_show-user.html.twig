@@ -1,0 +1,31 @@
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">User {{ user.id }}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="printable">
+                
+                <h4>ID</h4>
+                {{ user.id }}
+                <h4>Username</h4>
+                {{ user.username }}
+                <h4>Firstname</h4>
+                {{ user.firstname }}
+                <h4>Lastname</h4>
+                {{ user.lastname }}
+                <h4>Role</h4>
+
+                <h4>Shortname</h4>
+                {{ user.shortname }}
+                <h4>Computername</h4>
+                {{ user.computername }}
+             
+            
+            </div>
+            <div class="clearfix"></div>
+            <hr/>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+
+            

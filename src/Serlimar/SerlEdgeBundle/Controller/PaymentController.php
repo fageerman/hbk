@@ -126,7 +126,7 @@ class PaymentController extends Controller
             }
         }
         return $this->render(
-            'SerlimarSerlEdgeBundle:Payment:_edit-payment-form.html.twig', array(
+            'SerlimarSerlEdgeBundle:Payment:_edit-payment.html.twig', array(
                 'payment' => $payment,
                 'form' => $form->createView()
                 )
@@ -158,10 +158,7 @@ class PaymentController extends Controller
      */
     public function deleteAction(Request $request,$id)
     {
-        
         $referer = $request->headers->get('referer');
-//        echo $request->getRequestUri() . "<br>";
-//        echo $request->getUri() . "<br>";die;
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery(
                 'DELETE FROM SerlimarSerlEdgeBundle:Tblpayments p WHERE p.paymentsid = :paymentsid'
@@ -173,7 +170,6 @@ class PaymentController extends Controller
                     'Payment record with id ' . $id . ' has been removed!'
                 );
         }
-            
         
         return $this->redirect($referer);
     }

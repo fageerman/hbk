@@ -32,3 +32,23 @@ serlimar_serledge_receipt_payment:
 serlimar_serledge_customer:
     path:     /customer
     defaults: { _controller: SerlimarSerlEdgeBundle:Customer:index }
+    
+serlimar_serledge_user:
+    path:     /user
+    defaults: { _controller: SerlimarSerlEdgeBundle:User:index }
+    
+serlimar_serledge_show_user:
+    path:     /user/{id}/show
+    defaults: { _controller: SerlimarSerlEdgeBundle:User:show }
+    
+serlimar_serledge_create_user:
+    path:     /user/create
+    defaults: { _controller: SerlimarSerlEdgeBundle:User:create }
+    
+serlimar_serledge_update_user:
+    path:     /user/{id}/update
+    defaults: { _controller: SerlimarSerlEdgeBundle:User:update }
+    
+serlimar_serledge_delete_user:
+    path:     /user/{id}/delete
+    defaults: { _controller: SerlimarSerlEdgeBundle:User:delete }

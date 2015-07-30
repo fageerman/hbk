@@ -1,5 +1,5 @@
 {% extends "layout.html.twig" %}
-{% set subTitle = "Payment Overview"%}
+{% set subTitle = "User Overview"%}
 {% block title %}{{ parent() }} - {{ subTitle }}{% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
    
     {% endfor %}
      
-    {% if payments is defined and payments is not empty %} 
+    {% if users is defined and users is not empty %} 
         <div class="table-responsive">
             <div>
                 {{ pagination.getTotalItemCount }} results
@@ -29,35 +29,35 @@
                     <thead>
                         <tr>	
                             <td>ID</td>
-                            <td>Date</td>
-                            <td>Method</td>
-                            <td>Amount (Afl)</td>
-                            <td>Customer</td>
-                            <td>Inserted By</td>
-                            <td></td>
+                            <td>Username</td>
+                            <td>Firstname</td>
+                            <td>Lastname</td>
+                            <td>Role</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="prepareUser();">Create User</button>
+                            </td>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for payment in payments %}
+                        {% for user in users %}
                             <tr>
-                                <td>{{ payment.paymentsid }}</td> 
-                                <td>{{ payment.paymentdate| date('d-m-Y') }}</td> 
-                                <td>{{ payment.paymentmethod }}</td>
-                                <td>{{ payment.amount|number_format(2, '.', ',') }}</td>
-                                <td>{{ payment.firstname }} {{ payment.name }}</td>
-                                <td>{{ payment.insertuser }}</td>
+                                <td>{{ user.id }}</td> 
+                                <td>{{ user.username }}</td> 
+                                <td>{{ user.firstname }}</td>
+                                <td>{{ user.lastname }}</td>
+                                <td> ROLE_USER </td>
                                 <td>
-                                    <a onclick="showPayment({{ payment.paymentsid }});" class="btn" aria-label="View"
+                                    <a onclick="showUser({{ user.id }});" class="btn" aria-label="View"
                                        data-toggle="tooltip" data-placement="top" title="View">
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                     </a>
-                                    <a onclick="getPayment(this.id);" id="{{ payment.paymentsid }}"  class="btn" aria-label="Edit"
+                                    <a onclick="getUser({{ user.id }})"  class="btn" aria-label="Edit"
                                        data-toggle="tooltip" data-placement="top" title="Edit">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                     </a>
-                                    <a onclick="return confirm('Delete payment {{ payment.paymentsid }}?');" class="btn" aria-label="Delete"
+                                    <a onclick="return confirm('Delete user {{ user.id }}?');" class="btn" aria-label="Delete"
                                        data-toggle="tooltip" data-placement="top" title="Delete"
-                                       href="{{ path('serlimar_serledge_delete_payment',{'id': payment.paymentsid })}}"
+                                       href="{{ path('serlimar_serledge_delete_user',{'id': user.id })}}"
                                        >
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                     </a>
@@ -71,18 +71,10 @@
             </div>  
         </div>
         
-    {% elseif payments is defined and payments is empty %}
-        No payments found.    
+    {% elseif users is defined and users is empty %}
+        No users found.    
     {% endif %}
     
     </div>
-   
-   {# Include the modal container divs for the modal popups. This is triggered by
-      data-toggle="modal" data-target="#myModal" attr in the grid buttons, so it has to be present
-      somewhere viewable by this template. (TODO: find out a better way to inherit it)
-   #} 
-  
-   
- 
 
 {% endblock %}

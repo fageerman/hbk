@@ -2,6 +2,7 @@ security:
     encoders:
         Serlimar\SerlEdgeBundle\Entity\SerlimarUser: 
             algorithm: bcrypt
+            cost: 12
             #algorithm: false
 #            encode_as_base64: false
 #            iterations: 1
