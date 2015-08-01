@@ -1,0 +1,519 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblinvoicesgroup
+ */
+class Tblinvoicesgroup
+{
+    /**
+     * @var integer
+     */
+    private $invoicegoupid;
+
+    /**
+     * @var integer
+     */
+    private $customerid;
+
+    /**
+     * @var string
+     */
+    private $invoicenumber;
+
+    /**
+     * @var string
+     */
+    private $invoicemonth;
+
+    /**
+     * @var integer
+     */
+    private $invoiceserviceid;
+
+    /**
+     * @var string
+     */
+    private $invoiceservicedescription;
+
+    /**
+     * @var \DateTime
+     */
+    private $duedate;
+
+    /**
+     * @var float
+     */
+    private $amount;
+
+    /**
+     * @var float
+     */
+    private $costs;
+
+    /**
+     * @var float
+     */
+    private $tax;
+
+    /**
+     * @var float
+     */
+    private $totalamount;
+
+    /**
+     * @var float
+     */
+    private $balance;
+
+    /**
+     * @var integer
+     */
+    private $batchid;
+
+    /**
+     * @var integer
+     */
+    private $invoicestatusid;
+
+    /**
+     * @var \DateTime
+     */
+    private $sysCreateddate;
+
+    /**
+     * @var integer
+     */
+    private $sysTrimester;
+
+    /**
+     * @var integer
+     */
+    private $sysTrimestersub;
+
+    /**
+     * @var integer
+     */
+    private $sysYear;
+
+
+    /**
+     * Get invoicegoupid
+     *
+     * @return integer
+     */
+    public function getInvoicegoupid()
+    {
+        return $this->invoicegoupid;
+    }
+
+    /**
+     * Set customerid
+     *
+     * @param integer $customerid
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setCustomerid($customerid)
+    {
+        $this->customerid = $customerid;
+
+        return $this;
+    }
+
+    /**
+     * Get customerid
+     *
+     * @return integer
+     */
+    public function getCustomerid()
+    {
+        return $this->customerid;
+    }
+
+    /**
+     * Set invoicenumber
+     *
+     * @param string $invoicenumber
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setInvoicenumber($invoicenumber)
+    {
+        $this->invoicenumber = $invoicenumber;
+
+        return $this;
+    }
+
+    /**
+     * Get invoicenumber
+     *
+     * @return string
+     */
+    public function getInvoicenumber()
+    {
+        return $this->invoicenumber;
+    }
+
+    /**
+     * Set invoicemonth
+     *
+     * @param string $invoicemonth
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setInvoicemonth($invoicemonth)
+    {
+        $this->invoicemonth = $invoicemonth;
+
+        return $this;
+    }
+
+    /**
+     * Get invoicemonth
+     *
+     * @return string
+     */
+    public function getInvoicemonth()
+    {
+        return $this->invoicemonth;
+    }
+
+    /**
+     * Set invoiceserviceid
+     *
+     * @param integer $invoiceserviceid
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setInvoiceserviceid($invoiceserviceid)
+    {
+        $this->invoiceserviceid = $invoiceserviceid;
+
+        return $this;
+    }
+
+    /**
+     * Get invoiceserviceid
+     *
+     * @return integer
+     */
+    public function getInvoiceserviceid()
+    {
+        return $this->invoiceserviceid;
+    }
+
+    /**
+     * Set invoiceservicedescription
+     *
+     * @param string $invoiceservicedescription
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setInvoiceservicedescription($invoiceservicedescription)
+    {
+        $this->invoiceservicedescription = $invoiceservicedescription;
+
+        return $this;
+    }
+
+    /**
+     * Get invoiceservicedescription
+     *
+     * @return string
+     */
+    public function getInvoiceservicedescription()
+    {
+        return $this->invoiceservicedescription;
+    }
+
+    /**
+     * Set duedate
+     *
+     * @param \DateTime $duedate
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setDuedate($duedate)
+    {
+        $this->duedate = $duedate;
+
+        return $this;
+    }
+
+    /**
+     * Get duedate
+     *
+     * @return \DateTime
+     */
+    public function getDuedate()
+    {
+        return $this->duedate;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param float $amount
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return float
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set costs
+     *
+     * @param float $costs
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setCosts($costs)
+    {
+        $this->costs = $costs;
+
+        return $this;
+    }
+
+    /**
+     * Get costs
+     *
+     * @return float
+     */
+    public function getCosts()
+    {
+        return $this->costs;
+    }
+
+    /**
+     * Set tax
+     *
+     * @param float $tax
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setTax($tax)
+    {
+        $this->tax = $tax;
+
+        return $this;
+    }
+
+    /**
+     * Get tax
+     *
+     * @return float
+     */
+    public function getTax()
+    {
+        return $this->tax;
+    }
+
+    /**
+     * Set totalamount
+     *
+     * @param float $totalamount
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setTotalamount($totalamount)
+    {
+        $this->totalamount = $totalamount;
+
+        return $this;
+    }
+
+    /**
+     * Get totalamount
+     *
+     * @return float
+     */
+    public function getTotalamount()
+    {
+        return $this->totalamount;
+    }
+
+    /**
+     * Set balance
+     *
+     * @param float $balance
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setBalance($balance)
+    {
+        $this->balance = $balance;
+
+        return $this;
+    }
+
+    /**
+     * Get balance
+     *
+     * @return float
+     */
+    public function getBalance()
+    {
+        return $this->balance;
+    }
+
+    /**
+     * Set batchid
+     *
+     * @param integer $batchid
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setBatchid($batchid)
+    {
+        $this->batchid = $batchid;
+
+        return $this;
+    }
+
+    /**
+     * Get batchid
+     *
+     * @return integer
+     */
+    public function getBatchid()
+    {
+        return $this->batchid;
+    }
+
+    /**
+     * Set invoicestatusid
+     *
+     * @param integer $invoicestatusid
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setInvoicestatusid($invoicestatusid)
+    {
+        $this->invoicestatusid = $invoicestatusid;
+
+        return $this;
+    }
+
+    /**
+     * Get invoicestatusid
+     *
+     * @return integer
+     */
+    public function getInvoicestatusid()
+    {
+        return $this->invoicestatusid;
+    }
+
+    /**
+     * Set sysCreateddate
+     *
+     * @param \DateTime $sysCreateddate
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setSysCreateddate($sysCreateddate)
+    {
+        $this->sysCreateddate = $sysCreateddate;
+
+        return $this;
+    }
+
+    /**
+     * Get sysCreateddate
+     *
+     * @return \DateTime
+     */
+    public function getSysCreateddate()
+    {
+        return $this->sysCreateddate;
+    }
+
+    /**
+     * Set sysTrimester
+     *
+     * @param integer $sysTrimester
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setSysTrimester($sysTrimester)
+    {
+        $this->sysTrimester = $sysTrimester;
+
+        return $this;
+    }
+
+    /**
+     * Get sysTrimester
+     *
+     * @return integer
+     */
+    public function getSysTrimester()
+    {
+        return $this->sysTrimester;
+    }
+
+    /**
+     * Set sysTrimestersub
+     *
+     * @param integer $sysTrimestersub
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setSysTrimestersub($sysTrimestersub)
+    {
+        $this->sysTrimestersub = $sysTrimestersub;
+
+        return $this;
+    }
+
+    /**
+     * Get sysTrimestersub
+     *
+     * @return integer
+     */
+    public function getSysTrimestersub()
+    {
+        return $this->sysTrimestersub;
+    }
+
+    /**
+     * Set sysYear
+     *
+     * @param integer $sysYear
+     *
+     * @return Tblinvoicesgroup
+     */
+    public function setSysYear($sysYear)
+    {
+        $this->sysYear = $sysYear;
+
+        return $this;
+    }
+
+    /**
+     * Get sysYear
+     *
+     * @return integer
+     */
+    public function getSysYear()
+    {
+        return $this->sysYear;
+    }
+}
+

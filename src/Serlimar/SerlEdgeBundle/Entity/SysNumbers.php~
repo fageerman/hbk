@@ -1,0 +1,26 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * SysNumbers
+ */
+class SysNumbers
+{
+    /**
+     * @var integer
+     */
+    private $numbers;
+
+
+    /**
+     * Get numbers
+     *
+     * @return integer
+     */
+    public function getNumbers()
+    {
+        return $this->numbers;
+    }
+}
+

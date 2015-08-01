@@ -1,0 +1,490 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * RefLayout
+ */
+class RefLayout
+{
+    /**
+     * @var integer
+     */
+    private $layoutid;
+
+    /**
+     * @var integer
+     */
+    private $grp;
+
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $value;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var integer
+     */
+    private $sort;
+
+    /**
+     * @var string
+     */
+    private $form;
+
+    /**
+     * @var string
+     */
+    private $report;
+
+    /**
+     * @var string
+     */
+    private $control;
+
+    /**
+     * @var string
+     */
+    private $property;
+
+    /**
+     * @var string
+     */
+    private $default;
+
+    /**
+     * @var boolean
+     */
+    private $setup = '0';
+
+    /**
+     * @var string
+     */
+    private $option;
+
+    /**
+     * @var string
+     */
+    private $xtraoption;
+
+    /**
+     * @var string
+     */
+    private $xtraoption2;
+
+    /**
+     * @var string
+     */
+    private $language;
+
+    /**
+     * @var string
+     */
+    private $ssmaTimestamp;
+
+
+    /**
+     * Get layoutid
+     *
+     * @return integer
+     */
+    public function getLayoutid()
+    {
+        return $this->layoutid;
+    }
+
+    /**
+     * Set grp
+     *
+     * @param integer $grp
+     *
+     * @return RefLayout
+     */
+    public function setGrp($grp)
+    {
+        $this->grp = $grp;
+
+        return $this;
+    }
+
+    /**
+     * Get grp
+     *
+     * @return integer
+     */
+    public function getGrp()
+    {
+        return $this->grp;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return RefLayout
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     *
+     * @return RefLayout
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return RefLayout
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set sort
+     *
+     * @param integer $sort
+     *
+     * @return RefLayout
+     */
+    public function setSort($sort)
+    {
+        $this->sort = $sort;
+
+        return $this;
+    }
+
+    /**
+     * Get sort
+     *
+     * @return integer
+     */
+    public function getSort()
+    {
+        return $this->sort;
+    }
+
+    /**
+     * Set form
+     *
+     * @param string $form
+     *
+     * @return RefLayout
+     */
+    public function setForm($form)
+    {
+        $this->form = $form;
+
+        return $this;
+    }
+
+    /**
+     * Get form
+     *
+     * @return string
+     */
+    public function getForm()
+    {
+        return $this->form;
+    }
+
+    /**
+     * Set report
+     *
+     * @param string $report
+     *
+     * @return RefLayout
+     */
+    public function setReport($report)
+    {
+        $this->report = $report;
+
+        return $this;
+    }
+
+    /**
+     * Get report
+     *
+     * @return string
+     */
+    public function getReport()
+    {
+        return $this->report;
+    }
+
+    /**
+     * Set control
+     *
+     * @param string $control
+     *
+     * @return RefLayout
+     */
+    public function setControl($control)
+    {
+        $this->control = $control;
+
+        return $this;
+    }
+
+    /**
+     * Get control
+     *
+     * @return string
+     */
+    public function getControl()
+    {
+        return $this->control;
+    }
+
+    /**
+     * Set property
+     *
+     * @param string $property
+     *
+     * @return RefLayout
+     */
+    public function setProperty($property)
+    {
+        $this->property = $property;
+
+        return $this;
+    }
+
+    /**
+     * Get property
+     *
+     * @return string
+     */
+    public function getProperty()
+    {
+        return $this->property;
+    }
+
+    /**
+     * Set default
+     *
+     * @param string $default
+     *
+     * @return RefLayout
+     */
+    public function setDefault($default)
+    {
+        $this->default = $default;
+
+        return $this;
+    }
+
+    /**
+     * Get default
+     *
+     * @return string
+     */
+    public function getDefault()
+    {
+        return $this->default;
+    }
+
+    /**
+     * Set setup
+     *
+     * @param boolean $setup
+     *
+     * @return RefLayout
+     */
+    public function setSetup($setup)
+    {
+        $this->setup = $setup;
+
+        return $this;
+    }
+
+    /**
+     * Get setup
+     *
+     * @return boolean
+     */
+    public function getSetup()
+    {
+        return $this->setup;
+    }
+
+    /**
+     * Set option
+     *
+     * @param string $option
+     *
+     * @return RefLayout
+     */
+    public function setOption($option)
+    {
+        $this->option = $option;
+
+        return $this;
+    }
+
+    /**
+     * Get option
+     *
+     * @return string
+     */
+    public function getOption()
+    {
+        return $this->option;
+    }
+
+    /**
+     * Set xtraoption
+     *
+     * @param string $xtraoption
+     *
+     * @return RefLayout
+     */
+    public function setXtraoption($xtraoption)
+    {
+        $this->xtraoption = $xtraoption;
+
+        return $this;
+    }
+
+    /**
+     * Get xtraoption
+     *
+     * @return string
+     */
+    public function getXtraoption()
+    {
+        return $this->xtraoption;
+    }
+
+    /**
+     * Set xtraoption2
+     *
+     * @param string $xtraoption2
+     *
+     * @return RefLayout
+     */
+    public function setXtraoption2($xtraoption2)
+    {
+        $this->xtraoption2 = $xtraoption2;
+
+        return $this;
+    }
+
+    /**
+     * Get xtraoption2
+     *
+     * @return string
+     */
+    public function getXtraoption2()
+    {
+        return $this->xtraoption2;
+    }
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     *
+     * @return RefLayout
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * Set ssmaTimestamp
+     *
+     * @param string $ssmaTimestamp
+     *
+     * @return RefLayout
+     */
+    public function setSsmaTimestamp($ssmaTimestamp)
+    {
+        $this->ssmaTimestamp = $ssmaTimestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get ssmaTimestamp
+     *
+     * @return string
+     */
+    public function getSsmaTimestamp()
+    {
+        return $this->ssmaTimestamp;
+    }
+}
+

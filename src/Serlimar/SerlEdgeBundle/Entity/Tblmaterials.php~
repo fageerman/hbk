@@ -1,0 +1,780 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblmaterials
+ */
+class Tblmaterials
+{
+    /**
+     * @var string
+     */
+    private $guid = '';
+
+    /**
+     * @var integer
+     */
+    private $materialid;
+
+    /**
+     * @var string
+     */
+    private $materialguid;
+
+    /**
+     * @var integer
+     */
+    private $productid;
+
+    /**
+     * @var string
+     */
+    private $productguid;
+
+    /**
+     * @var string
+     */
+    private $material;
+
+    /**
+     * @var boolean
+     */
+    private $inbound = 'b\'1\'';
+
+    /**
+     * @var boolean
+     */
+    private $type = 'b\'1\'';
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $unit;
+
+    /**
+     * @var float
+     */
+    private $chargeamount1 = '0';
+
+    /**
+     * @var float
+     */
+    private $chargeamount2 = '0';
+
+    /**
+     * @var float
+     */
+    private $chargeamount3 = '0';
+
+    /**
+     * @var float
+     */
+    private $chargeamount4 = '0';
+
+    /**
+     * @var float
+     */
+    private $cost = '0';
+
+    /**
+     * @var float
+     */
+    private $minimumcharge = '0';
+
+    /**
+     * @var string
+     */
+    private $location;
+
+    /**
+     * @var string
+     */
+    private $memo;
+
+    /**
+     * @var string
+     */
+    private $insertuser;
+
+    /**
+     * @var \DateTime
+     */
+    private $timestamp = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \DateTime
+     */
+    private $useractiondate;
+
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $locked;
+
+    /**
+     * @var \DateTime
+     */
+    private $lockeddate;
+
+    /**
+     * @var string
+     */
+    private $lockeduserid;
+
+    /**
+     * @var string
+     */
+    private $lockedusername;
+
+    /**
+     * @var boolean
+     */
+    private $notactive = 'b\'0\'';
+
+
+    /**
+     * Get guid
+     *
+     * @return string
+     */
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+
+    /**
+     * Set materialid
+     *
+     * @param integer $materialid
+     *
+     * @return Tblmaterials
+     */
+    public function setMaterialid($materialid)
+    {
+        $this->materialid = $materialid;
+
+        return $this;
+    }
+
+    /**
+     * Get materialid
+     *
+     * @return integer
+     */
+    public function getMaterialid()
+    {
+        return $this->materialid;
+    }
+
+    /**
+     * Set materialguid
+     *
+     * @param string $materialguid
+     *
+     * @return Tblmaterials
+     */
+    public function setMaterialguid($materialguid)
+    {
+        $this->materialguid = $materialguid;
+
+        return $this;
+    }
+
+    /**
+     * Get materialguid
+     *
+     * @return string
+     */
+    public function getMaterialguid()
+    {
+        return $this->materialguid;
+    }
+
+    /**
+     * Set productid
+     *
+     * @param integer $productid
+     *
+     * @return Tblmaterials
+     */
+    public function setProductid($productid)
+    {
+        $this->productid = $productid;
+
+        return $this;
+    }
+
+    /**
+     * Get productid
+     *
+     * @return integer
+     */
+    public function getProductid()
+    {
+        return $this->productid;
+    }
+
+    /**
+     * Set productguid
+     *
+     * @param string $productguid
+     *
+     * @return Tblmaterials
+     */
+    public function setProductguid($productguid)
+    {
+        $this->productguid = $productguid;
+
+        return $this;
+    }
+
+    /**
+     * Get productguid
+     *
+     * @return string
+     */
+    public function getProductguid()
+    {
+        return $this->productguid;
+    }
+
+    /**
+     * Set material
+     *
+     * @param string $material
+     *
+     * @return Tblmaterials
+     */
+    public function setMaterial($material)
+    {
+        $this->material = $material;
+
+        return $this;
+    }
+
+    /**
+     * Get material
+     *
+     * @return string
+     */
+    public function getMaterial()
+    {
+        return $this->material;
+    }
+
+    /**
+     * Set inbound
+     *
+     * @param boolean $inbound
+     *
+     * @return Tblmaterials
+     */
+    public function setInbound($inbound)
+    {
+        $this->inbound = $inbound;
+
+        return $this;
+    }
+
+    /**
+     * Get inbound
+     *
+     * @return boolean
+     */
+    public function getInbound()
+    {
+        return $this->inbound;
+    }
+
+    /**
+     * Set type
+     *
+     * @param boolean $type
+     *
+     * @return Tblmaterials
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return boolean
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Tblmaterials
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set unit
+     *
+     * @param string $unit
+     *
+     * @return Tblmaterials
+     */
+    public function setUnit($unit)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+    /**
+     * Set chargeamount1
+     *
+     * @param float $chargeamount1
+     *
+     * @return Tblmaterials
+     */
+    public function setChargeamount1($chargeamount1)
+    {
+        $this->chargeamount1 = $chargeamount1;
+
+        return $this;
+    }
+
+    /**
+     * Get chargeamount1
+     *
+     * @return float
+     */
+    public function getChargeamount1()
+    {
+        return $this->chargeamount1;
+    }
+
+    /**
+     * Set chargeamount2
+     *
+     * @param float $chargeamount2
+     *
+     * @return Tblmaterials
+     */
+    public function setChargeamount2($chargeamount2)
+    {
+        $this->chargeamount2 = $chargeamount2;
+
+        return $this;
+    }
+
+    /**
+     * Get chargeamount2
+     *
+     * @return float
+     */
+    public function getChargeamount2()
+    {
+        return $this->chargeamount2;
+    }
+
+    /**
+     * Set chargeamount3
+     *
+     * @param float $chargeamount3
+     *
+     * @return Tblmaterials
+     */
+    public function setChargeamount3($chargeamount3)
+    {
+        $this->chargeamount3 = $chargeamount3;
+
+        return $this;
+    }
+
+    /**
+     * Get chargeamount3
+     *
+     * @return float
+     */
+    public function getChargeamount3()
+    {
+        return $this->chargeamount3;
+    }
+
+    /**
+     * Set chargeamount4
+     *
+     * @param float $chargeamount4
+     *
+     * @return Tblmaterials
+     */
+    public function setChargeamount4($chargeamount4)
+    {
+        $this->chargeamount4 = $chargeamount4;
+
+        return $this;
+    }
+
+    /**
+     * Get chargeamount4
+     *
+     * @return float
+     */
+    public function getChargeamount4()
+    {
+        return $this->chargeamount4;
+    }
+
+    /**
+     * Set cost
+     *
+     * @param float $cost
+     *
+     * @return Tblmaterials
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+
+        return $this;
+    }
+
+    /**
+     * Get cost
+     *
+     * @return float
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+
+    /**
+     * Set minimumcharge
+     *
+     * @param float $minimumcharge
+     *
+     * @return Tblmaterials
+     */
+    public function setMinimumcharge($minimumcharge)
+    {
+        $this->minimumcharge = $minimumcharge;
+
+        return $this;
+    }
+
+    /**
+     * Get minimumcharge
+     *
+     * @return float
+     */
+    public function getMinimumcharge()
+    {
+        return $this->minimumcharge;
+    }
+
+    /**
+     * Set location
+     *
+     * @param string $location
+     *
+     * @return Tblmaterials
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set memo
+     *
+     * @param string $memo
+     *
+     * @return Tblmaterials
+     */
+    public function setMemo($memo)
+    {
+        $this->memo = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Get memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->memo;
+    }
+
+    /**
+     * Set insertuser
+     *
+     * @param string $insertuser
+     *
+     * @return Tblmaterials
+     */
+    public function setInsertuser($insertuser)
+    {
+        $this->insertuser = $insertuser;
+
+        return $this;
+    }
+
+    /**
+     * Get insertuser
+     *
+     * @return string
+     */
+    public function getInsertuser()
+    {
+        return $this->insertuser;
+    }
+
+    /**
+     * Set timestamp
+     *
+     * @param \DateTime $timestamp
+     *
+     * @return Tblmaterials
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * Set useractiondate
+     *
+     * @param \DateTime $useractiondate
+     *
+     * @return Tblmaterials
+     */
+    public function setUseractiondate($useractiondate)
+    {
+        $this->useractiondate = $useractiondate;
+
+        return $this;
+    }
+
+    /**
+     * Get useractiondate
+     *
+     * @return \DateTime
+     */
+    public function getUseractiondate()
+    {
+        return $this->useractiondate;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Tblmaterials
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set locked
+     *
+     * @param string $locked
+     *
+     * @return Tblmaterials
+     */
+    public function setLocked($locked)
+    {
+        $this->locked = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Get locked
+     *
+     * @return string
+     */
+    public function getLocked()
+    {
+        return $this->locked;
+    }
+
+    /**
+     * Set lockeddate
+     *
+     * @param \DateTime $lockeddate
+     *
+     * @return Tblmaterials
+     */
+    public function setLockeddate($lockeddate)
+    {
+        $this->lockeddate = $lockeddate;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeddate
+     *
+     * @return \DateTime
+     */
+    public function getLockeddate()
+    {
+        return $this->lockeddate;
+    }
+
+    /**
+     * Set lockeduserid
+     *
+     * @param string $lockeduserid
+     *
+     * @return Tblmaterials
+     */
+    public function setLockeduserid($lockeduserid)
+    {
+        $this->lockeduserid = $lockeduserid;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeduserid
+     *
+     * @return string
+     */
+    public function getLockeduserid()
+    {
+        return $this->lockeduserid;
+    }
+
+    /**
+     * Set lockedusername
+     *
+     * @param string $lockedusername
+     *
+     * @return Tblmaterials
+     */
+    public function setLockedusername($lockedusername)
+    {
+        $this->lockedusername = $lockedusername;
+
+        return $this;
+    }
+
+    /**
+     * Get lockedusername
+     *
+     * @return string
+     */
+    public function getLockedusername()
+    {
+        return $this->lockedusername;
+    }
+
+    /**
+     * Set notactive
+     *
+     * @param boolean $notactive
+     *
+     * @return Tblmaterials
+     */
+    public function setNotactive($notactive)
+    {
+        $this->notactive = $notactive;
+
+        return $this;
+    }
+
+    /**
+     * Get notactive
+     *
+     * @return boolean
+     */
+    public function getNotactive()
+    {
+        return $this->notactive;
+    }
+}
+

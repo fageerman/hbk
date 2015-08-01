@@ -1,0 +1,200 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * RefPostAdresen
+ */
+class RefPostAdresen
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $streetNam;
+
+    /**
+     * @var float
+     */
+    private $streetNum;
+
+    /**
+     * @var string
+     */
+    private $streetSuf;
+
+    /**
+     * @var string
+     */
+    private $apartment;
+
+    /**
+     * @var float
+     */
+    private $code1;
+
+    /**
+     * @var string
+     */
+    private $ssmaTimestamp;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set streetNam
+     *
+     * @param string $streetNam
+     *
+     * @return RefPostAdresen
+     */
+    public function setStreetNam($streetNam)
+    {
+        $this->streetNam = $streetNam;
+
+        return $this;
+    }
+
+    /**
+     * Get streetNam
+     *
+     * @return string
+     */
+    public function getStreetNam()
+    {
+        return $this->streetNam;
+    }
+
+    /**
+     * Set streetNum
+     *
+     * @param float $streetNum
+     *
+     * @return RefPostAdresen
+     */
+    public function setStreetNum($streetNum)
+    {
+        $this->streetNum = $streetNum;
+
+        return $this;
+    }
+
+    /**
+     * Get streetNum
+     *
+     * @return float
+     */
+    public function getStreetNum()
+    {
+        return $this->streetNum;
+    }
+
+    /**
+     * Set streetSuf
+     *
+     * @param string $streetSuf
+     *
+     * @return RefPostAdresen
+     */
+    public function setStreetSuf($streetSuf)
+    {
+        $this->streetSuf = $streetSuf;
+
+        return $this;
+    }
+
+    /**
+     * Get streetSuf
+     *
+     * @return string
+     */
+    public function getStreetSuf()
+    {
+        return $this->streetSuf;
+    }
+
+    /**
+     * Set apartment
+     *
+     * @param string $apartment
+     *
+     * @return RefPostAdresen
+     */
+    public function setApartment($apartment)
+    {
+        $this->apartment = $apartment;
+
+        return $this;
+    }
+
+    /**
+     * Get apartment
+     *
+     * @return string
+     */
+    public function getApartment()
+    {
+        return $this->apartment;
+    }
+
+    /**
+     * Set code1
+     *
+     * @param float $code1
+     *
+     * @return RefPostAdresen
+     */
+    public function setCode1($code1)
+    {
+        $this->code1 = $code1;
+
+        return $this;
+    }
+
+    /**
+     * Get code1
+     *
+     * @return float
+     */
+    public function getCode1()
+    {
+        return $this->code1;
+    }
+
+    /**
+     * Set ssmaTimestamp
+     *
+     * @param string $ssmaTimestamp
+     *
+     * @return RefPostAdresen
+     */
+    public function setSsmaTimestamp($ssmaTimestamp)
+    {
+        $this->ssmaTimestamp = $ssmaTimestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get ssmaTimestamp
+     *
+     * @return string
+     */
+    public function getSsmaTimestamp()
+    {
+        return $this->ssmaTimestamp;
+    }
+}
+

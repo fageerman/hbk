@@ -1,0 +1,26 @@
+Serlimar\SerlEdgeBundle\Entity\Tblroles:
+    type: entity
+    table: tblroles
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        uri:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

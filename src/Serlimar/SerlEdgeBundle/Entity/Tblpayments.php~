@@ -1,0 +1,704 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
+/*
+ * Tblpayments
+ * @ORM\Table(name="tblpayments", indexes={@ORM\Index(name="$PaymentDate", columns={"PaymentDate"}), @ORM\Index(name="$CustomerGUID", columns={"CustomerGUID"}), @ORM\Index(name="$LocationGUID", columns={"LocationGUID"}), @ORM\Index(name="$InsertUser", columns={"InsertUser"}), @ORM\Index(name="$PaymentID", columns={"PaymentsID"})})
+ * @ORM\Entity
+ */
+class Tblpayments
+{
+    /**
+    * @var string
+    * @ORM\Column(name="GUID", type="string")
+    */
+    private $guid;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="PaymentsID", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $paymentsid;
+
+    /**
+     * @var string
+     * @Assert\NotBlank(
+     *      message="Enter a valid customer nr."
+     *      )
+     * @ORM\Column(name="CustomerGUID", type="string", length=45, nullable=true)
+     */
+    private $customerguid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Email", type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="PaymentDate", type="datetime", nullable=true)
+     */
+    private $paymentdate;
+
+    /**
+     * @var float
+     * @Assert\NotNull(
+     *     message="Enter a valid amount."
+     * )
+     * @Assert\Regex(
+     *     pattern="/^\d+(\.([0-9]){1,2})?$/",
+     *     message="Enter a valid amount.."
+     * )
+     * @ORM\Column(name="Amount", type="float", precision=2, scale=0, nullable=true)
+     */
+    private $amount;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Applied", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $applied = '0';
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Credit", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $credit = '0';
+
+    /**
+     * @var string
+     * @Assert\NotBlank(
+     *  message="Choose a payment method."
+     * )
+     * @ORM\Column(name="PaymentMethod", type="string", length=40, nullable=true)
+     */
+    private $paymentmethod;
+
+    /**
+     * @var integer
+     * @Assert\NotNull(
+     *     message="Enter a valid invoice nr."
+     * )
+     * @Assert\Length(
+     *   min= 1,
+     *   max= 11,
+     *      minMessage="Enter a valid invoice nr.",
+     *      maxMessage="Enter a valid invoice nr."
+     * )    
+     * @ORM\Column(name="InvoiceNr", type="integer")
+     */
+    private $invoicenr;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="AuthNr", type="integer", nullable=true)
+     */
+    private $authnr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Reference", type="string", length=150, nullable=true)
+     */
+    private $reference;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="GL", type="integer", nullable=true)
+     */
+    private $gl;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Confirmed", type="boolean", nullable=true)
+     */
+    private $confirmed = 0;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Note", type="text", nullable=true)
+     */
+    private $note;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LoactionGUID", type="string", length=40, nullable=true)
+     */
+    private $loactionguid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="InsertUser", type="string", length=150, nullable=true)
+     */
+    private $insertuser;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="TimeStamp", type="datetime", nullable=true)
+     */
+    private $timestamp;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="UserActionDate", type="datetime", nullable=true)
+     */
+    private $useractiondate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="UserName", type="string", length=150, nullable=true)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Locked", type="string", length=50, nullable=true)
+     */
+    private $locked;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="LockedDate", type="datetime", nullable=true)
+     */
+    private $lockeddate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LockedUserID", type="string", length=50, nullable=true)
+     */
+    private $lockeduserid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LockedUserName", type="string", length=150, nullable=true)
+     */
+    private $lockedusername;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LocationGUID", type="string", length=40, nullable=true)
+     */
+    private $locationguid;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="NotActive", type="boolean", nullable=true)
+     */
+    private $notactive = 0;
+
+
+    
+    
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+    
+    
+    public function getPaymentDate()
+    {
+        return $this->paymentdate;
+    }
+    
+    public function getPaymentMethod()
+    {
+        return $this->paymentmethod;
+    }
+    
+    public function getPaymentId()
+    {
+        return $this->paymentsid;
+    }
+    
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+    
+    public function getCustomerGuid()
+    {
+        return $this->customerguid;
+    }
+    
+    public function getInsertUser()
+    {
+        return $this->insertuser;
+    }
+    
+    public function getInvoicenr()
+    {
+        return $this->invoicenr;
+    }
+    
+    public function getNote()
+    {
+        return $this->note;
+    }
+    
+    public function setPaymentDate($paymentdate)
+    {
+        $this->paymentdate = $paymentdate;
+    }
+    
+    public function setPaymentMethod($paymentmethod)
+    {
+        $this->paymentmethod = $paymentmethod;
+    }
+    
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+    }
+    
+    public function setCustomerGuid($customerguid)
+    {
+        $this->customerguid = $customerguid;
+    }
+    
+    public function setInsertUser($insertuser)
+    {
+        $this->insertuser = $insertuser;
+    }
+    
+    public function setInvoicenr($invoicenr)
+    {
+        $this->invoicenr = $invoicenr;
+    }
+    
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+    
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+    
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+    }
+    
+    public function setGuid($guid)
+    {
+        $this->guid = $guid;
+    }
+    
+    public function setPaymentsId($paymentsid)
+    {
+        $this->paymentsid = $paymentsid;
+    }
+    
+    public function setUserActionDate($actionDate)
+    {
+        $this->useractiondate = $actionDate;
+    }
+    
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * Get paymentsid
+     *
+     * @return float
+     */
+    public function getPaymentsid()
+    {
+        return $this->paymentsid;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Tblpayments
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set applied
+     *
+     * @param float $applied
+     *
+     * @return Tblpayments
+     */
+    public function setApplied($applied)
+    {
+        $this->applied = $applied;
+
+        return $this;
+    }
+
+    /**
+     * Get applied
+     *
+     * @return float
+     */
+    public function getApplied()
+    {
+        return $this->applied;
+    }
+
+    /**
+     * Set credit
+     *
+     * @param float $credit
+     *
+     * @return Tblpayments
+     */
+    public function setCredit($credit)
+    {
+        $this->credit = $credit;
+
+        return $this;
+    }
+
+    /**
+     * Get credit
+     *
+     * @return float
+     */
+    public function getCredit()
+    {
+        return $this->credit;
+    }
+
+    /**
+     * Set authnr
+     *
+     * @param integer $authnr
+     *
+     * @return Tblpayments
+     */
+    public function setAuthnr($authnr)
+    {
+        $this->authnr = $authnr;
+
+        return $this;
+    }
+
+    /**
+     * Get authnr
+     *
+     * @return integer
+     */
+    public function getAuthnr()
+    {
+        return $this->authnr;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param string $reference
+     *
+     * @return Tblpayments
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set gl
+     *
+     * @param integer $gl
+     *
+     * @return Tblpayments
+     */
+    public function setGl($gl)
+    {
+        $this->gl = $gl;
+
+        return $this;
+    }
+
+    /**
+     * Get gl
+     *
+     * @return integer
+     */
+    public function getGl()
+    {
+        return $this->gl;
+    }
+
+    /**
+     * Set confirmed
+     *
+     * @param boolean $confirmed
+     *
+     * @return Tblpayments
+     */
+    public function setConfirmed($confirmed)
+    {
+        $this->confirmed = $confirmed;
+
+        return $this;
+    }
+
+    /**
+     * Get confirmed
+     *
+     * @return boolean
+     */
+    public function getConfirmed()
+    {
+        return $this->confirmed;
+    }
+
+    /**
+     * Set locationguid
+     *
+     * @param string $locationguid
+     *
+     * @return Tblpayments
+     */
+    public function setLocationguid($locationguid)
+    {
+        $this->locationguid = $locationguid;
+
+        return $this;
+    }
+
+    /**
+     * Get locationguid
+     *
+     * @return string
+     */
+    public function getLocationguid()
+    {
+        return $this->locationguid;
+    }
+
+    /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * Get useractiondate
+     *
+     * @return \DateTime
+     */
+    public function getUseractiondate()
+    {
+        return $this->useractiondate;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set locked
+     *
+     * @param string $locked
+     *
+     * @return Tblpayments
+     */
+    public function setLocked($locked)
+    {
+        $this->locked = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Get locked
+     *
+     * @return string
+     */
+    public function getLocked()
+    {
+        return $this->locked;
+    }
+
+    /**
+     * Set lockeddate
+     *
+     * @param \DateTime $lockeddate
+     *
+     * @return Tblpayments
+     */
+    public function setLockeddate($lockeddate)
+    {
+        $this->lockeddate = $lockeddate;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeddate
+     *
+     * @return \DateTime
+     */
+    public function getLockeddate()
+    {
+        return $this->lockeddate;
+    }
+
+    /**
+     * Set lockeduserid
+     *
+     * @param string $lockeduserid
+     *
+     * @return Tblpayments
+     */
+    public function setLockeduserid($lockeduserid)
+    {
+        $this->lockeduserid = $lockeduserid;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeduserid
+     *
+     * @return string
+     */
+    public function getLockeduserid()
+    {
+        return $this->lockeduserid;
+    }
+
+    /**
+     * Set lockedusername
+     *
+     * @param string $lockedusername
+     *
+     * @return Tblpayments
+     */
+    public function setLockedusername($lockedusername)
+    {
+        $this->lockedusername = $lockedusername;
+
+        return $this;
+    }
+
+    /**
+     * Get lockedusername
+     *
+     * @return string
+     */
+    public function getLockedusername()
+    {
+        return $this->lockedusername;
+    }
+
+    /**
+     * Set loactionguid
+     *
+     * @param string $loactionguid
+     *
+     * @return Tblpayments
+     */
+    public function setLoactionguid($loactionguid)
+    {
+        $this->loactionguid = $loactionguid;
+
+        return $this;
+    }
+
+    /**
+     * Get loactionguid
+     *
+     * @return string
+     */
+    public function getLoactionguid()
+    {
+        return $this->loactionguid;
+    }
+
+    /**
+     * Set notactive
+     *
+     * @param boolean $notactive
+     *
+     * @return Tblpayments
+     */
+    public function setNotactive($notactive)
+    {
+        $this->notactive = $notactive;
+
+        return $this;
+    }
+
+    /**
+     * Get notactive
+     *
+     * @return boolean
+     */
+    public function getNotactive()
+    {
+        return $this->notactive;
+    }
+}

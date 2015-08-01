@@ -1,0 +1,1577 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tbltickets
+ */
+class Tbltickets
+{
+    /**
+     * @var string
+     */
+    private $guid = '';
+
+    /**
+     * @var integer
+     */
+    private $ticketid;
+
+    /**
+     * @var \DateTime
+     */
+    private $ticketdate;
+
+    /**
+     * @var \DateTime
+     */
+    private $timein;
+
+    /**
+     * @var \DateTime
+     */
+    private $timeout;
+
+    /**
+     * @var integer
+     */
+    private $companyid;
+
+    /**
+     * @var string
+     */
+    private $companyguid;
+
+    /**
+     * @var string
+     */
+    private $vehicleid;
+
+    /**
+     * @var string
+     */
+    private $vehicleguid;
+
+    /**
+     * @var string
+     */
+    private $operator;
+
+    /**
+     * @var integer
+     */
+    private $operatorid;
+
+    /**
+     * @var string
+     */
+    private $operatorguid;
+
+    /**
+     * @var integer
+     */
+    private $materialid;
+
+    /**
+     * @var string
+     */
+    private $materialguid;
+
+    /**
+     * @var integer
+     */
+    private $jobid;
+
+    /**
+     * @var integer
+     */
+    private $containerid;
+
+    /**
+     * @var string
+     */
+    private $containerguid;
+
+    /**
+     * @var float
+     */
+    private $containerweight;
+
+    /**
+     * @var string
+     */
+    private $manualcontainer;
+
+    /**
+     * @var float
+     */
+    private $grossweight;
+
+    /**
+     * @var float
+     */
+    private $tareweight;
+
+    /**
+     * @var float
+     */
+    private $vehicleweight;
+
+    /**
+     * @var float
+     */
+    private $netweight;
+
+    /**
+     * @var float
+     */
+    private $unitprice;
+
+    /**
+     * @var float
+     */
+    private $netprice;
+
+    /**
+     * @var float
+     */
+    private $localsalestax;
+
+    /**
+     * @var float
+     */
+    private $totalprice;
+
+    /**
+     * @var integer
+     */
+    private $invoiceid;
+
+    /**
+     * @var string
+     */
+    private $invoicegiud;
+
+    /**
+     * @var integer
+     */
+    private $invoicenr;
+
+    /**
+     * @var string
+     */
+    private $noweigh;
+
+    /**
+     * @var string
+     */
+    private $manualentry;
+
+    /**
+     * @var string
+     */
+    private $inspection;
+
+    /**
+     * @var string
+     */
+    private $inbound;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var string
+     */
+    private $chargeCash;
+
+    /**
+     * @var string
+     */
+    private $fixedcharge;
+
+    /**
+     * @var float
+     */
+    private $units;
+
+    /**
+     * @var string
+     */
+    private $unitname;
+
+    /**
+     * @var string
+     */
+    private $note;
+
+    /**
+     * @var string
+     */
+    private $location;
+
+    /**
+     * @var integer
+     */
+    private $sourceid;
+
+    /**
+     * @var string
+     */
+    private $sourceguid;
+
+    /**
+     * @var string
+     */
+    private $category;
+
+    /**
+     * @var float
+     */
+    private $haulcharge;
+
+    /**
+     * @var \DateTime
+     */
+    private $timestamp = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \DateTime
+     */
+    private $useractiondate;
+
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $locked;
+
+    /**
+     * @var \DateTime
+     */
+    private $lockeddate;
+
+    /**
+     * @var string
+     */
+    private $lockeduserid;
+
+    /**
+     * @var string
+     */
+    private $lockedusername;
+
+    /**
+     * @var boolean
+     */
+    private $reprint = 'b\'0\'';
+
+    /**
+     * @var string
+     */
+    private $insertuser;
+
+
+    /**
+     * Set guid
+     *
+     * @param string $guid
+     *
+     * @return Tbltickets
+     */
+    public function setGuid($guid)
+    {
+        $this->guid = $guid;
+
+        return $this;
+    }
+
+    /**
+     * Get guid
+     *
+     * @return string
+     */
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+
+    /**
+     * Set ticketid
+     *
+     * @param integer $ticketid
+     *
+     * @return Tbltickets
+     */
+    public function setTicketid($ticketid)
+    {
+        $this->ticketid = $ticketid;
+
+        return $this;
+    }
+
+    /**
+     * Get ticketid
+     *
+     * @return integer
+     */
+    public function getTicketid()
+    {
+        return $this->ticketid;
+    }
+
+    /**
+     * Set ticketdate
+     *
+     * @param \DateTime $ticketdate
+     *
+     * @return Tbltickets
+     */
+    public function setTicketdate($ticketdate)
+    {
+        $this->ticketdate = $ticketdate;
+
+        return $this;
+    }
+
+    /**
+     * Get ticketdate
+     *
+     * @return \DateTime
+     */
+    public function getTicketdate()
+    {
+        return $this->ticketdate;
+    }
+
+    /**
+     * Set timein
+     *
+     * @param \DateTime $timein
+     *
+     * @return Tbltickets
+     */
+    public function setTimein($timein)
+    {
+        $this->timein = $timein;
+
+        return $this;
+    }
+
+    /**
+     * Get timein
+     *
+     * @return \DateTime
+     */
+    public function getTimein()
+    {
+        return $this->timein;
+    }
+
+    /**
+     * Set timeout
+     *
+     * @param \DateTime $timeout
+     *
+     * @return Tbltickets
+     */
+    public function setTimeout($timeout)
+    {
+        $this->timeout = $timeout;
+
+        return $this;
+    }
+
+    /**
+     * Get timeout
+     *
+     * @return \DateTime
+     */
+    public function getTimeout()
+    {
+        return $this->timeout;
+    }
+
+    /**
+     * Set companyid
+     *
+     * @param integer $companyid
+     *
+     * @return Tbltickets
+     */
+    public function setCompanyid($companyid)
+    {
+        $this->companyid = $companyid;
+
+        return $this;
+    }
+
+    /**
+     * Get companyid
+     *
+     * @return integer
+     */
+    public function getCompanyid()
+    {
+        return $this->companyid;
+    }
+
+    /**
+     * Set companyguid
+     *
+     * @param string $companyguid
+     *
+     * @return Tbltickets
+     */
+    public function setCompanyguid($companyguid)
+    {
+        $this->companyguid = $companyguid;
+
+        return $this;
+    }
+
+    /**
+     * Get companyguid
+     *
+     * @return string
+     */
+    public function getCompanyguid()
+    {
+        return $this->companyguid;
+    }
+
+    /**
+     * Set vehicleid
+     *
+     * @param string $vehicleid
+     *
+     * @return Tbltickets
+     */
+    public function setVehicleid($vehicleid)
+    {
+        $this->vehicleid = $vehicleid;
+
+        return $this;
+    }
+
+    /**
+     * Get vehicleid
+     *
+     * @return string
+     */
+    public function getVehicleid()
+    {
+        return $this->vehicleid;
+    }
+
+    /**
+     * Set vehicleguid
+     *
+     * @param string $vehicleguid
+     *
+     * @return Tbltickets
+     */
+    public function setVehicleguid($vehicleguid)
+    {
+        $this->vehicleguid = $vehicleguid;
+
+        return $this;
+    }
+
+    /**
+     * Get vehicleguid
+     *
+     * @return string
+     */
+    public function getVehicleguid()
+    {
+        return $this->vehicleguid;
+    }
+
+    /**
+     * Set operator
+     *
+     * @param string $operator
+     *
+     * @return Tbltickets
+     */
+    public function setOperator($operator)
+    {
+        $this->operator = $operator;
+
+        return $this;
+    }
+
+    /**
+     * Get operator
+     *
+     * @return string
+     */
+    public function getOperator()
+    {
+        return $this->operator;
+    }
+
+    /**
+     * Set operatorid
+     *
+     * @param integer $operatorid
+     *
+     * @return Tbltickets
+     */
+    public function setOperatorid($operatorid)
+    {
+        $this->operatorid = $operatorid;
+
+        return $this;
+    }
+
+    /**
+     * Get operatorid
+     *
+     * @return integer
+     */
+    public function getOperatorid()
+    {
+        return $this->operatorid;
+    }
+
+    /**
+     * Set operatorguid
+     *
+     * @param string $operatorguid
+     *
+     * @return Tbltickets
+     */
+    public function setOperatorguid($operatorguid)
+    {
+        $this->operatorguid = $operatorguid;
+
+        return $this;
+    }
+
+    /**
+     * Get operatorguid
+     *
+     * @return string
+     */
+    public function getOperatorguid()
+    {
+        return $this->operatorguid;
+    }
+
+    /**
+     * Set materialid
+     *
+     * @param integer $materialid
+     *
+     * @return Tbltickets
+     */
+    public function setMaterialid($materialid)
+    {
+        $this->materialid = $materialid;
+
+        return $this;
+    }
+
+    /**
+     * Get materialid
+     *
+     * @return integer
+     */
+    public function getMaterialid()
+    {
+        return $this->materialid;
+    }
+
+    /**
+     * Set materialguid
+     *
+     * @param string $materialguid
+     *
+     * @return Tbltickets
+     */
+    public function setMaterialguid($materialguid)
+    {
+        $this->materialguid = $materialguid;
+
+        return $this;
+    }
+
+    /**
+     * Get materialguid
+     *
+     * @return string
+     */
+    public function getMaterialguid()
+    {
+        return $this->materialguid;
+    }
+
+    /**
+     * Set jobid
+     *
+     * @param integer $jobid
+     *
+     * @return Tbltickets
+     */
+    public function setJobid($jobid)
+    {
+        $this->jobid = $jobid;
+
+        return $this;
+    }
+
+    /**
+     * Get jobid
+     *
+     * @return integer
+     */
+    public function getJobid()
+    {
+        return $this->jobid;
+    }
+
+    /**
+     * Set containerid
+     *
+     * @param integer $containerid
+     *
+     * @return Tbltickets
+     */
+    public function setContainerid($containerid)
+    {
+        $this->containerid = $containerid;
+
+        return $this;
+    }
+
+    /**
+     * Get containerid
+     *
+     * @return integer
+     */
+    public function getContainerid()
+    {
+        return $this->containerid;
+    }
+
+    /**
+     * Set containerguid
+     *
+     * @param string $containerguid
+     *
+     * @return Tbltickets
+     */
+    public function setContainerguid($containerguid)
+    {
+        $this->containerguid = $containerguid;
+
+        return $this;
+    }
+
+    /**
+     * Get containerguid
+     *
+     * @return string
+     */
+    public function getContainerguid()
+    {
+        return $this->containerguid;
+    }
+
+    /**
+     * Set containerweight
+     *
+     * @param float $containerweight
+     *
+     * @return Tbltickets
+     */
+    public function setContainerweight($containerweight)
+    {
+        $this->containerweight = $containerweight;
+
+        return $this;
+    }
+
+    /**
+     * Get containerweight
+     *
+     * @return float
+     */
+    public function getContainerweight()
+    {
+        return $this->containerweight;
+    }
+
+    /**
+     * Set manualcontainer
+     *
+     * @param string $manualcontainer
+     *
+     * @return Tbltickets
+     */
+    public function setManualcontainer($manualcontainer)
+    {
+        $this->manualcontainer = $manualcontainer;
+
+        return $this;
+    }
+
+    /**
+     * Get manualcontainer
+     *
+     * @return string
+     */
+    public function getManualcontainer()
+    {
+        return $this->manualcontainer;
+    }
+
+    /**
+     * Set grossweight
+     *
+     * @param float $grossweight
+     *
+     * @return Tbltickets
+     */
+    public function setGrossweight($grossweight)
+    {
+        $this->grossweight = $grossweight;
+
+        return $this;
+    }
+
+    /**
+     * Get grossweight
+     *
+     * @return float
+     */
+    public function getGrossweight()
+    {
+        return $this->grossweight;
+    }
+
+    /**
+     * Set tareweight
+     *
+     * @param float $tareweight
+     *
+     * @return Tbltickets
+     */
+    public function setTareweight($tareweight)
+    {
+        $this->tareweight = $tareweight;
+
+        return $this;
+    }
+
+    /**
+     * Get tareweight
+     *
+     * @return float
+     */
+    public function getTareweight()
+    {
+        return $this->tareweight;
+    }
+
+    /**
+     * Set vehicleweight
+     *
+     * @param float $vehicleweight
+     *
+     * @return Tbltickets
+     */
+    public function setVehicleweight($vehicleweight)
+    {
+        $this->vehicleweight = $vehicleweight;
+
+        return $this;
+    }
+
+    /**
+     * Get vehicleweight
+     *
+     * @return float
+     */
+    public function getVehicleweight()
+    {
+        return $this->vehicleweight;
+    }
+
+    /**
+     * Set netweight
+     *
+     * @param float $netweight
+     *
+     * @return Tbltickets
+     */
+    public function setNetweight($netweight)
+    {
+        $this->netweight = $netweight;
+
+        return $this;
+    }
+
+    /**
+     * Get netweight
+     *
+     * @return float
+     */
+    public function getNetweight()
+    {
+        return $this->netweight;
+    }
+
+    /**
+     * Set unitprice
+     *
+     * @param float $unitprice
+     *
+     * @return Tbltickets
+     */
+    public function setUnitprice($unitprice)
+    {
+        $this->unitprice = $unitprice;
+
+        return $this;
+    }
+
+    /**
+     * Get unitprice
+     *
+     * @return float
+     */
+    public function getUnitprice()
+    {
+        return $this->unitprice;
+    }
+
+    /**
+     * Set netprice
+     *
+     * @param float $netprice
+     *
+     * @return Tbltickets
+     */
+    public function setNetprice($netprice)
+    {
+        $this->netprice = $netprice;
+
+        return $this;
+    }
+
+    /**
+     * Get netprice
+     *
+     * @return float
+     */
+    public function getNetprice()
+    {
+        return $this->netprice;
+    }
+
+    /**
+     * Set localsalestax
+     *
+     * @param float $localsalestax
+     *
+     * @return Tbltickets
+     */
+    public function setLocalsalestax($localsalestax)
+    {
+        $this->localsalestax = $localsalestax;
+
+        return $this;
+    }
+
+    /**
+     * Get localsalestax
+     *
+     * @return float
+     */
+    public function getLocalsalestax()
+    {
+        return $this->localsalestax;
+    }
+
+    /**
+     * Set totalprice
+     *
+     * @param float $totalprice
+     *
+     * @return Tbltickets
+     */
+    public function setTotalprice($totalprice)
+    {
+        $this->totalprice = $totalprice;
+
+        return $this;
+    }
+
+    /**
+     * Get totalprice
+     *
+     * @return float
+     */
+    public function getTotalprice()
+    {
+        return $this->totalprice;
+    }
+
+    /**
+     * Set invoiceid
+     *
+     * @param integer $invoiceid
+     *
+     * @return Tbltickets
+     */
+    public function setInvoiceid($invoiceid)
+    {
+        $this->invoiceid = $invoiceid;
+
+        return $this;
+    }
+
+    /**
+     * Get invoiceid
+     *
+     * @return integer
+     */
+    public function getInvoiceid()
+    {
+        return $this->invoiceid;
+    }
+
+    /**
+     * Set invoicegiud
+     *
+     * @param string $invoicegiud
+     *
+     * @return Tbltickets
+     */
+    public function setInvoicegiud($invoicegiud)
+    {
+        $this->invoicegiud = $invoicegiud;
+
+        return $this;
+    }
+
+    /**
+     * Get invoicegiud
+     *
+     * @return string
+     */
+    public function getInvoicegiud()
+    {
+        return $this->invoicegiud;
+    }
+
+    /**
+     * Set invoicenr
+     *
+     * @param integer $invoicenr
+     *
+     * @return Tbltickets
+     */
+    public function setInvoicenr($invoicenr)
+    {
+        $this->invoicenr = $invoicenr;
+
+        return $this;
+    }
+
+    /**
+     * Get invoicenr
+     *
+     * @return integer
+     */
+    public function getInvoicenr()
+    {
+        return $this->invoicenr;
+    }
+
+    /**
+     * Set noweigh
+     *
+     * @param string $noweigh
+     *
+     * @return Tbltickets
+     */
+    public function setNoweigh($noweigh)
+    {
+        $this->noweigh = $noweigh;
+
+        return $this;
+    }
+
+    /**
+     * Get noweigh
+     *
+     * @return string
+     */
+    public function getNoweigh()
+    {
+        return $this->noweigh;
+    }
+
+    /**
+     * Set manualentry
+     *
+     * @param string $manualentry
+     *
+     * @return Tbltickets
+     */
+    public function setManualentry($manualentry)
+    {
+        $this->manualentry = $manualentry;
+
+        return $this;
+    }
+
+    /**
+     * Get manualentry
+     *
+     * @return string
+     */
+    public function getManualentry()
+    {
+        return $this->manualentry;
+    }
+
+    /**
+     * Set inspection
+     *
+     * @param string $inspection
+     *
+     * @return Tbltickets
+     */
+    public function setInspection($inspection)
+    {
+        $this->inspection = $inspection;
+
+        return $this;
+    }
+
+    /**
+     * Get inspection
+     *
+     * @return string
+     */
+    public function getInspection()
+    {
+        return $this->inspection;
+    }
+
+    /**
+     * Set inbound
+     *
+     * @param string $inbound
+     *
+     * @return Tbltickets
+     */
+    public function setInbound($inbound)
+    {
+        $this->inbound = $inbound;
+
+        return $this;
+    }
+
+    /**
+     * Get inbound
+     *
+     * @return string
+     */
+    public function getInbound()
+    {
+        return $this->inbound;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Tbltickets
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set chargeCash
+     *
+     * @param string $chargeCash
+     *
+     * @return Tbltickets
+     */
+    public function setChargeCash($chargeCash)
+    {
+        $this->chargeCash = $chargeCash;
+
+        return $this;
+    }
+
+    /**
+     * Get chargeCash
+     *
+     * @return string
+     */
+    public function getChargeCash()
+    {
+        return $this->chargeCash;
+    }
+
+    /**
+     * Set fixedcharge
+     *
+     * @param string $fixedcharge
+     *
+     * @return Tbltickets
+     */
+    public function setFixedcharge($fixedcharge)
+    {
+        $this->fixedcharge = $fixedcharge;
+
+        return $this;
+    }
+
+    /**
+     * Get fixedcharge
+     *
+     * @return string
+     */
+    public function getFixedcharge()
+    {
+        return $this->fixedcharge;
+    }
+
+    /**
+     * Set units
+     *
+     * @param float $units
+     *
+     * @return Tbltickets
+     */
+    public function setUnits($units)
+    {
+        $this->units = $units;
+
+        return $this;
+    }
+
+    /**
+     * Get units
+     *
+     * @return float
+     */
+    public function getUnits()
+    {
+        return $this->units;
+    }
+
+    /**
+     * Set unitname
+     *
+     * @param string $unitname
+     *
+     * @return Tbltickets
+     */
+    public function setUnitname($unitname)
+    {
+        $this->unitname = $unitname;
+
+        return $this;
+    }
+
+    /**
+     * Get unitname
+     *
+     * @return string
+     */
+    public function getUnitname()
+    {
+        return $this->unitname;
+    }
+
+    /**
+     * Set note
+     *
+     * @param string $note
+     *
+     * @return Tbltickets
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set location
+     *
+     * @param string $location
+     *
+     * @return Tbltickets
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set sourceid
+     *
+     * @param integer $sourceid
+     *
+     * @return Tbltickets
+     */
+    public function setSourceid($sourceid)
+    {
+        $this->sourceid = $sourceid;
+
+        return $this;
+    }
+
+    /**
+     * Get sourceid
+     *
+     * @return integer
+     */
+    public function getSourceid()
+    {
+        return $this->sourceid;
+    }
+
+    /**
+     * Set sourceguid
+     *
+     * @param string $sourceguid
+     *
+     * @return Tbltickets
+     */
+    public function setSourceguid($sourceguid)
+    {
+        $this->sourceguid = $sourceguid;
+
+        return $this;
+    }
+
+    /**
+     * Get sourceguid
+     *
+     * @return string
+     */
+    public function getSourceguid()
+    {
+        return $this->sourceguid;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     *
+     * @return Tbltickets
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set haulcharge
+     *
+     * @param float $haulcharge
+     *
+     * @return Tbltickets
+     */
+    public function setHaulcharge($haulcharge)
+    {
+        $this->haulcharge = $haulcharge;
+
+        return $this;
+    }
+
+    /**
+     * Get haulcharge
+     *
+     * @return float
+     */
+    public function getHaulcharge()
+    {
+        return $this->haulcharge;
+    }
+
+    /**
+     * Set timestamp
+     *
+     * @param \DateTime $timestamp
+     *
+     * @return Tbltickets
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * Set useractiondate
+     *
+     * @param \DateTime $useractiondate
+     *
+     * @return Tbltickets
+     */
+    public function setUseractiondate($useractiondate)
+    {
+        $this->useractiondate = $useractiondate;
+
+        return $this;
+    }
+
+    /**
+     * Get useractiondate
+     *
+     * @return \DateTime
+     */
+    public function getUseractiondate()
+    {
+        return $this->useractiondate;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Tbltickets
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set locked
+     *
+     * @param string $locked
+     *
+     * @return Tbltickets
+     */
+    public function setLocked($locked)
+    {
+        $this->locked = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Get locked
+     *
+     * @return string
+     */
+    public function getLocked()
+    {
+        return $this->locked;
+    }
+
+    /**
+     * Set lockeddate
+     *
+     * @param \DateTime $lockeddate
+     *
+     * @return Tbltickets
+     */
+    public function setLockeddate($lockeddate)
+    {
+        $this->lockeddate = $lockeddate;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeddate
+     *
+     * @return \DateTime
+     */
+    public function getLockeddate()
+    {
+        return $this->lockeddate;
+    }
+
+    /**
+     * Set lockeduserid
+     *
+     * @param string $lockeduserid
+     *
+     * @return Tbltickets
+     */
+    public function setLockeduserid($lockeduserid)
+    {
+        $this->lockeduserid = $lockeduserid;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeduserid
+     *
+     * @return string
+     */
+    public function getLockeduserid()
+    {
+        return $this->lockeduserid;
+    }
+
+    /**
+     * Set lockedusername
+     *
+     * @param string $lockedusername
+     *
+     * @return Tbltickets
+     */
+    public function setLockedusername($lockedusername)
+    {
+        $this->lockedusername = $lockedusername;
+
+        return $this;
+    }
+
+    /**
+     * Get lockedusername
+     *
+     * @return string
+     */
+    public function getLockedusername()
+    {
+        return $this->lockedusername;
+    }
+
+    /**
+     * Set reprint
+     *
+     * @param boolean $reprint
+     *
+     * @return Tbltickets
+     */
+    public function setReprint($reprint)
+    {
+        $this->reprint = $reprint;
+
+        return $this;
+    }
+
+    /**
+     * Get reprint
+     *
+     * @return boolean
+     */
+    public function getReprint()
+    {
+        return $this->reprint;
+    }
+
+    /**
+     * Set insertuser
+     *
+     * @param string $insertuser
+     *
+     * @return Tbltickets
+     */
+    public function setInsertuser($insertuser)
+    {
+        $this->insertuser = $insertuser;
+
+        return $this;
+    }
+
+    /**
+     * Get insertuser
+     *
+     * @return string
+     */
+    public function getInsertuser()
+    {
+        return $this->insertuser;
+    }
+}
+

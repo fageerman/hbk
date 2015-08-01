@@ -1,0 +1,55 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * RefUseropnemer
+ */
+class RefUseropnemer
+{
+    /**
+     * @var integer
+     */
+    private $useropnemerid;
+
+    /**
+     * @var string
+     */
+    private $useropnemer;
+
+
+    /**
+     * Get useropnemerid
+     *
+     * @return integer
+     */
+    public function getUseropnemerid()
+    {
+        return $this->useropnemerid;
+    }
+
+    /**
+     * Set useropnemer
+     *
+     * @param string $useropnemer
+     *
+     * @return RefUseropnemer
+     */
+    public function setUseropnemer($useropnemer)
+    {
+        $this->useropnemer = $useropnemer;
+
+        return $this;
+    }
+
+    /**
+     * Get useropnemer
+     *
+     * @return string
+     */
+    public function getUseropnemer()
+    {
+        return $this->useropnemer;
+    }
+}
+

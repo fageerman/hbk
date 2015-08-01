@@ -1,0 +1,200 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * RefTakencareby
+ */
+class RefTakencareby
+{
+    /**
+     * @var integer
+     */
+    private $takecarebyid;
+
+    /**
+     * @var string
+     */
+    private $takencareby;
+
+    /**
+     * @var boolean
+     */
+    private $active = '0';
+
+    /**
+     * @var string
+     */
+    private $note;
+
+    /**
+     * @var string
+     */
+    private $inuser;
+
+    /**
+     * @var \DateTime
+     */
+    private $indate;
+
+    /**
+     * @var string
+     */
+    private $ssmaTimestamp;
+
+
+    /**
+     * Get takecarebyid
+     *
+     * @return integer
+     */
+    public function getTakecarebyid()
+    {
+        return $this->takecarebyid;
+    }
+
+    /**
+     * Set takencareby
+     *
+     * @param string $takencareby
+     *
+     * @return RefTakencareby
+     */
+    public function setTakencareby($takencareby)
+    {
+        $this->takencareby = $takencareby;
+
+        return $this;
+    }
+
+    /**
+     * Get takencareby
+     *
+     * @return string
+     */
+    public function getTakencareby()
+    {
+        return $this->takencareby;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return RefTakencareby
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set note
+     *
+     * @param string $note
+     *
+     * @return RefTakencareby
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set inuser
+     *
+     * @param string $inuser
+     *
+     * @return RefTakencareby
+     */
+    public function setInuser($inuser)
+    {
+        $this->inuser = $inuser;
+
+        return $this;
+    }
+
+    /**
+     * Get inuser
+     *
+     * @return string
+     */
+    public function getInuser()
+    {
+        return $this->inuser;
+    }
+
+    /**
+     * Set indate
+     *
+     * @param \DateTime $indate
+     *
+     * @return RefTakencareby
+     */
+    public function setIndate($indate)
+    {
+        $this->indate = $indate;
+
+        return $this;
+    }
+
+    /**
+     * Get indate
+     *
+     * @return \DateTime
+     */
+    public function getIndate()
+    {
+        return $this->indate;
+    }
+
+    /**
+     * Set ssmaTimestamp
+     *
+     * @param string $ssmaTimestamp
+     *
+     * @return RefTakencareby
+     */
+    public function setSsmaTimestamp($ssmaTimestamp)
+    {
+        $this->ssmaTimestamp = $ssmaTimestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get ssmaTimestamp
+     *
+     * @return string
+     */
+    public function getSsmaTimestamp()
+    {
+        return $this->ssmaTimestamp;
+    }
+}
+

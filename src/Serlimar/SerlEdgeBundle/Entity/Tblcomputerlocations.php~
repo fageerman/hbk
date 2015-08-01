@@ -1,0 +1,403 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblcomputerlocations
+ */
+class Tblcomputerlocations
+{
+    /**
+     * @var string
+     */
+    private $guid = '';
+
+    /**
+     * @var string
+     */
+    private $computername;
+
+    /**
+     * @var string
+     */
+    private $locationguid;
+
+    /**
+     * @var string
+     */
+    private $ipaddress;
+
+    /**
+     * @var string
+     */
+    private $note;
+
+    /**
+     * @var string
+     */
+    private $insertuser;
+
+    /**
+     * @var \DateTime
+     */
+    private $timestamp = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \DateTime
+     */
+    private $useractiondate;
+
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $locked;
+
+    /**
+     * @var \DateTime
+     */
+    private $lockeddate;
+
+    /**
+     * @var string
+     */
+    private $lockeduserid;
+
+    /**
+     * @var string
+     */
+    private $lockedusername;
+
+    /**
+     * @var boolean
+     */
+    private $notactive = 'b\'0\'';
+
+
+    /**
+     * Get guid
+     *
+     * @return string
+     */
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+
+    /**
+     * Set computername
+     *
+     * @param string $computername
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setComputername($computername)
+    {
+        $this->computername = $computername;
+
+        return $this;
+    }
+
+    /**
+     * Get computername
+     *
+     * @return string
+     */
+    public function getComputername()
+    {
+        return $this->computername;
+    }
+
+    /**
+     * Set locationguid
+     *
+     * @param string $locationguid
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setLocationguid($locationguid)
+    {
+        $this->locationguid = $locationguid;
+
+        return $this;
+    }
+
+    /**
+     * Get locationguid
+     *
+     * @return string
+     */
+    public function getLocationguid()
+    {
+        return $this->locationguid;
+    }
+
+    /**
+     * Set ipaddress
+     *
+     * @param string $ipaddress
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setIpaddress($ipaddress)
+    {
+        $this->ipaddress = $ipaddress;
+
+        return $this;
+    }
+
+    /**
+     * Get ipaddress
+     *
+     * @return string
+     */
+    public function getIpaddress()
+    {
+        return $this->ipaddress;
+    }
+
+    /**
+     * Set note
+     *
+     * @param string $note
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set insertuser
+     *
+     * @param string $insertuser
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setInsertuser($insertuser)
+    {
+        $this->insertuser = $insertuser;
+
+        return $this;
+    }
+
+    /**
+     * Get insertuser
+     *
+     * @return string
+     */
+    public function getInsertuser()
+    {
+        return $this->insertuser;
+    }
+
+    /**
+     * Set timestamp
+     *
+     * @param \DateTime $timestamp
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * Set useractiondate
+     *
+     * @param \DateTime $useractiondate
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setUseractiondate($useractiondate)
+    {
+        $this->useractiondate = $useractiondate;
+
+        return $this;
+    }
+
+    /**
+     * Get useractiondate
+     *
+     * @return \DateTime
+     */
+    public function getUseractiondate()
+    {
+        return $this->useractiondate;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set locked
+     *
+     * @param string $locked
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setLocked($locked)
+    {
+        $this->locked = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Get locked
+     *
+     * @return string
+     */
+    public function getLocked()
+    {
+        return $this->locked;
+    }
+
+    /**
+     * Set lockeddate
+     *
+     * @param \DateTime $lockeddate
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setLockeddate($lockeddate)
+    {
+        $this->lockeddate = $lockeddate;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeddate
+     *
+     * @return \DateTime
+     */
+    public function getLockeddate()
+    {
+        return $this->lockeddate;
+    }
+
+    /**
+     * Set lockeduserid
+     *
+     * @param string $lockeduserid
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setLockeduserid($lockeduserid)
+    {
+        $this->lockeduserid = $lockeduserid;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeduserid
+     *
+     * @return string
+     */
+    public function getLockeduserid()
+    {
+        return $this->lockeduserid;
+    }
+
+    /**
+     * Set lockedusername
+     *
+     * @param string $lockedusername
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setLockedusername($lockedusername)
+    {
+        $this->lockedusername = $lockedusername;
+
+        return $this;
+    }
+
+    /**
+     * Get lockedusername
+     *
+     * @return string
+     */
+    public function getLockedusername()
+    {
+        return $this->lockedusername;
+    }
+
+    /**
+     * Set notactive
+     *
+     * @param boolean $notactive
+     *
+     * @return Tblcomputerlocations
+     */
+    public function setNotactive($notactive)
+    {
+        $this->notactive = $notactive;
+
+        return $this;
+    }
+
+    /**
+     * Get notactive
+     *
+     * @return boolean
+     */
+    public function getNotactive()
+    {
+        return $this->notactive;
+    }
+}
+

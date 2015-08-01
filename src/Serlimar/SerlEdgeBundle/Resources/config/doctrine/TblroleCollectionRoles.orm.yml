@@ -1,0 +1,26 @@
+Serlimar\SerlEdgeBundle\Entity\TblroleCollectionRoles:
+    type: entity
+    table: tblrole_collection_roles
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        roleCollectionId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: role_collection_id
+        roleId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: role_id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,548 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblproducts
+ */
+class Tblproducts
+{
+    /**
+     * @var string
+     */
+    private $guid = '';
+
+    /**
+     * @var integer
+     */
+    private $productsid;
+
+    /**
+     * @var string
+     */
+    private $product;
+
+    /**
+     * @var string
+     */
+    private $description = 'Null';
+
+    /**
+     * @var string
+     */
+    private $unit;
+
+    /**
+     * @var float
+     */
+    private $rate = '0';
+
+    /**
+     * @var float
+     */
+    private $cost = '0';
+
+    /**
+     * @var float
+     */
+    private $minimumcharge = '0';
+
+    /**
+     * @var boolean
+     */
+    private $usebracket;
+
+    /**
+     * @var string
+     */
+    private $memo;
+
+    /**
+     * @var string
+     */
+    private $insertuser;
+
+    /**
+     * @var \DateTime
+     */
+    private $timestamp = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \DateTime
+     */
+    private $useractiondate;
+
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $locked;
+
+    /**
+     * @var \DateTime
+     */
+    private $lockeddate;
+
+    /**
+     * @var string
+     */
+    private $lockeduserid;
+
+    /**
+     * @var string
+     */
+    private $lockedusername;
+
+    /**
+     * @var boolean
+     */
+    private $notactive = '0';
+
+
+    /**
+     * Get guid
+     *
+     * @return string
+     */
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+
+    /**
+     * Set productsid
+     *
+     * @param integer $productsid
+     *
+     * @return Tblproducts
+     */
+    public function setProductsid($productsid)
+    {
+        $this->productsid = $productsid;
+
+        return $this;
+    }
+
+    /**
+     * Get productsid
+     *
+     * @return integer
+     */
+    public function getProductsid()
+    {
+        return $this->productsid;
+    }
+
+    /**
+     * Set product
+     *
+     * @param string $product
+     *
+     * @return Tblproducts
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return string
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Tblproducts
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set unit
+     *
+     * @param string $unit
+     *
+     * @return Tblproducts
+     */
+    public function setUnit($unit)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+    /**
+     * Set rate
+     *
+     * @param float $rate
+     *
+     * @return Tblproducts
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return float
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    /**
+     * Set cost
+     *
+     * @param float $cost
+     *
+     * @return Tblproducts
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+
+        return $this;
+    }
+
+    /**
+     * Get cost
+     *
+     * @return float
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+
+    /**
+     * Set minimumcharge
+     *
+     * @param float $minimumcharge
+     *
+     * @return Tblproducts
+     */
+    public function setMinimumcharge($minimumcharge)
+    {
+        $this->minimumcharge = $minimumcharge;
+
+        return $this;
+    }
+
+    /**
+     * Get minimumcharge
+     *
+     * @return float
+     */
+    public function getMinimumcharge()
+    {
+        return $this->minimumcharge;
+    }
+
+    /**
+     * Set usebracket
+     *
+     * @param boolean $usebracket
+     *
+     * @return Tblproducts
+     */
+    public function setUsebracket($usebracket)
+    {
+        $this->usebracket = $usebracket;
+
+        return $this;
+    }
+
+    /**
+     * Get usebracket
+     *
+     * @return boolean
+     */
+    public function getUsebracket()
+    {
+        return $this->usebracket;
+    }
+
+    /**
+     * Set memo
+     *
+     * @param string $memo
+     *
+     * @return Tblproducts
+     */
+    public function setMemo($memo)
+    {
+        $this->memo = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Get memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->memo;
+    }
+
+    /**
+     * Set insertuser
+     *
+     * @param string $insertuser
+     *
+     * @return Tblproducts
+     */
+    public function setInsertuser($insertuser)
+    {
+        $this->insertuser = $insertuser;
+
+        return $this;
+    }
+
+    /**
+     * Get insertuser
+     *
+     * @return string
+     */
+    public function getInsertuser()
+    {
+        return $this->insertuser;
+    }
+
+    /**
+     * Set timestamp
+     *
+     * @param \DateTime $timestamp
+     *
+     * @return Tblproducts
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * Set useractiondate
+     *
+     * @param \DateTime $useractiondate
+     *
+     * @return Tblproducts
+     */
+    public function setUseractiondate($useractiondate)
+    {
+        $this->useractiondate = $useractiondate;
+
+        return $this;
+    }
+
+    /**
+     * Get useractiondate
+     *
+     * @return \DateTime
+     */
+    public function getUseractiondate()
+    {
+        return $this->useractiondate;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Tblproducts
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set locked
+     *
+     * @param string $locked
+     *
+     * @return Tblproducts
+     */
+    public function setLocked($locked)
+    {
+        $this->locked = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Get locked
+     *
+     * @return string
+     */
+    public function getLocked()
+    {
+        return $this->locked;
+    }
+
+    /**
+     * Set lockeddate
+     *
+     * @param \DateTime $lockeddate
+     *
+     * @return Tblproducts
+     */
+    public function setLockeddate($lockeddate)
+    {
+        $this->lockeddate = $lockeddate;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeddate
+     *
+     * @return \DateTime
+     */
+    public function getLockeddate()
+    {
+        return $this->lockeddate;
+    }
+
+    /**
+     * Set lockeduserid
+     *
+     * @param string $lockeduserid
+     *
+     * @return Tblproducts
+     */
+    public function setLockeduserid($lockeduserid)
+    {
+        $this->lockeduserid = $lockeduserid;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeduserid
+     *
+     * @return string
+     */
+    public function getLockeduserid()
+    {
+        return $this->lockeduserid;
+    }
+
+    /**
+     * Set lockedusername
+     *
+     * @param string $lockedusername
+     *
+     * @return Tblproducts
+     */
+    public function setLockedusername($lockedusername)
+    {
+        $this->lockedusername = $lockedusername;
+
+        return $this;
+    }
+
+    /**
+     * Get lockedusername
+     *
+     * @return string
+     */
+    public function getLockedusername()
+    {
+        return $this->lockedusername;
+    }
+
+    /**
+     * Set notactive
+     *
+     * @param boolean $notactive
+     *
+     * @return Tblproducts
+     */
+    public function setNotactive($notactive)
+    {
+        $this->notactive = $notactive;
+
+        return $this;
+    }
+
+    /**
+     * Get notactive
+     *
+     * @return boolean
+     */
+    public function getNotactive()
+    {
+        return $this->notactive;
+    }
+}
+

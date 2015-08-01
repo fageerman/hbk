@@ -1,0 +1,55 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tbluseraccesslevel
+ */
+class Tbluseraccesslevel
+{
+    /**
+     * @var integer
+     */
+    private $accesslevelid;
+
+    /**
+     * @var string
+     */
+    private $accesslevel;
+
+
+    /**
+     * Get accesslevelid
+     *
+     * @return integer
+     */
+    public function getAccesslevelid()
+    {
+        return $this->accesslevelid;
+    }
+
+    /**
+     * Set accesslevel
+     *
+     * @param string $accesslevel
+     *
+     * @return Tbluseraccesslevel
+     */
+    public function setAccesslevel($accesslevel)
+    {
+        $this->accesslevel = $accesslevel;
+
+        return $this;
+    }
+
+    /**
+     * Get accesslevel
+     *
+     * @return string
+     */
+    public function getAccesslevel()
+    {
+        return $this->accesslevel;
+    }
+}
+

@@ -1,0 +1,664 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblitemdefaults
+ */
+class Tblitemdefaults
+{
+    /**
+     * @var integer
+     */
+    private $menuitemid;
+
+    /**
+     * @var boolean
+     */
+    private $default = '0';
+
+    /**
+     * @var integer
+     */
+    private $iteminterval = '50';
+
+    /**
+     * @var boolean
+     */
+    private $itemhighlightsoftcolor = '0';
+
+    /**
+     * @var integer
+     */
+    private $itemhighlightcolor = '0';
+
+    /**
+     * @var boolean
+     */
+    private $itemhighlightbold = '0';
+
+    /**
+     * @var boolean
+     */
+    private $itemhighlightunderline = '0';
+
+    /**
+     * @var integer
+     */
+    private $itemalignment = '0';
+
+    /**
+     * @var string
+     */
+    private $itemfontname = 'Tahoma';
+
+    /**
+     * @var integer
+     */
+    private $itemfontsize = '8';
+
+    /**
+     * @var boolean
+     */
+    private $itemfontbold = '0';
+
+    /**
+     * @var integer
+     */
+    private $itemfontcolor = '0';
+
+    /**
+     * @var boolean
+     */
+    private $itemfontitalic = '0';
+
+    /**
+     * @var boolean
+     */
+    private $itemfontunderline = '0';
+
+    /**
+     * @var boolean
+     */
+    private $itemfontstrikethrough = '0';
+
+    /**
+     * @var string
+     */
+    private $itempanefilleffect = 'Solid Color';
+
+    /**
+     * @var integer
+     */
+    private $filleffectcolor1 = '16777215';
+
+    /**
+     * @var integer
+     */
+    private $filleffectcolor2 = '16777215';
+
+    /**
+     * @var integer
+     */
+    private $filleffectcolor3 = '16777215';
+
+    /**
+     * @var integer
+     */
+    private $filleffectcolor4 = '16777215';
+
+    /**
+     * @var boolean
+     */
+    private $filleffectdirection = '0';
+
+    /**
+     * @var boolean
+     */
+    private $filleffectextrawide = '0';
+
+    /**
+     * @var boolean
+     */
+    private $itemhandcursor = '0';
+
+
+    /**
+     * Get menuitemid
+     *
+     * @return integer
+     */
+    public function getMenuitemid()
+    {
+        return $this->menuitemid;
+    }
+
+    /**
+     * Set default
+     *
+     * @param boolean $default
+     *
+     * @return Tblitemdefaults
+     */
+    public function setDefault($default)
+    {
+        $this->default = $default;
+
+        return $this;
+    }
+
+    /**
+     * Get default
+     *
+     * @return boolean
+     */
+    public function getDefault()
+    {
+        return $this->default;
+    }
+
+    /**
+     * Set iteminterval
+     *
+     * @param integer $iteminterval
+     *
+     * @return Tblitemdefaults
+     */
+    public function setIteminterval($iteminterval)
+    {
+        $this->iteminterval = $iteminterval;
+
+        return $this;
+    }
+
+    /**
+     * Get iteminterval
+     *
+     * @return integer
+     */
+    public function getIteminterval()
+    {
+        return $this->iteminterval;
+    }
+
+    /**
+     * Set itemhighlightsoftcolor
+     *
+     * @param boolean $itemhighlightsoftcolor
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemhighlightsoftcolor($itemhighlightsoftcolor)
+    {
+        $this->itemhighlightsoftcolor = $itemhighlightsoftcolor;
+
+        return $this;
+    }
+
+    /**
+     * Get itemhighlightsoftcolor
+     *
+     * @return boolean
+     */
+    public function getItemhighlightsoftcolor()
+    {
+        return $this->itemhighlightsoftcolor;
+    }
+
+    /**
+     * Set itemhighlightcolor
+     *
+     * @param integer $itemhighlightcolor
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemhighlightcolor($itemhighlightcolor)
+    {
+        $this->itemhighlightcolor = $itemhighlightcolor;
+
+        return $this;
+    }
+
+    /**
+     * Get itemhighlightcolor
+     *
+     * @return integer
+     */
+    public function getItemhighlightcolor()
+    {
+        return $this->itemhighlightcolor;
+    }
+
+    /**
+     * Set itemhighlightbold
+     *
+     * @param boolean $itemhighlightbold
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemhighlightbold($itemhighlightbold)
+    {
+        $this->itemhighlightbold = $itemhighlightbold;
+
+        return $this;
+    }
+
+    /**
+     * Get itemhighlightbold
+     *
+     * @return boolean
+     */
+    public function getItemhighlightbold()
+    {
+        return $this->itemhighlightbold;
+    }
+
+    /**
+     * Set itemhighlightunderline
+     *
+     * @param boolean $itemhighlightunderline
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemhighlightunderline($itemhighlightunderline)
+    {
+        $this->itemhighlightunderline = $itemhighlightunderline;
+
+        return $this;
+    }
+
+    /**
+     * Get itemhighlightunderline
+     *
+     * @return boolean
+     */
+    public function getItemhighlightunderline()
+    {
+        return $this->itemhighlightunderline;
+    }
+
+    /**
+     * Set itemalignment
+     *
+     * @param integer $itemalignment
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemalignment($itemalignment)
+    {
+        $this->itemalignment = $itemalignment;
+
+        return $this;
+    }
+
+    /**
+     * Get itemalignment
+     *
+     * @return integer
+     */
+    public function getItemalignment()
+    {
+        return $this->itemalignment;
+    }
+
+    /**
+     * Set itemfontname
+     *
+     * @param string $itemfontname
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemfontname($itemfontname)
+    {
+        $this->itemfontname = $itemfontname;
+
+        return $this;
+    }
+
+    /**
+     * Get itemfontname
+     *
+     * @return string
+     */
+    public function getItemfontname()
+    {
+        return $this->itemfontname;
+    }
+
+    /**
+     * Set itemfontsize
+     *
+     * @param integer $itemfontsize
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemfontsize($itemfontsize)
+    {
+        $this->itemfontsize = $itemfontsize;
+
+        return $this;
+    }
+
+    /**
+     * Get itemfontsize
+     *
+     * @return integer
+     */
+    public function getItemfontsize()
+    {
+        return $this->itemfontsize;
+    }
+
+    /**
+     * Set itemfontbold
+     *
+     * @param boolean $itemfontbold
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemfontbold($itemfontbold)
+    {
+        $this->itemfontbold = $itemfontbold;
+
+        return $this;
+    }
+
+    /**
+     * Get itemfontbold
+     *
+     * @return boolean
+     */
+    public function getItemfontbold()
+    {
+        return $this->itemfontbold;
+    }
+
+    /**
+     * Set itemfontcolor
+     *
+     * @param integer $itemfontcolor
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemfontcolor($itemfontcolor)
+    {
+        $this->itemfontcolor = $itemfontcolor;
+
+        return $this;
+    }
+
+    /**
+     * Get itemfontcolor
+     *
+     * @return integer
+     */
+    public function getItemfontcolor()
+    {
+        return $this->itemfontcolor;
+    }
+
+    /**
+     * Set itemfontitalic
+     *
+     * @param boolean $itemfontitalic
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemfontitalic($itemfontitalic)
+    {
+        $this->itemfontitalic = $itemfontitalic;
+
+        return $this;
+    }
+
+    /**
+     * Get itemfontitalic
+     *
+     * @return boolean
+     */
+    public function getItemfontitalic()
+    {
+        return $this->itemfontitalic;
+    }
+
+    /**
+     * Set itemfontunderline
+     *
+     * @param boolean $itemfontunderline
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemfontunderline($itemfontunderline)
+    {
+        $this->itemfontunderline = $itemfontunderline;
+
+        return $this;
+    }
+
+    /**
+     * Get itemfontunderline
+     *
+     * @return boolean
+     */
+    public function getItemfontunderline()
+    {
+        return $this->itemfontunderline;
+    }
+
+    /**
+     * Set itemfontstrikethrough
+     *
+     * @param boolean $itemfontstrikethrough
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemfontstrikethrough($itemfontstrikethrough)
+    {
+        $this->itemfontstrikethrough = $itemfontstrikethrough;
+
+        return $this;
+    }
+
+    /**
+     * Get itemfontstrikethrough
+     *
+     * @return boolean
+     */
+    public function getItemfontstrikethrough()
+    {
+        return $this->itemfontstrikethrough;
+    }
+
+    /**
+     * Set itempanefilleffect
+     *
+     * @param string $itempanefilleffect
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItempanefilleffect($itempanefilleffect)
+    {
+        $this->itempanefilleffect = $itempanefilleffect;
+
+        return $this;
+    }
+
+    /**
+     * Get itempanefilleffect
+     *
+     * @return string
+     */
+    public function getItempanefilleffect()
+    {
+        return $this->itempanefilleffect;
+    }
+
+    /**
+     * Set filleffectcolor1
+     *
+     * @param integer $filleffectcolor1
+     *
+     * @return Tblitemdefaults
+     */
+    public function setFilleffectcolor1($filleffectcolor1)
+    {
+        $this->filleffectcolor1 = $filleffectcolor1;
+
+        return $this;
+    }
+
+    /**
+     * Get filleffectcolor1
+     *
+     * @return integer
+     */
+    public function getFilleffectcolor1()
+    {
+        return $this->filleffectcolor1;
+    }
+
+    /**
+     * Set filleffectcolor2
+     *
+     * @param integer $filleffectcolor2
+     *
+     * @return Tblitemdefaults
+     */
+    public function setFilleffectcolor2($filleffectcolor2)
+    {
+        $this->filleffectcolor2 = $filleffectcolor2;
+
+        return $this;
+    }
+
+    /**
+     * Get filleffectcolor2
+     *
+     * @return integer
+     */
+    public function getFilleffectcolor2()
+    {
+        return $this->filleffectcolor2;
+    }
+
+    /**
+     * Set filleffectcolor3
+     *
+     * @param integer $filleffectcolor3
+     *
+     * @return Tblitemdefaults
+     */
+    public function setFilleffectcolor3($filleffectcolor3)
+    {
+        $this->filleffectcolor3 = $filleffectcolor3;
+
+        return $this;
+    }
+
+    /**
+     * Get filleffectcolor3
+     *
+     * @return integer
+     */
+    public function getFilleffectcolor3()
+    {
+        return $this->filleffectcolor3;
+    }
+
+    /**
+     * Set filleffectcolor4
+     *
+     * @param integer $filleffectcolor4
+     *
+     * @return Tblitemdefaults
+     */
+    public function setFilleffectcolor4($filleffectcolor4)
+    {
+        $this->filleffectcolor4 = $filleffectcolor4;
+
+        return $this;
+    }
+
+    /**
+     * Get filleffectcolor4
+     *
+     * @return integer
+     */
+    public function getFilleffectcolor4()
+    {
+        return $this->filleffectcolor4;
+    }
+
+    /**
+     * Set filleffectdirection
+     *
+     * @param boolean $filleffectdirection
+     *
+     * @return Tblitemdefaults
+     */
+    public function setFilleffectdirection($filleffectdirection)
+    {
+        $this->filleffectdirection = $filleffectdirection;
+
+        return $this;
+    }
+
+    /**
+     * Get filleffectdirection
+     *
+     * @return boolean
+     */
+    public function getFilleffectdirection()
+    {
+        return $this->filleffectdirection;
+    }
+
+    /**
+     * Set filleffectextrawide
+     *
+     * @param boolean $filleffectextrawide
+     *
+     * @return Tblitemdefaults
+     */
+    public function setFilleffectextrawide($filleffectextrawide)
+    {
+        $this->filleffectextrawide = $filleffectextrawide;
+
+        return $this;
+    }
+
+    /**
+     * Get filleffectextrawide
+     *
+     * @return boolean
+     */
+    public function getFilleffectextrawide()
+    {
+        return $this->filleffectextrawide;
+    }
+
+    /**
+     * Set itemhandcursor
+     *
+     * @param boolean $itemhandcursor
+     *
+     * @return Tblitemdefaults
+     */
+    public function setItemhandcursor($itemhandcursor)
+    {
+        $this->itemhandcursor = $itemhandcursor;
+
+        return $this;
+    }
+
+    /**
+     * Get itemhandcursor
+     *
+     * @return boolean
+     */
+    public function getItemhandcursor()
+    {
+        return $this->itemhandcursor;
+    }
+}
+

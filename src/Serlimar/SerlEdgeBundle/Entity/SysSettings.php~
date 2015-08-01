@@ -1,0 +1,55 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * SysSettings
+ */
+class SysSettings
+{
+    /**
+     * @var integer
+     */
+    private $settingsid;
+
+    /**
+     * @var integer
+     */
+    private $invDueday;
+
+
+    /**
+     * Get settingsid
+     *
+     * @return integer
+     */
+    public function getSettingsid()
+    {
+        return $this->settingsid;
+    }
+
+    /**
+     * Set invDueday
+     *
+     * @param integer $invDueday
+     *
+     * @return SysSettings
+     */
+    public function setInvDueday($invDueday)
+    {
+        $this->invDueday = $invDueday;
+
+        return $this;
+    }
+
+    /**
+     * Get invDueday
+     *
+     * @return integer
+     */
+    public function getInvDueday()
+    {
+        return $this->invDueday;
+    }
+}
+

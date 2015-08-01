@@ -1,0 +1,840 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tbllookups
+ *
+ * @ORM\Table(name="tbllookups", indexes={@ORM\Index(name="Lookup", columns={"Lookup"})})
+ * @ORM\Entity
+ */
+class Tbllookups
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="LookupID", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $lookupid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GUID", type="string", length=40, nullable=true)
+     */
+    private $guid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Lookup", type="string", length=50, nullable=true)
+     */
+    private $lookup;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DescriptionCode", type="string", length=50, nullable=true)
+     */
+    private $descriptioncode;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SortOrder", type="integer", nullable=true)
+     */
+    private $sortorder;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FormsCombo", type="string", length=120, nullable=true)
+     */
+    private $formscombo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FormsName", type="string", length=120, nullable=true)
+     */
+    private $formsname;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="NormalRangeLow", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $normalrangelow;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="NormalValue", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $normalvalue;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="NormalRangeUp", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $normalrangeup;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Related", type="boolean", nullable=true)
+     */
+    private $related = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="RelationshipID", type="integer", nullable=true)
+     */
+    private $relationshipid;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="IntPrice", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $intprice;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Tax", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $tax;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="OtherPriceCalc", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $otherpricecalc;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="TotalPrice", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $totalprice;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Color", type="integer", nullable=true)
+     */
+    private $color;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Default", type="boolean", nullable=true)
+     */
+    private $default = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="inDate", type="datetime", nullable=true)
+     */
+    private $indate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Memo", type="text", nullable=true)
+     */
+    private $memo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="TimeStamp", type="datetime", nullable=true)
+     */
+    private $timestamp;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="UserActionDate", type="datetime", nullable=true)
+     */
+    private $useractiondate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="UserName", type="string", length=150, nullable=true)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Locked", type="string", length=50, nullable=true)
+     */
+    private $locked;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="LockedDate", type="datetime", nullable=true)
+     */
+    private $lockeddate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LockedUserID", type="string", length=50, nullable=true)
+     */
+    private $lockeduserid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LockedUserName", type="string", length=150, nullable=true)
+     */
+    private $lockedusername;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="NotActive", type="boolean", nullable=true)
+     */
+    private $notactive = '0';
+
+    public function getGuid() {
+        return $this->guid;
+    }
+
+    public function getLookup() {
+        return $this->lookup;
+    }
+
+    public function setGuid($guid) {
+        $this->guid = $guid;
+    }
+
+    public function setLookup($lookup) {
+        $this->lookup = $lookup;
+    }
+
+
+
+    /**
+     * Get lookupid
+     *
+     * @return integer
+     */
+    public function getLookupid()
+    {
+        return $this->lookupid;
+    }
+
+    /**
+     * Set descriptioncode
+     *
+     * @param string $descriptioncode
+     *
+     * @return Tbllookups
+     */
+    public function setDescriptioncode($descriptioncode)
+    {
+        $this->descriptioncode = $descriptioncode;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptioncode
+     *
+     * @return string
+     */
+    public function getDescriptioncode()
+    {
+        return $this->descriptioncode;
+    }
+
+    /**
+     * Set sortorder
+     *
+     * @param integer $sortorder
+     *
+     * @return Tbllookups
+     */
+    public function setSortorder($sortorder)
+    {
+        $this->sortorder = $sortorder;
+
+        return $this;
+    }
+
+    /**
+     * Get sortorder
+     *
+     * @return integer
+     */
+    public function getSortorder()
+    {
+        return $this->sortorder;
+    }
+
+    /**
+     * Set formscombo
+     *
+     * @param string $formscombo
+     *
+     * @return Tbllookups
+     */
+    public function setFormscombo($formscombo)
+    {
+        $this->formscombo = $formscombo;
+
+        return $this;
+    }
+
+    /**
+     * Get formscombo
+     *
+     * @return string
+     */
+    public function getFormscombo()
+    {
+        return $this->formscombo;
+    }
+
+    /**
+     * Set formsname
+     *
+     * @param string $formsname
+     *
+     * @return Tbllookups
+     */
+    public function setFormsname($formsname)
+    {
+        $this->formsname = $formsname;
+
+        return $this;
+    }
+
+    /**
+     * Get formsname
+     *
+     * @return string
+     */
+    public function getFormsname()
+    {
+        return $this->formsname;
+    }
+
+    /**
+     * Set normalrangelow
+     *
+     * @param float $normalrangelow
+     *
+     * @return Tbllookups
+     */
+    public function setNormalrangelow($normalrangelow)
+    {
+        $this->normalrangelow = $normalrangelow;
+
+        return $this;
+    }
+
+    /**
+     * Get normalrangelow
+     *
+     * @return float
+     */
+    public function getNormalrangelow()
+    {
+        return $this->normalrangelow;
+    }
+
+    /**
+     * Set normalvalue
+     *
+     * @param float $normalvalue
+     *
+     * @return Tbllookups
+     */
+    public function setNormalvalue($normalvalue)
+    {
+        $this->normalvalue = $normalvalue;
+
+        return $this;
+    }
+
+    /**
+     * Get normalvalue
+     *
+     * @return float
+     */
+    public function getNormalvalue()
+    {
+        return $this->normalvalue;
+    }
+
+    /**
+     * Set normalrangeup
+     *
+     * @param float $normalrangeup
+     *
+     * @return Tbllookups
+     */
+    public function setNormalrangeup($normalrangeup)
+    {
+        $this->normalrangeup = $normalrangeup;
+
+        return $this;
+    }
+
+    /**
+     * Get normalrangeup
+     *
+     * @return float
+     */
+    public function getNormalrangeup()
+    {
+        return $this->normalrangeup;
+    }
+
+    /**
+     * Set related
+     *
+     * @param boolean $related
+     *
+     * @return Tbllookups
+     */
+    public function setRelated($related)
+    {
+        $this->related = $related;
+
+        return $this;
+    }
+
+    /**
+     * Get related
+     *
+     * @return boolean
+     */
+    public function getRelated()
+    {
+        return $this->related;
+    }
+
+    /**
+     * Set relationshipid
+     *
+     * @param integer $relationshipid
+     *
+     * @return Tbllookups
+     */
+    public function setRelationshipid($relationshipid)
+    {
+        $this->relationshipid = $relationshipid;
+
+        return $this;
+    }
+
+    /**
+     * Get relationshipid
+     *
+     * @return integer
+     */
+    public function getRelationshipid()
+    {
+        return $this->relationshipid;
+    }
+
+    /**
+     * Set intprice
+     *
+     * @param float $intprice
+     *
+     * @return Tbllookups
+     */
+    public function setIntprice($intprice)
+    {
+        $this->intprice = $intprice;
+
+        return $this;
+    }
+
+    /**
+     * Get intprice
+     *
+     * @return float
+     */
+    public function getIntprice()
+    {
+        return $this->intprice;
+    }
+
+    /**
+     * Set tax
+     *
+     * @param float $tax
+     *
+     * @return Tbllookups
+     */
+    public function setTax($tax)
+    {
+        $this->tax = $tax;
+
+        return $this;
+    }
+
+    /**
+     * Get tax
+     *
+     * @return float
+     */
+    public function getTax()
+    {
+        return $this->tax;
+    }
+
+    /**
+     * Set otherpricecalc
+     *
+     * @param float $otherpricecalc
+     *
+     * @return Tbllookups
+     */
+    public function setOtherpricecalc($otherpricecalc)
+    {
+        $this->otherpricecalc = $otherpricecalc;
+
+        return $this;
+    }
+
+    /**
+     * Get otherpricecalc
+     *
+     * @return float
+     */
+    public function getOtherpricecalc()
+    {
+        return $this->otherpricecalc;
+    }
+
+    /**
+     * Set totalprice
+     *
+     * @param float $totalprice
+     *
+     * @return Tbllookups
+     */
+    public function setTotalprice($totalprice)
+    {
+        $this->totalprice = $totalprice;
+
+        return $this;
+    }
+
+    /**
+     * Get totalprice
+     *
+     * @return float
+     */
+    public function getTotalprice()
+    {
+        return $this->totalprice;
+    }
+
+    /**
+     * Set color
+     *
+     * @param integer $color
+     *
+     * @return Tbllookups
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return integer
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set default
+     *
+     * @param boolean $default
+     *
+     * @return Tbllookups
+     */
+    public function setDefault($default)
+    {
+        $this->default = $default;
+
+        return $this;
+    }
+
+    /**
+     * Get default
+     *
+     * @return boolean
+     */
+    public function getDefault()
+    {
+        return $this->default;
+    }
+
+    /**
+     * Set indate
+     *
+     * @param \DateTime $indate
+     *
+     * @return Tbllookups
+     */
+    public function setIndate($indate)
+    {
+        $this->indate = $indate;
+
+        return $this;
+    }
+
+    /**
+     * Get indate
+     *
+     * @return \DateTime
+     */
+    public function getIndate()
+    {
+        return $this->indate;
+    }
+
+    /**
+     * Set memo
+     *
+     * @param string $memo
+     *
+     * @return Tbllookups
+     */
+    public function setMemo($memo)
+    {
+        $this->memo = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Get memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->memo;
+    }
+
+    /**
+     * Set timestamp
+     *
+     * @param \DateTime $timestamp
+     *
+     * @return Tbllookups
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * Set useractiondate
+     *
+     * @param \DateTime $useractiondate
+     *
+     * @return Tbllookups
+     */
+    public function setUseractiondate($useractiondate)
+    {
+        $this->useractiondate = $useractiondate;
+
+        return $this;
+    }
+
+    /**
+     * Get useractiondate
+     *
+     * @return \DateTime
+     */
+    public function getUseractiondate()
+    {
+        return $this->useractiondate;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Tbllookups
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set locked
+     *
+     * @param string $locked
+     *
+     * @return Tbllookups
+     */
+    public function setLocked($locked)
+    {
+        $this->locked = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Get locked
+     *
+     * @return string
+     */
+    public function getLocked()
+    {
+        return $this->locked;
+    }
+
+    /**
+     * Set lockeddate
+     *
+     * @param \DateTime $lockeddate
+     *
+     * @return Tbllookups
+     */
+    public function setLockeddate($lockeddate)
+    {
+        $this->lockeddate = $lockeddate;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeddate
+     *
+     * @return \DateTime
+     */
+    public function getLockeddate()
+    {
+        return $this->lockeddate;
+    }
+
+    /**
+     * Set lockeduserid
+     *
+     * @param string $lockeduserid
+     *
+     * @return Tbllookups
+     */
+    public function setLockeduserid($lockeduserid)
+    {
+        $this->lockeduserid = $lockeduserid;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeduserid
+     *
+     * @return string
+     */
+    public function getLockeduserid()
+    {
+        return $this->lockeduserid;
+    }
+
+    /**
+     * Set lockedusername
+     *
+     * @param string $lockedusername
+     *
+     * @return Tbllookups
+     */
+    public function setLockedusername($lockedusername)
+    {
+        $this->lockedusername = $lockedusername;
+
+        return $this;
+    }
+
+    /**
+     * Get lockedusername
+     *
+     * @return string
+     */
+    public function getLockedusername()
+    {
+        return $this->lockedusername;
+    }
+
+    /**
+     * Set notactive
+     *
+     * @param boolean $notactive
+     *
+     * @return Tbllookups
+     */
+    public function setNotactive($notactive)
+    {
+        $this->notactive = $notactive;
+
+        return $this;
+    }
+
+    /**
+     * Get notactive
+     *
+     * @return boolean
+     */
+    public function getNotactive()
+    {
+        return $this->notactive;
+    }
+}

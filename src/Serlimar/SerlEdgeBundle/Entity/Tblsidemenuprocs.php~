@@ -1,0 +1,142 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblsidemenuprocs
+ */
+class Tblsidemenuprocs
+{
+    /**
+     * @var integer
+     */
+    private $procid;
+
+    /**
+     * @var string
+     */
+    private $procnamestr;
+
+    /**
+     * @var string
+     */
+    private $proctype;
+
+    /**
+     * @var string
+     */
+    private $procarguments;
+
+    /**
+     * @var integer
+     */
+    private $procargumentsnum;
+
+
+    /**
+     * Get procid
+     *
+     * @return integer
+     */
+    public function getProcid()
+    {
+        return $this->procid;
+    }
+
+    /**
+     * Set procnamestr
+     *
+     * @param string $procnamestr
+     *
+     * @return Tblsidemenuprocs
+     */
+    public function setProcnamestr($procnamestr)
+    {
+        $this->procnamestr = $procnamestr;
+
+        return $this;
+    }
+
+    /**
+     * Get procnamestr
+     *
+     * @return string
+     */
+    public function getProcnamestr()
+    {
+        return $this->procnamestr;
+    }
+
+    /**
+     * Set proctype
+     *
+     * @param string $proctype
+     *
+     * @return Tblsidemenuprocs
+     */
+    public function setProctype($proctype)
+    {
+        $this->proctype = $proctype;
+
+        return $this;
+    }
+
+    /**
+     * Get proctype
+     *
+     * @return string
+     */
+    public function getProctype()
+    {
+        return $this->proctype;
+    }
+
+    /**
+     * Set procarguments
+     *
+     * @param string $procarguments
+     *
+     * @return Tblsidemenuprocs
+     */
+    public function setProcarguments($procarguments)
+    {
+        $this->procarguments = $procarguments;
+
+        return $this;
+    }
+
+    /**
+     * Get procarguments
+     *
+     * @return string
+     */
+    public function getProcarguments()
+    {
+        return $this->procarguments;
+    }
+
+    /**
+     * Set procargumentsnum
+     *
+     * @param integer $procargumentsnum
+     *
+     * @return Tblsidemenuprocs
+     */
+    public function setProcargumentsnum($procargumentsnum)
+    {
+        $this->procargumentsnum = $procargumentsnum;
+
+        return $this;
+    }
+
+    /**
+     * Get procargumentsnum
+     *
+     * @return integer
+     */
+    public function getProcargumentsnum()
+    {
+        return $this->procargumentsnum;
+    }
+}
+

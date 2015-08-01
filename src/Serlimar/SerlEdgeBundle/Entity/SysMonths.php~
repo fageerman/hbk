@@ -1,0 +1,84 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * SysMonths
+ */
+class SysMonths
+{
+    /**
+     * @var integer
+     */
+    private $monthsid;
+
+    /**
+     * @var string
+     */
+    private $monthEng;
+
+    /**
+     * @var string
+     */
+    private $monthNed;
+
+
+    /**
+     * Get monthsid
+     *
+     * @return integer
+     */
+    public function getMonthsid()
+    {
+        return $this->monthsid;
+    }
+
+    /**
+     * Set monthEng
+     *
+     * @param string $monthEng
+     *
+     * @return SysMonths
+     */
+    public function setMonthEng($monthEng)
+    {
+        $this->monthEng = $monthEng;
+
+        return $this;
+    }
+
+    /**
+     * Get monthEng
+     *
+     * @return string
+     */
+    public function getMonthEng()
+    {
+        return $this->monthEng;
+    }
+
+    /**
+     * Set monthNed
+     *
+     * @param string $monthNed
+     *
+     * @return SysMonths
+     */
+    public function setMonthNed($monthNed)
+    {
+        $this->monthNed = $monthNed;
+
+        return $this;
+    }
+
+    /**
+     * Get monthNed
+     *
+     * @return string
+     */
+    public function getMonthNed()
+    {
+        return $this->monthNed;
+    }
+}
+

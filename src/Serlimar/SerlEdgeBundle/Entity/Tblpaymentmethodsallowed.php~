@@ -1,0 +1,84 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblpaymentmethodsallowed
+ */
+class Tblpaymentmethodsallowed
+{
+    /**
+     * @var string
+     */
+    private $guid = '';
+
+    /**
+     * @var string
+     */
+    private $paymentmethodguid;
+
+    /**
+     * @var integer
+     */
+    private $roleid;
+
+
+    /**
+     * Get guid
+     *
+     * @return string
+     */
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+
+    /**
+     * Set paymentmethodguid
+     *
+     * @param string $paymentmethodguid
+     *
+     * @return Tblpaymentmethodsallowed
+     */
+    public function setPaymentmethodguid($paymentmethodguid)
+    {
+        $this->paymentmethodguid = $paymentmethodguid;
+
+        return $this;
+    }
+
+    /**
+     * Get paymentmethodguid
+     *
+     * @return string
+     */
+    public function getPaymentmethodguid()
+    {
+        return $this->paymentmethodguid;
+    }
+
+    /**
+     * Set roleid
+     *
+     * @param integer $roleid
+     *
+     * @return Tblpaymentmethodsallowed
+     */
+    public function setRoleid($roleid)
+    {
+        $this->roleid = $roleid;
+
+        return $this;
+    }
+
+    /**
+     * Get roleid
+     *
+     * @return integer
+     */
+    public function getRoleid()
+    {
+        return $this->roleid;
+    }
+}
+

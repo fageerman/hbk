@@ -1,0 +1,200 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblformssecurity
+ */
+class Tblformssecurity
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $guid;
+
+    /**
+     * @var string
+     */
+    private $formsname;
+
+    /**
+     * @var string
+     */
+    private $controlename;
+
+    /**
+     * @var string
+     */
+    private $action;
+
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var integer
+     */
+    private $role;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set guid
+     *
+     * @param string $guid
+     *
+     * @return Tblformssecurity
+     */
+    public function setGuid($guid)
+    {
+        $this->guid = $guid;
+
+        return $this;
+    }
+
+    /**
+     * Get guid
+     *
+     * @return string
+     */
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+
+    /**
+     * Set formsname
+     *
+     * @param string $formsname
+     *
+     * @return Tblformssecurity
+     */
+    public function setFormsname($formsname)
+    {
+        $this->formsname = $formsname;
+
+        return $this;
+    }
+
+    /**
+     * Get formsname
+     *
+     * @return string
+     */
+    public function getFormsname()
+    {
+        return $this->formsname;
+    }
+
+    /**
+     * Set controlename
+     *
+     * @param string $controlename
+     *
+     * @return Tblformssecurity
+     */
+    public function setControlename($controlename)
+    {
+        $this->controlename = $controlename;
+
+        return $this;
+    }
+
+    /**
+     * Get controlename
+     *
+     * @return string
+     */
+    public function getControlename()
+    {
+        return $this->controlename;
+    }
+
+    /**
+     * Set action
+     *
+     * @param string $action
+     *
+     * @return Tblformssecurity
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+
+        return $this;
+    }
+
+    /**
+     * Get action
+     *
+     * @return string
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Tblformssecurity
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set role
+     *
+     * @param integer $role
+     *
+     * @return Tblformssecurity
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return integer
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+}
+

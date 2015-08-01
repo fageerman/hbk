@@ -1,0 +1,519 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblreceiptitems
+ */
+class Tblreceiptitems
+{
+    /**
+     * @var string
+     */
+    private $guid = '';
+
+    /**
+     * @var string
+     */
+    private $receiptsguid;
+
+    /**
+     * @var string
+     */
+    private $productguid;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var float
+     */
+    private $qty = '1';
+
+    /**
+     * @var float
+     */
+    private $rate = '0';
+
+    /**
+     * @var float
+     */
+    private $total = '0';
+
+    /**
+     * @var float
+     */
+    private $costs = '0';
+
+    /**
+     * @var string
+     */
+    private $insertuser;
+
+    /**
+     * @var \DateTime
+     */
+    private $timestamp = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \DateTime
+     */
+    private $useractiondate;
+
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $userid;
+
+    /**
+     * @var string
+     */
+    private $locked;
+
+    /**
+     * @var \DateTime
+     */
+    private $lockeddate;
+
+    /**
+     * @var string
+     */
+    private $lockeduserid;
+
+    /**
+     * @var string
+     */
+    private $lockedusername;
+
+    /**
+     * @var float
+     */
+    private $version;
+
+
+    /**
+     * Get guid
+     *
+     * @return string
+     */
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+
+    /**
+     * Set receiptsguid
+     *
+     * @param string $receiptsguid
+     *
+     * @return Tblreceiptitems
+     */
+    public function setReceiptsguid($receiptsguid)
+    {
+        $this->receiptsguid = $receiptsguid;
+
+        return $this;
+    }
+
+    /**
+     * Get receiptsguid
+     *
+     * @return string
+     */
+    public function getReceiptsguid()
+    {
+        return $this->receiptsguid;
+    }
+
+    /**
+     * Set productguid
+     *
+     * @param string $productguid
+     *
+     * @return Tblreceiptitems
+     */
+    public function setProductguid($productguid)
+    {
+        $this->productguid = $productguid;
+
+        return $this;
+    }
+
+    /**
+     * Get productguid
+     *
+     * @return string
+     */
+    public function getProductguid()
+    {
+        return $this->productguid;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Tblreceiptitems
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set qty
+     *
+     * @param float $qty
+     *
+     * @return Tblreceiptitems
+     */
+    public function setQty($qty)
+    {
+        $this->qty = $qty;
+
+        return $this;
+    }
+
+    /**
+     * Get qty
+     *
+     * @return float
+     */
+    public function getQty()
+    {
+        return $this->qty;
+    }
+
+    /**
+     * Set rate
+     *
+     * @param float $rate
+     *
+     * @return Tblreceiptitems
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return float
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    /**
+     * Set total
+     *
+     * @param float $total
+     *
+     * @return Tblreceiptitems
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
+     * Get total
+     *
+     * @return float
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
+     * Set costs
+     *
+     * @param float $costs
+     *
+     * @return Tblreceiptitems
+     */
+    public function setCosts($costs)
+    {
+        $this->costs = $costs;
+
+        return $this;
+    }
+
+    /**
+     * Get costs
+     *
+     * @return float
+     */
+    public function getCosts()
+    {
+        return $this->costs;
+    }
+
+    /**
+     * Set insertuser
+     *
+     * @param string $insertuser
+     *
+     * @return Tblreceiptitems
+     */
+    public function setInsertuser($insertuser)
+    {
+        $this->insertuser = $insertuser;
+
+        return $this;
+    }
+
+    /**
+     * Get insertuser
+     *
+     * @return string
+     */
+    public function getInsertuser()
+    {
+        return $this->insertuser;
+    }
+
+    /**
+     * Set timestamp
+     *
+     * @param \DateTime $timestamp
+     *
+     * @return Tblreceiptitems
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * Set useractiondate
+     *
+     * @param \DateTime $useractiondate
+     *
+     * @return Tblreceiptitems
+     */
+    public function setUseractiondate($useractiondate)
+    {
+        $this->useractiondate = $useractiondate;
+
+        return $this;
+    }
+
+    /**
+     * Get useractiondate
+     *
+     * @return \DateTime
+     */
+    public function getUseractiondate()
+    {
+        return $this->useractiondate;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Tblreceiptitems
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set userid
+     *
+     * @param string $userid
+     *
+     * @return Tblreceiptitems
+     */
+    public function setUserid($userid)
+    {
+        $this->userid = $userid;
+
+        return $this;
+    }
+
+    /**
+     * Get userid
+     *
+     * @return string
+     */
+    public function getUserid()
+    {
+        return $this->userid;
+    }
+
+    /**
+     * Set locked
+     *
+     * @param string $locked
+     *
+     * @return Tblreceiptitems
+     */
+    public function setLocked($locked)
+    {
+        $this->locked = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Get locked
+     *
+     * @return string
+     */
+    public function getLocked()
+    {
+        return $this->locked;
+    }
+
+    /**
+     * Set lockeddate
+     *
+     * @param \DateTime $lockeddate
+     *
+     * @return Tblreceiptitems
+     */
+    public function setLockeddate($lockeddate)
+    {
+        $this->lockeddate = $lockeddate;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeddate
+     *
+     * @return \DateTime
+     */
+    public function getLockeddate()
+    {
+        return $this->lockeddate;
+    }
+
+    /**
+     * Set lockeduserid
+     *
+     * @param string $lockeduserid
+     *
+     * @return Tblreceiptitems
+     */
+    public function setLockeduserid($lockeduserid)
+    {
+        $this->lockeduserid = $lockeduserid;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeduserid
+     *
+     * @return string
+     */
+    public function getLockeduserid()
+    {
+        return $this->lockeduserid;
+    }
+
+    /**
+     * Set lockedusername
+     *
+     * @param string $lockedusername
+     *
+     * @return Tblreceiptitems
+     */
+    public function setLockedusername($lockedusername)
+    {
+        $this->lockedusername = $lockedusername;
+
+        return $this;
+    }
+
+    /**
+     * Get lockedusername
+     *
+     * @return string
+     */
+    public function getLockedusername()
+    {
+        return $this->lockedusername;
+    }
+
+    /**
+     * Set version
+     *
+     * @param float $version
+     *
+     * @return Tblreceiptitems
+     */
+    public function setVersion($version)
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return float
+     */
+    public function getVersion()
+    {
+        return $this->version;
+    }
+}
+

@@ -1,0 +1,519 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblproductbracket
+ */
+class Tblproductbracket
+{
+    /**
+     * @var string
+     */
+    private $guid;
+
+    /**
+     * @var integer
+     */
+    private $productbracketid;
+
+    /**
+     * @var integer
+     */
+    private $productsid;
+
+    /**
+     * @var string
+     */
+    private $productguid;
+
+    /**
+     * @var float
+     */
+    private $cost = '0';
+
+    /**
+     * @var float
+     */
+    private $weight1;
+
+    /**
+     * @var float
+     */
+    private $weight2;
+
+    /**
+     * @var float
+     */
+    private $rate = '0';
+
+    /**
+     * @var string
+     */
+    private $memo;
+
+    /**
+     * @var string
+     */
+    private $insertuser;
+
+    /**
+     * @var \DateTime
+     */
+    private $timestamp = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \DateTime
+     */
+    private $useractiondate;
+
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $locked;
+
+    /**
+     * @var \DateTime
+     */
+    private $lockeddate;
+
+    /**
+     * @var string
+     */
+    private $lockeduserid;
+
+    /**
+     * @var string
+     */
+    private $lockedusername;
+
+    /**
+     * @var boolean
+     */
+    private $notactive = 'b\'0\'';
+
+
+    /**
+     * Get guid
+     *
+     * @return string
+     */
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+
+    /**
+     * Set productbracketid
+     *
+     * @param integer $productbracketid
+     *
+     * @return Tblproductbracket
+     */
+    public function setProductbracketid($productbracketid)
+    {
+        $this->productbracketid = $productbracketid;
+
+        return $this;
+    }
+
+    /**
+     * Get productbracketid
+     *
+     * @return integer
+     */
+    public function getProductbracketid()
+    {
+        return $this->productbracketid;
+    }
+
+    /**
+     * Set productsid
+     *
+     * @param integer $productsid
+     *
+     * @return Tblproductbracket
+     */
+    public function setProductsid($productsid)
+    {
+        $this->productsid = $productsid;
+
+        return $this;
+    }
+
+    /**
+     * Get productsid
+     *
+     * @return integer
+     */
+    public function getProductsid()
+    {
+        return $this->productsid;
+    }
+
+    /**
+     * Set productguid
+     *
+     * @param string $productguid
+     *
+     * @return Tblproductbracket
+     */
+    public function setProductguid($productguid)
+    {
+        $this->productguid = $productguid;
+
+        return $this;
+    }
+
+    /**
+     * Get productguid
+     *
+     * @return string
+     */
+    public function getProductguid()
+    {
+        return $this->productguid;
+    }
+
+    /**
+     * Set cost
+     *
+     * @param float $cost
+     *
+     * @return Tblproductbracket
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+
+        return $this;
+    }
+
+    /**
+     * Get cost
+     *
+     * @return float
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+
+    /**
+     * Set weight1
+     *
+     * @param float $weight1
+     *
+     * @return Tblproductbracket
+     */
+    public function setWeight1($weight1)
+    {
+        $this->weight1 = $weight1;
+
+        return $this;
+    }
+
+    /**
+     * Get weight1
+     *
+     * @return float
+     */
+    public function getWeight1()
+    {
+        return $this->weight1;
+    }
+
+    /**
+     * Set weight2
+     *
+     * @param float $weight2
+     *
+     * @return Tblproductbracket
+     */
+    public function setWeight2($weight2)
+    {
+        $this->weight2 = $weight2;
+
+        return $this;
+    }
+
+    /**
+     * Get weight2
+     *
+     * @return float
+     */
+    public function getWeight2()
+    {
+        return $this->weight2;
+    }
+
+    /**
+     * Set rate
+     *
+     * @param float $rate
+     *
+     * @return Tblproductbracket
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return float
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    /**
+     * Set memo
+     *
+     * @param string $memo
+     *
+     * @return Tblproductbracket
+     */
+    public function setMemo($memo)
+    {
+        $this->memo = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Get memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->memo;
+    }
+
+    /**
+     * Set insertuser
+     *
+     * @param string $insertuser
+     *
+     * @return Tblproductbracket
+     */
+    public function setInsertuser($insertuser)
+    {
+        $this->insertuser = $insertuser;
+
+        return $this;
+    }
+
+    /**
+     * Get insertuser
+     *
+     * @return string
+     */
+    public function getInsertuser()
+    {
+        return $this->insertuser;
+    }
+
+    /**
+     * Set timestamp
+     *
+     * @param \DateTime $timestamp
+     *
+     * @return Tblproductbracket
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * Set useractiondate
+     *
+     * @param \DateTime $useractiondate
+     *
+     * @return Tblproductbracket
+     */
+    public function setUseractiondate($useractiondate)
+    {
+        $this->useractiondate = $useractiondate;
+
+        return $this;
+    }
+
+    /**
+     * Get useractiondate
+     *
+     * @return \DateTime
+     */
+    public function getUseractiondate()
+    {
+        return $this->useractiondate;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Tblproductbracket
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set locked
+     *
+     * @param string $locked
+     *
+     * @return Tblproductbracket
+     */
+    public function setLocked($locked)
+    {
+        $this->locked = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Get locked
+     *
+     * @return string
+     */
+    public function getLocked()
+    {
+        return $this->locked;
+    }
+
+    /**
+     * Set lockeddate
+     *
+     * @param \DateTime $lockeddate
+     *
+     * @return Tblproductbracket
+     */
+    public function setLockeddate($lockeddate)
+    {
+        $this->lockeddate = $lockeddate;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeddate
+     *
+     * @return \DateTime
+     */
+    public function getLockeddate()
+    {
+        return $this->lockeddate;
+    }
+
+    /**
+     * Set lockeduserid
+     *
+     * @param string $lockeduserid
+     *
+     * @return Tblproductbracket
+     */
+    public function setLockeduserid($lockeduserid)
+    {
+        $this->lockeduserid = $lockeduserid;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeduserid
+     *
+     * @return string
+     */
+    public function getLockeduserid()
+    {
+        return $this->lockeduserid;
+    }
+
+    /**
+     * Set lockedusername
+     *
+     * @param string $lockedusername
+     *
+     * @return Tblproductbracket
+     */
+    public function setLockedusername($lockedusername)
+    {
+        $this->lockedusername = $lockedusername;
+
+        return $this;
+    }
+
+    /**
+     * Get lockedusername
+     *
+     * @return string
+     */
+    public function getLockedusername()
+    {
+        return $this->lockedusername;
+    }
+
+    /**
+     * Set notactive
+     *
+     * @param boolean $notactive
+     *
+     * @return Tblproductbracket
+     */
+    public function setNotactive($notactive)
+    {
+        $this->notactive = $notactive;
+
+        return $this;
+    }
+
+    /**
+     * Get notactive
+     *
+     * @return boolean
+     */
+    public function getNotactive()
+    {
+        return $this->notactive;
+    }
+}
+

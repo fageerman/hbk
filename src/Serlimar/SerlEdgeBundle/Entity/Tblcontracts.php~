@@ -1,0 +1,751 @@
+<?php
+
+namespace Serlimar\SerlEdgeBundle\Entity;
+
+/**
+ * Tblcontracts
+ */
+class Tblcontracts
+{
+    /**
+     * @var integer
+     */
+    private $contractid;
+
+    /**
+     * @var integer
+     */
+    private $customerid;
+
+    /**
+     * @var \DateTime
+     */
+    private $contractdate;
+
+    /**
+     * @var integer
+     */
+    private $type;
+
+    /**
+     * @var integer
+     */
+    private $addressid;
+
+    /**
+     * @var string
+     */
+    private $address;
+
+    /**
+     * @var \DateTime
+     */
+    private $printeddatetime;
+
+    /**
+     * @var string
+     */
+    private $note;
+
+    /**
+     * @var integer
+     */
+    private $itemscount;
+
+    /**
+     * @var string
+     */
+    private $itemsdisplay;
+
+    /**
+     * @var \DateTime
+     */
+    private $indate;
+
+    /**
+     * @var string
+     */
+    private $inuser;
+
+    /**
+     * @var integer
+     */
+    private $inuserid;
+
+    /**
+     * @var string
+     */
+    private $lastchangeuser;
+
+    /**
+     * @var \DateTime
+     */
+    private $cancelleddate;
+
+    /**
+     * @var string
+     */
+    private $cancelledby;
+
+    /**
+     * @var string
+     */
+    private $memo;
+
+    /**
+     * @var string
+     */
+    private $insertuser;
+
+    /**
+     * @var \DateTime
+     */
+    private $timestamp = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \DateTime
+     */
+    private $useractiondate;
+
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $locked;
+
+    /**
+     * @var \DateTime
+     */
+    private $lockeddate;
+
+    /**
+     * @var string
+     */
+    private $lockeduserid;
+
+    /**
+     * @var string
+     */
+    private $lockedusername;
+
+    /**
+     * @var boolean
+     */
+    private $notactive = 'b\'0\'';
+
+
+    /**
+     * Get contractid
+     *
+     * @return integer
+     */
+    public function getContractid()
+    {
+        return $this->contractid;
+    }
+
+    /**
+     * Set customerid
+     *
+     * @param integer $customerid
+     *
+     * @return Tblcontracts
+     */
+    public function setCustomerid($customerid)
+    {
+        $this->customerid = $customerid;
+
+        return $this;
+    }
+
+    /**
+     * Get customerid
+     *
+     * @return integer
+     */
+    public function getCustomerid()
+    {
+        return $this->customerid;
+    }
+
+    /**
+     * Set contractdate
+     *
+     * @param \DateTime $contractdate
+     *
+     * @return Tblcontracts
+     */
+    public function setContractdate($contractdate)
+    {
+        $this->contractdate = $contractdate;
+
+        return $this;
+    }
+
+    /**
+     * Get contractdate
+     *
+     * @return \DateTime
+     */
+    public function getContractdate()
+    {
+        return $this->contractdate;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     *
+     * @return Tblcontracts
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set addressid
+     *
+     * @param integer $addressid
+     *
+     * @return Tblcontracts
+     */
+    public function setAddressid($addressid)
+    {
+        $this->addressid = $addressid;
+
+        return $this;
+    }
+
+    /**
+     * Get addressid
+     *
+     * @return integer
+     */
+    public function getAddressid()
+    {
+        return $this->addressid;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     *
+     * @return Tblcontracts
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set printeddatetime
+     *
+     * @param \DateTime $printeddatetime
+     *
+     * @return Tblcontracts
+     */
+    public function setPrinteddatetime($printeddatetime)
+    {
+        $this->printeddatetime = $printeddatetime;
+
+        return $this;
+    }
+
+    /**
+     * Get printeddatetime
+     *
+     * @return \DateTime
+     */
+    public function getPrinteddatetime()
+    {
+        return $this->printeddatetime;
+    }
+
+    /**
+     * Set note
+     *
+     * @param string $note
+     *
+     * @return Tblcontracts
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set itemscount
+     *
+     * @param integer $itemscount
+     *
+     * @return Tblcontracts
+     */
+    public function setItemscount($itemscount)
+    {
+        $this->itemscount = $itemscount;
+
+        return $this;
+    }
+
+    /**
+     * Get itemscount
+     *
+     * @return integer
+     */
+    public function getItemscount()
+    {
+        return $this->itemscount;
+    }
+
+    /**
+     * Set itemsdisplay
+     *
+     * @param string $itemsdisplay
+     *
+     * @return Tblcontracts
+     */
+    public function setItemsdisplay($itemsdisplay)
+    {
+        $this->itemsdisplay = $itemsdisplay;
+
+        return $this;
+    }
+
+    /**
+     * Get itemsdisplay
+     *
+     * @return string
+     */
+    public function getItemsdisplay()
+    {
+        return $this->itemsdisplay;
+    }
+
+    /**
+     * Set indate
+     *
+     * @param \DateTime $indate
+     *
+     * @return Tblcontracts
+     */
+    public function setIndate($indate)
+    {
+        $this->indate = $indate;
+
+        return $this;
+    }
+
+    /**
+     * Get indate
+     *
+     * @return \DateTime
+     */
+    public function getIndate()
+    {
+        return $this->indate;
+    }
+
+    /**
+     * Set inuser
+     *
+     * @param string $inuser
+     *
+     * @return Tblcontracts
+     */
+    public function setInuser($inuser)
+    {
+        $this->inuser = $inuser;
+
+        return $this;
+    }
+
+    /**
+     * Get inuser
+     *
+     * @return string
+     */
+    public function getInuser()
+    {
+        return $this->inuser;
+    }
+
+    /**
+     * Set inuserid
+     *
+     * @param integer $inuserid
+     *
+     * @return Tblcontracts
+     */
+    public function setInuserid($inuserid)
+    {
+        $this->inuserid = $inuserid;
+
+        return $this;
+    }
+
+    /**
+     * Get inuserid
+     *
+     * @return integer
+     */
+    public function getInuserid()
+    {
+        return $this->inuserid;
+    }
+
+    /**
+     * Set lastchangeuser
+     *
+     * @param string $lastchangeuser
+     *
+     * @return Tblcontracts
+     */
+    public function setLastchangeuser($lastchangeuser)
+    {
+        $this->lastchangeuser = $lastchangeuser;
+
+        return $this;
+    }
+
+    /**
+     * Get lastchangeuser
+     *
+     * @return string
+     */
+    public function getLastchangeuser()
+    {
+        return $this->lastchangeuser;
+    }
+
+    /**
+     * Set cancelleddate
+     *
+     * @param \DateTime $cancelleddate
+     *
+     * @return Tblcontracts
+     */
+    public function setCancelleddate($cancelleddate)
+    {
+        $this->cancelleddate = $cancelleddate;
+
+        return $this;
+    }
+
+    /**
+     * Get cancelleddate
+     *
+     * @return \DateTime
+     */
+    public function getCancelleddate()
+    {
+        return $this->cancelleddate;
+    }
+
+    /**
+     * Set cancelledby
+     *
+     * @param string $cancelledby
+     *
+     * @return Tblcontracts
+     */
+    public function setCancelledby($cancelledby)
+    {
+        $this->cancelledby = $cancelledby;
+
+        return $this;
+    }
+
+    /**
+     * Get cancelledby
+     *
+     * @return string
+     */
+    public function getCancelledby()
+    {
+        return $this->cancelledby;
+    }
+
+    /**
+     * Set memo
+     *
+     * @param string $memo
+     *
+     * @return Tblcontracts
+     */
+    public function setMemo($memo)
+    {
+        $this->memo = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Get memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->memo;
+    }
+
+    /**
+     * Set insertuser
+     *
+     * @param string $insertuser
+     *
+     * @return Tblcontracts
+     */
+    public function setInsertuser($insertuser)
+    {
+        $this->insertuser = $insertuser;
+
+        return $this;
+    }
+
+    /**
+     * Get insertuser
+     *
+     * @return string
+     */
+    public function getInsertuser()
+    {
+        return $this->insertuser;
+    }
+
+    /**
+     * Set timestamp
+     *
+     * @param \DateTime $timestamp
+     *
+     * @return Tblcontracts
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->timestamp = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+
+    /**
+     * Set useractiondate
+     *
+     * @param \DateTime $useractiondate
+     *
+     * @return Tblcontracts
+     */
+    public function setUseractiondate($useractiondate)
+    {
+        $this->useractiondate = $useractiondate;
+
+        return $this;
+    }
+
+    /**
+     * Get useractiondate
+     *
+     * @return \DateTime
+     */
+    public function getUseractiondate()
+    {
+        return $this->useractiondate;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Tblcontracts
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set locked
+     *
+     * @param string $locked
+     *
+     * @return Tblcontracts
+     */
+    public function setLocked($locked)
+    {
+        $this->locked = $locked;
+
+        return $this;
+    }
+
+    /**
+     * Get locked
+     *
+     * @return string
+     */
+    public function getLocked()
+    {
+        return $this->locked;
+    }
+
+    /**
+     * Set lockeddate
+     *
+     * @param \DateTime $lockeddate
+     *
+     * @return Tblcontracts
+     */
+    public function setLockeddate($lockeddate)
+    {
+        $this->lockeddate = $lockeddate;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeddate
+     *
+     * @return \DateTime
+     */
+    public function getLockeddate()
+    {
+        return $this->lockeddate;
+    }
+
+    /**
+     * Set lockeduserid
+     *
+     * @param string $lockeduserid
+     *
+     * @return Tblcontracts
+     */
+    public function setLockeduserid($lockeduserid)
+    {
+        $this->lockeduserid = $lockeduserid;
+
+        return $this;
+    }
+
+    /**
+     * Get lockeduserid
+     *
+     * @return string
+     */
+    public function getLockeduserid()
+    {
+        return $this->lockeduserid;
+    }
+
+    /**
+     * Set lockedusername
+     *
+     * @param string $lockedusername
+     *
+     * @return Tblcontracts
+     */
+    public function setLockedusername($lockedusername)
+    {
+        $this->lockedusername = $lockedusername;
+
+        return $this;
+    }
+
+    /**
+     * Get lockedusername
+     *
+     * @return string
+     */
+    public function getLockedusername()
+    {
+        return $this->lockedusername;
+    }
+
+    /**
+     * Set notactive
+     *
+     * @param boolean $notactive
+     *
+     * @return Tblcontracts
+     */
+    public function setNotactive($notactive)
+    {
+        $this->notactive = $notactive;
+
+        return $this;
+    }
+
+    /**
+     * Get notactive
+     *
+     * @return boolean
+     */
+    public function getNotactive()
+    {
+        return $this->notactive;
+    }
+}
+
