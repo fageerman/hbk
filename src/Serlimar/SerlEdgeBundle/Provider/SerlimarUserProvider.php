@@ -29,7 +29,7 @@ class SerlimarUserProvider extends ContainerAware implements UserProviderInterfa
     public function loadUserByUsername($username) 
     {
         //Retrieve user from database with an mysql query.
-        $query = $this->em->getConnection()->prepare('select id, Username, Password from tblusers where Username=' . "'$username'");
+        $query = $this->em->getConnection()->prepare('select u.id, u.Username, u.Password, u.role_collection_id , r.role from tblusers u inner join tblrole_collection r where u.role_collection_id = r.id and u.Username=' . "'$username'");
         $query->execute();
         $result = $query->fetch();
         
@@ -39,9 +39,22 @@ class SerlimarUserProvider extends ContainerAware implements UserProviderInterfa
             sprintf('Username "%s" does not exist.', $username)
             );
         }
-        //Return a new SerlimarUser Object with the right credentials. This is going to be compared
-        //with the user provided credentials.
-        return new SerlimarUser($result['id'], $result['Username'], $result['Password'], array('ROLE_ADMIN'));
+      
+        $roles = array();
+        $whiteListUri = array();
+        $query2 = $this->em->getConnection()->prepare('select name, uri from tblroles where id in(select role_id from tblrole_collection_roles where role_collection_id = 1);');// . $result['role_collection_id'] . ' )');
+        $query2->execute();
+        $result2 = $query2->fetchAll();
+        
+        //Get the role names in the roles array
+        //Get the access granted uri in the whitelistUri array. So now you have the role and the uri
+        //in the SerlimarUser object
+        foreach($result2 as $res ){
+            array_push($roles, $res['name']);
+            array_push($whiteListUri, $res['uri']);
+        }
+        
+        return new SerlimarUser($result['id'], $result['Username'], $result['Password'], $result['role'], $roles, $whiteListUri);
       
     }
     

@@ -56,6 +56,9 @@ Serlimar\SerlEdgeBundle\Entity\Tblusers:
             length: 50
             options:
                 fixed: false
+        role_collection_id:
+            type: integer
+            nullable: true
         useraccesslevel:
             type: integer
             nullable: true

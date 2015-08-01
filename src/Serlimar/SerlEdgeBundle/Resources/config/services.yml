@@ -4,7 +4,7 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
     serlimar_serledge_menu_builder:
             class: Serlimar\SerlEdgeBundle\Menu\MenuBuilder
-            arguments: ["@knp_menu.factory"]
+            arguments: ["@knp_menu.factory", "@security.authorization_checker"]
 
     serlimar_serledge_main_menu:
         class: Knp\Menu\MenuItem # the service definition requires setting the class

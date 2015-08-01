@@ -61,7 +61,14 @@ class Tblusers
      * @ORM\Column(name="salt", type="string", length=50, nullable=true)
      */
     private $salt;
-
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="role_collection_id", type="integer")
+     */
+    private $role_collection_id;
+    
     /**
      * @var integer
      *

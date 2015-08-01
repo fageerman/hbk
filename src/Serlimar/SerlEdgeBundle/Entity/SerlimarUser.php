@@ -26,10 +26,16 @@ class SerlimarUser implements AdvancedUserInterface, \Serializable
     
     private $salt;
     
+
+    private $roleCollectionName;
+    
     
     private $roles;
     
-    public function __construct($id, $username, $password, array $roles)
+    private $whiteListUri;
+    
+    
+    public function __construct($id, $username, $password,$roleCollectionName, array $roles, array $whiteListUri)
     {
         $this->id = $id;
         $this->username = $username;
@@ -37,7 +43,9 @@ class SerlimarUser implements AdvancedUserInterface, \Serializable
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
+        $this->roleCollectionName = $roleCollectionName;
         $this->roles = $roles;
+        $this->whiteListUri = $whiteListUri;
     }
 
     /**
@@ -66,6 +74,11 @@ class SerlimarUser implements AdvancedUserInterface, \Serializable
     {
         return $this->password;
     }
+    
+    public function getRoleCollectionName()
+    {
+        return $this->roleCollectionName;
+    }
 
     /**
      * @inheritDoc
@@ -73,6 +86,11 @@ class SerlimarUser implements AdvancedUserInterface, \Serializable
     public function getRoles()
     {
         return $this->roles;
+    }
+    
+    public function getWhiteListUri()
+    {
+        return $this->whiteListUri;
     }
 
     /**

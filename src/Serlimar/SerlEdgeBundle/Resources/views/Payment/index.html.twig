@@ -47,20 +47,26 @@
                                 <td>{{ payment.firstname }} {{ payment.name }}</td>
                                 <td>{{ payment.insertuser }}</td>
                                 <td>
+                                    {% if is_granted('ROLE_READ_PAYMENT') %}
                                     <a onclick="showPayment({{ payment.paymentsid }});" class="btn" aria-label="View"
                                        data-toggle="tooltip" data-placement="top" title="View">
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                     </a>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_UPDATE_PAYMENT') %}
                                     <a onclick="getPayment(this.id);" id="{{ payment.paymentsid }}"  class="btn" aria-label="Edit"
                                        data-toggle="tooltip" data-placement="top" title="Edit">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                     </a>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_DELETE_PAYMENT') %}
                                     <a onclick="return confirm('Delete payment {{ payment.paymentsid }}?');" class="btn" aria-label="Delete"
                                        data-toggle="tooltip" data-placement="top" title="Delete"
                                        href="{{ path('serlimar_serledge_delete_payment',{'id': payment.paymentsid })}}"
                                        >
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                     </a>
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor%}
