@@ -24,7 +24,7 @@ class UserController extends Controller
         $query = $em->createQuery(
                 'SELECT u.id, u.username, u.firstname, u.lastname, u.password, r.role FROM '
               . 'SerlimarSerlEdgeBundle:Tblusers u LEFT JOIN SerlimarSerlEdgeBundle:TblroleCollection r '
-              . 'WITH u.roleCollectionId = r.id ORDER BY u.id DESC');
+              . 'WITH u.role_collection_id = r.id ORDER BY u.id DESC');
         
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(

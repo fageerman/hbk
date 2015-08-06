@@ -68,7 +68,7 @@ class Tblusers
      *
      * @ORM\Column(name="role_collection_id", type="integer", nullable=true)
      */
-    private $roleCollectionId;
+    private $role_collection_id;
 
     /**
      * @var string
@@ -245,7 +245,7 @@ class Tblusers
     }
 
     function getRoleCollectionId() {
-        return $this->roleCollectionId;
+        return $this->role_collection_id;
     }
 
     function getSalt() {
@@ -353,7 +353,7 @@ class Tblusers
     }
 
     function setRoleCollectionId($roleCollectionId) {
-        $this->roleCollectionId = $roleCollectionId;
+        $this->role_collection_id = $roleCollectionId;
     }
 
     function setSalt($salt) {
