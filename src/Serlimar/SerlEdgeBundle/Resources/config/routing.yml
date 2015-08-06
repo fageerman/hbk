@@ -52,3 +52,23 @@ serlimar_serledge_update_user:
 serlimar_serledge_delete_user:
     path:     /user/{id}/delete
     defaults: { _controller: SerlimarSerlEdgeBundle:User:delete }
+    
+serlimar_serledge_role:
+    path:     /role
+    defaults: { _controller: SerlimarSerlEdgeBundle:Role:index }
+    
+serlimar_serledge_show_role:
+    path:     /role/{id}/show
+    defaults: { _controller: SerlimarSerlEdgeBundle:Role:show }
+    
+serlimar_serledge_create_role:
+    path:     /role/create
+    defaults: { _controller: SerlimarSerlEdgeBundle:Role:create }
+    
+serlimar_serledge_update_role:
+    path:     /role/{id}/update
+    defaults: { _controller: SerlimarSerlEdgeBundle:Role:update }
+    
+serlimar_serledge_delete_role:
+    path:     /role/{id}/delete
+    defaults: { _controller: SerlimarSerlEdgeBundle:Role:delete }
