@@ -26,9 +26,12 @@ class MenuBuilder extends ContainerAware
         if($this->authorizationChecker->isGranted('ROLE_LIST_CUSTOMER')){
             $menu->addChild('Customer', array('route' => 'serlimar_serledge_customer'));
         }
-        $menu->addChild('User Overview', array('route' => 'serlimar_serledge_user'));
-        $menu->addChild('Role Management', array('route' => 'serlimar_serledge_home'));
-        
+        if($this->authorizationChecker->isGranted('ROLE_LIST_USER')){
+            $menu->addChild('User Overview', array('route' => 'serlimar_serledge_user'));
+        }
+        if($this->authorizationChecker->isGranted('ROLE_LIST_ROLE')){
+            $menu->addChild('Role Management', array('route' => 'serlimar_serledge_role'));
+        } 
         return $menu;
     }
 }
