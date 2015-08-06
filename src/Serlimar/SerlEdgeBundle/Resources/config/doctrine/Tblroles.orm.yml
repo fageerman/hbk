@@ -17,6 +17,18 @@ Serlimar\SerlEdgeBundle\Entity\Tblroles:
             length: 45
             options:
                 fixed: false
+        entity:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        operation:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
         uri:
             type: string
             nullable: false
