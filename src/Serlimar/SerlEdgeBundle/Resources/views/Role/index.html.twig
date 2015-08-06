@@ -1,0 +1,96 @@
+{% extends "layout.html.twig" %}
+{% set subTitle = "Role Management" %}
+{% block title %}{{ parent() }} - {{ subTitle }}{% endblock %}
+
+{% block content %}
+    
+    {% set currentPath = path(app.request.attributes.get('_route'),
+            app.request.attributes.get('_route_params')) 
+    %}
+
+
+<div class="col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-2 main">       
+    
+    <h2 class="sub-headsr">{{ subTitle }}</h2>
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-message alert alert-success">
+        {{ flashMessage }}
+    </div>
+   
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('warning') %}
+    <div class="flash-message alert alert-danger">
+        {{ flashMessage }}
+    </div>
+   
+    {% endfor %}
+     
+    {% if roles is defined and roles is not empty %} 
+        <div class="table-responsive">
+            <div>
+                {{ pagination.getTotalItemCount }} results
+            </div>
+            <table class="table">
+                    <thead>
+                        <tr>	
+                            <td>Role</td>
+                            {#<td>Permitted Entity</td>
+                            <td>Permitted Operation</td>#}
+                            <td>
+                                {% if is_granted('ROLE_CREATE_ROLE') %}
+                                <button type="button" class="btn btn-primary btn-sm" onclick="prepareRole();">Create Role</button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                        {% for role in roles %}
+                            <tr>
+                                
+                                <td>{{ role.role }}</td> 
+                                {#<td>
+                                {% for r in role.roles %}
+                                    {{r.entity}}
+                                {% endfor %}
+                                </td>
+                                <td></td>#}
+                                <td>
+                                   {# {% if is_granted('ROLE_READ_ROLE') %}
+                                    <a onclick="showRole({{ role.id }});" class="btn" aria-label="View"
+                                       data-toggle="tooltip" data-placement="top" title="View">
+                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                    </a>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_UPDATE_ROLE') %}
+                                    <a onclick="getRole({{ role.id }})"  class="btn" aria-label="Edit"
+                                       data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </a>
+                                    {% endif %}#}
+                                    {% if is_granted('ROLE_DELETE_ROLE') %}
+                                    <a onclick="return confirm('Delete role {{ role.id }}?');" class="btn" aria-label="Delete"
+                                       data-toggle="tooltip" data-placement="top" title="Delete"
+                                       href="{{ path('serlimar_serledge_delete_role',{'id': role.id })}}"
+                                       >
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>  
+        </div>
+        
+    {% elseif users is defined and users is empty %}
+        No users found.    
+    {% endif %}
+    
+    </div>
+
+{% endblock %}

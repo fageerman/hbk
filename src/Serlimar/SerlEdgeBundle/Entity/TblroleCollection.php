@@ -3,6 +3,7 @@
 namespace Serlimar\SerlEdgeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * TblroleCollection
@@ -23,10 +24,32 @@ class TblroleCollection
 
     /**
      * @var string
-     *
+       @Assert\NotNull(
+     *      message="Enter a name for the role."
+     * )
      * @ORM\Column(name="role", type="string", length=45, nullable=false)
      */
     private $role;
+    
+    
+    
+    function getId() {
+        return $this->id;
+    }
+
+    function getRole() {
+        return $this->role;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function setRole($role) {
+        $this->role = $role;
+    }
+
+
 
 
 }
