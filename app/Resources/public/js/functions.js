@@ -194,3 +194,131 @@ $("form").submit(); //Submit  the FORM
 }
 
 /***************************End User functions**********************************/
+
+
+
+
+/***************************Role functions**********************************/
+
+function showRole(id)
+{
+    $.ajax({
+        url: "http://dev.serlimar/role/" + id + "/show",
+        context: document.body
+    }).done(function(data) {
+    
+        $('#myModal .modal-content').empty();
+        $('#myModal .modal-content').append(data);
+        $('#myModal').modal('show');
+    });
+    
+}
+
+function prepareRole()
+{
+    $.ajax({
+        url: "http://dev.serlimar/role/create",
+        context: document.body
+    }).done(function(data) {
+    
+        $('#myModal .modal-content').empty();
+        $('#myModal .modal-content').append(data);
+        $('#myModal').modal('show');
+    });
+}
+
+function createRole()
+{
+    
+    $("form").submit(function(e)
+    {
+        var postData = $(this).serializeArray();
+      
+       // var roleCollectionData = [postData[0],postData[postData.length-1]];
+       // var rolesData = postData.splice(0, 1)
+        
+        $.ajax(
+        {
+            url : "http://dev.serlimar/role/create",
+            type: "POST",
+            data : postData,
+            success:function(data, textStatus, jqXHR) 
+            {
+                //The payment is updated
+                if('saved' === data)
+                {
+                     $('#myModal .modal-content').modal('hide');
+                     location.reload();
+
+                }
+                //The form has errors and has to be shown with the errors.
+                else{
+                      $('#myModal .modal-content').empty();
+                      $('#myModal .modal-content').append(data);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) 
+            {
+                alert('Create has failed');    
+            }
+        });
+        e.preventDefault(); //STOP default action
+        e.unbind(); //unbind. to stop multiple form submit.
+   });
+    
+    $("form").submit(); //Submit  the FORM
+}
+
+
+function getRole(id)
+{
+    $.ajax({
+        url: "http://dev.serlimar/role/" + id + "/update",
+        context: document.body
+    }).done(function(data) {
+    
+        $('#myModal .modal-content').empty();
+        $('#myModal .modal-content').append(data);
+        $('#myModal').modal('show');
+    });
+}
+
+function updateRole(id){
+
+$("form").submit(function(e)
+{
+    var postData = $(this).serializeArray();
+   // var formURL = $(this).attr("action");
+    $.ajax(
+    {
+        url : "http://dev.serlimar/role/" + id + "/update",
+        type: "POST",
+        data : postData,
+        success:function(data, textStatus, jqXHR) 
+        {
+            //The payment is updated
+            if('saved' === data)
+            {
+                 $('#myModal .modal-content').modal('hide');
+                 location.reload();
+                 
+            }
+            //The form has errors and has to be shown with the errors.
+            else{
+                  $('#myModal .modal-content').empty();
+                  $('#myModal .modal-content').append(data);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            alert('Update has failed');    
+        }
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+});
+ 
+$("form").submit(); //Submit  the FORM
+}
+
+/***************************End Role functions**********************************/
