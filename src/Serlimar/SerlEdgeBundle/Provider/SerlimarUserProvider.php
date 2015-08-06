@@ -42,7 +42,7 @@ class SerlimarUserProvider extends ContainerAware implements UserProviderInterfa
       
         $roles = array();
         $whiteListUri = array();
-        $query2 = $this->em->getConnection()->prepare('select name, uri from tblroles where id in(select role_id from tblrole_collection_roles where role_collection_id = 1);');// . $result['role_collection_id'] . ' )');
+        $query2 = $this->em->getConnection()->prepare('select name, uri from tblroles where id in(select role_id from tblrole_collection_roles where role_collection_id = ' . $result['role_collection_id'] . ')');
         $query2->execute();
         $result2 = $query2->fetchAll();
         
