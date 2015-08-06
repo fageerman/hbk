@@ -40,7 +40,9 @@
                             <td>Lastname</td>
                             <td>Role</td>
                             <td>
+                                {% if is_granted('ROLE_CREATE_PAYMENT') %}
                                 <button type="button" class="btn btn-primary btn-sm" onclick="prepareUser();">Create User</button>
+                                {% endif %}
                             </td>
                         </tr>
                     </thead>
@@ -51,22 +53,28 @@
                                 <td>{{ user.username }}</td> 
                                 <td>{{ user.firstname }}</td>
                                 <td>{{ user.lastname }}</td>
-                                <td> ROLE_USER </td>
+                                <td>{{ user.role }}</td>
                                 <td>
+                                    {% if is_granted('ROLE_READ_USER') %}
                                     <a onclick="showUser({{ user.id }});" class="btn" aria-label="View"
                                        data-toggle="tooltip" data-placement="top" title="View">
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                     </a>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_UPDATE_USER') %}
                                     <a onclick="getUser({{ user.id }})"  class="btn" aria-label="Edit"
                                        data-toggle="tooltip" data-placement="top" title="Edit">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                     </a>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_DELETE_USER') %}
                                     <a onclick="return confirm('Delete user {{ user.id }}?');" class="btn" aria-label="Delete"
                                        data-toggle="tooltip" data-placement="top" title="Delete"
                                        href="{{ path('serlimar_serledge_delete_user',{'id': user.id })}}"
                                        >
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                     </a>
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor%}

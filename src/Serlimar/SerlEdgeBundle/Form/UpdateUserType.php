@@ -32,8 +32,13 @@ class UpdateUserType extends AbstractType
             ->add('username','text')
             ->add('firstname','text')
             ->add('lastname', 'text')
-            ->add('shortname','text');
-
+            ->add('shortname','text')
+            ->add('role_collection_id', 'entity', array(
+                    'class' => 'SerlimarSerlEdgeBundle:TblroleCollection',
+                    'property' => 'id',
+                    'placeholder' => 'Choose an option'
+            ));
+         
          if($this->passwordreset){
             $builder->add('password','repeated', array(
                 'type' => 'password',
@@ -45,6 +50,7 @@ class UpdateUserType extends AbstractType
             ));
         }
     }
+    
 
     
     public function getName()
@@ -58,4 +64,6 @@ class UpdateUserType extends AbstractType
             'data_class' => 'Serlimar\SerlEdgeBundle\Entity\Tblusers',
         ));
     }
+    
+    
 }

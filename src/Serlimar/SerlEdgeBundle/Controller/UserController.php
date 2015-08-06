@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Serlimar\SerlEdgeBundle\Form\UserType;
 use Serlimar\SerlEdgeBundle\Form\UpdateUserType;
 use Serlimar\SerlEdgeBundle\Entity\Tblusers;
+use Serlimar\SerlEdgeBundle\Entity\Tblrole_collection;
 
 
 class UserController extends Controller
@@ -21,8 +22,9 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $query = $em->createQuery(
-                'SELECT u.id, u.username, u.firstname, u.lastname, u.password FROM '
-              . 'SerlimarSerlEdgeBundle:Tblusers u order by u.id DESC');
+                'SELECT u.id, u.username, u.firstname, u.lastname, u.password, r.role FROM '
+              . 'SerlimarSerlEdgeBundle:Tblusers u LEFT JOIN SerlimarSerlEdgeBundle:TblroleCollection r '
+              . 'WITH u.roleCollectionId = r.id ORDER BY u.id DESC');
         
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -70,20 +72,21 @@ class UserController extends Controller
         {
             
             $user = new Tblusers();
-            $form = $this->createForm(new UserType(), $user);
+            $form = $this->createForm(new UserType($em), $user);
             
             $form->handleRequest($request);
-            $password = $form->getData()->getPassword();
+            $plainPassword = $form->getData()->getPlainPassword();
             
             if ($form->isValid()){
-                if($password != null){
-                    $user->setPassword(password_hash($password, PASSWORD_BCRYPT, array('cost'=>12)));
+                if($plainPassword != null){
+                    $user->setPassword(password_hash($plainPassword, PASSWORD_BCRYPT, array('cost'=>12)));
                 }
+                
                 $em->persist($user);
                 $em->flush();
 
                 $this->addFlash(
-                    'error',
+                    'notice',
                     'Your changes were saved!'
                 );
                 return new Response('saved',200);
@@ -131,18 +134,17 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $userResult = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblusers')->findBy(array('id'=> $id));
         $user = $userResult[0];
-        $logger = $this->get('logger');
-        $form = $this->createForm(new UpdateUserType($logger, true), $user);
+       
+        $form = $this->createForm(new UserType($em), $user);
        
         if($request->getMethod() == "POST")
         {
             $form->handleRequest($request);
-            $password = $form->getData()->getPassword();
-                
+            $plainPassword = $form->getData()->getPlainPassword();
+            
             if ($form->isValid()) {
-                if($password !== null){
-                    
-                    $user->setPassword(password_hash($password, PASSWORD_BCRYPT, array('cost'=>12)));
+                if($plainPassword != null){
+                    $user->setPassword(password_hash($plainPassword, PASSWORD_BCRYPT, array('cost'=>12)));
                 }
                 $em->flush();
 
