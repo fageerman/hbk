@@ -2,7 +2,7 @@
 function showPayment(id)
 {
     $.ajax({
-        url: "http://dev.serlimar/payment/" + id + "/show",
+        url: "payment/" + id + "/show",
         context: document.body
     }).done(function(data) {
     
@@ -16,7 +16,7 @@ function getPayment(id)
 {
     //alert(id);
     $.ajax({
-        url: "http://dev.serlimar/payment/" + id + "/update",
+        url: "payment/" + id + "/update",
         context: document.body
     }).done(function(data) {
     
@@ -34,7 +34,7 @@ $("form").submit(function(e)
    // var formURL = $(this).attr("action");
     $.ajax(
     {
-        url : "http://dev.serlimar/payment/" + id + "/update",
+        url : "/payment/" + id + "/update",
         type: "POST",
         data : postData,
         success:function(data, textStatus, jqXHR) 
@@ -78,7 +78,7 @@ function printPayment()
 function showUser(id)
 {
     $.ajax({
-        url: "http://dev.serlimar/user/" + id + "/show",
+        url: "/user/" + id + "/show",
         context: document.body
     }).done(function(data) {
     
@@ -92,7 +92,7 @@ function showUser(id)
 function prepareUser()
 {
     $.ajax({
-        url: "http://dev.serlimar/user/create",
+        url: "/user/create",
         context: document.body
     }).done(function(data) {
     
@@ -110,7 +110,7 @@ function createUser()
        // var formURL = $(this).attr("action");
         $.ajax(
         {
-            url : "http://dev.serlimar/user/create",
+            url : "/user/create",
             type: "POST",
             data : postData,
             success:function(data, textStatus, jqXHR) 
@@ -145,7 +145,7 @@ function getUser(id)
 {
     //alert(id);
     $.ajax({
-        url: "http://dev.serlimar/user/" + id + "/update",
+        url: "/user/" + id + "/update",
         context: document.body
     }).done(function(data) {
     
@@ -163,7 +163,7 @@ $("form").submit(function(e)
    // var formURL = $(this).attr("action");
     $.ajax(
     {
-        url : "http://dev.serlimar/user/" + id + "/update",
+        url : "/user/" + id + "/update",
         type: "POST",
         data : postData,
         success:function(data, textStatus, jqXHR) 
@@ -203,7 +203,7 @@ $("form").submit(); //Submit  the FORM
 function showRole(id)
 {
     $.ajax({
-        url: "http://dev.serlimar/role/" + id + "/show",
+        url: "/role/" + id + "/show",
         context: document.body
     }).done(function(data) {
     
@@ -217,7 +217,7 @@ function showRole(id)
 function prepareRole()
 {
     $.ajax({
-        url: "http://dev.serlimar/role/create",
+        url: "/role/create",
         context: document.body
     }).done(function(data) {
     
@@ -229,7 +229,6 @@ function prepareRole()
 
 function createRole()
 {
-    
     $("form").submit(function(e)
     {
         var postData = $(this).serializeArray();
@@ -239,7 +238,7 @@ function createRole()
         
         $.ajax(
         {
-            url : "http://dev.serlimar/role/create",
+            url : "/role/create",
             type: "POST",
             data : postData,
             success:function(data, textStatus, jqXHR) 
@@ -273,7 +272,7 @@ function createRole()
 function getRole(id)
 {
     $.ajax({
-        url: "http://dev.serlimar/role/" + id + "/update",
+        url: "/role/" + id + "/update",
         context: document.body
     }).done(function(data) {
     
@@ -291,7 +290,7 @@ $("form").submit(function(e)
    // var formURL = $(this).attr("action");
     $.ajax(
     {
-        url : "http://dev.serlimar/role/" + id + "/update",
+        url : "/role/" + id + "/update",
         type: "POST",
         data : postData,
         success:function(data, textStatus, jqXHR) 
