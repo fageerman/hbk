@@ -21,20 +21,7 @@ class RoleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-//        $query =$em->createQuery(
-//                ' select rc.role, r.name, r.entity, r.operation from '
-//              . ' SerlimarSerlEdgeBundle:Tblroles r join '
-//              . ' SerlimarSerlEdgeBundle:TblroleCollectionRoles  cr with r.id = cr.roleId join '
-//              . ' SerlimarSerlEdgeBundle:TblroleCollection rc with cr.roleCollectionId = rc.id '
-//            );
-//        
-//        $query = $this->em->getConnection()->prepare('select rc.role, r.name, r.entity, r.operation from tblroles r inner join  tblrole_collection_roles cr on r.id = cr.role_id right join tblrole_collection rc on cr.role_collection_id = rc.id');
-//        $query->execute();
-//        $result = $query->fetch();
-        
-        
-          
-         $query =$em->createQuery(
+        $query =$em->createQuery(
                 ' select rc.id, rc.role from '
               . ' SerlimarSerlEdgeBundle:TblroleCollection rc'
             );
@@ -60,10 +47,7 @@ class RoleController extends Controller
             $roles[$count]['roles'] = $query->getResult();
             $count++;  
         }
-//        echo "<pre>";
-//        var_dump($roles);
-//        echo "</pre>";die;
-        
+
         return $this->render('SerlimarSerlEdgeBundle:Role:index.html.twig', array(
             'roles' => $roles,
             'pagination' => $pagination
@@ -154,7 +138,7 @@ class RoleController extends Controller
         $referer = $request->headers->get('referer');
         
         //The superadmin or the admin is to be deleted, don't let it happen.
-        if($id === 1 )
+        if($id === 1 || $id === 2)
         {
             $this->addFlash(
                     'warning',
@@ -182,41 +166,147 @@ class RoleController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $userResult = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblusers')->findBy(array('id'=> $id));
-        $user = $userResult[0];
-        $logger = $this->get('logger');
-        $form = $this->createForm(new UpdateUserType($logger, true), $user);
+        $roleResults = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\TblroleCollection')->findBy(array('id'=> $id));
+        $roleObject = $roleResults[0];
+        
+        $entityArrays = $this->getPermissionByRoleCollectionId($id);
        
-        if($request->getMethod() == "POST")
+        $roleObject->setPayment($entityArrays['payment']);
+        $roleObject->setUser($entityArrays['user']);
+        $roleObject->setCustomer($entityArrays['customer']);
+        $roleObject->setRoleCollection($entityArrays['role']);
+        
+        $form = $this->createForm(new RoleCollectionType($em),$roleObject);
+        
+        /*
+         * If form is submitted: Handle request, validate the form submitted  
+         * formfields and persist if form is valid.
+         */
+        if($request->getMethod() == Request::METHOD_POST)
         {
             $form->handleRequest($request);
-            $password = $form->getData()->getPassword();
-                
-            if ($form->isValid()) {
-                if($password !== null){
-                    
-                    $user->setPassword(password_hash($password, PASSWORD_BCRYPT, array('cost'=>12)));
-                }
-                $em->flush();
+            
+            $data = $form->getData();
 
+            if ($form->isValid()){
+//                
+//                $paymentSubmit = $data->getPayment();
+//                $customerSubmit = $data->getCustomer();
+//                $userSubmit = $data->getUser();
+//                $roleSubmit = $data->getRoleCollection();
+                
+                $submittedArrays = array(
+                    'payment' => $data->getPayment(),
+                    'customer' => $data->getCustomer(),
+                    'user' => $data->getUser(),
+                    'role' => $data->getRoleCollection()
+                );
+                      
+                $this->updatePermissions($submittedArrays, $id);
+                
                 $this->addFlash(
                     'notice',
                     'Your changes were saved!'
                 );
-                /*
-                 * Return the string  "saved" to the ajaxcall. The function.js script will know
-                 * that the data has been saved so it can close the modal window and reload the page
-                 * to display the flash message.
-                 * Todo: Refactor ideas: return a json response, its nicier I guess.
-                 */
                 return new Response('saved',200);
             }
+            return $this->render('SerlimarSerlEdgeBundle:Role:_create-role.html.twig', array(
+           'form'=>$form->createView()));
         }
-        return $this->render(
-            'SerlimarSerlEdgeBundle:User:_edit-user.html.twig', array(
-                'user' => $user,
-                'form' => $form->createView()
-                )
-        );
+        
+        return $this->render('SerlimarSerlEdgeBundle:Role:_edit-role.html.twig', array(
+            'role'=>$roleObject,
+            'form'=>$form->createView() 
+        ));
+    }
+    
+    
+    private function updatePermissions($submittedArrays, $id)
+    {
+        $em = $this->getDoctrine()->getManager(); 
+        
+        $query = $em->createQuery(
+        'SELECT rc.roleId from SerlimarSerlEdgeBundle:TblroleCollectionRoles rc where '
+                . 'rc.roleCollectionId = :id group by rc.roleId')->setParameter('id',$id);
+        
+        $query->execute();
+        $permissions = $query->getResult();
+        $p = array();
+        foreach($permissions as $permission)
+        {
+            array_push($p, $permission['roleId']);
+        }
+        $s = array();
+        foreach ($submittedArrays as $key => $value)
+        {
+            foreach($value as $v){
+                array_push($s,$v);
+            }
+        }
+        
+        $toDelete=array_diff($p,$s);
+        $toAdd = array_diff($s, $p);
+       
+        foreach($toAdd as $a)
+        {
+            $role = new TblroleCollectionRoles();
+            $role->setRoleId($a);
+            $role->setRoleCollectionId($id);
+            $em->persist($role);
+        }
+        
+        foreach($toDelete as $d)
+        {
+            $roleResults = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\TblroleCollectionRoles')->findBy(array('roleCollectionId'=> $id,'roleId'=> $d ));
+            $role = $roleResults[0];
+            $em->remove($role);
+        }
+   
+       
+        $em->flush();
+
+    }
+    
+    private function getPermissionByRoleCollectionId($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $query = $em->createQuery(
+        'SELECT r.id, r.entity FROM SerlimarSerlEdgeBundle:Tblroles r where r.id in'
+        . '(select rc.roleId from SerlimarSerlEdgeBundle:TblroleCollectionRoles rc where '
+        . 'rc.roleCollectionId = :id)')->setParameter('id',$id);
+        
+        $query->execute();
+        $permissions = $query->getResult();
+        
+        $paymentArray = array();
+        $userArray = array();
+        $customerArray = array();
+        $roleArray = array();
+        
+        foreach($permissions as $permission)
+        {
+            switch($permission['entity']):
+                case 'Payment':
+                    array_push($paymentArray, $permission['id']);
+                    break;
+                case 'Customer':
+                    array_push($customerArray, $permission['id']);
+                    break;
+                case 'User':
+                    array_push($userArray, $permission['id']);
+                    break;
+                case 'Role':
+                    array_push($roleArray, $permission['id']);
+                    break;
+            endswitch;
+        }
+        
+        return array(
+            'payment' => $paymentArray,
+            'user' => $userArray,
+            'customer' => $customerArray,
+            'role' => $roleArray,
+            );
     }
 }
