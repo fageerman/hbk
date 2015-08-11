@@ -31,6 +31,14 @@ class TblroleCollection
      */
     private $role;
     
+    //This is not best practice. A good solution for now.
+    private $payment;
+    
+    private $roleCollection;
+    
+    private $customer;
+    
+    private $user;
     
     
     function getId() {
@@ -47,6 +55,38 @@ class TblroleCollection
 
     function setRole($role) {
         $this->role = $role;
+    }
+
+    function getPayment() {
+        return $this->payment;
+    }
+
+    function getRoleCollection() {
+        return $this->roleCollection;
+    }
+
+    function getCustomer() {
+        return $this->customer;
+    }
+
+    function getUser() {
+        return $this->user;
+    }
+
+    function setPayment($payment) {
+        $this->payment = $payment;
+    }
+
+    function setRoleCollection($roleCollection) {
+        $this->roleCollection = $roleCollection;
+    }
+
+    function setCustomer($customer) {
+        $this->customer = $customer;
+    }
+
+    function setUser($user) {
+        $this->user = $user;
     }
 
 

@@ -34,6 +34,23 @@ class TblroleCollectionRoles
      * @ORM\Column(name="role_id", type="integer", nullable=true)
      */
     private $roleId;
+    
+    public function getRoleCollectionId() {
+        return $this->roleCollectionId;
+    }
+
+    public function getRoleId() {
+        return $this->roleId;
+    }
+
+    public function setRoleCollectionId($roleCollectionId) {
+        $this->roleCollectionId = $roleCollectionId;
+    }
+
+    public function setRoleId($roleId) {
+        $this->roleId = $roleId;
+    }
+
 
 
 }

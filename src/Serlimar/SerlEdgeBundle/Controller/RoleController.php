@@ -9,6 +9,7 @@ use Serlimar\SerlEdgeBundle\Form\RoleCollectionType;
 use Serlimar\SerlEdgeBundle\Entity\Tblusers;
 use Serlimar\SerlEdgeBundle\Entity\Tblroles;
 use \Serlimar\SerlEdgeBundle\Entity\TblroleCollection;
+use Serlimar\SerlEdgeBundle\Entity\TblroleCollectionRoles;
 
 class RoleController extends Controller
 {
@@ -83,7 +84,7 @@ class RoleController extends Controller
         return $this->render(
             'SerlimarSerlEdgeBundle:User:_show-user.html.twig', array(
                 'user' => $user[0],
-                )
+            )
         );
     }
 
@@ -91,24 +92,28 @@ class RoleController extends Controller
     {   
         $em = $this->getDoctrine()->getManager();
         /*
-         * If form is submitted: Handle request , validate the form submitted  
+         * If form is submitted: Handle request, validate the form submitted  
          * formfields and persist if form is valid.
          */
         if($request->getMethod() == Request::METHOD_POST)
         {
-            
             $role = new TblroleCollection();
             $form = $this->createForm(new RoleCollectionType($em),$role);
             
             $form->handleRequest($request);
             
-            
-            
+            $data = $form->getData();
+
             if ($form->isValid()){
                
                 $em->persist($role);
                 $em->flush();
-
+                
+                $this->insertRolesinDb($data->getPayment(), $role->getId());
+                $this->insertRolesinDb($data->getCustomer(), $role->getId());
+                $this->insertRolesinDb($data->getUser(), $role->getId());
+                $this->insertRolesinDb($data->getRoleCollection(), $role->getId());
+                     //  die;         
                 $this->addFlash(
                     'notice',
                     'Your changes were saved!'
@@ -118,12 +123,30 @@ class RoleController extends Controller
             return $this->render('SerlimarSerlEdgeBundle:Role:_create-role.html.twig', array(
            'form'=>$form->createView()));
         }
-        $form = $this->createForm(new RoleCollectionType($this->getDoctrine()->getManager()));
+        $form = $this->createForm(new RoleCollectionType($em));
         return $this->render('SerlimarSerlEdgeBundle:Role:_create-role.html.twig', array(
             'form'=>$form->createView() 
         ));
     }
     
+    private function insertRolesinDb($entityArray, $roleId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        if(is_array($entityArray) || sizeof($entityArray) !== 0 || $entity !== null)
+        {
+             foreach($entityArray as $r)
+             {
+                 $role = new TblroleCollectionRoles();
+                 $role->setRoleId($r);
+                 $role->setRoleCollectionId($roleId);
+                 $em->persist($role);
+             }
+        }
+        $em->flush();
+       
+    }
+
     
     public function deleteAction(Request $request,$id)
     {
@@ -131,7 +154,7 @@ class RoleController extends Controller
         $referer = $request->headers->get('referer');
         
         //The superadmin or the admin is to be deleted, don't let it happen.
-        if($id === 1 || $id === 2)
+        if($id === 1 )
         {
             $this->addFlash(
                     'warning',
