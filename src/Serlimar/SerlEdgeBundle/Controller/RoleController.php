@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Serlimar\SerlEdgeBundle\Form\RoleCollectionType;
 use Serlimar\SerlEdgeBundle\Entity\Tblusers;
 use Serlimar\SerlEdgeBundle\Entity\Tblroles;
-use \Serlimar\SerlEdgeBundle\Entity\TblroleCollection;
+use Serlimar\SerlEdgeBundle\Entity\TblroleCollection;
 use Serlimar\SerlEdgeBundle\Entity\TblroleCollectionRoles;
 
 class RoleController extends Controller
@@ -189,12 +189,7 @@ class RoleController extends Controller
             $data = $form->getData();
 
             if ($form->isValid()){
-//                
-//                $paymentSubmit = $data->getPayment();
-//                $customerSubmit = $data->getCustomer();
-//                $userSubmit = $data->getUser();
-//                $roleSubmit = $data->getRoleCollection();
-                
+
                 $submittedArrays = array(
                     'payment' => $data->getPayment(),
                     'customer' => $data->getCustomer(),
