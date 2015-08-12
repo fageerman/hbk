@@ -10,6 +10,8 @@ namespace Serlimar\SerlEdgeBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\FormInterface;
 use Doctrine\ORM\EntityManager;
 use Serlimar\SerlEdgeBundle\DataTransformer\CustomerNrToGuidTransformer;
 use Symfony\Component\Form\FormEvent;
@@ -51,20 +53,7 @@ class PaymentType extends AbstractType
 
         $builder->get('customerguid')
             ->addModelTransformer(new CustomerNrToGuidTransformer($this->em));
-        
-        //Check if the provided invoice number is a valid invoice number.
-        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
-            $data = $event->getData();
-            $form = $event->getForm();
-            $invoiceNr = $data['invoicenr'];
-                       
-            $invoiceResult = $this->em->createQuery('SELECT i.invoicenumber FROM SerlimarSerlEdgeBundle:Tblinvoices i WHERE i.invoicenumber = :invoicenumber and i.invoicenumber != 0')
-            ->setParameter('invoicenumber',$invoiceNr)->getResult();
-            
-            $invoiceNumber = (empty($invoiceResult))? "": $invoiceNr;
-            $data['invoicenr']=$invoiceNumber;
-            $event->setData($data);
-        });
+
     }
 
     public function getName()
@@ -78,4 +67,29 @@ class PaymentType extends AbstractType
             'data_class' => 'SerlEdgeBundle\Entity\Tblpayments',
         ));
     }
+    
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'validation_groups' => function (FormInterface $form) {
+                $data = $form->getData();
+                $invoiceNr = $data->getInvoicenr();
+                //var_dump($invoiceNr);die;
+                if ($invoiceNr !== null) {
+                    //Check if the provided invoicenr is a valid one.
+                    $invoiceResult = $this->em->createQuery('SELECT i.invoicenumber FROM '
+                    . 'SerlimarSerlEdgeBundle:Tblinvoices i WHERE i.invoicenumber = :invoicenumber '
+                    . 'and i.invoicenumber != 0')->setParameter('invoicenumber',$invoiceNr)->getResult();
+
+                    $invoiceNumber = (empty($invoiceResult))? null: $invoiceNr;
+                    $data->setInvoicenr($invoiceNumber);
+
+                    return array('Default', 'invoice');
+                }
+
+                return array('Default');
+            },
+        ));
+    }
+
 }

@@ -7,7 +7,6 @@
  * @author Ferdinand Geerman
  */
 
-
 namespace Serlimar\SerlEdgeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

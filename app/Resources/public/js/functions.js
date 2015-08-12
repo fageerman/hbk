@@ -12,6 +12,8 @@
                  '<p>Customer: ' + data + ' </p>'   
                  ).addClass('text-muted');
          });
+        }else{
+             $('#name-customer').html("");
         }
     });
 
