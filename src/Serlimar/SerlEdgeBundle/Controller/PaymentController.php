@@ -137,7 +137,7 @@ class PaymentController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser from SerlimarSerlEdgeBundle:Tblpayments p '
+        $query = $em->createQuery('Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser, p.note from SerlimarSerlEdgeBundle:Tblpayments p '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
                 . ' WHERE p.paymentsid = :paymentsid'
