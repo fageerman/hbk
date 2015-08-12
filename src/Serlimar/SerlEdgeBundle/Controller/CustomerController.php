@@ -53,5 +53,21 @@ class CustomerController extends Controller
             'form' => $form->createView(),
         ));
     }
+    
+    public function nameAction($nr)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $customer = $em->getRepository('SerlimarSerlEdgeBundle:Tblcustomers')->findBy(array(
+            'customerno' => $nr
+        ));
+        if(sizeof($customer) === 0)
+        {
+            return new Response('Unknown',200);
+        }
+       // var_dump($customer);die;
+        $fullName = $customer[0]->getFirstName() . " " . $customer[0]->getName();
+        return new Response($fullName,200);
+    }
 
 }

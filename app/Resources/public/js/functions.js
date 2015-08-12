@@ -1,3 +1,21 @@
+
+    $(".form-group #payment_customerguid").focusout(function(){
+       var value = $("#payment_customerguid").val();
+       if(value !== "" )
+       {
+        $.ajax({
+            url: "/customer/" + $("#payment_customerguid").val() + '/name',
+            context: document.body
+         }).done(function(data) {
+
+                $('#name-customer').html(
+                 '<p>Customer: ' + data + ' </p>'   
+                 ).addClass('text-muted');
+         });
+        }
+    });
+
+
 /***************************Payment functions**********************************/
 function showPayment(id)
 {
@@ -5,7 +23,6 @@ function showPayment(id)
         url: "payment/" + id + "/show",
         context: document.body
     }).done(function(data) {
-    
         $('#myModal .modal-content').empty();
         $('#myModal .modal-content').append(data);
         $('#myModal').modal('show');

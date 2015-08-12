@@ -33,6 +33,10 @@ serlimar_serledge_customer:
     path:     /customer
     defaults: { _controller: SerlimarSerlEdgeBundle:Customer:index }
     
+serlimar_serledge_customer_name:
+    path:     /customer/{nr}/name
+    defaults: { _controller: SerlimarSerlEdgeBundle:Customer:name }
+    
 serlimar_serledge_user:
     path:     /user
     defaults: { _controller: SerlimarSerlEdgeBundle:User:index }
@@ -72,3 +76,4 @@ serlimar_serledge_update_role:
 serlimar_serledge_delete_role:
     path:     /role/{id}/delete
     defaults: { _controller: SerlimarSerlEdgeBundle:Role:delete }
+    

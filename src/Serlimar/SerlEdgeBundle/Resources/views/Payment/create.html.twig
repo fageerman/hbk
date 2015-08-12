@@ -17,10 +17,50 @@
          $('.flash-message').delay(5000).fadeOut();
      </script>
     {% endfor %}
-    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
-  
 
-    
-    {{ form_end(form) }}
+ {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+
+
+    <div class="form-group {% if not form.vars.valid %} has-error{% endif %}">
+        {{ form_label(form.customerguid) }}
+        {{ form_widget(form.customerguid) }}
+        {#{% if form.vars.valid and true  %} Name: John Doe {% endif %}#}
+        <div class="info" id="name-customer"></div>
+        {{ form_errors(form.customerguid) }}
+    </div>
+
+    <div class="form-group {% if not form.vars.valid %} has-error{% endif %}">
+        {{ form_label(form.invoicenr) }}
+        {{ form_widget(form.invoicenr) }}
+        {{ form_errors(form.invoicenr) }}
+    </div>
+    <div class="form-group {% if not form.vars.valid %} has-error{% endif %}">
+        {{ form_label(form.paymentmethod) }}
+        {{ form_widget(form.paymentmethod) }}
+         {{ form_errors(form.paymentmethod) }}
+    </div>
+    <div class="form-group {% if not form.vars.valid %} has-error{% endif %}">
+        {{ form_label(form.amount) }}
+        {{ form_widget(form.amount) }}
+        {{ form_errors(form.amount) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_label(form.note) }}
+        {{ form_widget(form.note) }}
+        {{ form_errors(form.note) }}
+
+    </div>
+
+    <div>
+        {{ form_widget(form.save) }}
+    </div>
+
+{{ form_end(form) }}
 </div>
+
+<script>
+    
+
+</script>
 {% endblock %}
