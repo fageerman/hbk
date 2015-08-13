@@ -41,12 +41,18 @@
                         {% for payment in payments %}
                             <tr>
                                 <td>{{ payment.paymentsid }}</td> 
-                                <td>{{ payment.paymentdate| date('d-m-Y') }}</td> 
+                                <td>{{ payment.paymentdate| date('d F Y') }}</td> 
                                 <td>{{ payment.paymentmethod }}</td>
                                 <td>{{ payment.amount|number_format(2, '.', ',') }}</td>
                                 <td>{{ payment.firstname }} {{ payment.name }}</td>
                                 <td>{{ payment.insertuser }}</td>
                                 <td>
+                                    {% if is_granted('ROLE_PRINT_PAYMENT') %}
+                                    <a href="{{ path('serlimar_serledge_receipt_payment',{'id': payment.paymentsid })}}" class="btn" aria-label="View"
+                                       data-toggle="tooltip" data-placement="top" title="View">
+                                        <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                                    </a>
+                                    {% endif %}
                                     {% if is_granted('ROLE_READ_PAYMENT') %}
                                     <a onclick="showPayment({{ payment.paymentsid }});" class="btn" aria-label="View"
                                        data-toggle="tooltip" data-placement="top" title="View">
