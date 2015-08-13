@@ -327,5 +327,15 @@ class Tblpayments
     {
         $this->username = $username;
     }
+    
+    function getReference() {
+        return $this->reference;
+    }
+
+    function setReference($reference) {
+        $this->reference = $reference;
+    }
+
+
 }
 

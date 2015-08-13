@@ -64,7 +64,7 @@ class PaymentController extends Controller
             
             $payment = new Tblpayments();
             $form = $this->createForm(new PaymentType($em), $payment);
-            
+            $paymentId = null;
             $form->handleRequest($request);
             
             if ($form->isValid()){
@@ -72,7 +72,8 @@ class PaymentController extends Controller
                 $payment->setInsertUser($this->getUser()->getUsername());
                 $payment->setPaymentDate((new \DateTime('now'))->setTime(0,0));
                 $payment->setTimestamp(new \DateTime('now'));
-
+                $payment->setReference($payment->getInvoicenr());
+                $paymentId = $payment->getPaymentId();
                 $em->persist($payment);
                 $em->flush();
 
@@ -80,7 +81,7 @@ class PaymentController extends Controller
                     'notice',
                     'Your changes were saved!'
                 );
-                return $this->redirectToRoute('serlimar_serledge_create_payment');
+                return $this->redirectToRoute('serlimar_serledge_payment_receipt', array('id'=>$paymentId));
             }
             return $this->render('SerlimarSerlEdgeBundle:Payment:create.html.twig', array(
            'form'=>$form->createView()));
@@ -186,10 +187,21 @@ class PaymentController extends Controller
     public function receiptAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $paymentResult = $em->getRepository('SerlimarSerlEdgeBundle:Tblpayments')->findBy(array(
-            'paymentsid'=> $id
-        ));
-        $serializer = $this->get('jms_serializer');
-        return new Response($serializer->serialize($paymentResult, 'json'));
+        $query = $em->createQuery('Select p.paymentsid, p.invoicenr, p.amount, p.paymentdate, p.insertuser, l.lookup as paymentmethod, '
+                . 'p.amount, c.customerno, c.firstname, c.name, c.address, p.insertuser, p.note, p.invoicenr, p.reference, s.region from SerlimarSerlEdgeBundle:Tblpayments p '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbladdresses a WITH c.addressid = a.addressid'
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblstreetnames s WITH a.streetnameid= s.streetnameid'
+                . ' WHERE p.paymentsid = :paymentsid'
+               )->setParameter('paymentsid', $id);
+        $payment = $query->getResult();
+        
+       
+        return $this->render(
+            'SerlimarSerlEdgeBundle:Payment:payment-receipt.html.twig', array(
+                'payment' => $payment[0],
+                )
+        );
     }
 }

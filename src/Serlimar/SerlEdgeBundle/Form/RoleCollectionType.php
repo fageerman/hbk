@@ -62,9 +62,6 @@ class RoleCollectionType extends AbstractType
                 'expanded' => true,
             ));
             
-         
-        
-        $builder->add('submit','submit');
     }
 
     public function getName()

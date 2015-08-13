@@ -106,6 +106,6 @@ body {
 
 @media print
 {
-    .non-printable { display: none; }
+    .sidebar { display: none !important; }
     .printable { display: block; }
-}
+  }

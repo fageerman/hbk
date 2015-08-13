@@ -1,0 +1,64 @@
+{% extends "layout.html.twig" %}
+
+{% set subTitle = "Create Payment"%}
+
+{% block subtitle %} {{ subTitle }} {% endblock%}
+{% block content %}
+<div class="col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2 main">       
+    <div class="printable" id="receipt" style="width:800px">
+        <div style="width:100%">
+             <img height="90" width="350" src="{{ asset('bundles/serlimarserledge/images/LogoSERL-Slogan_webLarge.jpg') }}" />
+            <hr style="border-color:black">
+        </div>
+        
+        <div style="width:100%">
+            <p>
+                <h3 style="margin:auto;">Kwitantie Huishoudelijke Afval</h3>
+            </p>
+        </div>
+        
+    <table style="width:100%">
+
+        <tr>
+            <td style="width:60%">Ontvangen van:</td>
+            <td style="width:20%">Clientnummer</td>
+            <td style="width:20%">: {{ payment.customerno }}</td>
+        </tr>
+        <tr>
+            <td >{{ payment.firstname}} {{ payment.name}}</td>
+            <td>Datum</td>
+            <td>: {{ payment.paymentdate|date('d F Y') }} </td>
+        </tr>
+        <tr>
+            <td >{{ payment.address }}</td>
+            <td>Betalingsmethode</td>
+            <td>: {{ payment.paymentmethod }}</td>
+        </tr>
+        <tr>
+            <td >{{ payment.region }}</td>
+            <td>Referentie</td>
+            <td>: {{ payment.invoicenr }}</td>
+        </tr>
+        <tr>
+            <td ></td>
+            <td>Behandled door</td>
+            <td>: {{ payment.insertuser }} </td>
+        </tr>
+        <tr>
+            <td style="height:50px"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="border: 1px solid black;">Ontvangen</td>
+            <td style="border: 1px solid black;">AWG <span style="float:right">{{ payment.amount|number_format(2, '.', ',') }}</span></td>
+        </tr>
+    </table>
+       
+    </div>
+</div>
+
+<script>
+    
+
+</script>
+{% endblock %}
