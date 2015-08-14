@@ -29,10 +29,10 @@
         {{ form_errors(form.customerguid) }}
     </div>
 
-    <div class="form-group {% if form.invoicenr.vars.errors|length %} has-error{% endif %}">
-        {{ form_label(form.invoicenr) }}
-        {{ form_widget(form.invoicenr) }}
-        {{ form_errors(form.invoicenr) }}
+    <div class="form-group {% if form.reference.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form.reference) }}
+        {{ form_widget(form.reference) }}
+        {{ form_errors(form.reference) }}
     </div>
     <div class="form-group {% if form.paymentmethod.vars.errors|length %} has-error{% endif %}">
         {{ form_label(form.paymentmethod) }}

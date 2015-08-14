@@ -87,17 +87,7 @@ class Tblpayments
 
     /**
      * @var integer
-     * @Assert\NotNull(
-     *     message="Enter a valid invoice nr.",
-     *     groups={"invoice"},
-     *      )
-     * @Assert\Length(
-     *   min= 1,
-     *   max= 11,
-     *      minMessage="Enter a valid invoice nr.",
-     *      maxMessage="Enter a valid invoice nr.",
-     *      groups={"invoice"},
-     * )    
+    
      * @ORM\Column(name="InvoiceNr", type="integer")
      */
     private $invoicenr;
@@ -111,7 +101,17 @@ class Tblpayments
 
     /**
      * @var string
-     *
+     * @Assert\NotNull(
+     *     message="Enter a valid invoice nr.",
+     *     groups={"invoice"},
+     *      )
+     * @Assert\Length(
+     *   min= 1,
+     *   max= 11,
+     *      minMessage="Enter a valid invoice nr.",
+     *      maxMessage="Enter a valid invoice nr.",
+     *      groups={"invoice"},
+     * )    
      * @ORM\Column(name="Reference", type="string", length=150, nullable=true)
      */
     private $reference;

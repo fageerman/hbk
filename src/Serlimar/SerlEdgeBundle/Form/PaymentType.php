@@ -37,7 +37,7 @@ class PaymentType extends AbstractType
     {
         $builder
             ->add('customerguid','integer', array('label'=>'Customer Id','attr'=>array('placeholder' => 'Scan barcode')))
-            ->add('invoicenr','integer', array('label'=>'Invoice Nr', 'attr'=>array('type'=>'integer', 'placeholder' => 'Scan barcode')))
+            ->add('reference','integer', array('label'=>'Invoice Nr', 'attr'=>array('type'=>'integer', 'placeholder' => 'Scan barcode')))
             ->add('paymentmethod', 'choice', array(
                     'label' => 'Payment method',
                     'placeholder' => 'Choose a method',
@@ -73,8 +73,7 @@ class PaymentType extends AbstractType
         $resolver->setDefaults(array(
             'validation_groups' => function (FormInterface $form) {
                 $data = $form->getData();
-                $invoiceNr = $data->getInvoicenr();
-                //var_dump($invoiceNr);die;
+                $invoiceNr = $data->getReference();
                 if ($invoiceNr !== null) {
                     //Check if the provided invoicenr is a valid one.
                     $invoiceResult = $this->em->createQuery('SELECT i.invoicenumber FROM '
@@ -82,7 +81,7 @@ class PaymentType extends AbstractType
                     . 'and i.invoicenumber != 0')->setParameter('invoicenumber',$invoiceNr)->getResult();
 
                     $invoiceNumber = (empty($invoiceResult))? null: $invoiceNr;
-                    $data->setInvoicenr($invoiceNumber);
+                    $data->setReference($invoiceNumber);
 
                     return array('Default', 'invoice');
                 }

@@ -25,12 +25,18 @@ class PaymentController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
+        
+        /*
+         * Predefined role "Cashier" must list only the payments for the day.
+         */
+        $today = (new \DateTime('now'))->setTime(0,0);
+        $dateCashierRole = ($this->getUser()->getRoleCollectionName() == "Cashier")? ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'' :'';
+        
         $query = $em->createQuery(
                 'Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser from SerlimarSerlEdgeBundle:Tblpayments p '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
-                . ' WHERE p.insertuser = :insertuser'
+                . ' WHERE p.insertuser = :insertuser' . $dateCashierRole 
                 . ' AND p.paymentsid is not null'
                 . ' ORDER BY p.timestamp DESC'
                 )->setParameter('insertuser', $this->getUser()->getUsername());
@@ -72,7 +78,7 @@ class PaymentController extends Controller
                 $payment->setInsertUser($this->getUser()->getUsername());
                 $payment->setPaymentDate((new \DateTime('now'))->setTime(0,0));
                 $payment->setTimestamp(new \DateTime('now'));
-                $payment->setReference($payment->getInvoicenr());
+               // $payment->setReference($payment->getInvoicenr());
                 $paymentId = $payment->getPaymentId();
                 $em->persist($payment);
                 $em->flush();
@@ -187,8 +193,8 @@ class PaymentController extends Controller
     public function receiptAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('Select p.paymentsid, p.invoicenr, p.amount, p.paymentdate, p.insertuser, l.lookup as paymentmethod, '
-                . 'p.amount, c.customerno, c.firstname, c.name, c.address, p.insertuser, p.note, p.invoicenr, p.reference, s.region from SerlimarSerlEdgeBundle:Tblpayments p '
+        $query = $em->createQuery('Select p.paymentsid,  p.amount, p.paymentdate, p.insertuser, l.lookup as paymentmethod, '
+                . 'p.amount, c.customerno, c.firstname, c.name, c.address, p.insertuser, p.note, p.reference, s.region from SerlimarSerlEdgeBundle:Tblpayments p '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbladdresses a WITH c.addressid = a.addressid'

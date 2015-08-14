@@ -34,7 +34,7 @@ serlimar_serledge_customer:
     defaults: { _controller: SerlimarSerlEdgeBundle:Customer:index }
     
 serlimar_serledge_customer_name:
-    path:     /customer/{nr}/name
+    path:     /customer/{id}/name
     defaults: { _controller: SerlimarSerlEdgeBundle:Customer:name }
     
 serlimar_serledge_user:

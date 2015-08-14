@@ -48,8 +48,8 @@
                                 <td>{{ payment.insertuser }}</td>
                                 <td>
                                     {% if is_granted('ROLE_PRINT_PAYMENT') %}
-                                    <a href="{{ path('serlimar_serledge_receipt_payment',{'id': payment.paymentsid })}}" class="btn" aria-label="View"
-                                       data-toggle="tooltip" data-placement="top" title="View">
+                                    <a href="{{ path('serlimar_serledge_receipt_payment',{'id': payment.paymentsid })}}" class="btn" aria-label="Print"
+                                       data-toggle="tooltip" data-placement="top" title="Print">
                                         <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
                                     </a>
                                     {% endif %}

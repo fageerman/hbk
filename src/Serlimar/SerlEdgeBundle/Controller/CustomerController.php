@@ -27,16 +27,11 @@ class CustomerController extends Controller
         $customer = new Tblcustomers();
         $form = $this->createForm(new CustomerType(),$customer);
         $form->handleRequest($request);
-        //var_dump($form->getData());die;
         if($request->getMethod() == 'POST')
         {
             if($form->isValid())
             {
                 $birthdate = $form->getData()->getBirthdate();
-                //Search for customers with the provided birthdate.
-//                var_dump($birthdate);
-//                echo $birthdate->getDate(); die;
-//                
                 $repo = $this->getDoctrine()->getManager()->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblcustomers');
                 $result = $repo->findBy(array('birthdate' => $birthdate));
                 
@@ -54,12 +49,12 @@ class CustomerController extends Controller
         ));
     }
     
-    public function nameAction($nr)
+    public function nameAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         
         $customer = $em->getRepository('SerlimarSerlEdgeBundle:Tblcustomers')->findBy(array(
-            'customerno' => $nr
+            'customerid' => $id
         ));
         if(sizeof($customer) === 0)
         {
