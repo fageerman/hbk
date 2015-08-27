@@ -108,4 +108,24 @@ body {
 {
     .sidebar { display: none !important; }
     .printable { display: block; }
-  }
+}
+  
+.payment-filter {
+    outline: 3px solid #F5F5F5;   
+    padding: 10px;
+   
+    margin-bottom: 10px;
+}
+/*This is a duplicate in style.css in Security bundle*/
+.header div{
+	float: left;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 36px;
+	font-weight: 200;
+}
+
+
+.header div span{
+	color: #5379fa !important;
+}

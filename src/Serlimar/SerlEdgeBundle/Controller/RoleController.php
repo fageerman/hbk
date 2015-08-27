@@ -19,6 +19,7 @@ class RoleController extends Controller
      */
     public function indexAction(Request $request)
     {
+       
         $em = $this->getDoctrine()->getManager();
         
         $query =$em->createQuery(

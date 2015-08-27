@@ -21,6 +21,7 @@ use Symfony\Component\Form\FormEvents;
 class PaymentType extends AbstractType
 {
     private $em;
+    private $customerid;
     
     
     /*
@@ -28,23 +29,50 @@ class PaymentType extends AbstractType
      * The customerguid field catches a 
      * 
      */
-    public function __construct(EntityManager $em = null)
+    public function __construct(EntityManager $em = null, $customerid = null)
     {
         $this->em = $em;
+        $this->customerid = $customerid;
+       
     }
     
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('customerguid','integer', array('label'=>'Customer Id','attr'=>array('placeholder' => 'Scan barcode')))
-            ->add('reference','integer', array('label'=>'Invoice Nr', 'attr'=>array('type'=>'integer', 'placeholder' => 'Scan barcode')))
+        // If customerID is defined, means that the customercontroller 
+        // has send an customerID for creationg a payment.
+        if($this->customerid != null){
+             $builder
+            ->add('customerguid','integer', array(
+                'label'=>'Customer Id',
+                'attr'=>array(
+                    'placeholder' => 'Scan barcode'
+                    ),
+                 'data' => $this->customerid
+                ));
+        }else{
+             $builder
+            ->add('customerguid','integer', array(
+                'label'=>'Customer Id',
+                'attr'=>array(
+                    'placeholder' => 'Scan barcode'
+                    ),
+                ));
+        }
+
+            $builder->add('reference','integer', array(
+                'label'=>'Invoice Nr', 
+                'attr'=>array('type'=>'integer', 
+                'placeholder' => 'Scan barcode',
+                )))
             ->add('paymentmethod', 'choice', array(
                     'label' => 'Payment method',
                     'placeholder' => 'Choose a method',
                     'choices' => array(
                         '1231bcfd-b485-11e4-a684-32ea009ce708'=>'SWIPE',
                         '0a7c5956-b485-11e4-a684-32ea009ce708'=>'CASH',
-                ),
+                        ),
+                      //  $this->getPaymentMethods()
+               
             ))
             ->add('amount','money', array('precision' => 2,'currency'=>'AWG'))
             ->add('note','textarea', array('required'=>false))
@@ -53,6 +81,7 @@ class PaymentType extends AbstractType
 
         $builder->get('customerguid')
             ->addModelTransformer(new CustomerNrToGuidTransformer($this->em));
+        
 
     }
 
@@ -89,6 +118,17 @@ class PaymentType extends AbstractType
                 return array('Default');
             },
         ));
+    }
+    
+    private function getPaymentMethods()
+    {
+        $query = $this->em->createQuery("SELECT tbllookups.guid, tbllookups.lookup
+            FROM SerlimarSerlEdgeBundle:Tbllookups tbllookups INNER JOIN SerlimarSerlEdgeBundle:Tblpaymentmethodsallowed p WITH tbllookups.guid = p.paymentmethodguid INNER JOIN SerlimarSerlEdgeBundle:Tbluseraccesslevel u WITH p.roleid = u.accesslevelid
+            WHERE tbllookups.formscombo ='cmbPaymentsMethod' AND tbllookups.notactive = False AND u.accesslevel='HBK' 
+            ORDER BY tbllookups.sortorder, tbllookups.lookup");
+        $result = $query->getResult();
+        
+        return $result;
     }
 
 }

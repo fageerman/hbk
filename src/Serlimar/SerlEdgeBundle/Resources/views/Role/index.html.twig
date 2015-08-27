@@ -50,12 +50,6 @@
                             <tr>
                                 
                                 <td>{{ role.role }}</td> 
-                                {#<td>
-                                {% for r in role.roles %}
-                                    {{r.entity}}
-                                {% endfor %}
-                                </td>
-                                <td></td>#}
                                 <td>
                                     {% if is_granted('ROLE_READ_ROLE') %}
                                     <a onclick="showRole({{ role.id }});" class="btn" aria-label="View"

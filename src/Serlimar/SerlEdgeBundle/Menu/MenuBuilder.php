@@ -18,7 +18,7 @@ class MenuBuilder extends ContainerAware
     {
         $menu = $this->factory->createItem('root');
         if($this->authorizationChecker->isGranted('ROLE_CREATE_PAYMENT')){
-            $menu->addChild('Add Payment', array('route' => 'serlimar_serledge_create_payment'));
+            $menu->addChild('Create Payment', array('route' => 'serlimar_serledge_create_payment'));
         }
         if($this->authorizationChecker->isGranted('ROLE_LIST_PAYMENT')){
             $menu->addChild('Payment Overview', array('route' => 'serlimar_serledge_payment'));

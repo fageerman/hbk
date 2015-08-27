@@ -33,12 +33,13 @@ class SecurityRequestListener
         
         $token = $this->securityContext->getToken();
         if($token instanceof AnonymousToken){
-            echo "user not logged in";
+            echo "User is not logged in";
         }elseif($token instanceof UsernamePasswordToken){
 
            $uri = $request->getRequestUri();
 
            $whitelistUri = $token->getUser()->getWhiteListUri();
+           //var_dump($whitelistUri);die;
            $isGranted = false;
            
            foreach($whitelistUri as $whiteUri)
@@ -47,6 +48,9 @@ class SecurityRequestListener
                     $isGranted = true;
                     continue;
                 }
+           }
+           if($uri == '/clearfilter'){
+               $isGranted = true;
            }
            if(!$isGranted){
                throw new AccessDeniedException();

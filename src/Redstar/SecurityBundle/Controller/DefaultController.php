@@ -24,7 +24,7 @@ class DefaultController extends Controller
         } else {
             $error = '';
         }
-
+        
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContextInterface::LAST_USERNAME);
 

@@ -171,4 +171,9 @@ Serlimar\SerlEdgeBundle\Entity\Tblusers:
             options:
                 default: '0'
             column: NotActive
+        location:
+            type: string
+            nullable: true
+            length: 50
+            column: Location
     lifecycleCallbacks: {  }

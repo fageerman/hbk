@@ -1,5 +1,7 @@
 {% extends "layout.html.twig" %}
-{% set subTitle = "Payment Overview"%}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% set subTitle = "Payment Overview" %}
 {% block title %}{{ parent() }} - {{ subTitle }}{% endblock %}
 
 {% block content %}
@@ -19,13 +21,51 @@
     </div>
    
     {% endfor %}
-     
-    {% if payments is defined and payments is not empty %} 
+    <p>
+        <button onclick="toggleFilter()" id="toggleLink" class="btn btn-info btn-sm ">Toggle Filter</button>
+    </p>
+    
+    <div class="payment-filter" style="display: none">    
+       
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate','class': 'col-sm-4  col-md-4'}}) }}
+          <div class="form-group {% if form.startDate.vars.errors|length %} has-error{% endif %}">
+            {{ form_label(form.startDate) }}
+            {{ form_widget(form.startDate) }}
+            {{ form_errors(form.startDate) }}
+          </div>
+           <div class="form-group {% if form.endDate.vars.errors|length %} has-error{% endif %}">
+            {{ form_label(form.endDate) }}
+            {{ form_widget(form.endDate) }}
+            {{ form_errors(form.endDate) }}
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a type="button" class="btn btn-default" href="{{ path('serlimar_serledge_payment_clearfilter') }}">Clear</a>
+          </div>
+        {{ form_end(form) }}
+        
+    </div>
+    
+    <div class="clearfix"></div>
+    {% if payments is defined and payments is not empty %}
+        <div>
+            Date: {{ dates[0]|date('d F Y') }} {% if dates[1] is not null %}  -  {{ dates[1]|date('d F Y')}}{% endif%}
+                <ul class="list-inline success ">
+                    {% set total = 0 %}
+                    {% for amount in sumAmount %}
+                        {% set total = total + amount['totalAmount'] %}
+                        <li>Total {{ amount['paymentmethod']|capitalize}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Afl {{ amount['totalAmount']}}</li>
+                    {% endfor %}
+                    <li>Total <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Afl {{ total }}</li>
+                </ul>
+        </div>
         <div class="table-responsive">
-            <div>
-                {{ pagination.getTotalItemCount }} results
-            </div>
-            <table class="table">
+            
+                <div>
+                    {{ pagination.getTotalItemCount }} results
+                </div>
+
+                <table class="table">
                     <thead>
                         <tr>	
                             <td>ID</td>
@@ -34,7 +74,11 @@
                             <td>Amount (Afl)</td>
                             <td>Customer</td>
                             <td>Inserted By</td>
-                            <td></td>
+                            <td> 
+                                {% if is_granted('ROLE_PRINTALL_PAYMENT') %}
+                                <a type="button" href="{{ path('serlimar_serledge_printall_payment')}}"class="btn btn-primary btn-sm" >Print All</a>
+                                {% endif%}
+                            </td>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,7 +91,7 @@
                                 <td>{{ payment.firstname }} {{ payment.name }}</td>
                                 <td>{{ payment.insertuser }}</td>
                                 <td>
-                                    {% if is_granted('ROLE_PRINT_PAYMENT') %}
+                                   {% if is_granted('ROLE_PRINT_PAYMENT') %}
                                     <a href="{{ path('serlimar_serledge_receipt_payment',{'id': payment.paymentsid })}}" class="btn" aria-label="Print"
                                        data-toggle="tooltip" data-placement="top" title="Print">
                                         <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
@@ -94,7 +138,11 @@
       somewhere viewable by this template. (TODO: find out a better way to inherit it)
    #} 
   
-   
+   <script type=”text/javascript”>
+    $(document).ready(function() {
+            $('#payment_startDate').datepicker({ dateFormat: 'dd-mm-yy' })
+    });
+    </script>
  
 
 {% endblock %}

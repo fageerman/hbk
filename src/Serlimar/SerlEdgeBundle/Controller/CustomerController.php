@@ -15,6 +15,7 @@ use Serlimar\SerlEdgeBundle\Form\CustomerType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Serlimar\SerlEdgeBundle\Entity\Tblcustomers;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class CustomerController extends Controller
 {
@@ -49,20 +50,33 @@ class CustomerController extends Controller
         ));
     }
     
-    public function nameAction($id)
+    public function nameAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         
         $customer = $em->getRepository('SerlimarSerlEdgeBundle:Tblcustomers')->findBy(array(
             'customerid' => $id
         ));
+        
         if(sizeof($customer) === 0)
         {
             return new Response('Unknown',200);
         }
-       // var_dump($customer);die;
+        
         $fullName = $customer[0]->getFirstName() . " " . $customer[0]->getName();
         return new Response($fullName,200);
+    }
+    
+    /*
+    *  I needed to pass a dynamic variable to a request. This is done using a
+    *  session to temporarly store the variable. This variable is being called
+    *  in the payment/create route. The value is inserted in de customerguid form element. And then removed.
+    */
+    public function proxyPaymentAction($customerid)
+    {
+        $this->get('session')->set('customerIdPayment',$customerid);
+        //die($this->get('session')->get('customerIdPayment'));
+        return $this->redirectToRoute('serlimar_serledge_create_payment', array(),302);
     }
 
 }

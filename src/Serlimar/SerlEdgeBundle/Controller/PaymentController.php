@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Serlimar\SerlEdgeBundle\Form\PaymentType;
 use Serlimar\SerlEdgeBundle\Form\UpdatePaymentType;
 use Serlimar\SerlEdgeBundle\Entity\Tblpayments;
+use Serlimar\SerlEdgeBundle\Entity\PaymentFilter;
+use Serlimar\SerlEdgeBundle\Form\PaymentFilterType;
 
 class PaymentController extends Controller
 {
@@ -24,40 +26,118 @@ class PaymentController extends Controller
      */
     public function indexAction(Request $request)
     {
+        //return new Response('test');
         $em = $this->getDoctrine()->getManager();
-        
-        /*
-         * Predefined role "Cashier" must list only the payments for the day.
-         */
         $today = (new \DateTime('now'))->setTime(0,0);
-        $dateCashierRole = ($this->getUser()->getRoleCollectionName() == "Cashier")? ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'' :'';
+        $roleUser = $this->getUser()->getRoleCollectionName();
         
-        $query = $em->createQuery(
-                'Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser from SerlimarSerlEdgeBundle:Tblpayments p '
+        //List payments with selected dates or just 'today'
+        //Display payments of all users or just a selection, or just 1?
+        $dateQuery = '';
+        $insertuserQuery ='';
+        
+        //Check the role of the user, and prepare the subquery for the specific role.
+        if($roleUser === 'Cashier'){
+            $dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
+            $insertuserQuery = ' and p.insertuser = \'' . $this->getUser()->getUsername() . '\'';
+        }
+        elseif($roleUser === 'Manager'){
+            $manager = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblusers')->findBy(array('username'=> $this->getUser()->getUsername()));
+            $managerLocation = $manager[0]->getLocation();
+            $dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
+            $insertuserQuery = ' and p.insertuser IN(Select u.username from SerlimarSerlEdgeBundle:Tblusers u where u.location =\'' . $managerLocation . '\')';
+            
+        }
+        elseif($roleUser === 'Superadmin') {
+            $dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
+        }
+        else{
+            die('?');
+        }
+   
+        $filter = new PaymentFilter();
+        $filter->setStartDate($this->get('session')->get('filterStartDate'));
+        $filter->setEndDate($this->get('session')->get('filterEndDate'));
+        $form = $this->createForm(new PaymentFilterType(),$filter);
+        
+        if($this->get('session')->get('filterQueryInSession') !== null)
+        {
+            $dateQuery = $this->get('session')->get('filterQueryInSession');
+        }
+
+        //filter is submitted
+        if($request->getMethod() == Request::METHOD_POST){
+            
+            $form->handleRequest($request);
+            $data = $form->getData();
+
+            if($form->isValid()){
+                $startDate = $data->getStartDate()->format('Y-m-d H:i:s');
+                $endDate = ($data->getEndDate())? $data->getEndDate()->format('Y-m-d H:i:s'): null;
+                
+                
+                //Build the datequery from the submitted start/enddate from the filter.
+                $dateQuery = ($endDate !== null)? ' and p.paymentdate BETWEEN \'' 
+                                . $startDate . '\' and \'' . $endDate . '\'' : ' and p.paymentdate = \'' 
+                                . $startDate . '\'';
+                
+                $this->get('session')->set('filterQueryInSession', $dateQuery);  
+                $this->get('session')->set('filterStartDate', $data->getStartDate());  
+                $this->get('session')->set('filterEndDate', $data->getEndDate());  
+            }
+
+        }
+        $mainQuery =  'Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser from SerlimarSerlEdgeBundle:Tblpayments p '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
-                . ' WHERE p.insertuser = :insertuser' . $dateCashierRole 
-                . ' AND p.paymentsid is not null'
-                . ' ORDER BY p.timestamp DESC'
-                )->setParameter('insertuser', $this->getUser()->getUsername());
-      
+                . ' WHERE p.paymentsid is not null '
+                .   $insertuserQuery 
+                .   $dateQuery             
+                . '  ORDER BY p.paymentdate DESC ';
+        
+         //The same query as mainQuery but with only the sum of total amount.
+         $sumQuery =  'Select SUM(p.amount) as  totalAmount , l.lookup as paymentmethod from SerlimarSerlEdgeBundle:Tblpayments p '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
+                . ' WHERE p.paymentsid is not null '
+                .   $insertuserQuery 
+                .   $dateQuery             
+                . '  GROUP BY p.paymentmethod ORDER BY p.paymentdate DESC ';
+         
+        $query = $em->createQuery($mainQuery);
+        $sumquery = $em->createQuery($sumQuery);
+        
+        
+        //Save the main/sum query in a session, so the 'print all' function can generate the list.
+        //This session var must be removed when the filter is cleared. It is done in clearfilter action.
+        $this->get('session')->set('mainQueryInSession', $mainQuery);  
+        $this->get('session')->set('sumQueryInSession', $sumQuery);  
+       
+
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                     $query,
                     $request->query->getInt('page',1),
                     10
                 );
+
         $result = $query->getResult();
+        $sumAmount = $sumquery->getResult();
+        $dates = [$this->get('session')->get('filterStartDate'), $this->get('session')->get('filterEndDate')];  
+       
         return $this->render('SerlimarSerlEdgeBundle:Payment:index.html.twig', array(
             'payments' => $result,
-            'pagination' => $pagination
+            'sumAmount' => $sumAmount,
+            'dates' => $dates,
+            'pagination' => $pagination,
+            'form' => $form->createView()
             ));
     }
     
     /**
      *  Create a new payment registration record.
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $customerid = null)
     {   
         
         $em = $this->getDoctrine()->getManager();
@@ -83,16 +163,17 @@ class PaymentController extends Controller
                 $em->persist($payment);
                 $em->flush();
 
-                $this->addFlash(
-                    'notice',
-                    'Your changes were saved!'
-                );
-                return $this->redirectToRoute('serlimar_serledge_payment_receipt', array('id'=>$paymentId));
+                return $this->redirectToRoute('serlimar_serledge_receipt_payment', array('id'=>$paymentId));
             }
             return $this->render('SerlimarSerlEdgeBundle:Payment:create.html.twig', array(
            'form'=>$form->createView()));
         }
-        $form = $this->createForm(new PaymentType($em));
+        
+        $customerGuid = $this->get('session')->get('customerIdPayment');  
+       
+        $form = $this->createForm(new PaymentType($em, $customerGuid));
+        $this->get('session')->remove('customerIdPayment');  
+       // $this->get('session')->remove('customerIdForPayment');
         return $this->render('SerlimarSerlEdgeBundle:Payment:create.html.twig', array(
             'form'=>$form->createView() 
         ));
@@ -106,9 +187,10 @@ class PaymentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $paymentResult = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblpayments')->findBy(array('paymentsid'=> $id));
         $payment = $paymentResult[0];
+      //  var_dump($payment);die;
         $form = $this->createForm(new UpdatePaymentType($em), $payment);
         
-        if($request->getMethod() == "POST")
+        if($request->getMethod() == Request::METHOD_POST)
         {
             $form->handleRequest($request);
 
@@ -130,6 +212,14 @@ class PaymentController extends Controller
                  */
                 return new Response('saved',200);
             }
+            
+            return $this->render(
+            'SerlimarSerlEdgeBundle:Payment:_edit-payment.html.twig', array(
+                'payment' => $payment,
+                'form' => $form->createView()
+                )
+        );
+            
         }
         return $this->render(
             'SerlimarSerlEdgeBundle:Payment:_edit-payment.html.twig', array(
@@ -209,5 +299,36 @@ class PaymentController extends Controller
                 'payment' => $payment[0],
                 )
         );
+    }
+    public function printAllAction()
+    {
+        $printQuery = $this->get('session')->get('mainQueryInSession');
+        $sumQuery = $this->get('session')->get('sumQueryInSession');
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery($printQuery);
+        $sumQuery = $em->createQuery($sumQuery);
+        
+        $payments = $query->getResult();
+        $sumAmount = $sumQuery->getResult();
+        $dates = [$this->get('session')->get('filterStartDate'), $this->get('session')->get('filterEndDate')];  
+        return $this->render(
+            'SerlimarSerlEdgeBundle:Payment:printall.html.twig', array(
+                'payments' => $payments,
+                'dates' => $dates,
+                'sumAmount' => $sumAmount,
+                )
+        );
+        
+    }
+    
+    
+    public function clearFilterAction()
+    {
+        $this->get('session')->remove('mainQueryInSession');  
+        $this->get('session')->remove('QueryInSession');  
+        $this->get('session')->remove('filterQueryInSession');  
+        $this->get('session')->remove('filterStartDate');  
+        $this->get('session')->remove('filterEndDate');  
+        return $this->redirectToRoute('serlimar_serledge_payment');
     }
 }

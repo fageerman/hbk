@@ -405,6 +405,13 @@ class Tblcustomers
      */
     private $notactive = 'b\'0\'';
 
+    public function getCustomerid() {
+        return $this->customerid;
+    }
+    
+    public function getGuid() {
+        return $this->guid;
+    }
     
     public function getBirthdate()
     {

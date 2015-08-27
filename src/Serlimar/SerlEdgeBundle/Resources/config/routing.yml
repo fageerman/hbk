@@ -14,7 +14,7 @@ serlimar_serledge_update_payment:
     path:     /payment/{id}/update
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:update }
     methods:  [GET,POST]
-    condition: "request.isXMLHttpRequest()"
+  #  condition: "request.isXMLHttpRequest()"
 
 serlimar_serledge_delete_payment:
     path:     /payment/{id}/delete
@@ -28,6 +28,18 @@ serlimar_serledge_show_payment:
 serlimar_serledge_receipt_payment:
     path:     /payment/{id}/receipt
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:receipt }
+
+serlimar_serledge_printall_payment:
+    path:     /payment/print
+    defaults: { _controller: SerlimarSerlEdgeBundle:Payment:printAll }
+    
+serlimar_serledge_payment_clearfilter:
+    path:     /clearfilter
+    defaults: { _controller: SerlimarSerlEdgeBundle:Payment:clearFilter }
+    
+serlimar_serledge_customer_proxy_payment:
+    path:     /customer/{customerid}
+    defaults: { _controller: SerlimarSerlEdgeBundle:Customer:proxyPayment }
     
 serlimar_serledge_customer:
     path:     /customer

@@ -1,3 +1,9 @@
+    var el = $("#payment_customerguid").get(0);
+    var elemLen = el.value.length;
+
+    el.selectionStart = elemLen;
+    el.selectionEnd = elemLen;
+    el.focus();
 
     $(".form-group #payment_customerguid").focusout(function(){
        var value = $("#payment_customerguid").val();
@@ -16,8 +22,22 @@
              $('#name-customer').html("");
         }
     });
+    
+   function toggleFilter(){
+     $(".payment-filter" ).slideToggle("slow");
+     
+    };
+    
+    
+    function clearFilter()
+    {
+        $.ajax({
+            url: "/clearfilter" ,
+            context: document.body
+         }).done(function(data) {
 
-
+         });
+    }
 /***************************Payment functions**********************************/
 function showPayment(id)
 {
@@ -46,7 +66,6 @@ function getPayment(id)
 }
 
 function updatePayment(id){
-
 $("form").submit(function(e)
 {
     var postData = $(this).serializeArray();
@@ -67,6 +86,7 @@ $("form").submit(function(e)
             }
             //The form has errors and has to be shown with the errors.
             else{
+               // console.log(data);
                   $('#myModal .modal-content').empty();
                   $('#myModal .modal-content').append(data);
             }
@@ -80,7 +100,7 @@ $("form").submit(function(e)
     e.unbind(); //unbind. to stop multiple form submit.
 });
  
-$("form").submit(); //Submit  the FORM
+$("form[name='updatepayment']").submit(); //Submit  the FORM
 }
 
 
