@@ -27,7 +27,7 @@
     
     <div class="payment-filter" style="display: none">    
        
-        {{ form_start(form,{'attr': {'novalidate': 'novalidate','class': 'col-sm-4  col-md-4'}}) }}
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate', 'style':'width:200px'}}) }}
           <div class="form-group {% if form.startDate.vars.errors|length %} has-error{% endif %}">
             {{ form_label(form.startDate) }}
             {{ form_widget(form.startDate) }}
@@ -54,9 +54,9 @@
                     {% set total = 0 %}
                     {% for amount in sumAmount %}
                         {% set total = total + amount['totalAmount'] %}
-                        <li>Total {{ amount['paymentmethod']|capitalize}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Afl {{ amount['totalAmount']}}</li>
+                        <li>Total {{ amount['paymentmethod']|capitalize }} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Afl {{ amount['totalAmount']|number_format(2, '.', ',')}}</li>
                     {% endfor %}
-                    <li>Total <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Afl {{ total }}</li>
+                    <li>Total <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Afl {{ total|number_format(2, '.', ',') }}</li>
                 </ul>
         </div>
         <div class="table-responsive">

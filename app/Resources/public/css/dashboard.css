@@ -111,9 +111,8 @@ body {
 }
   
 .payment-filter {
-    outline: 3px solid #F5F5F5;   
+    border: 3px solid #F5F5F5;   
     padding: 10px;
-   
     margin-bottom: 10px;
 }
 /*This is a duplicate in style.css in Security bundle*/
