@@ -26,7 +26,7 @@ class PaymentController extends Controller
      */
     public function indexAction(Request $request)
     {
-        //return new Response('test');
+      
         $em = $this->getDoctrine()->getManager();
         $today = (new \DateTime('now'))->setTime(0,0);
         $roleUser = $this->getUser()->getRoleCollectionName();
@@ -51,10 +51,7 @@ class PaymentController extends Controller
         elseif($roleUser === 'Superadmin') {
             $dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
         }
-        else{
-            die('?');
-        }
-   
+           
         $filter = new PaymentFilter();
         $filter->setStartDate($this->get('session')->get('filterStartDate'));
         $filter->setEndDate($this->get('session')->get('filterEndDate'));

@@ -34,6 +34,7 @@ class UserType extends AbstractType
                     'choices' => $this->getRoles(),
                     'placeholder' => 'Choose an option'
             ))
+            ->add('location','text')
             ->add('plainPassword','repeated', array(
                 'type' => 'password',
                 'invalid_message' => 'The password fields must match',

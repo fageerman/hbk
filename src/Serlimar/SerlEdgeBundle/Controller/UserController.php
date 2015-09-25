@@ -6,9 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Serlimar\SerlEdgeBundle\Form\UserType;
-use Serlimar\SerlEdgeBundle\Form\UpdateUserType;
+use Serlimar\SerlEdgeBundle\Form\UserFilterType;
 use Serlimar\SerlEdgeBundle\Entity\Tblusers;
-use Serlimar\SerlEdgeBundle\Entity\Tblrole_collection;
+use Serlimar\SerlEdgeBundle\Entity\UserFilter;
 
 
 class UserController extends Controller
@@ -22,9 +22,41 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $query = $em->createQuery(
-                'SELECT u.id, u.username, u.firstname, u.lastname, u.password, r.role FROM '
+                'SELECT u.id, u.username, u.firstname, u.lastname, u.password, u.location, r.role FROM '
               . 'SerlimarSerlEdgeBundle:Tblusers u LEFT JOIN SerlimarSerlEdgeBundle:TblroleCollection r '
               . 'WITH u.role_collection_id = r.id ORDER BY u.id DESC');
+        
+        
+        $filter = new UserFilter();
+        $form = $this->createForm(new UserFilterType(),$filter);
+        
+        $usernameFilter = '';
+        $locationFilter = '';
+        
+         //If filter is submitted
+        if($request->getMethod() == Request::METHOD_POST){
+            
+            $form->handleRequest($request);
+            $data = $form->getData();
+
+            if($form->isValid()){
+               if($data->getUsername()){
+                  $usernameFilter = " AND u.username ='" . $data->getUsername() . "'";
+               }if ($data->getLocation()) {
+                  $locationFilter = " AND u.location = '" . $data->getLocation() . "'";
+               }
+            }
+        }
+        
+        $query = $em->createQuery(
+                'SELECT u.id, u.username, u.firstname, u.lastname, u.password, u.location, r.role FROM '
+              . 'SerlimarSerlEdgeBundle:Tblusers u LEFT JOIN SerlimarSerlEdgeBundle:TblroleCollection r '
+              . 'WITH u.role_collection_id = r.id '
+              . 'WHERE 1 =1 '
+              . $usernameFilter
+              . $locationFilter
+              . ' ORDER  BY u.id DESC');
+        
         
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -37,7 +69,8 @@ class UserController extends Controller
         
         return $this->render('SerlimarSerlEdgeBundle:User:index.html.twig', array(
             'users' => $users,
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'form'=>$form->createView()
         ));
     }
     
@@ -167,5 +200,15 @@ class UserController extends Controller
                 'form' => $form->createView()
                 )
         );
+    }
+    
+    public function clearFilterAction()
+    {
+        $this->get('session')->remove('mainQueryInSession');  
+        $this->get('session')->remove('QueryInSession');  
+        $this->get('session')->remove('filterQueryInSession');  
+        $this->get('session')->remove('filterStartDate');  
+        $this->get('session')->remove('filterEndDate');  
+        return $this->redirectToRoute('serlimar_serledge_payment');
     }
 }

@@ -26,6 +26,32 @@
    
     {% endfor %}
      
+    <p>
+        <button onclick="toggleFilter()" id="toggleLink" class="btn btn-info btn-sm ">Toggle Filter</button>
+    </p>
+    
+    <div class="payment-filter" style="display: none">    
+       
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate', 'style':'width:200px'}}) }}
+          <div class="form-group {% if form.username.vars.errors|length %} has-error{% endif %}">
+            {{ form_label(form.username)  }}
+            {{ form_widget(form.username) }}
+            {{ form_errors(form.username) }}
+          </div>
+           <div class="form-group {% if form.location.vars.errors|length %} has-error{% endif %}">
+            {{ form_label(form.location)  }}
+            {{ form_widget(form.location) }}
+            {{ form_errors(form.location) }}
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a type="button" class="btn btn-default" href="{{ path('serlimar_serledge_user') }}">Clear</a>
+          </div>
+        {{ form_end(form) }}
+        
+    </div>
+    <div class="clearfix"></div>
+    
     {% if users is defined and users is not empty %} 
         <div class="table-responsive">
             <div>
@@ -39,6 +65,7 @@
                             <td>Firstname</td>
                             <td>Lastname</td>
                             <td>Role</td>
+                            <td>Location</td>
                             <td>
                                 {% if is_granted('ROLE_CREATE_USER') %}
                                 <button type="button" class="btn btn-primary btn-sm" onclick="prepareUser();">Create User</button>
@@ -54,6 +81,7 @@
                                 <td>{{ user.firstname }}</td>
                                 <td>{{ user.lastname }}</td>
                                 <td>{{ user.role }}</td>
+                                <td>{{ user.location }}</td>
                                 <td>
                                     {% if is_granted('ROLE_READ_USER') %}
                                     <a onclick="showUser({{ user.id }});" class="btn" aria-label="View"
