@@ -64,6 +64,7 @@ serlimar_serledge_create_user:
 serlimar_serledge_update_user:
     path:     /user/{id}/update
     defaults: { _controller: SerlimarSerlEdgeBundle:User:update }
+    methods:  [GET,POST]
     
 serlimar_serledge_delete_user:
     path:     /user/{id}/delete

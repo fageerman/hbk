@@ -229,7 +229,7 @@ $("form").submit(function(e)
     e.unbind(); //unbind. to stop multiple form submit.
 });
  
-$("form").submit(); //Submit  the FORM
+$("form[name='user']").submit(); //Submit  the FORM
 }
 
 /***************************End User functions**********************************/
