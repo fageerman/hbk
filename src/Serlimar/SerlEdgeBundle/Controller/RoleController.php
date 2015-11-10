@@ -67,8 +67,8 @@ class RoleController extends Controller
         $user = $query->getResult();
         
         return $this->render(
-            'SerlimarSerlEdgeBundle:User:_show-user.html.twig', array(
-                'user' => $user[0],
+            'SerlimarSerlEdgeBundle:User:_show-role.html.twig', array(
+                'role' => $user[0],
             )
         );
     }
