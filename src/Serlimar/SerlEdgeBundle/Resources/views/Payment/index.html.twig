@@ -21,6 +21,7 @@
     </div>
    
     {% endfor %}
+    {% if filterOption %}
     <p>
         <button onclick="toggleFilter()" id="toggleLink" class="btn btn-info btn-sm ">Toggle Filter</button>
     </p>
@@ -45,6 +46,7 @@
         {{ form_end(form) }}
         
     </div>
+    {% endif %}
     
     <div class="clearfix"></div>
     {% if payments is defined and payments is not empty %}

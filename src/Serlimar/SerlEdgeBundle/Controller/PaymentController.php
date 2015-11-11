@@ -126,6 +126,7 @@ class PaymentController extends Controller
             'payments' => $result,
             'sumAmount' => $sumAmount,
             'dates' => $dates,
+            'filterOption' => ($roleUser === 'Cashier')?false:true,
             'pagination' => $pagination,
             'form' => $form->createView()
             ));
