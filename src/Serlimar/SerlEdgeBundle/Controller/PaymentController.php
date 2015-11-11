@@ -49,7 +49,7 @@ class PaymentController extends Controller
             
         }
         elseif($roleUser === 'Superadmin') {
-            $dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
+            //$dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
         }
            
         $filter = new PaymentFilter();
@@ -184,7 +184,7 @@ class PaymentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $paymentResult = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblpayments')->findBy(array('paymentsid'=> $id));
         $payment = $paymentResult[0];
-      //  var_dump($payment);die;
+       //var_dump($payment);die;
         $form = $this->createForm(new UpdatePaymentType($em), $payment);
         
         if($request->getMethod() == Request::METHOD_POST)
