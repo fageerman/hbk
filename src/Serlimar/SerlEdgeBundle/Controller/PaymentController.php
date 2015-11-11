@@ -49,7 +49,7 @@ class PaymentController extends Controller
             
         }
         elseif($roleUser === 'Superadmin') {
-            //$dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
+            $dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
         }
            
         $filter = new PaymentFilter();
