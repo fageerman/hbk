@@ -1,8 +1,8 @@
     var el = $("#payment_customerguid").get(0);
-    var elemLen = el.value.length;
+    //var elemLen = el.value.length;
 
-    el.selectionStart = elemLen;
-    el.selectionEnd = elemLen;
+   // el.selectionStart = elemLen;
+   // el.selectionEnd = elemLen;
     el.focus();
 
     $(".form-group #payment_customerguid").focusout(function(){
@@ -176,7 +176,7 @@ function createUser()
         e.unbind(); //unbind. to stop multiple form submit.
     });
 
-    $("form").submit(); //Submit  the FORM
+    $("form[name='user']").submit(); //Submit  the FORM
 }
 
 
@@ -211,7 +211,8 @@ $("form").submit(function(e)
             if('saved' === data)
             {
                  $('#myModal .modal-content').modal('hide');
-                 location.reload();
+                 //location.reload();
+                 window.location=window.location;
                  
             }
             //The form has errors and has to be shown with the errors.
