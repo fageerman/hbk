@@ -53,6 +53,14 @@ class Tblusers
     private $username;
     
     
+     /**
+     * @var string
+     * @Assert\Email()
+     * @Assert\NotBlank()
+     * @ORM\Column(name="email", type="string", length=40)
+     */
+    private $email;
+    
     /**
      * 
      */
@@ -259,7 +267,12 @@ class Tblusers
     function getShortname() {
         return $this->shortname;
     }
+    
+    function getEmail() {
+        return $this->email;
+    }
 
+    
     function getNota() {
         return $this->nota;
     }
@@ -346,6 +359,10 @@ class Tblusers
 
     function setUsername($username) {
         $this->username = $username;
+    }
+    
+    function setEmail($email) {
+        $this->email = $email;
     }
 
     function setPassword($password) {

@@ -50,6 +50,9 @@ Serlimar\SerlEdgeBundle\Entity\Tblusers:
             options:
                 fixed: false
             column: Password
+        email:
+            type: string
+            length: 40
         salt:
             type: string
             nullable: true

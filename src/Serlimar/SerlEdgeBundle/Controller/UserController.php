@@ -108,20 +108,21 @@ class UserController extends Controller
             $form = $this->createForm(new UserType($em), $user);
             
             $form->handleRequest($request);
-            $plainPassword = $form->getData()->getPlainPassword();
+            $plainPassword = $this->randomPassword(); //generate pass
             
-            if ($form->isValid()){
-                if($plainPassword != null){
-                    $user->setPassword(password_hash($plainPassword, PASSWORD_BCRYPT, array('cost'=>12)));
-                }
+            if ($form->isValid())
+            {
+                $user->setPassword(password_hash($plainPassword, PASSWORD_BCRYPT, array('cost'=>12)));
                 
                 $em->persist($user);
                 $em->flush();
-
+                
+                $this->sendPasswordMail($plainPassword, $form->get('username')->getData(),$form->get('firstname')->getData(), $form->get('email')->getData());
                 $this->addFlash(
                     'notice',
                     'Your changes were saved!'
                 );
+                
                 return new Response('saved',200);
             }
             return $this->render('SerlimarSerlEdgeBundle:User:_create-user.html.twig', array(
@@ -131,6 +132,56 @@ class UserController extends Controller
         return $this->render('SerlimarSerlEdgeBundle:User:_create-user.html.twig', array(
             'form'=>$form->createView() 
         ));
+    }
+    private function randomPassword() {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
+    }
+    
+    
+    private function sendPasswordMail($password,$username, $name, $email)
+    {
+              
+        $message = \Swift_Message::newInstance()
+        ->setSubject('Welcome to serlEDGE')
+        ->setFrom('serledge@serlimar.aw')
+        ->setTo($email)
+        ->setBody(
+            $this->renderView(
+                'SerlimarSerlEdgeBundle:User:_email_user_password.html.twig',
+                array(
+                    'password' => $password,
+                    'name' => $name,
+                    'username' => $username
+                )
+            ),
+            'text/html'
+        );
+        $this->get('mailer')->send($message);
+    }
+    
+    
+    public function resetPasswordAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $userResult = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblusers')->findBy(array('id'=> $id));
+        $user = $userResult[0];
+        $password = $this->randomPassword();
+        $user->setPassword(password_hash($password, PASSWORD_BCRYPT, array('cost'=>12)));
+        $em->flush();
+        
+        $this->sendPasswordMail($password, $user->getUsername(), $user->getFirstname(), $user->getEmail());
+        $this->addFlash(
+                    'notice',
+                    'A new password has been sent to ' . $user->getEmail() . '.'
+                );
+        return $this->redirectToRoute('serlimar_serledge_user');
     }
     
     public function deleteAction(Request $request,$id)

@@ -30,19 +30,29 @@ class UserType extends AbstractType
             ->add('firstname','text')
             ->add('lastname', 'text')
             ->add('shortname','text')
+            ->add('email','email')
             ->add('role_collection_id', 'choice', array(
                     'choices' => $this->getRoles(),
                     'placeholder' => 'Choose an option'
             ))
-            ->add('location','text')
-            ->add('plainPassword','repeated', array(
-                'type' => 'password',
-                'invalid_message' => 'The password fields must match',
-                'options' => array('attr' => array('class' => 'password-field')),
-                'first_options' => array('label'=>'Password'),
-                'second_options' => array('label'=>'Confirm Password'),
+            ->add('location','choice', array(
+                'choices'=>array(
+                    'santa cruz' => "Santa Cruz",
+                    'savaneta' => "Savaneta",
+                    'noord' => "Noord",
+                    'paradera' => "Paradera",
+                ),
+                'placeholder' => 'Choose an option'
+            ))
+                ->add('submit','submit')
+//            ->add('plainPassword','repeated', array(
+//                'type' => 'password',
+//                'invalid_message' => 'The password fields must match',
+//                'options' => array('attr' => array('class' => 'password-field')),
+//                'first_options' => array('label'=>'Password'),
+//                'second_options' => array('label'=>'Confirm Password'),
                 
-            ));
+            ;
         
     }
     
