@@ -147,9 +147,8 @@ class UserController extends Controller
     
     private function sendPasswordMail($password,$username, $name, $email)
     {
-              
         $message = \Swift_Message::newInstance()
-        ->setSubject('Welcome to serlEDGE')
+        ->setSubject('serlEDGE Login')
         ->setFrom('serledge@serlimar.aw')
         ->setTo($email)
         ->setBody(

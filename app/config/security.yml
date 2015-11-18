@@ -39,7 +39,7 @@ security:
             security: false
         # the login page has to be accessible for everybody
         login:
-            pattern:  ^/login$
+            pattern:  ^/login$|^/forgot-password$
             security: false
             #anonymous: ~
 

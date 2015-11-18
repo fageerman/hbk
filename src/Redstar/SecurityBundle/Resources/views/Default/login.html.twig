@@ -11,13 +11,19 @@
 {% block body %}
 
     <div class="login">
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-message alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    
         <div class="header">
         <div>serl<span>EDGE</span></div>
         </div>
         <div class="clearfix"></div>
         
         {% if error %}
-            <div class="text-danger">{{ error.message }}</div>
+            <div class="text-danger"><span class="glyphicon glyphicon-exclamation-sign"></span>{{ error.message }}</div>
         {% endif %}
         
         <form action="{{ path('redstar_security_login_check') }}" method="post">
@@ -30,5 +36,6 @@
             <input type="hidden" name="_target_path" value="{{ path('serlimar_serledge_payment')}}" />
             <button type="submit" >Login</button>
         </form>
+            <a href="{{ path('redstar_security_forgot_password')}}">Forgot Password?<a/>
     </div>
 {% endblock %}

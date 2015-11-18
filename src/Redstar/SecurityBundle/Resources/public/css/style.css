@@ -4,12 +4,19 @@
 h1{
     color:white;
 }
-body {
+/*body {
    background: url('../bundles/redstarsecurity/image/grey-pattern-bckgr.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}*/
+
+body {
+  /*background-color: #4D4538;*/
+  background-color: #353844;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
 }
 
 .login {
@@ -30,6 +37,7 @@ body {
 .header div span{
 	color: #5379fa !important;
 }
+
 
 .login input[type=text]{
 	width: 250px;
