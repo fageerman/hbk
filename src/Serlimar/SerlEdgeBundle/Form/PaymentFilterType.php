@@ -26,13 +26,12 @@ class PaymentFilterType extends AbstractType
     {
         $builder
 
-            ->add('startDate','datetime',array(
+            ->add('startDate','date',array(
                 'widget' => 'single_text',
                 'format' => 'dd-MM-yyyy',
                 'attr' => array(
-                        'class' => 'date',
-                        'placeholder' => 'dd-mm-yyyy',
-                        
+                       'placeholder' => 'dd-mm-yyyy',
+                       'class'=> 'datepicker'
                     ),
                 'label' => 'Start paymentdate'
                 ))
@@ -43,6 +42,7 @@ class PaymentFilterType extends AbstractType
                         'class' => 'date',
                         'required' => false,
                         'placeholder' => 'dd-mm-yyyy',
+                        'class'=> 'datepicker'
                         
                     ),
                   'label' => 'End paymentdate'

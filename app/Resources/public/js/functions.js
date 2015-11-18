@@ -1,3 +1,8 @@
+    $(function() {
+    var datepicker = $( ".datepicker" ).datepicker({dateFormat: 'dd-mm-yy'});
+   
+    });
+    
     var el = $("#payment_customerguid").get(0);
     //var elemLen = el.value.length;
 
