@@ -32,10 +32,10 @@
     <p>
         <button onclick="toggleFilter()" id="toggleLink" class="btn btn-info btn-sm ">Toggle Filter</button>
     </p>
-    {% set display = 'block' %}
+    {% set display = 'none' %}
     
     {% if form.vars.errors.form.valid %}
-        {% set display = 'none' %}
+        {% set display = 'block' %}
     {% endif %}
     
     <div class="payment-filter" style="display: {{ display }}">    
