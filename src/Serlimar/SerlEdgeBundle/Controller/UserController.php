@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Serlimar\SerlEdgeBundle\Form\UserType;
+use Serlimar\SerlEdgeBundle\Form\UpdateUserType;
 use Serlimar\SerlEdgeBundle\Form\UserFilterType;
 use Serlimar\SerlEdgeBundle\Entity\Tblusers;
 use Serlimar\SerlEdgeBundle\Entity\UserFilter;
@@ -218,7 +219,7 @@ class UserController extends Controller
         $userResult = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblusers')->findBy(array('id'=> $id));
         $user = $userResult[0];
        
-        $form = $this->createForm(new UserType($em), $user);
+        $form = $this->createForm(new UpdateUserType($em), $user);
        
         if($request->getMethod() == "POST")
         {

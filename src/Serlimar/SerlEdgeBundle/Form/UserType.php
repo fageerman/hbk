@@ -41,17 +41,10 @@ class UserType extends AbstractType
                     'savaneta' => "Savaneta",
                     'noord' => "Noord",
                     'paradera' => "Paradera",
+                    'san nicolaas' => "San Nicolaas"
                 ),
                 'placeholder' => 'Choose an option'
             ))
-            //    ->add('submit','submit')
-//            ->add('plainPassword','repeated', array(
-//                'type' => 'password',
-//                'invalid_message' => 'The password fields must match',
-//                'options' => array('attr' => array('class' => 'password-field')),
-//                'first_options' => array('label'=>'Password'),
-//                'second_options' => array('label'=>'Confirm Password'),
-                
             ;
         
     }

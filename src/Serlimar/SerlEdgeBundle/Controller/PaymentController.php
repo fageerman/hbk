@@ -46,7 +46,7 @@ class PaymentController extends Controller
             $manager = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblusers')->findBy(array('username'=> $this->getUser()->getUsername()));
             $managerLocation = $manager[0]->getLocation();
             $dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
-            $insertuserQuery = ' and p.insertuser IN(Select u.username from SerlimarSerlEdgeBundle:Tblusers u where u.location =\'' . $managerLocation . '\')';
+            $insertuserQuery = ' and p.insertuser IN(Select us.username from SerlimarSerlEdgeBundle:Tblusers us where us.location =\'' . $managerLocation . '\')';
             
         }
         elseif($roleUser === 'Superadmin') {

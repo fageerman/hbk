@@ -200,9 +200,9 @@ function getUser(id)
 }
 
 function updateUser(id){
-
 $("form").submit(function(e)
 {
+    
     var postData = $(this).serializeArray();
    // var formURL = $(this).attr("action");
     $.ajax(
@@ -235,7 +235,7 @@ $("form").submit(function(e)
     e.unbind(); //unbind. to stop multiple form submit.
 });
  
-$("form[name='user']").submit(); //Submit  the FORM
+$("form[name='updateuser']").submit(); //Submit  the FORM
 }
 
 /***************************End User functions**********************************/
