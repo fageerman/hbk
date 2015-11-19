@@ -47,6 +47,9 @@ class PaymentFilterType extends AbstractType
                     ),
                   'label' => 'End paymentdate'
                 ))
+                ->add('insertedBy', 'text', array('attr' =>array(
+                    'label'=>'Inserted By'
+                )))
             //->add('Filter', 'submit', array('attr'=>array('class'=>'btn  btn-primary', 'novalidate'=> true)))
         ;
 
@@ -76,8 +79,9 @@ class PaymentFilterType extends AbstractType
                 $endDate = $data->getEndDate();
 
                  
-                if ($startDate !== null && $endDate === null) {
+                if ($startDate == null && $endDate !== null) {
                     return array('only-startdate');
+                    
                 }
                  
                 return array('Default');

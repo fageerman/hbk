@@ -29,7 +29,8 @@ class PaymentController extends Controller
       
         $em = $this->getDoctrine()->getManager();
         $today = (new \DateTime('now'))->setTime(0,0);
-        $roleUser = $this->getUser()->getRoleCollectionName();
+        $user = $this->getUser();
+        $roleUser = $user->getRoleCollectionName();
         
         //List payments with selected dates or just 'today'
         //Display payments of all users or just a selection, or just 1?
@@ -55,6 +56,7 @@ class PaymentController extends Controller
         $filter = new PaymentFilter();
         $filter->setStartDate($this->get('session')->get('filterStartDate'));
         $filter->setEndDate($this->get('session')->get('filterEndDate'));
+        $filter->setInsertedBy($this->get('session')->get('filterInsertedBy'));
         $form = $this->createForm(new PaymentFilterType(),$filter);
         
         if($this->get('session')->get('filterQueryInSession') !== null)
@@ -69,24 +71,34 @@ class PaymentController extends Controller
             $data = $form->getData();
 
             if($form->isValid()){
-                $startDate = $data->getStartDate()->format('Y-m-d H:i:s');
+              //  die($data->getStartDate());
+                $startDate = ($data->getStartDate())?$data->getStartDate()->format('Y-m-d H:i:s'):null;
                 $endDate = ($data->getEndDate())? $data->getEndDate()->format('Y-m-d H:i:s'): null;
-                
+                $insertedBy = $data->getInsertedBy();
+               
                 
                 //Build the datequery from the submitted start/enddate from the filter.
-                $dateQuery = ($endDate !== null)? ' and p.paymentdate BETWEEN \'' 
-                                . $startDate . '\' and \'' . $endDate . '\'' : ' and p.paymentdate = \'' 
-                                . $startDate . '\'';
-                
+                if($startDate !== null){
+                    $dateQuery = ($endDate !== null)? ' and p.paymentdate BETWEEN \'' 
+                                    . $startDate . '\' and \'' . $endDate . '\'' : ' and p.paymentdate = \'' 
+                                    . $startDate . '\'';
+                }
+                else{
+                    //$dateQuery = '';
+                }
+                $dateQuery .= ($insertedBy != null)?' and p.insertuser = \'' . $insertedBy . '\'':'';
+               //  die($dateQuery);
                 $this->get('session')->set('filterQueryInSession', $dateQuery);  
                 $this->get('session')->set('filterStartDate', $data->getStartDate());  
                 $this->get('session')->set('filterEndDate', $data->getEndDate());  
+                $this->get('session')->set('filterInsertedBy', $data->getInsertedBy());  
             }
 
         }
-        $mainQuery =  'Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser from SerlimarSerlEdgeBundle:Tblpayments p '
+        $mainQuery =  'Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser, u.location from SerlimarSerlEdgeBundle:Tblpayments p '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
+                . 'LEFT JOIN SerlimarSerlEdgeBundle:Tblusers u WITH u.username=p.insertuser'
                 . ' WHERE p.paymentsid is not null '
                 .   $insertuserQuery 
                 .   $dateQuery             
@@ -327,6 +339,7 @@ class PaymentController extends Controller
         $this->get('session')->remove('filterQueryInSession');  
         $this->get('session')->remove('filterStartDate');  
         $this->get('session')->remove('filterEndDate');  
+        $this->get('session')->remove('filterInsertedBy');  
         return $this->redirectToRoute('serlimar_serledge_payment');
     }
 }

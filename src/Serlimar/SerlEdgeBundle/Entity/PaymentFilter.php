@@ -15,11 +15,11 @@ class PaymentFilter
     /**
      *
      * @var DateTime
-     * @Assert\NotNull(
-     *      message="Enter a valid date."
+     * @Assert\NotBlank(
+     *      message="Please fill in a start date.",
+     *      groups={"only-startdate"}
      * )
      * @Assert\DateTime(
-     *      groups={"only-startdate"}
      * )
      */
     private $startDate;
@@ -29,14 +29,18 @@ class PaymentFilter
      *
      * @var DateTime
      * 
-     * @Assert\NotNull(
-      *     message="Enter a valid date."
-      * )
      * @Assert\DateTime(
      * )
      * 
      */
     private $endDate;
+    
+    /**
+     * 
+     * 
+     */
+    private $insertedBy;
+    
     
     public function getStartDate() {
         return $this->startDate;
@@ -44,6 +48,10 @@ class PaymentFilter
 
     public function getEndDate() {
         return $this->endDate;
+    }
+    
+    function getInsertedBy() {
+        return $this->insertedBy;
     }
 
     public function setStartDate($startDate) {
@@ -54,15 +62,19 @@ class PaymentFilter
         $this->endDate = $endDate;
     }
 
+    function setInsertedBy($insertedBy) {
+        $this->insertedBy = $insertedBy;
+    }
+
     /**
      * 
      * @Assert\Callback
      */
     public function validate(ExecutionContextInterface $context)
     {
-       //Endate is entered without the start date
+       //Enddate is entered without the start date
       
-       if($this->getStartDate() > $this->getEndDate())
+       if($this->getEndDate() !== null && $this->getStartDate() > $this->getEndDate())
        {
             $context->buildViolation('The enddate can not occur before the startdate.')
                 ->atPath('endDate')

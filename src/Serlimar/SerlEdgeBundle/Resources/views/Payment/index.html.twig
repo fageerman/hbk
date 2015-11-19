@@ -1,4 +1,11 @@
 {% extends "layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="{{ asset('bundles/serlimarserledge/css/custom-form.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
 {% set subTitle = "Payment Overview" %}
@@ -25,26 +32,37 @@
     <p>
         <button onclick="toggleFilter()" id="toggleLink" class="btn btn-info btn-sm ">Toggle Filter</button>
     </p>
+    {% set display = 'block' %}
     
-    <div class="payment-filter" style="display: none">    
-       
-        {{ form_start(form,{'attr': {'novalidate': 'novalidate', 'style':'width:200px'}}) }}
-          <div class="form-group {% if form.startDate.vars.errors|length %} has-error{% endif %}">
+    {% if form.vars.errors.form.valid %}
+        {% set display = 'none' %}
+    {% endif %}
+    
+    <div class="payment-filter" style="display: {{ display }}">    
+
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+          <div class="custom-form-group pull-left {% if form.startDate.vars.errors|length %} has-error{% endif %}">
             {{ form_label(form.startDate) }}
             {{ form_widget(form.startDate) }}
             {{ form_errors(form.startDate) }}
           </div>
-           <div class="form-group {% if form.endDate.vars.errors|length %} has-error{% endif %}">
+           <div class="custom-form-group pull-left {% if form.endDate.vars.errors|length %} has-error{% endif %}">
             {{ form_label(form.endDate) }}
             {{ form_widget(form.endDate) }}
             {{ form_errors(form.endDate) }}
           </div>
-          <div class="form-group">
+           <div class="custom-form-group pull-left {% if form.insertedBy.vars.errors|length %} has-error{% endif %}">
+            {{ form_label(form.insertedBy) }}
+            {{ form_widget(form.insertedBy) }}
+            {{ form_errors(form.insertedBy) }}
+          </div>
+          <div class="clearfix"></div> 
+          <div class="custom-form-group">
             <button type="submit" class="btn btn-primary">Filter</button>
             <a type="button" class="btn btn-default" href="{{ path('serlimar_serledge_payment_clearfilter') }}">Clear</a>
           </div>
         {{ form_end(form) }}
-        
+       
     </div>
     {% endif %}
     
@@ -76,6 +94,7 @@
                             <td>Amount (Afl)</td>
                             <td>Customer</td>
                             <td>Inserted By</td>
+                            <td>Location</td>
                             <td> 
                                 {% if is_granted('ROLE_PRINTALL_PAYMENT') %}
                                 <a type="button" href="{{ path('serlimar_serledge_printall_payment')}}"class="btn btn-primary btn-sm" >Print All</a>
@@ -92,6 +111,7 @@
                                 <td>{{ payment.amount|number_format(2, '.', ',') }}</td>
                                 <td>{{ payment.firstname }} {{ payment.name }}</td>
                                 <td>{{ payment.insertuser }}</td>
+                                <td>{{ payment.location }}</td>
                                 <td>
                                    {% if is_granted('ROLE_PRINT_PAYMENT') %}
                                     <a href="{{ path('serlimar_serledge_receipt_payment',{'id': payment.paymentsid })}}" class="btn" aria-label="Print"
