@@ -44,7 +44,7 @@ class UserType extends AbstractType
                 ),
                 'placeholder' => 'Choose an option'
             ))
-                ->add('submit','submit')
+            //    ->add('submit','submit')
 //            ->add('plainPassword','repeated', array(
 //                'type' => 'password',
 //                'invalid_message' => 'The password fields must match',
