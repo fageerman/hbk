@@ -24,3 +24,6 @@ services:
         class: Serlimar\SerlEdgeBundle\Form\RoleCollectionRolesType
         tags:
             - { name: form.type, alias: roleCollectionRoles }
+            
+    serlimar_serledge_generate_token:
+        class: Serlimar\SerledgeBundle\Utilities\TokenGenerator
