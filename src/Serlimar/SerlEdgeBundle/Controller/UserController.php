@@ -223,7 +223,7 @@ class UserController extends Controller
             }
             else{
                 $user[0]->setResetPasswordToken($this->get('serlimar_serledge_generate_token')->generateToken());
-                $user[0]->setPasswordRequestedAt(new \DateTime());
+                //$user[0]->setPasswordRequestedAt(new \DateTime());
                 $em->flush();
                 $this->sendPasswordMail($user[0]);
             
