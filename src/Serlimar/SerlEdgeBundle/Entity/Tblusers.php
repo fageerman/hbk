@@ -62,15 +62,27 @@ class Tblusers
     private $email;
     
     /**
-     * 
+     * @Assert\Length(
+     *   min=8,
+     *   max=45,
+     *   minMessage = "Your password is too short. It must be a minimum of 8 characters.",
+     *   maxMessage = "Your password is too long. It must be a maximum of 45 characters.",
+     *   groups={"reset-password"}
+     * )
      */
     private $plainPassword;
     /**
      * @var string
+
      * @ORM\Column(name="Password", type="string", length=254, nullable=true)
      */
     private $password;
 
+    /* @var string
+     * @ORM\Column(name="reset_password_token", type="string", length=60, nullable=true)
+     */
+    private $resetPasswordToken;
+    
     /**
      * @var integer
      *
@@ -251,7 +263,11 @@ class Tblusers
     function getPassword() {
         return $this->password;
     }
-
+    
+    function getResetPasswordToken() {
+        return $this->resetPasswordToken;
+    }
+    
     function getRoleCollectionId() {
         return $this->role_collection_id;
     }
@@ -367,6 +383,10 @@ class Tblusers
 
     function setPassword($password) {
         $this->password = $password;
+    }
+    
+    function setResetPasswordToken($resetPasswordToken) {
+        $this->resetPasswordToken = $resetPasswordToken;
     }
 
     function setRoleCollectionId($roleCollectionId) {

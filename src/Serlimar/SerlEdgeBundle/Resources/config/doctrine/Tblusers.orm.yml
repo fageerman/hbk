@@ -50,6 +50,11 @@ Serlimar\SerlEdgeBundle\Entity\Tblusers:
             options:
                 fixed: false
             column: Password
+        resetPasswordToken:
+            type: string
+            nullable: true
+            length: 60
+            column: reset_password_token
         email:
             type: string
             length: 40

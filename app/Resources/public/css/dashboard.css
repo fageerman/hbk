@@ -128,3 +128,13 @@ body {
 .header div span{
 	color: #5379fa !important;
 }
+/*Remove up/down arrow in the number field*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}

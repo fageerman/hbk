@@ -96,4 +96,15 @@ serlimar_serledge_update_role:
 serlimar_serledge_delete_role:
     path:     /role/{id}/delete
     defaults: { _controller: SerlimarSerlEdgeBundle:Role:delete }
+
+serlimar_serledge_reset_password:
+    path:     /reset-password/{token}
+    defaults: { _controller: SerlimarSerlEdgeBundle:User:resetPassword }
     
+serlimar_serledge_forgot_password:
+    path:     /forgot-password
+    defaults: { _controller: SerlimarSerlEdgeBundle:User:forgotPassword }
+    
+test_email:
+    path:     /testmail
+    defaults: { _controller: SerlimarSerlEdgeBundle:User:testMail }

@@ -4,10 +4,6 @@ redstar_security_login:
 
 redstar_security_login_check:
     path:     /login_check
-
-redstar_security_forgot_password:
-    path:     /forgot-password
-    defaults: { _controller: RedstarSecurityBundle:Default:forgotPassword }
     
 redstar_security_logout:
     path:     /logout
