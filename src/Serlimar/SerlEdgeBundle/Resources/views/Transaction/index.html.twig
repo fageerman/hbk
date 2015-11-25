@@ -1,0 +1,170 @@
+{% extends "layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="{{ asset('bundles/serlimarserledge/css/custom-form.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% set subTitle = "Payment Overview" %}
+{% block title %}{{ parent() }} - {{ subTitle }}{% endblock %}
+
+{% block content %}
+    
+    {% set currentPath = path(app.request.attributes.get('_route'),
+            app.request.attributes.get('_route_params')) 
+    %}
+
+
+<div class="col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2 main">       
+    
+    <h2 class="sub-headsr">{{ subTitle }}</h2>
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-message alert alert-success">
+        {{ flashMessage }}
+    </div>
+   
+    {% endfor %}
+    {% if filterOption %}
+    <p>
+        <button onclick="toggleFilter()" id="toggleLink" class="btn btn-info btn-sm ">Toggle Filter</button>
+    </p>
+    {% set display = 'none' %}
+    
+    {% if form.vars.errors.form.valid %}
+        {% set display = 'block' %}
+    {% endif %}
+    
+    <div class="payment-filter" style="display: {{ display }}">    
+
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+          <div class="custom-form-group pull-left {% if form.startDate.vars.errors|length %} has-error{% endif %}">
+            {{ form_label(form.startDate) }}
+            {{ form_widget(form.startDate) }}
+            {{ form_errors(form.startDate) }}
+          </div>
+           <div class="custom-form-group pull-left {% if form.endDate.vars.errors|length %} has-error{% endif %}">
+            {{ form_label(form.endDate) }}
+            {{ form_widget(form.endDate) }}
+            {{ form_errors(form.endDate) }}
+          </div>
+           <div class="custom-form-group pull-left {% if form.insertedBy.vars.errors|length %} has-error{% endif %}">
+            {{ form_label(form.insertedBy) }}
+            {{ form_widget(form.insertedBy) }}
+            {{ form_errors(form.insertedBy) }}
+          </div>
+          <div class="clearfix"></div> 
+          <div class="custom-form-group">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a type="button" class="btn btn-default" href="{{ path('serlimar_serledge_payment_clearfilter') }}">Clear</a>
+          </div>
+        {{ form_end(form) }}
+       
+    </div>
+    {% endif %}
+    
+    <div class="clearfix"></div>
+    {% if payments is defined and payments is not empty %}
+        <div>
+            Date: {{ dates[0]|date('d F Y') }} {% if dates[1] is not null %}  -  {{ dates[1]|date('d F Y')}}{% endif%}
+                <ul class="list-inline success ">
+                    {% set total = 0 %}
+                    {% for amount in sumAmount %}
+                        {% set total = total + amount['totalAmount'] %}
+                        <li>Total {{ amount['paymentmethod']|capitalize }} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Afl {{ amount['totalAmount']|number_format(2, '.', ',')}}</li>
+                    {% endfor %}
+                    <li>Total <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Afl {{ total|number_format(2, '.', ',') }}</li>
+                </ul>
+        </div>
+        <div class="table-responsive">
+            
+                <div>
+                    {{ pagination.getTotalItemCount }} results
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>	
+                            <td>ID</td>
+                            <td>Date</td>
+                            <td>Method</td>
+                            <td>Amount (Afl)</td>
+                            <td>Customer</td>
+                            <td>Inserted By</td>
+                            <td>Location</td>
+                            <td> 
+                                {% if is_granted('ROLE_PRINTALL_PAYMENT') %}
+                                <a type="button" href="{{ path('serlimar_serledge_printall_payment')}}"class="btn btn-primary btn-sm" >Print All</a>
+                                {% endif%}
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for payment in payments %}
+                            <tr>
+                                <td>{{ payment.paymentsid }}</td> 
+                                <td>{{ payment.paymentdate| date('d F Y') }}</td> 
+                                <td>{{ payment.paymentmethod }}</td>
+                                <td>{{ payment.amount|number_format(2, '.', ',') }}</td>
+                                <td>{{ payment.firstname }} {{ payment.name }}</td>
+                                <td>{{ payment.insertuser }}</td>
+                                <td>{{ payment.location }}</td>
+                                <td>
+                                   {% if is_granted('ROLE_PRINT_PAYMENT') %}
+                                    <a href="{{ path('serlimar_serledge_receipt_payment',{'id': payment.paymentsid })}}" class="btn" aria-label="Print"
+                                       data-toggle="tooltip" data-placement="top" title="Print">
+                                        <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                                    </a>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_READ_PAYMENT') %}
+                                    <a onclick="showPayment({{ payment.paymentsid }});" class="btn" aria-label="View"
+                                       data-toggle="tooltip" data-placement="top" title="View">
+                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                    </a>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_UPDATE_PAYMENT') %}
+                                    <a onclick="getPayment(this.id);" id="{{ payment.paymentsid }}"  class="btn" aria-label="Edit"
+                                       data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </a>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_DELETE_PAYMENT') %}
+                                    <a onclick="return confirm('Delete payment {{ payment.paymentsid }}?');" class="btn" aria-label="Delete"
+                                       data-toggle="tooltip" data-placement="top" title="Delete"
+                                       href="{{ path('serlimar_serledge_delete_payment',{'id': payment.paymentsid })}}"
+                                       >
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>  
+        </div>
+        
+    {% elseif payments is defined and payments is empty %}
+        No payments found.    
+    {% endif %}
+    
+    </div>
+   
+   {# Include the modal container divs for the modal popups. This is triggered by
+      data-toggle="modal" data-target="#myModal" attr in the grid buttons, so it has to be present
+      somewhere viewable by this template. (TODO: find out a better way to inherit it)
+   #} 
+  
+   <script type=”text/javascript”>
+    $(document).ready(function() {
+            $('#payment_startDate').datepicker({ dateFormat: 'dd-mm-yy' })
+    });
+    </script>
+ 
+
+{% endblock %}

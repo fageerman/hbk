@@ -1,0 +1,50 @@
+{% extends "layout.html.twig" %}
+
+{% set subTitle = "Payment Overview" %}
+{% block title %}{{ parent() }} - {{ subTitle }}{% endblock %}
+
+{% block content %}
+
+<div class="col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2 main">   
+    {% if payments is defined and payments is not empty %} 
+        <div>
+            Date: {{ dates[0]|date('d F Y') }} {% if dates[1] is not null %}  -  {{ dates[1]|date('d F Y')}}{% endif%}
+                <ul class="list-inline success ">
+                    {% set total = 0 %}
+                    {% for amount in sumAmount %}
+                        {% set total = total + amount['totalAmount'] %}
+                        <li>Total {{ amount['paymentmethod']|capitalize}} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Afl {{ amount['totalAmount']}}</li>
+                    {% endfor %}
+                    <li>Total <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span> Afl {{ total }}</li>
+                </ul>
+        </div>
+        <div class="table-responsive">
+
+            <table class="table">
+                    <thead>
+                        <tr>	
+                            <td>ID</td>
+                            <td>Date</td>
+                            <td>Method</td>
+                            <td>Amount (Afl)</td>
+                            <td>Customer</td>
+                            <td>Inserted By</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for payment in payments %}
+                            <tr>
+                                <td>{{ payment.paymentsid }}</td> 
+                                <td>{{ payment.paymentdate| date('d F Y') }}</td> 
+                                <td>{{ payment.paymentmethod }}</td>
+                                <td>{{ payment.amount|number_format(2, '.', ',') }}</td>
+                                <td>{{ payment.firstname }} {{ payment.name }}</td>
+                                <td>{{ payment.insertuser }}</td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+            </table>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

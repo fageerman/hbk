@@ -1,0 +1,66 @@
+{% extends "layout.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% set subTitle = "Create Payment"%}
+
+{% block subtitle %} {{ subTitle }} {% endblock%}
+{% block content %}
+<div class="col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-2 main">       
+    
+    <h2 class="sub-headsr">{{ subTitle }}</h2>
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-message alert alert-success">
+        {{ flashMessage }}
+    </div>
+     <script>
+         $('.flash-message').delay(5000).fadeOut();
+     </script>
+    {% endfor %}
+
+ {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+
+
+    <div class="form-group {% if form.customerguid.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form.customerguid) }}
+        {{ form_widget(form.customerguid) }}
+        {#{% if form.vars.valid and true  %} Name: John Doe {% endif %}#}
+        <div class="info" id="name-customer"></div>
+        {{ form_errors(form.customerguid) }}
+    </div>
+
+    <div class="form-group {% if form.reference.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form.reference) }}
+        {{ form_widget(form.reference) }}
+        {{ form_errors(form.reference) }}
+    </div>
+    <div class="form-group {% if form.paymentmethod.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form.paymentmethod) }}
+        {{ form_widget(form.paymentmethod) }}
+         {{ form_errors(form.paymentmethod) }}
+    </div>
+    <div class="form-group {% if form.amount.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form.amount) }}
+        {{ form_widget(form.amount) }}
+        {{ form_errors(form.amount) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_label(form.note) }}
+        {{ form_widget(form.note) }}
+        {{ form_errors(form.note) }}
+
+    </div>
+
+    <div>
+        {{ form_widget(form.save) }}
+    </div>
+
+{{ form_end(form) }}
+</div>
+
+<script>
+    
+
+</script>
+{% endblock %}
