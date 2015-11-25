@@ -34,8 +34,8 @@
                             <tr>
                                 <td>{{ customer.firstName }} {{ customer.name }}</td> 
                                 <td>{{ customer.birthdate |date('d F Y') }}</td>
-                                <td>  <a href="{{ path('serlimar_serledge_customer_proxy_payment',{'customerid': customer.guid })}}" class="btn" aria-label="Create payment for {{ customer.firstName }}" 
-                                       data-toggle="tooltip" data-placement="top" title="Create payment for {{ customer.firstName }}">
+                                <td>  <a href="{{ path('serlimar_serledge_customer_proxy_transaction',{'customerid': customer.customerid })}}" class="btn" aria-label="Create transaction for {{ customer.firstName }}" 
+                                       data-toggle="tooltip" data-placement="top" title="Create transaction for {{ customer.firstName }}">
                                         <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                                     </a>
                                 </td>

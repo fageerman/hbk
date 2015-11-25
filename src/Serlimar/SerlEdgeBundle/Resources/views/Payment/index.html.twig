@@ -34,8 +34,9 @@
     </p>
     {% set display = 'none' %}
     
-    {% if form.vars.errors.form.valid %}
-        {% set display = 'block' %}
+    {% if form.vars.errors.form.valid  == false %}
+        {#{% set display = 'block' %}#}
+        sesese
     {% endif %}
     
     <div class="payment-filter" style="display: {{ display }}">    

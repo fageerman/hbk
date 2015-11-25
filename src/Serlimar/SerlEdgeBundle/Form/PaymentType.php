@@ -78,9 +78,9 @@ class PaymentType extends AbstractType
             ->add('note','textarea', array('required'=>false))
             ->add('save', 'submit', array('attr'=>array('class'=>'btn  btn-primary', 'novalidate'=> true)))
         ;
-
-        $builder->get('customerguid')
-            ->addModelTransformer(new CustomerNrToGuidTransformer($this->em));
+       
+       // $builder->get('customerguid')
+       //     ->addModelTransformer(new CustomerNrToGuidTransformer($this->em));
         
 
     }

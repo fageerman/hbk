@@ -1,6 +1,6 @@
 {% extends "layout.html.twig" %}
 
-{% set subTitle = "Create Payment"%}
+{% set subTitle = "Receipt Transaction"%}
 
 {% block subtitle %} {{ subTitle }} {% endblock%}
 {% block content %}
@@ -21,28 +21,28 @@
 
         <tr>
             <td style="width:60%">Ontvangen van:</td>
-            <td style="width:20%">Clientnummer</td>
-            <td style="width:20%">: {{ payment.customerno }}</td>
+            <td style="width:20%">Klant ID</td>
+            <td style="width:20%">: {{ transaction.customerid }}</td>
         </tr>
         <tr>
-            <td >{{ payment.firstname}} {{ payment.name}}</td>
+            <td >{{ transaction.firstname}} {{ transaction.name}}</td>
             <td>Datum</td>
-            <td>: {{ payment.paymentdate|date('d F Y') }} </td>
+            <td>: {{ transaction.transactiondate|date('d F Y') }} </td>
         </tr>
         <tr>
-            <td >{{ payment.address }}</td>
+            <td >{{ transaction.address }}</td>
             <td>Betalingsmethode</td>
-            <td>: {{ payment.paymentmethod }}</td>
+            <td>: {{ transaction.transactionmethod }}</td>
         </tr>
         <tr>
-            <td >{{ payment.region }}</td>
+            <td >{{ transaction.region }}</td>
             <td>Referentie</td>
-            <td>: {{ payment.reference }}</td>
+            <td>: {{ transaction.reference }}</td>
         </tr>
         <tr>
             <td ></td>
             <td>Behandeld door</td>
-            <td>: {{ payment.insertuser }} </td>
+            <td>: {{ transaction.insertuser }} </td>
         </tr>
         <tr>
             <td style="height:50px"></td>
@@ -50,7 +50,7 @@
         <tr>
             <td></td>
             <td style="border: 1px solid black;">Ontvangen</td>
-            <td style="border: 1px solid black;">AWG <span style="float:right">{{ payment.amount|number_format(2, '.', ',') }}</span></td>
+            <td style="border: 1px solid black;">AWG <span style="float:right">{{ transaction.amount|number_format(2, '.', ',') }}</span></td>
         </tr>
     </table>
        

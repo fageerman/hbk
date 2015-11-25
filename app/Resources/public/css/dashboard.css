@@ -110,7 +110,7 @@ body {
     .printable { display: block; }
 }
   
-.payment-filter {
+.transction-filter {
     border: 3px solid #F5F5F5;   
     padding: 10px;
     margin-bottom: 10px;

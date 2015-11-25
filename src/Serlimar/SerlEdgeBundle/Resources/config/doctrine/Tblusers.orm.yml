@@ -11,6 +11,12 @@ Serlimar\SerlEdgeBundle\Entity\Tblusers:
         Username:
             columns:
                 - Username
+        $Role:
+            columns:
+                - userAccessLevel
+        $Register:
+            columns:
+                - RegisterGUID
     id:
         id:
             type: integer
@@ -54,25 +60,32 @@ Serlimar\SerlEdgeBundle\Entity\Tblusers:
             type: string
             nullable: true
             length: 60
+            options:
+                fixed: false
             column: reset_password_token
-        email:
-            type: string
-            length: 40
+        passwordRequestedAt:
+            type: datetime
+            nullable: true
+            column: password_requested_at
         salt:
             type: string
             nullable: true
             length: 50
             options:
                 fixed: false
-        role_collection_id:
-            type: integer
-            nullable: true
         useraccesslevel:
             type: integer
             nullable: true
             options:
                 unsigned: false
             column: userAccessLevel
+        registerguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: RegisterGUID
         shortname:
             type: string
             nullable: true
@@ -80,6 +93,12 @@ Serlimar\SerlEdgeBundle\Entity\Tblusers:
             options:
                 fixed: false
             column: Shortname
+        email:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
         nota:
             type: text
             nullable: true
@@ -179,9 +198,31 @@ Serlimar\SerlEdgeBundle\Entity\Tblusers:
             options:
                 default: '0'
             column: NotActive
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        useraction:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserAction
         location:
             type: string
             nullable: true
             length: 50
+            options:
+                fixed: false
             column: Location
+        role_collection_id:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: role_collection_id
     lifecycleCallbacks: {  }

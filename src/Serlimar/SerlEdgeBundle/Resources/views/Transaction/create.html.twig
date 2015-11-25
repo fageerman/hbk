@@ -1,7 +1,7 @@
 {% extends "layout.html.twig" %}
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
-{% set subTitle = "Create Payment"%}
+{% set subTitle = "Create Transaction"%}
 
 {% block subtitle %} {{ subTitle }} {% endblock%}
 {% block content %}
@@ -13,20 +13,17 @@
     <div class="flash-message alert alert-success">
         {{ flashMessage }}
     </div>
-     <script>
-         $('.flash-message').delay(5000).fadeOut();
-     </script>
     {% endfor %}
 
  {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
 
 
-    <div class="form-group {% if form.customerguid.vars.errors|length %} has-error{% endif %}">
-        {{ form_label(form.customerguid) }}
-        {{ form_widget(form.customerguid) }}
+    <div class="form-group {% if form.customerid.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form.customerid) }}
+        {{ form_widget(form.customerid) }}
         {#{% if form.vars.valid and true  %} Name: John Doe {% endif %}#}
         <div class="info" id="name-customer"></div>
-        {{ form_errors(form.customerguid) }}
+        {{ form_errors(form.customerid) }}
     </div>
 
     <div class="form-group {% if form.reference.vars.errors|length %} has-error{% endif %}">
@@ -34,10 +31,10 @@
         {{ form_widget(form.reference) }}
         {{ form_errors(form.reference) }}
     </div>
-    <div class="form-group {% if form.paymentmethod.vars.errors|length %} has-error{% endif %}">
-        {{ form_label(form.paymentmethod) }}
-        {{ form_widget(form.paymentmethod) }}
-         {{ form_errors(form.paymentmethod) }}
+    <div class="form-group {% if form.locationmethodguid.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form.locationmethodguid) }}
+        {{ form_widget(form.locationmethodguid) }}
+         {{ form_errors(form.locationmethodguid) }}
     </div>
     <div class="form-group {% if form.amount.vars.errors|length %} has-error{% endif %}">
         {{ form_label(form.amount) }}

@@ -27,6 +27,7 @@ class CustomerNrToGuidTransformer implements DataTransformerInterface
      */
     public function transform($customerguid)
     {
+        //die('transform');
         if (!$customerguid) {
             return null;
         }
@@ -45,7 +46,7 @@ class CustomerNrToGuidTransformer implements DataTransformerInterface
      */
     public function reverseTransform($customerid)
     {
-       
+        die('reverseTransform');
         if (null === $customerid) {
             return null;
         }

@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->redirectToRoute('serlimar_serledge_create_payment');
+        return $this->redirectToRoute('serlimar_serledge_create_transaction');
     }
 }

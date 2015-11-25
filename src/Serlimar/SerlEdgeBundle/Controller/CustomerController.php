@@ -20,9 +20,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class CustomerController extends Controller
 {
 
-    /**
-     *  Show the payment registration records.
-     */
+
     public function indexAction(Request $request)
     {   
         $customer = new Tblcustomers();
@@ -70,13 +68,13 @@ class CustomerController extends Controller
     /*
     *  I needed to pass a dynamic variable to a request. This is done using a
     *  session to temporarly store the variable. This variable is being called
-    *  in the payment/create route. The value is inserted in de customerguid form element. And then removed.
+    *  in the transaction/create route. The value is inserted in de customerguid form element. And then removed.
     */
-    public function proxyPaymentAction($customerid)
+    public function proxyTransactionAction($customerid)
     {
-        $this->get('session')->set('customerIdPayment',$customerid);
-        //die($this->get('session')->get('customerIdPayment'));
-        return $this->redirectToRoute('serlimar_serledge_create_payment', array(),302);
+        $this->get('session')->set('customerIdTransaction',$customerid);
+        //die($this->get('session')->get('customerIdTransaction'));
+        return $this->redirectToRoute('serlimar_serledge_create_transaction', array(),302);
     }
 
 }

@@ -3,19 +3,19 @@
    
     });
     
-    var el = $("#payment_customerguid").get(0);
+    var el = $("#transaction_customerid").get(0);
     //var elemLen = el.value.length;
 
    // el.selectionStart = elemLen;
    // el.selectionEnd = elemLen;
     el.focus();
 
-    $(".form-group #payment_customerguid").focusout(function(){
-       var value = $("#payment_customerguid").val();
+    $(".form-group #transaction_customerid").focusout(function(){
+       var value = $("#transaction_customerid").val();
        if(value !== "" )
        {
         $.ajax({
-            url: "/customer/" + $("#payment_customerguid").val() + '/name',
+            url: "/customer/" + $("#transaction_customerid").val() + '/name',
             context: document.body
          }).done(function(data) {
 
@@ -29,7 +29,7 @@
     });
     
    function toggleFilter(){
-     $(".payment-filter" ).slideToggle("slow");
+     $(".transaction-filter" ).slideToggle("slow");
      
     };
     
@@ -43,11 +43,11 @@
 
          });
     }
-/***************************Payment functions**********************************/
-function showPayment(id)
+/***************************Transaction functions**********************************/
+function showTransaction(id)
 {
     $.ajax({
-        url: "payment/" + id + "/show",
+        url: "transaction/" + id + "/show",
         context: document.body
     }).done(function(data) {
         $('#myModal .modal-content').empty();
@@ -56,11 +56,11 @@ function showPayment(id)
     });
     
 }
-function getPayment(id)
+function getTransaction(id)
 {
     //alert(id);
     $.ajax({
-        url: "payment/" + id + "/update",
+        url: "transaction/" + id + "/update",
         context: document.body
     }).done(function(data) {
     
@@ -70,19 +70,19 @@ function getPayment(id)
     });
 }
 
-function updatePayment(id){
+function updateTransaction(id){
 $("form").submit(function(e)
 {
     var postData = $(this).serializeArray();
    // var formURL = $(this).attr("action");
     $.ajax(
     {
-        url : "/payment/" + id + "/update",
+        url : "/transaction/" + id + "/update",
         type: "POST",
         data : postData,
         success:function(data, textStatus, jqXHR) 
         {
-            //The payment is updated
+            
             if('saved' === data)
             {
                  $('#myModal .modal-content').modal('hide');
@@ -105,16 +105,16 @@ $("form").submit(function(e)
     e.unbind(); //unbind. to stop multiple form submit.
 });
  
-$("form[name='updatepayment']").submit(); //Submit  the FORM
+$("form[name='update_transaction']").submit(); //Submit  the FORM
 }
 
 
-function printPayment()
+function printTransaction()
 {
     window.print();
 }
 
-/***************************End Payment functions**********************************/
+/***************************End Transaction functions**********************************/
 
 
 /***************************User functions**********************************/
@@ -159,7 +159,7 @@ function createUser()
             data : postData,
             success:function(data, textStatus, jqXHR) 
             {
-                //The payment is updated
+                
                 if('saved' === data)
                 {
                      $('#myModal .modal-content').modal('hide');
@@ -187,7 +187,7 @@ function createUser()
 
 function getUser(id)
 {
-    //alert(id);
+    alert(id);
     $.ajax({
         url: "/user/" + id + "/update",
         context: document.body
@@ -212,7 +212,7 @@ $("form").submit(function(e)
         data : postData,
         success:function(data, textStatus, jqXHR) 
         {
-            //The payment is updated
+            
             if('saved' === data)
             {
                  $('#myModal .modal-content').modal('hide');
@@ -288,7 +288,7 @@ function createRole()
             data : postData,
             success:function(data, textStatus, jqXHR) 
             {
-                //The payment is updated
+               
                 if('saved' === data)
                 {
                      $('#myModal .modal-content').modal('hide');
@@ -340,7 +340,7 @@ $("form").submit(function(e)
         data : postData,
         success:function(data, textStatus, jqXHR) 
         {
-            //The payment is updated
+           
             if('saved' === data)
             {
                  $('#myModal .modal-content').modal('hide');

@@ -33,13 +33,55 @@ serlimar_serledge_printall_payment:
     path:     /payment/print
     defaults: { _controller: SerlimarSerlEdgeBundle:Payment:printAll }
     
-serlimar_serledge_payment_clearfilter:
-    path:     /clearfilter
-    defaults: { _controller: SerlimarSerlEdgeBundle:Payment:clearFilter }
+#serlimar_serledge_payment_clearfilter:
+#    path:     /clearfilter
+#    defaults: { _controller: SerlimarSerlEdgeBundle:Payment:clearFilter }
+#    
+#serlimar_serledge_customer_proxy_payment:
+#    path:     /customer/{customerid}
+#    defaults: { _controller: SerlimarSerlEdgeBundle:Customer:proxyPayment }
     
-serlimar_serledge_customer_proxy_payment:
+############################################################################
+serlimar_serledge_transaction:
+    path:     /transaction
+    defaults: { _controller: SerlimarSerlEdgeBundle:Transaction:index }
+    
+serlimar_serledge_create_transaction:
+    path:     /transaction/create
+    defaults: { _controller: SerlimarSerlEdgeBundle:Transaction:create }
+
+serlimar_serledge_update_transaction:
+    path:     /transaction/{id}/update
+    defaults: { _controller: SerlimarSerlEdgeBundle:Transaction:update }
+    methods:  [GET,POST]
+  #  condition: "request.isXMLHttpRequest()"
+
+serlimar_serledge_delete_transaction:
+    path:     /transaction/{id}/delete
+    defaults: { _controller: SerlimarSerlEdgeBundle:Transaction:delete }
+
+serlimar_serledge_show_transaction:
+    path:     /transaction/{id}/show
+    defaults: { _controller: SerlimarSerlEdgeBundle:Transaction:show }
+    methods:  [GET]
+    
+serlimar_serledge_receipt_transaction:
+    path:     /transaction/{id}/receipt
+    defaults: { _controller: SerlimarSerlEdgeBundle:Transaction:receipt }
+
+serlimar_serledge_printall_transaction:
+    path:     /transaction/print
+    defaults: { _controller: SerlimarSerlEdgeBundle:Transaction:printAll }
+    
+serlimar_serledge_transaction_clearfilter:
+    path:     /clearfilter
+    defaults: { _controller: SerlimarSerlEdgeBundle:Transaction:clearFilter }
+    
+serlimar_serledge_customer_proxy_transaction:
     path:     /customer/{customerid}
-    defaults: { _controller: SerlimarSerlEdgeBundle:Customer:proxyPayment }
+    defaults: { _controller: SerlimarSerlEdgeBundle:Customer:proxyTransaction }
+
+############################################################################
     
 serlimar_serledge_customer:
     path:     /customer

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of PaymentType
+ * Description of TransactionType
  *
  * @author Ferdinand Geerman
  */
@@ -18,7 +18,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
 
-class PaymentFilterType extends AbstractType
+class TransactionFilterType extends AbstractType
 {
 
     
@@ -33,7 +33,7 @@ class PaymentFilterType extends AbstractType
                        'placeholder' => 'dd-mm-yyyy',
                        'class'=> 'datepicker'
                     ),
-                'label' => 'Start paymentdate'
+                'label' => 'Start transactiondate'
                 ))
                ->add('endDate','datetime',array(
                 'widget' => 'single_text',
@@ -45,7 +45,7 @@ class PaymentFilterType extends AbstractType
                         'class'=> 'datepicker'
                         
                     ),
-                  'label' => 'End paymentdate'
+                  'label' => 'End transactiondate'
                 ))
                 ->add('insertedBy', 'text', array('attr' =>array(
                     'label'=>'Inserted By'
@@ -57,13 +57,13 @@ class PaymentFilterType extends AbstractType
 
     public function getName()
     {
-        return 'payment';
+        return 'transaction_filter';
     }
     
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SerlEdgeBundle\Entity\PaymentFilter',
+            'data_class' => 'SerlEdgeBundle\Entity\TransactionFilter',
         ));
     }
     

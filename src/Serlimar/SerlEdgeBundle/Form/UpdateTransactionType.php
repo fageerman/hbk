@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of PaymentType
+ * Description of UpdateTransactionType
  *
  * @author Ferdinand Geerman
  */
@@ -10,15 +10,15 @@ namespace Serlimar\SerlEdgeBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Serlimar\SerlEdgeBundle\Form\PaymentType;
+use Serlimar\SerlEdgeBundle\Form\TransactionType;
 use Doctrine\ORM\EntityManager;
 use Serlimar\SerlEdgeBundle\DataTransformer\CustomerNrToGuidTransformer;
 
-class UpdatePaymentType extends PaymentType
+class UpdateTransactionType extends TransactionType
 {
     
     /*
-     * Construct the PaymentForm with an EntityManager if necesary.  
+     * Construct the TransactionForm with an EntityManager if necesary.  
      * The customerguid field catches a 
      * 
      */
@@ -31,18 +31,18 @@ class UpdatePaymentType extends PaymentType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        //$builder->remove('save');
+        $builder->remove('save');
     }
 
     public function getName()
     {
-        return 'updatepayment';
+        return 'update_transaction';
     }
     
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SerlEdgeBundle\Entity\Tblpayments',
+            'data_class' => 'SerlEdgeBundle\Entity\Tbltransactionsqueue',
         ));
     }
 }

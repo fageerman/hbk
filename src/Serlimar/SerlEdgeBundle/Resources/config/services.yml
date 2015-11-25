@@ -27,3 +27,16 @@ services:
             
     serlimar_serledge_generate_token:
         class: Serlimar\SerlEdgeBundle\Utilities\TokenGenerator
+        
+   
+    serlimar_serledge_validator_customerexists:
+        class: Serlimar\SerlEdgeBundle\Constraints\CustomerExistsValidator
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: validator.constraint_validator, alias: validator_customer_exists }
+            
+    serlimar_serledge_validator_invoiceexists:
+        class: Serlimar\SerlEdgeBundle\Constraints\InvoiceExistsValidator
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: validator.constraint_validator, alias: validator_invoice_exists }

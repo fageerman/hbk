@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Description of PaymentController
- * Handles the payement registration requests and reposponses for the SerlEdge App.
+ * Description of TransactionController
+ * Handles the transacation registration requests and reposponses for the SerlEdge App.
  * 
  * @author Ferdinand Geerman
  */
@@ -12,17 +12,18 @@ namespace Serlimar\SerlEdgeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Serlimar\SerlEdgeBundle\Form\PaymentType;
-use Serlimar\SerlEdgeBundle\Form\UpdatePaymentType;
-use Serlimar\SerlEdgeBundle\Entity\Tblpayments;
-use Serlimar\SerlEdgeBundle\Entity\PaymentFilter;
-use Serlimar\SerlEdgeBundle\Form\PaymentFilterType;
+use Serlimar\SerlEdgeBundle\Form\TransactionType;
+use Serlimar\SerlEdgeBundle\Form\UpdateTransactionType;
+use Serlimar\SerlEdgeBundle\Entity\Tbltransactionsqueue;
+use Serlimar\SerlEdgeBundle\Entity\TransactionFilter;
+use Serlimar\SerlEdgeBundle\Form\TransactionFilterType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class PaymentController extends Controller
+class TransactionController extends Controller
 {
     
     /**
-     *  Show the payment registration records.
+     *  Show the tranaction registration records.
      */
     public function indexAction(Request $request)
     {
@@ -32,32 +33,32 @@ class PaymentController extends Controller
         $user = $this->getUser();
         $roleUser = $user->getRoleCollectionName();
         
-        //List payments with selected dates or just 'today'
-        //Display payments of all users or just a selection, or just 1?
+        //List transactions with selected dates or just 'today'
+        //Display transaction of all users or just a selection, or just 1?
         $dateQuery = '';
         $insertuserQuery ='';
         
         //Check the role of the user, and prepare the subquery for the specific role.
         if($roleUser === 'Cashier'){
-            $dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
-            $insertuserQuery = ' and p.insertuser = \'' . $this->getUser()->getUsername() . '\'';
+            $dateQuery = ' and t.transactiondate = \'' . $today->format('Y-m-d H:i:s') . '\'';
+            $insertuserQuery = ' and t.insertuser = \'' . $this->getUser()->getUsername() . '\'';
         }
         elseif($roleUser === 'Manager'){
             $manager = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblusers')->findBy(array('username'=> $this->getUser()->getUsername()));
             $managerLocation = $manager[0]->getLocation();
-            $dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
-            $insertuserQuery = ' and p.insertuser IN(Select us.username from SerlimarSerlEdgeBundle:Tblusers us where us.location =\'' . $managerLocation . '\')';
+            $dateQuery = ' and t.transactiondate = \'' . $today->format('Y-m-d H:i:s') . '\'';
+            $insertuserQuery = ' and t.insertuser IN(Select us.username from SerlimarSerlEdgeBundle:Tblusers us where us.location =\'' . $managerLocation . '\')';
             
         }
         elseif($roleUser === 'Superadmin') {
-            $dateQuery = ' and p.paymentdate = \'' . $today->format('Y-m-d H:i:s') . '\'';
+            $dateQuery = ' and t.transactiondate = \'' . $today->format('Y-m-d H:i:s') . '\'';
         }
            
-        $filter = new PaymentFilter();
+        $filter = new TransactionFilter();
         $filter->setStartDate($this->get('session')->get('filterStartDate'));
         $filter->setEndDate($this->get('session')->get('filterEndDate'));
         $filter->setInsertedBy($this->get('session')->get('filterInsertedBy'));
-        $form = $this->createForm(new PaymentFilterType(),$filter);
+        $form = $this->createForm(new TransactionFilterType(),$filter);
         
         if($this->get('session')->get('filterQueryInSession') !== null)
         {
@@ -69,7 +70,6 @@ class PaymentController extends Controller
             
             $form->handleRequest($request);
             $data = $form->getData();
-
             if($form->isValid()){
               //  die($data->getStartDate());
                 $startDate = ($data->getStartDate())?$data->getStartDate()->format('Y-m-d H:i:s'):null;
@@ -79,14 +79,14 @@ class PaymentController extends Controller
                 
                 //Build the datequery from the submitted start/enddate from the filter.
                 if($startDate !== null){
-                    $dateQuery = ($endDate !== null)? ' and p.paymentdate BETWEEN \'' 
-                                    . $startDate . '\' and \'' . $endDate . '\'' : ' and p.paymentdate = \'' 
+                    $dateQuery = ($endDate !== null)? ' and t.transactiondate BETWEEN \'' 
+                                    . $startDate . '\' and \'' . $endDate . '\'' : ' and t.transactiondate = \'' 
                                     . $startDate . '\'';
                 }
                 else{
                     //$dateQuery = '';
                 }
-                $dateQuery .= ($insertedBy != null)?' and p.insertuser = \'' . $insertedBy . '\'':'';
+                $dateQuery .= ($insertedBy != null)?' and t.insertuser = \'' . $insertedBy . '\'':'';
                //  die($dateQuery);
                 $this->get('session')->set('filterQueryInSession', $dateQuery);  
                 $this->get('session')->set('filterStartDate', $data->getStartDate());  
@@ -95,27 +95,26 @@ class PaymentController extends Controller
             }
 
         }
-        $mainQuery =  'Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser, u.location from SerlimarSerlEdgeBundle:Tblpayments p '
-                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
-                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
-                . 'LEFT JOIN SerlimarSerlEdgeBundle:Tblusers u WITH u.username=p.insertuser'
-                . ' WHERE p.paymentsid is not null '
+        $mainQuery =  'Select t.id, t.transactiondate, t.voiddate, t.executed , l.lookup as transactionmethod, t.amount,t.reference, c.firstname, c.name, t.insertuser, u.location from SerlimarSerlEdgeBundle:Tbltransactionsqueue t '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = t.customerguid '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = t.locationmethodguid '
+                . 'LEFT JOIN SerlimarSerlEdgeBundle:Tblusers u WITH u.username=t.insertuser'
+                . ' WHERE t.id is not null '
                 .   $insertuserQuery 
                 .   $dateQuery             
-                . '  ORDER BY p.paymentdate DESC ';
+                . ' ORDER BY t.timestamp DESC ';
         
          //The same query as mainQuery but with only the sum of total amount.
-         $sumQuery =  'Select SUM(p.amount) as  totalAmount , l.lookup as paymentmethod from SerlimarSerlEdgeBundle:Tblpayments p '
-                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
-                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
-                . ' WHERE p.paymentsid is not null '
+         $sumQuery =  'Select SUM(t.amount) as  totalAmount , l.lookup as transactionmethod from SerlimarSerlEdgeBundle:Tbltransactionsqueue t '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = t.customerguid '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = t.locationmethodguid'
+                . ' WHERE t.id is not null '
                 .   $insertuserQuery 
                 .   $dateQuery             
-                . '  GROUP BY p.paymentmethod ORDER BY p.paymentdate DESC ';
+                . '  GROUP BY t.locationmethodguid ORDER BY t.transactiondate DESC ';
          
         $query = $em->createQuery($mainQuery);
         $sumquery = $em->createQuery($sumQuery);
-        
         
         //Save the main/sum query in a session, so the 'print all' function can generate the list.
         //This session var must be removed when the filter is cleared. It is done in clearfilter action.
@@ -133,9 +132,10 @@ class PaymentController extends Controller
         $result = $query->getResult();
         $sumAmount = $sumquery->getResult();
         $dates = [$this->get('session')->get('filterStartDate'), $this->get('session')->get('filterEndDate')];  
-       
-        return $this->render('SerlimarSerlEdgeBundle:Payment:index.html.twig', array(
-            'payments' => $result,
+       // var_dump($result);
+       // die;
+        return $this->render('SerlimarSerlEdgeBundle:Transaction:index.html.twig', array(
+            'transactions' => $result,
             'sumAmount' => $sumAmount,
             'dates' => $dates,
             'filterOption' => ($roleUser === 'Cashier')?false:true,
@@ -145,69 +145,73 @@ class PaymentController extends Controller
     }
     
     /**
-     *  Create a new payment registration record.
+     *  Create a new transaction registration record.
      */
     public function createAction(Request $request, $customerid = null)
     {   
-        
         $em = $this->getDoctrine()->getManager();
         /*
          * If form is submitted: Handle request , validate the form submitted  
          * formfields and persist if form is valid.
          */
+        $transaction = new Tbltransactionsqueue();
+        $form = $this->createForm(new TransactionType($em), $transaction);
+        $transactionId = null;
+        
         if($request->getMethod() == Request::METHOD_POST)
         {
-            
-            $payment = new Tblpayments();
-            $form = $this->createForm(new PaymentType($em), $payment);
-            $paymentId = null;
             $form->handleRequest($request);
+            $data = $form->getData();
             
             if ($form->isValid()){
-                $payment->setPaymentsId($this->generatePaymentsId());
-                $payment->setInsertUser($this->getUser()->getUsername());
-                $payment->setPaymentDate((new \DateTime('now'))->setTime(0,0));
-                $payment->setTimestamp(new \DateTime('now'));
-               // $payment->setReference($payment->getInvoicenr());
-                $paymentId = $payment->getPaymentId();
-                $em->persist($payment);
+                $customer = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblcustomers')->find($data->getCustomerid());
+                $transaction->setCustomerguid($customer->getGuid());
+                $transaction->setCustomer($customer->getFirstname() . ' ' . $customer->getName());
+                $transaction->setAddress($customer->getAddress());
+                $transaction->setId($this->generateTransactionId());
+                $transaction->setInsertUser($this->getUser()->getUsername());
+                $transaction->setTransactiondate((new \DateTime('now'))->setTime(0,0));
+                $transaction->setTimestamp(new \DateTime('now'));
+               // $transaction->setReference($transaction->getInvoicenr());
+                $transactionId = $transaction->getId();
+                $em->persist($transaction);
                 $em->flush();
 
-                return $this->redirectToRoute('serlimar_serledge_receipt_payment', array('id'=>$paymentId));
+                return $this->redirectToRoute('serlimar_serledge_receipt_transaction', array('id'=>$transactionId));
             }
-            return $this->render('SerlimarSerlEdgeBundle:Payment:create.html.twig', array(
+            return $this->render('SerlimarSerlEdgeBundle:Transaction:create.html.twig', array(
            'form'=>$form->createView()));
         }
         
-        $customerGuid = $this->get('session')->get('customerIdPayment');  
-       
-        $form = $this->createForm(new PaymentType($em, $customerGuid));
-        $this->get('session')->remove('customerIdPayment');  
-       // $this->get('session')->remove('customerIdForPayment');
-        return $this->render('SerlimarSerlEdgeBundle:Payment:create.html.twig', array(
+        $customerID = $this->get('session')->get('customerIdTransaction');  
+        
+        $form = $this->createForm(new TransactionType($em, $customerID));
+        $this->get('session')->remove('customerIdTransaction');  
+       // $this->get('session')->remove('customerIdForTransaction');
+        return $this->render('SerlimarSerlEdgeBundle:Transaction:create.html.twig', array(
             'form'=>$form->createView() 
         ));
     }
     
     /**
-     *  Edit a payment registration record.
+     *  Edit a transaction registration record.
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $paymentResult = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblpayments')->findBy(array('paymentsid'=> $id));
-        $payment = $paymentResult[0];
-       //var_dump($payment);die;
-        $form = $this->createForm(new UpdatePaymentType($em), $payment);
+        $transactionResult = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tbltransactionsqueue')->findBy(array('id'=> $id));
+        $transaction = $transactionResult[0];
+       //var_dump($transaction);die;
+        $form = $this->createForm(new UpdateTransactionType($em), $transaction);
         
         if($request->getMethod() == Request::METHOD_POST)
         {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                // Save the username and datetime of the updated payment, and then flush.
-                $payment->setUserActionDate(new \DateTime('now'));
-                $payment->setUsername($this->getUser()->getUsername());
+                // Save the username and datetime of the updated transaction, and then flush.
+                $transaction->setUserActionDate(new \DateTime('now'));
+                $transaction->setUsername($this->getUser()->getUsername());
                 $em->flush();
 
                 $this->addFlash(
@@ -224,92 +228,100 @@ class PaymentController extends Controller
             }
             
             return $this->render(
-            'SerlimarSerlEdgeBundle:Payment:_edit-payment.html.twig', array(
-                'payment' => $payment,
+            'SerlimarSerlEdgeBundle:Transaction:_edit-transaction.html.twig', array(
+                'transaction' => $transaction,
                 'form' => $form->createView()
                 )
         );
             
         }
         return $this->render(
-            'SerlimarSerlEdgeBundle:Payment:_edit-payment.html.twig', array(
-                'payment' => $payment,
+            'SerlimarSerlEdgeBundle:Transaction:_edit-transaction.html.twig', array(
+                'transaction' => $transaction,
                 'form' => $form->createView()
                 )
         );
     }
     /*
-     * Show the payment with the requested id
+     * Show the transaction with the requested id
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('Select p.paymentsid, p.paymentdate, l.lookup as paymentmethod, p.amount, c.firstname, c.name, p.insertuser, p.note from SerlimarSerlEdgeBundle:Tblpayments p '
-                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
-                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
-                . ' WHERE p.paymentsid = :paymentsid'
-               )->setParameter('paymentsid', $id);
-        $payment = $query->getResult();
+        $query = $em->createQuery('Select t.id, t.transactiondate, l.lookup as transactionmethod, t.amount, c.firstname, c.name, t.insertuser, t.note from SerlimarSerlEdgeBundle:Tbltransactionsqueue t '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = t.customerguid '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = t.locationmethodguid '
+                . ' WHERE t.id = :id'
+               )->setParameter('id', $id);
+        $transaction = $query->getResult();
         
         return $this->render(
-            'SerlimarSerlEdgeBundle:Payment:_show-payment.html.twig', array(
-                'payment' => $payment[0],
+            'SerlimarSerlEdgeBundle:Transaction:_show-transaction.html.twig', array(
+                'transaction' => $transaction[0],
                 )
         );
     }
     
     
     /**
-     *  Delete a payment registration record.
+     *  Delete a transaction registration record.
      */
     public function deleteAction(Request $request,$id)
     {
         $referer = $request->headers->get('referer');
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery(
-                'DELETE FROM SerlimarSerlEdgeBundle:Tblpayments p WHERE p.paymentsid = :paymentsid'
-                )->setParameter('paymentsid',$id);
-        if($query->execute())
+        $transaction = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tbltransactionsqueue')->findBy(array('id'=>$id));
+        if(!empty($transaction))
         {
-            $this->addFlash(
-                    'notice',
-                    'Payment record with id ' . $id . ' has been removed!'
-                );
+            $transaction = $transaction[0];
+            if($transaction->getExecuted() !== 1)
+            {
+                $transaction->setVoiddate(new \DateTime());
+                $transaction->setVoidby($this->getUser()->getUsername());
+                $em->flush();
+                    $this->addFlash(
+                            'notice',
+                            'Transaction record with id ' . $id . ' has been voided!'
+                        );
+
+                return $this->redirect($referer);
+                }
         }
         
-        return $this->redirect($referer);
+        return new NotFoundHttpException('Transaction with id ' . $id . ' does not exist', 200);
     }
     
     /*
-     * Get a new paymentsId by increase the last paymentsId in the database by 1.
+     * Get a new transactionId by increase the last transactionID in the database by 1.
      */
-    private function generatePaymentsId()
+    private function generateTransactionId()
     {
-        $lastPaymentsId = $this->getDoctrine()->getManager()->createQuery('SELECT p.paymentsid FROM Serlimar\SerlEdgeBundle\Entity\Tblpayments p ORDER BY p.paymentsid DESC')->setMaxResults(1)->getResult();
-        return $lastPaymentsId[0]["paymentsid"] + 1;
+        $lastTransactionId = $this->getDoctrine()->getManager()->createQuery('SELECT t.id FROM Serlimar\SerlEdgeBundle\Entity\Tbltransactionsqueue t ORDER BY t.id DESC')->setMaxResults(1)->getResult();
+        return $lastTransactionId[0]["id"] + 1;
         
     }
     
     public function receiptAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery('Select p.paymentsid,  p.amount, p.paymentdate, p.insertuser, l.lookup as paymentmethod, '
-                . 'p.amount, c.customerno, c.firstname, c.name, c.address, p.insertuser, p.note, p.reference, s.region from SerlimarSerlEdgeBundle:Tblpayments p '
-                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = p.customerguid '
-                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = p.paymentmethod '
+        $query = $em->createQuery('Select t.id , t.amount, t.transactiondate, t.insertuser, l.lookup as transactionmethod, '
+                . 't.amount, c.customerid, c.firstname, c.name, c.address, t.insertuser, t.note, t.reference, s.region from SerlimarSerlEdgeBundle:Tbltransactionsqueue t '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = t.customerguid '
+                . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = t.locationmethodguid '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbladdresses a WITH c.addressid = a.addressid'
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblstreetnames s WITH a.streetnameid= s.streetnameid'
-                . ' WHERE p.paymentsid = :paymentsid'
-               )->setParameter('paymentsid', $id);
-        $payment = $query->getResult();
+                . ' WHERE t.id = :transactionsid'
+               )->setParameter('transactionsid', $id);
+        $transaction = $query->getResult();
         
        
         return $this->render(
-            'SerlimarSerlEdgeBundle:Payment:payment-receipt.html.twig', array(
-                'payment' => $payment[0],
+            'SerlimarSerlEdgeBundle:Transaction:transaction-receipt.html.twig', array(
+                'transaction' => $transaction[0],
                 )
         );
     }
+    
     public function printAllAction()
     {
         $printQuery = $this->get('session')->get('mainQueryInSession');
@@ -318,12 +330,12 @@ class PaymentController extends Controller
         $query = $em->createQuery($printQuery);
         $sumQuery = $em->createQuery($sumQuery);
         
-        $payments = $query->getResult();
+        $transactions = $query->getResult();
         $sumAmount = $sumQuery->getResult();
         $dates = [$this->get('session')->get('filterStartDate'), $this->get('session')->get('filterEndDate')];  
         return $this->render(
-            'SerlimarSerlEdgeBundle:Payment:printall.html.twig', array(
-                'payments' => $payments,
+            'SerlimarSerlEdgeBundle:Transaction:printall.html.twig', array(
+                'transactions' => $transactions,
                 'dates' => $dates,
                 'sumAmount' => $sumAmount,
                 )
@@ -340,6 +352,6 @@ class PaymentController extends Controller
         $this->get('session')->remove('filterStartDate');  
         $this->get('session')->remove('filterEndDate');  
         $this->get('session')->remove('filterInsertedBy');  
-        return $this->redirectToRoute('serlimar_serledge_payment');
+        return $this->redirectToRoute('serlimar_serledge_transaction');
     }
 }

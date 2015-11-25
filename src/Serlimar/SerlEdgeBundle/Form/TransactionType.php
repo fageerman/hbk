@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of PaymentType
+ * Description of TransactionType
  *
  * @author Ferdinand Geerman
  */
@@ -16,16 +16,17 @@ use Doctrine\ORM\EntityManager;
 use Serlimar\SerlEdgeBundle\DataTransformer\CustomerNrToGuidTransformer;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormError;
 
 
-class PaymentType extends AbstractType
+class TransactionType extends AbstractType
 {
     private $em;
     private $customerid;
     
     
     /*
-     * Construct the PaymentForm with an EntityManager if necesary.  
+     * Construct the TransactionForm with an EntityManager if necesary.  
      * The customerguid field catches a 
      * 
      */
@@ -39,10 +40,10 @@ class PaymentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         // If customerID is defined, means that the customercontroller 
-        // has send an customerID for creationg a payment.
+        // has send an customerID for creationg a transaction.
         if($this->customerid != null){
              $builder
-            ->add('customerguid','integer', array(
+            ->add('customerid','integer', array(
                 'label'=>'Customer Id',
                 'attr'=>array(
                     'placeholder' => 'Scan barcode'
@@ -51,7 +52,7 @@ class PaymentType extends AbstractType
                 ));
         }else{
              $builder
-            ->add('customerguid','integer', array(
+            ->add('customerid','integer', array(
                 'label'=>'Customer Id',
                 'attr'=>array(
                     'placeholder' => 'Scan barcode'
@@ -64,8 +65,8 @@ class PaymentType extends AbstractType
                 'attr'=>array('type'=>'integer', 
                 'placeholder' => 'Scan barcode',
                 )))
-            ->add('paymentmethod', 'choice', array(
-                    'label' => 'Payment method',
+            ->add('locationmethodguid', 'choice', array(
+                    'label' => 'Transaction method',
                     'placeholder' => 'Choose a method',
                     'choices' => array(
                         '1231bcfd-b485-11e4-a684-32ea009ce708'=>'SWIPE',
@@ -78,22 +79,37 @@ class PaymentType extends AbstractType
             ->add('note','textarea', array('required'=>false))
             ->add('save', 'submit', array('attr'=>array('class'=>'btn  btn-primary', 'novalidate'=> true)))
         ;
-
-        $builder->get('customerguid')
-            ->addModelTransformer(new CustomerNrToGuidTransformer($this->em));
+            
+//        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+//            $transaction = $event->getData();
+//            $form = $event->getForm();
+//          //var_dump($form->getData());
+//            $customer = $this->em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblcustomers')->findBy(array('customerid'=>$transaction['customerid']));
+//            //var_dump($customer);
+//            if (empty($customer)) {
+//                $transaction['customerid'] = '';
+////                $form->get('customerid')->setData('test');
+////                $transaction['customerid'] = '';
+////                $form->get('customerid')->addError(new FormError('Customerid does not exists.'));
+//           }
+            
+            //var_dump($transaction);die;
+ //       });
+        //$builder->get('customerguid')
+        //    ->addModelTransformer(new CustomerNrToGuidTransformer($this->em));
         
 
     }
 
     public function getName()
     {
-        return 'payment';
+        return 'transaction';
     }
     
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SerlEdgeBundle\Entity\Tblpayments',
+            'data_class' => 'SerlEdgeBundle\Entity\Tbltransactionsqueue',
         ));
     }
     
@@ -104,13 +120,13 @@ class PaymentType extends AbstractType
                 $data = $form->getData();
                 $invoiceNr = $data->getReference();
                 if ($invoiceNr !== null) {
-                    //Check if the provided invoicenr is a valid one.
-                    $invoiceResult = $this->em->createQuery('SELECT i.invoicenumber FROM '
-                    . 'SerlimarSerlEdgeBundle:Tblinvoices i WHERE i.invoicenumber = :invoicenumber '
-                    . 'and i.invoicenumber != 0')->setParameter('invoicenumber',$invoiceNr)->getResult();
-
-                    $invoiceNumber = (empty($invoiceResult))? null: $invoiceNr;
-                    $data->setReference($invoiceNumber);
+//                    //Check if the provided invoicenr is a valid one.
+//                    $invoiceResult = $this->em->createQuery('SELECT i.invoicenumber FROM '
+//                    . 'SerlimarSerlEdgeBundle:Tblinvoices i WHERE i.invoicenumber = :invoicenumber '
+//                    . 'and i.invoicenumber != 0')->setParameter('invoicenumber',$invoiceNr)->getResult();
+//
+//                    $invoiceNumber = (empty($invoiceResult))? null: $invoiceNr;
+//                    $data->setReference($invoiceNumber);
 
                     return array('Default', 'invoice');
                 }
@@ -120,7 +136,7 @@ class PaymentType extends AbstractType
         ));
     }
     
-    private function getPaymentMethods()
+    private function getTransactionMethods()
     {
         $query = $this->em->createQuery("SELECT tbllookups.guid, tbllookups.lookup
             FROM SerlimarSerlEdgeBundle:Tbllookups tbllookups INNER JOIN SerlimarSerlEdgeBundle:Tblpaymentmethodsallowed p WITH tbllookups.guid = p.paymentmethodguid INNER JOIN SerlimarSerlEdgeBundle:Tbluseraccesslevel u WITH p.roleid = u.accesslevelid

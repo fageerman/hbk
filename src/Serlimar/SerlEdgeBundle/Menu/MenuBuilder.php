@@ -17,11 +17,11 @@ class MenuBuilder extends ContainerAware
     public function createMainMenu(RequestStack $requestStack)
     {
         $menu = $this->factory->createItem('root');
-        if($this->authorizationChecker->isGranted('ROLE_CREATE_PAYMENT')){
-            $menu->addChild('Create Payment', array('route' => 'serlimar_serledge_create_payment'));
+        if($this->authorizationChecker->isGranted('ROLE_CREATE_TRANSACTION')){
+            $menu->addChild('Create Transaction', array('route' => 'serlimar_serledge_create_transaction'));
         }
-        if($this->authorizationChecker->isGranted('ROLE_LIST_PAYMENT')){
-            $menu->addChild('Payment Overview', array('route' => 'serlimar_serledge_payment'));
+        if($this->authorizationChecker->isGranted('ROLE_LIST_TRANSACTION')){
+            $menu->addChild('Transaction Overview', array('route' => 'serlimar_serledge_transaction'));
         }
         if($this->authorizationChecker->isGranted('ROLE_LIST_CUSTOMER')){
             $menu->addChild('Customer', array('route' => 'serlimar_serledge_customer'));
