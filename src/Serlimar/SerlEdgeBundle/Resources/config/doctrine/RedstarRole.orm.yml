@@ -1,0 +1,39 @@
+Serlimar\SerlEdgeBundle\Entity\RedstarRole:
+    type: entity
+    table: redstar_role
+    uniqueConstraints:
+        UNIQ_C5AC1F957698A6A:
+            columns:
+                - role
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+        role:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+    manyToMany:
+        user:
+            targetEntity: RedstarUsers
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: role
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

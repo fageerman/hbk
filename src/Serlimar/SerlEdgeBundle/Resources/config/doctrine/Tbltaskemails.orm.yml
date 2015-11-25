@@ -1,0 +1,110 @@
+Serlimar\SerlEdgeBundle\Entity\Tbltaskemails:
+    type: entity
+    table: tbltaskemails
+    indexes:
+        Task:
+            columns:
+                - TaskGUID
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        taskguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: TaskGUID
+        user:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: User
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Email
+        sendtype:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: SendType
+        notes:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Notes
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useraction:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserAction
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        notactive:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: NotActive
+    lifecycleCallbacks: {  }

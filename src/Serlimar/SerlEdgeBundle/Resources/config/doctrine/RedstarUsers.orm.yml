@@ -1,0 +1,67 @@
+Serlimar\SerlEdgeBundle\Entity\RedstarUsers:
+    type: entity
+    table: redstar_users
+    uniqueConstraints:
+        UNIQ_7DDE545CF85E0677:
+            columns:
+                - username
+        UNIQ_7DDE545CE7927C74:
+            columns:
+                - email
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 25
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+        isActive:
+            type: boolean
+            nullable: false
+            column: is_active
+        salt:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+    manyToMany:
+        role:
+            targetEntity: RedstarRole
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: user
+            joinTable:
+                name: user_role
+                joinColumns:
+                    -
+                        name: user_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: role_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

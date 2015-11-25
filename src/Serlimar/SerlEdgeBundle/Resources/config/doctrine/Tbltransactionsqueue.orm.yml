@@ -1,0 +1,217 @@
+Serlimar\SerlEdgeBundle\Entity\Tbltransactionsqueue:
+    type: entity
+    table: tbltransactionsqueue
+    indexes:
+        Date_index:
+            columns:
+                - TransactionDate
+        CustomerID_index:
+            columns:
+                - CustomerID
+                - CustomerGUID
+        Method_index:
+            columns:
+                - TransactionMethodGUID
+                - LocationMethodGUID
+    id:
+        guid:
+            type: guid
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            id: true
+            column: GUID
+            generator:
+                strategy: UUID
+    fields:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: ID
+        transactiondate:
+            type: datetime
+            nullable: true
+            column: TransactionDate
+        transactionmethodguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: TransactionMethodGUID
+        customerid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CustomerID
+        customeridOriginal:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: CustomerID_Original
+        customerguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: CustomerGUID
+        customer:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: Customer
+        customerOriginal:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: Customer_Original
+        address:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: Address
+        addressOriginal:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: Address_Original
+        note:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: Note
+        reference:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: Reference
+        referenceOriginal:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: Reference_Original
+        amount:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Amount
+        verified:
+            type: boolean
+            nullable: true
+            options:
+                default: 0
+            column: Verified
+        skip:
+            type: boolean
+            nullable: true
+            options:
+                default: 0
+            column: Skip
+        executed:
+            type: boolean
+            nullable: true
+            options:
+                default: 0
+            column: Executed
+        executeddate:
+            type: datetime
+            nullable: true
+            column: ExecutedDate
+        contracts:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Contracts
+        message:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Message
+        locationmethodguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: LocationMethodGUID
+        location:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Location
+        locationguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: LocationGUID
+        voiddate:
+            type: datetime
+            nullable: true
+            column: VoidDate
+        voidby:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: VoidBy
+        statusguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: StatusGUID
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+    lifecycleCallbacks: {  }

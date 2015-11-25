@@ -1,22 +1,19 @@
-Serlimar\SerlEdgeBundle\Entity\Tblpayments:
+Serlimar\SerlEdgeBundle\Entity\Tblbatch:
     type: entity
-    table: tblpayments
+    table: tblbatch
     indexes:
-        $PaymentDate:
+        $Register:
             columns:
-                - PaymentDate
-        $CustomerGUID:
+                - RegisterGUID
+        $BachNR:
             columns:
-                - CustomerGUID
-        $LoactionGUID:
+                - Batchnr
+        $Reference:
             columns:
-                - LocationGUID
-        $InsertUser:
+                - Reference
+        $Date:
             columns:
-                - InsertUser
-        $PaymentID:
-            columns:
-                - PaymentsID
+                - Batchdate
     id:
         guid:
             type: string
@@ -29,107 +26,72 @@ Serlimar\SerlEdgeBundle\Entity\Tblpayments:
             generator:
                 strategy: IDENTITY
     fields:
-        paymentsid:
-            type: float
-            nullable: true
-            precision: 10
-            scale: 0
-            column: PaymentsID
-        customerguid:
-            type: string
-            nullable: true
-            length: 45
-            options:
-                fixed: false
-            column: CustomerGUID
-        email:
-            type: string
-            nullable: true
-            length: 255
-            options:
-                fixed: false
-            column: Email
-        paymentdate:
-            type: datetime
-            nullable: true
-            column: PaymentDate
-        amount:
-            type: float
-            nullable: true
-            precision: 10
-            scale: 0
-            options:
-                default: '0'
-            column: Amount
-        applied:
-            type: float
-            nullable: true
-            precision: 10
-            scale: 0
-            options:
-                default: '0'
-            column: Applied
-        credit:
-            type: float
-            nullable: true
-            precision: 10
-            scale: 0
-            options:
-                default: '0'
-            column: Credit
-        paymentmethod:
+        registerguid:
             type: string
             nullable: true
             length: 40
             options:
                 fixed: false
-            column: PaymentMethod
-        invoicenr:
+            column: RegisterGUID
+        batchnr:
             type: integer
             nullable: true
             options:
                 unsigned: false
-            column: InvoiceNr
-        authnr:
-            type: string
-            nullable: true
-            length: 10
-            options:
-                fixed: false
-            column: AuthNr
+            column: Batchnr
         reference:
             type: string
             nullable: true
-            length: 150
+            length: 50
             options:
                 fixed: false
             column: Reference
-        gl:
+        batchdate:
+            type: datetime
+            nullable: true
+            column: Batchdate
+        bod:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: BOD
+        eod:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: EOD
+        transactions:
             type: integer
             nullable: true
             options:
                 unsigned: false
-            column: GL
-        confirmed:
-            type: boolean
-            nullable: true
-            options:
-                default: 'b''0'''
-            column: Confirmed
-        note:
+                default: '0'
+            column: Transactions
+        notes:
             type: text
             nullable: true
             length: null
             options:
                 fixed: false
-            column: Note
-        locationguid:
-            type: string
+            column: Notes
+        closed:
+            type: boolean
             nullable: true
-            length: 40
             options:
-                fixed: false
-            column: LocationGUID
+                default: 'b''0'''
+            column: Closed
+        closesdatetime:
+            type: datetime
+            nullable: true
+            column: ClosesDateTime
+        canceled:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: Canceled
         insertuser:
             type: string
             nullable: true
@@ -179,17 +141,4 @@ Serlimar\SerlEdgeBundle\Entity\Tblpayments:
             options:
                 fixed: false
             column: LockedUserName
-        loactionguid:
-            type: string
-            nullable: true
-            length: 40
-            options:
-                fixed: false
-            column: LoactionGUID
-        notactive:
-            type: boolean
-            nullable: true
-            options:
-                default: 'b''0'''
-            column: NotActive
     lifecycleCallbacks: {  }

@@ -44,6 +44,13 @@ Serlimar\SerlEdgeBundle\Entity\Tblcustomers:
             options:
                 fixed: false
             column: GUID
+        customer:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Customer
         customerno:
             type: string
             nullable: true
@@ -66,13 +73,6 @@ Serlimar\SerlEdgeBundle\Entity\Tblcustomers:
             options:
                 fixed: false
             column: Name
-        prefix:
-            type: string
-            nullable: true
-            length: 50
-            options:
-                fixed: false
-            column: Prefix
         firstname:
             type: string
             nullable: true
@@ -80,6 +80,13 @@ Serlimar\SerlEdgeBundle\Entity\Tblcustomers:
             options:
                 fixed: false
             column: FirstName
+        prefix:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Prefix
         birthdate:
             type: datetime
             nullable: true
@@ -382,4 +389,11 @@ Serlimar\SerlEdgeBundle\Entity\Tblcustomers:
             options:
                 default: 'b''0'''
             column: NotActive
+        company:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Company
     lifecycleCallbacks: {  }

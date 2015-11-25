@@ -1,0 +1,61 @@
+Serlimar\SerlEdgeBundle\Entity\Tblcontractaddresschange:
+    type: entity
+    table: tblcontractaddresschange
+    indexes:
+        $ContractID:
+            columns:
+                - ContractID
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        contractid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: ContractID
+        addresswas:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AddressWas
+        addressto:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: AddressTo
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+    lifecycleCallbacks: {  }

@@ -6,16 +6,30 @@ Serlimar\SerlEdgeBundle\Entity\Tblinvoicedetails:
             columns:
                 - InvoiceID
     id:
-        invoicedetailsid:
+        id:
             type: integer
             nullable: false
             options:
                 unsigned: false
             id: true
-            column: InvoiceDetailsID
+            column: ID
             generator:
                 strategy: IDENTITY
     fields:
+        guid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: GUID
+        invoiceguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: InvoiceGUID
         invoiceid:
             type: integer
             nullable: true

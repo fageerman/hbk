@@ -23,15 +23,10 @@ Serlimar\SerlEdgeBundle\Entity\Tbladdresses:
         $AddressLetter:
             columns:
                 - AddressLetter
+        $GUID:
+            columns:
+                - GUID
     id:
-        guid:
-            type: string
-            nullable: false
-            length: 40
-            options:
-                fixed: false
-            id: true
-            column: GUID
         addressid:
             type: integer
             nullable: false
@@ -39,7 +34,16 @@ Serlimar\SerlEdgeBundle\Entity\Tbladdresses:
                 unsigned: false
             id: true
             column: AddressID
+            generator:
+                strategy: IDENTITY
     fields:
+        guid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: GUID
         address:
             type: string
             nullable: true
@@ -220,6 +224,8 @@ Serlimar\SerlEdgeBundle\Entity\Tbladdresses:
         isnotcompleted:
             type: boolean
             nullable: true
+            options:
+                default: '0'
             column: IsNotCompleted
         source:
             type: string
@@ -242,6 +248,13 @@ Serlimar\SerlEdgeBundle\Entity\Tbladdresses:
             options:
                 fixed: false
             column: Memo
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
         timestamp:
             type: datetime
             nullable: true

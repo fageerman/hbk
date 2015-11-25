@@ -1,67 +1,109 @@
-Serlimar\SerlEdgeBundle\Entity\Tblcontracts:
+Serlimar\SerlEdgeBundle\Entity\Tbltransactiondetails:
     type: entity
-    table: tblcontracts
+    table: tbltransactiondetails
     indexes:
-        Address:
+        $TransactionGUID:
             columns:
-                - Address
-        AddressID:
+                - TransactionGUID
+        $Type:
             columns:
-                - AddressID
-        CustomerID:
-            columns:
-                - CustomerID
+                - Type
     id:
-        contractid:
-            type: integer
+        guid:
+            type: string
             nullable: false
+            length: 40
             options:
-                unsigned: false
+                fixed: false
             id: true
-            column: ContractID
+            column: GUID
             generator:
                 strategy: IDENTITY
     fields:
-        customerid:
-            type: integer
-            nullable: true
-            options:
-                unsigned: false
-            column: CustomerID
-        contractdate:
-            type: datetime
-            nullable: true
-            column: ContractDate
-        type:
-            type: integer
-            nullable: true
-            options:
-                unsigned: false
-            column: Type
-        addressid:
-            type: integer
-            nullable: true
-            options:
-                unsigned: false
-            column: AddressID
-        address:
+        transactionguid:
             type: string
             nullable: true
-            length: 75
+            length: 40
             options:
                 fixed: false
-            column: Address
-        addresschange:
-            type: text
+            column: TransactionGUID
+        type:
+            type: string
             nullable: true
-            length: null
+            length: 15
             options:
                 fixed: false
-            column: AddressChange
-        printeddatetime:
-            type: datetime
+            column: Type
+        orderid:
+            type: integer
             nullable: true
-            column: PrintedDateTime
+            options:
+                unsigned: false
+            column: OrderID
+        itemguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: ItemGUID
+        description:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: Description
+        costs:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Costs
+        qty:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Qty
+        rate:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Rate
+        procent:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Procent
+        total:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Total
+        tax:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Tax
+        reference:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Reference
+        reference2:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Reference2
         note:
             type: text
             nullable: true
@@ -69,61 +111,6 @@ Serlimar\SerlEdgeBundle\Entity\Tblcontracts:
             options:
                 fixed: false
             column: Note
-        itemscount:
-            type: integer
-            nullable: true
-            options:
-                unsigned: false
-            column: ItemsCount
-        itemsdisplay:
-            type: text
-            nullable: true
-            length: null
-            options:
-                fixed: false
-            column: ItemsDisplay
-        indate:
-            type: datetime
-            nullable: true
-            column: inDate
-        inuser:
-            type: string
-            nullable: true
-            length: 50
-            options:
-                fixed: false
-            column: inUser
-        inuserid:
-            type: integer
-            nullable: true
-            options:
-                unsigned: false
-            column: inUserID
-        lastchangeuser:
-            type: string
-            nullable: true
-            length: 50
-            options:
-                fixed: false
-            column: LastChangeUser
-        cancelleddate:
-            type: datetime
-            nullable: true
-            column: CancelledDate
-        cancelledby:
-            type: string
-            nullable: true
-            length: 50
-            options:
-                fixed: false
-            column: CancelledBy
-        memo:
-            type: text
-            nullable: true
-            length: null
-            options:
-                fixed: false
-            column: Memo
         insertuser:
             type: string
             nullable: true
@@ -137,6 +124,13 @@ Serlimar\SerlEdgeBundle\Entity\Tblcontracts:
             options:
                 default: CURRENT_TIMESTAMP
             column: TimeStamp
+        useraction:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: UserAction
         useractiondate:
             type: datetime
             nullable: true
@@ -148,6 +142,13 @@ Serlimar\SerlEdgeBundle\Entity\Tblcontracts:
             options:
                 fixed: false
             column: UserName
+        userid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: UserID
         locked:
             type: string
             nullable: true
@@ -173,10 +174,10 @@ Serlimar\SerlEdgeBundle\Entity\Tblcontracts:
             options:
                 fixed: false
             column: LockedUserName
-        notactive:
-            type: boolean
+        version:
+            type: float
             nullable: true
-            options:
-                default: 'b''0'''
-            column: NotActive
+            precision: 10
+            scale: 0
+            column: Version
     lifecycleCallbacks: {  }

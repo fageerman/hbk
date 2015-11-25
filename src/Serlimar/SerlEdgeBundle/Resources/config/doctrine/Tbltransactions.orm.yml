@@ -1,0 +1,271 @@
+Serlimar\SerlEdgeBundle\Entity\Tbltransactions:
+    type: entity
+    table: tbltransactions
+    indexes:
+        $Customer:
+            columns:
+                - CustomerGUID
+        $Type:
+            columns:
+                - Type
+        $transactiondate:
+            columns:
+                - TransactionDate
+    id:
+        guid:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            id: true
+            column: GUID
+            generator:
+                strategy: IDENTITY
+    fields:
+        transactiondate:
+            type: date
+            nullable: true
+            column: TransactionDate
+        type:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: false
+            column: Type
+        transactionnumber:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: TransactionNumber
+        reference:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Reference
+        customerid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: CustomerID
+        customerguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: CustomerGUID
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        termsguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: TermsGUID
+        duedate:
+            type: date
+            nullable: true
+            column: DueDate
+        period:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Period
+        contract:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Contract
+        paymentmethodguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: PaymentMethodGUID
+        currency:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Currency
+        subtotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Subtotal
+        costs:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Costs
+        transactionsubtotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Transactionsubtotal
+        taxdescription:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: TaxDescription
+        tax:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Tax
+        total:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Total
+        transactiontotal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Transactiontotal
+        received:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Received
+        balance:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Balance
+        accountbalance:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: AccountBalance
+        statusguid:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: StatusGUID
+        note:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: Note
+        issend:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: isSend
+        senddate:
+            type: datetime
+            nullable: true
+            column: sendDate
+        isprinted:
+            type: boolean
+            nullable: true
+            options:
+                default: 'b''0'''
+            column: isPrinted
+        printed:
+            type: datetime
+            nullable: true
+            column: Printed
+        printcount:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: PrintCount
+        insertuser:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: InsertUser
+        timestamp:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: TimeStamp
+        useractiondate:
+            type: datetime
+            nullable: true
+            column: UserActionDate
+        username:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: UserName
+        userid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: UserID
+        locked:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: Locked
+        lockeddate:
+            type: datetime
+            nullable: true
+            column: LockedDate
+        lockeduserid:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: LockedUserID
+        lockedusername:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+            column: LockedUserName
+        version:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Version
+    lifecycleCallbacks: {  }
