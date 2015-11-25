@@ -6,10 +6,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
- * PaymentFilter
+ * TransactionFilter
  *
  */
-class PaymentFilter
+class TransactionFilter
 {
     
     /**
