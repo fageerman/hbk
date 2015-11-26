@@ -139,7 +139,7 @@
                                     {% endif %}
                                     {% if is_granted('ROLE_DELETE_TRANSACTION')%}
                                     <a {% if transaction.voiddate is not null %}disabled="true"{% endif %} 
-                                       {% if transaction.executed == 1 %}disabled="true"{% endif %}                                         
+                                      {# {% if transaction.executed == 1 %}disabled="true"{% endif %}    #}                                     
                                        onclick="return confirm('Delete transaction {{ transaction.id }}?');" class="btn" aria-label="Void"
                                        data-toggle="tooltip" data-placement="top" title="Delete"
                                        href="{{ path('serlimar_serledge_delete_transaction',{'id': transaction.id })}}"
