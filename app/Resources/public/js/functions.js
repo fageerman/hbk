@@ -29,7 +29,7 @@
     });
     
    function toggleFilter(){
-     $(".transaction-filter" ).slideToggle("slow");
+     $(".filter" ).slideToggle("slow");
      
     };
     
@@ -187,7 +187,6 @@ function createUser()
 
 function getUser(id)
 {
-    alert(id);
     $.ajax({
         url: "/user/" + id + "/update",
         context: document.body

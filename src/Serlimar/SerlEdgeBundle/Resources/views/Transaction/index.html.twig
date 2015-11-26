@@ -38,7 +38,7 @@
         {#{% set display = 'block' %}#}
     {% endif %}
     
-    <div class="transaction-filter" style="display: {{ display }}">    
+    <div class="filter" style="display: {{ display }}">    
 
         {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
           <div class="custom-form-group pull-left {% if form.startDate.vars.errors|length %} has-error{% endif %}">
@@ -104,12 +104,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
                         {% for transaction in transactions %}
                             <tr {% if transaction.voiddate is not null %}class="bg-danger"{% endif %}
-                                {% if transaction.executed == 1 %}class="bg-info"{% endif %}
+                               {# {% if transaction.executed  %}class="bg-info"{% endif %}#}
                             >
                                 
-                                <td>{{ transaction.id }}</td> 
+                                <td>{{ transaction.executed }}</td> 
                                 <td>{{ transaction.transactiondate| date('d F Y') }}</td> 
                                 <td>{{ transaction.transactionmethod }}</td>
                                 <td>{{ transaction.amount|number_format(2, '.', ',') }}</td>

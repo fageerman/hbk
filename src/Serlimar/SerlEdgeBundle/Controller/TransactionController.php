@@ -276,6 +276,7 @@ class TransactionController extends Controller
             $transaction = $transaction[0];
             if($transaction->getExecuted() !== 1)
             {
+                $transaction->setAmount(0);
                 $transaction->setVoiddate(new \DateTime());
                 $transaction->setVoidby($this->getUser()->getUsername());
                 $em->flush();
