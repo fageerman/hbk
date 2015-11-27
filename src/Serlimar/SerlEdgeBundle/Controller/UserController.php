@@ -138,20 +138,19 @@ class UserController extends Controller
     private function sendPasswordMail($user)
     {
         $message = \Swift_Message::newInstance()
-        ->setSubject('serlEDGE Login')
+        ->setSubject('serlEDGE Login for user: ' . $user->getUsername())
         ->setFrom('serledge@serlimar.aw')
         ->setTo($user->getEmail())
         ->setBody(
             $this->renderView(
-                'SerlimarSerlEdgeBundle:User:_email_user_password.html.twig',
+                'SerlimarSerlEdgeBundle:User:_email_user_password.txt.twig',
                 array(
                     'token' => $user->getResetPasswordToken(),
                     'name' => $user->getFirstName(),
                     'username' => $user->getUsername()
                 )
             )
-        )
-        ->setContentType("text/html");
+        );
         $this->get('mailer')->send($message);
     }
     
