@@ -41,6 +41,8 @@ class TransactionFilter
      */
     private $insertedBy;
     
+    private $location;
+    
     
     public function getStartDate() {
         return $this->startDate;
@@ -52,6 +54,10 @@ class TransactionFilter
     
     function getInsertedBy() {
         return $this->insertedBy;
+    }
+    
+    function getLocation() {
+        return $this->location;
     }
 
     public function setStartDate($startDate) {
@@ -65,7 +71,12 @@ class TransactionFilter
     function setInsertedBy($insertedBy) {
         $this->insertedBy = $insertedBy;
     }
+    
+    function setLocation($location) {
+        $this->location = $location;
+    }
 
+    
     /**
      * 
      * @Assert\Callback

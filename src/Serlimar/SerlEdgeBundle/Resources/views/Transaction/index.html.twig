@@ -28,7 +28,7 @@
     </div>
    
     {% endfor %}
-    {% if filterOption %}
+    {% if roleUser != 'Cashier' %}
     <p>
         <button onclick="toggleFilter()" id="toggleLink" class="btn btn-info btn-sm ">Toggle Filter</button>
     </p>
@@ -56,6 +56,13 @@
             {{ form_widget(form.insertedBy) }}
             {{ form_errors(form.insertedBy) }}
           </div>
+          {% if roleUser == 'Superadmin'%}
+          <div class="custom-form-group pull-left {% if form.location.vars.errors|length %} has-error{% endif %}">
+            {{ form_label(form.location) }}
+            {{ form_widget(form.location) }}
+            {{ form_errors(form.location) }}
+          </div>
+          {% endif %}
           <div class="clearfix"></div> 
           <div class="custom-form-group">
             <button type="submit" class="btn btn-primary">Filter</button>

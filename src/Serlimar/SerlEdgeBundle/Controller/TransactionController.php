@@ -58,8 +58,8 @@ class TransactionController extends Controller
         $filter->setStartDate($this->get('session')->get('filterStartDate'));
         $filter->setEndDate($this->get('session')->get('filterEndDate'));
         $filter->setInsertedBy($this->get('session')->get('filterInsertedBy'));
-        $form = $this->createForm(new TransactionFilterType(),$filter);
-        
+        $form = $this->createForm(new TransactionFilterType($roleUser),$filter);
+        //die($roleUser);
         if($this->get('session')->get('filterQueryInSession') !== null)
         {
             $dateQuery = $this->get('session')->get('filterQueryInSession');
@@ -71,10 +71,10 @@ class TransactionController extends Controller
             $form->handleRequest($request);
             $data = $form->getData();
             if($form->isValid()){
-              //  die($data->getStartDate());
                 $startDate = ($data->getStartDate())?$data->getStartDate()->format('Y-m-d H:i:s'):null;
                 $endDate = ($data->getEndDate())? $data->getEndDate()->format('Y-m-d H:i:s'): null;
                 $insertedBy = $data->getInsertedBy();
+                $location = $data->getLocation();
                
                 
                 //Build the datequery from the submitted start/enddate from the filter.
@@ -83,19 +83,17 @@ class TransactionController extends Controller
                                     . $startDate . '\' and \'' . $endDate . '\'' : ' and t.transactiondate = \'' 
                                     . $startDate . '\'';
                 }
-                else{
-                    //$dateQuery = '';
-                }
+                
                 $dateQuery .= ($insertedBy != null)?' and t.insertuser = \'' . $insertedBy . '\'':'';
-               //  die($dateQuery);
+                $dateQuery .= ($location != null)?' and t.location = \'' . $location . '\'':'';
                 $this->get('session')->set('filterQueryInSession', $dateQuery);  
                 $this->get('session')->set('filterStartDate', $data->getStartDate());  
                 $this->get('session')->set('filterEndDate', $data->getEndDate());  
-                $this->get('session')->set('filterInsertedBy', $data->getInsertedBy());  
+                $this->get('session')->set('filterLocation', $data->getLocation());  
             }
 
         }
-        $mainQuery =  'Select t.id, t.transactiondate, t.voiddate, t.executed , l.lookup as transactionmethod, t.amount,t.reference, c.firstname, c.name, t.insertuser, u.location from SerlimarSerlEdgeBundle:Tbltransactionsqueue t '
+        $mainQuery =  'Select t.id, t.transactiondate, t.voiddate, t.executed , l.lookup as transactionmethod, t.amount,t.reference, c.firstname, c.name, t.insertuser, t.location from SerlimarSerlEdgeBundle:Tbltransactionsqueue t '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tblcustomers c WITH c.guid = t.customerguid '
                 . ' LEFT JOIN SerlimarSerlEdgeBundle:Tbllookups l WITH l.guid = t.locationmethodguid '
                 . 'LEFT JOIN SerlimarSerlEdgeBundle:Tblusers u WITH u.username=t.insertuser'
@@ -138,7 +136,7 @@ class TransactionController extends Controller
             'transactions' => $result,
             'sumAmount' => $sumAmount,
             'dates' => $dates,
-            'filterOption' => ($roleUser === 'Cashier')?false:true,
+            'roleUser' => $roleUser,
             'pagination' => $pagination,
             'form' => $form->createView()
             ));
@@ -169,7 +167,11 @@ class TransactionController extends Controller
                 $transaction->setCustomer($customer->getFirstname() . ' ' . $customer->getName());
                 $transaction->setAddress($customer->getAddress());
                 $transaction->setId($this->generateTransactionId());
+                
+                $user = $em->getRepository('Serlimar\SerlEdgeBundle\Entity\Tblusers')->findBy(array('username'=> $this->getUser()->getUsername()));
+                
                 $transaction->setInsertUser($this->getUser()->getUsername());
+                $transaction->setLocation($user[0]->getLocation());
                 $transaction->setTransactiondate((new \DateTime('now'))->setTime(0,0));
                 $transaction->setTimestamp(new \DateTime('now'));
                // $transaction->setReference($transaction->getInvoicenr());
@@ -353,6 +355,7 @@ class TransactionController extends Controller
         $this->get('session')->remove('filterStartDate');  
         $this->get('session')->remove('filterEndDate');  
         $this->get('session')->remove('filterInsertedBy');  
+        $this->get('session')->remove('filterLocation');  
         return $this->redirectToRoute('serlimar_serledge_transaction');
     }
 }

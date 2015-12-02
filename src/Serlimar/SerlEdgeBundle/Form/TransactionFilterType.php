@@ -21,6 +21,12 @@ use Symfony\Component\Form\FormEvents;
 class TransactionFilterType extends AbstractType
 {
 
+    protected $roleUser;
+    
+    public function __construct($roleUser)
+    {
+        $this->roleUser = $roleUser;
+    }
     
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -49,10 +55,21 @@ class TransactionFilterType extends AbstractType
                 ))
                 ->add('insertedBy', 'text', array('attr' =>array(
                     'label'=>'Inserted By'
-                )))
+                )));
+                
             //->add('Filter', 'submit', array('attr'=>array('class'=>'btn  btn-primary', 'novalidate'=> true)))
-        ;
-
+        if($this->roleUser == 'Superadmin'){
+            $builder->add('location', 'choice', array(
+                'choices'  => array(
+                    'santa cruz' => 'Santa Cruz',
+                    'savaneta' => 'Savaneta',
+                    'san nicolas' => 'San Nicolas',
+                    'paradera' => 'Paradera',
+                    'noord' => 'Noord',
+                ),
+                'placeholder' => 'Choose a location',
+            ));
+        }
     }
 
     public function getName()
